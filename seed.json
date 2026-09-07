@@ -1,0 +1,745 @@
+{
+  "_version": "1.0.0",
+  "_note": "Fuente de verdad del app Timia Hub. Editar aquí y hacer commit para actualizar datos en todas las instancias.",
+
+  "_comment_cronogramas": "Cronogramas adicionales: key = projectId::cronoId dentro de timia_plan_configs. El principal usa key = projectId. FICO trae 5 cronogramas tomados del Excel SDATOOL-53017.",
+  "_comment_startdates": "startDate de planes por proyecto. Sobrescribe el hardcodeado en WORK_PLANS sin recompilar. Hoy = 2026-06-26.",
+  "timia_plan_startdates": {
+    "FICO":     "2026-05-04",
+    "NGA":      "2026-04-27",
+    "SDM1":     "2026-04-27",
+    "SDM2":     "2026-05-04",
+    "BCBS239":  "2026-04-13",
+    "OPTIM":    "2026-05-04",
+    "FABRICA":  "2026-04-20",
+    "MURIC":    "2026-05-11",
+    "BRICKELL": "2026-05-11",
+    "PINTO":    "2026-05-18",
+    "QA":       "2026-05-18"
+  },
+
+  "timia_admin_projects": [
+    {"id":"FICO",     "name":"FICO",         "area":"Juan Pablo Arévalo", "color":"#dc2626", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0082"},
+    {"id":"NGA",      "name":"NGA",          "area":"Juan Pablo Arévalo", "color":"#7c3aed", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0091"},
+    {"id":"CRONOS",   "name":"CRONOS",       "area":"Juan Pablo Arévalo", "color":"#0891b2", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-06-02", "active":true, "sda":"BCOL-2026-0012"},
+    {"id":"PINTO",    "name":"PINTO",        "area":"Juan Pablo Arévalo", "color":"#059669", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0018"},
+    {"id":"QA",       "name":"QA",           "area":"Juan Pablo Arévalo", "color":"#d97706", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0024"},
+    {"id":"SDM1",     "name":"SDM 1",        "area":"Diego Sánchez",      "color":"#2563eb", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0074"},
+    {"id":"SDM2",     "name":"SDM 2",        "area":"Diego Sánchez",      "color":"#4f46e5", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0075"},
+    {"id":"MURIC",    "name":"MURIC",        "area":"Diego Sánchez",      "color":"#0f766e", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0031"},
+    {"id":"BRICKELL", "name":"BRICKELL",     "area":"Diego Sánchez",      "color":"#b45309", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0033"},
+    {"id":"BCBS239",  "name":"BCBS239",      "area":"Diego Sánchez",      "color":"#7e22ce", "priority":"Crítica", "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0061"},
+    {"id":"OPTIM",    "name":"Optimización", "area":"David Huamán",       "color":"#0369a1", "priority":"Media",   "client":"Credicorp Capital", "startDate":"2026-02-01", "active":true},
+    {"id":"FABRICA",  "name":"Fábrica",      "area":"David Huamán",       "color":"#be185d", "priority":"Alta",    "client":"Credicorp Capital", "startDate":"2026-01-15", "active":true}
+  ],
+
+  "timia_admin_users": [
+    {
+      "id":"u-rodolfo", "name":"Rodolfo Pereda", "email":"rodolfo.pereda@timia.ai",
+      "role":"pm", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","SDM1","SDM2","MURIC","BRICKELL","BCBS239","OPTIM","FABRICA"],
+      "initials":"RP", "avatarColor":"#dc2626", "active":true,
+      "areaLabel":"Project Manager · BBVA CO & Credicorp Capital"
+    },
+    {
+      "id":"u-juan", "name":"Juan Pablo Arévalo", "email":"juanpablo.arevalo@timia.ai",
+      "role":"tech_lead", "projectIds":["FICO","NGA","CRONOS","PINTO","QA"],
+      "initials":"JA", "avatarColor":"#7c3aed", "active":true,
+      "areaLabel":"Líder Técnico · FICO · NGA · CRONOS · PINTO · QA"
+    },
+    {
+      "id":"u-david", "name":"David Huamán", "email":"david.huaman@timia.ai",
+      "role":"tech_lead", "projectIds":["OPTIM","FABRICA","SDM1","SDM2"],
+      "initials":"DH", "avatarColor":"#0369a1", "active":true,
+      "areaLabel":"Líder Técnico · Credicorp Capital · SDM"
+    },
+    {
+      "id":"u-diego", "name":"Diego Sánchez", "email":"diego.sanchez@timia.ai",
+      "role":"tech_lead", "projectIds":["SDM1","SDM2","MURIC","BRICKELL","BCBS239"],
+      "initials":"DS", "avatarColor":"#2563eb", "active":true,
+      "areaLabel":"Líder Técnico · SDM · MURIC · BRICKELL · BCBS239"
+    },
+    {
+      "id":"u-juliana", "name":"Juliana Garzón", "email":"juliana.garzon@timia.ai",
+      "role":"tech_ref", "projectIds":["FICO","NGA"],
+      "initials":"JG", "avatarColor":"#0f766e", "active":true,
+      "areaLabel":"Referente Técnico · FICO · NGA"
+    },
+    {
+      "id":"u-sergio", "name":"Sergio David Rodriguez", "email":"sergio.rodriguez@timia.ai",
+      "role":"developer", "projectIds":["FICO","NGA","CRONOS"],
+      "initials":"SR", "avatarColor":"#b45309", "active":true,
+      "areaLabel":"Desarrollador · FICO · NGA · CRONOS"
+    },
+    {
+      "id":"u-fabrizio", "name":"Fabrizio Atiquipa", "email":"fabrizio.atiquipa@timia.ai",
+      "role":"developer", "projectIds":["FICO","NGA","CRONOS"],
+      "initials":"FA", "avatarColor":"#059669", "active":true,
+      "areaLabel":"Desarrollador · FICO · NGA · CRONOS"
+    },
+    {
+      "id":"u-amilkar", "name":"Amilkar José Bolaño", "email":"amilkar.bolano@timia.ai",
+      "role":"developer", "projectIds":["FICO"],
+      "initials":"AB", "avatarColor":"#7c3aed", "active":true,
+      "areaLabel":"Desarrollador · FICO"
+    },
+    {
+      "id":"u-ana", "name":"Ana Restrepo", "email":"ana.restrepo@timia.ai",
+      "role":"developer", "projectIds":["NGA","CRONOS","PINTO"],
+      "initials":"AR", "avatarColor":"#be185d", "active":true,
+      "areaLabel":"Desarrolladora · NGA · CRONOS · PINTO"
+    }
+  ],
+
+  "timia_project_roles": {
+    "u-amilkar:FICO": "developer"
+  },
+
+  "timia_ans_config": { "Baja": 2, "Media": 5, "Alta": 10, "Crítica": 15 },
+  "timia_bbva_ans_config": { "Pendiente": 3, "Enviado": 5, "En revisión": 10, "Observaciones": 5 },
+
+  "timia_holidays": [
+    {"date":"2026-01-01","name":"Año Nuevo",                  "type":"nacional"},
+    {"date":"2026-01-12","name":"Reyes Magos",                "type":"nacional"},
+    {"date":"2026-03-23","name":"San José",                   "type":"nacional"},
+    {"date":"2026-04-02","name":"Jueves Santo",               "type":"nacional"},
+    {"date":"2026-04-03","name":"Viernes Santo",              "type":"nacional"},
+    {"date":"2026-05-01","name":"Día del Trabajo",            "type":"nacional"},
+    {"date":"2026-05-18","name":"Ascensión del Señor",        "type":"nacional"},
+    {"date":"2026-06-08","name":"Corpus Christi",             "type":"nacional"},
+    {"date":"2026-06-15","name":"Sagrado Corazón",            "type":"nacional"},
+    {"date":"2026-06-29","name":"San Pedro y San Pablo",      "type":"nacional"},
+    {"date":"2026-07-20","name":"Independencia",              "type":"nacional"},
+    {"date":"2026-08-07","name":"Batalla de Boyacá",          "type":"nacional"},
+    {"date":"2026-08-17","name":"Asunción de la Virgen",      "type":"nacional"},
+    {"date":"2026-10-12","name":"Día de la Raza",             "type":"nacional"},
+    {"date":"2026-11-02","name":"Todos los Santos",           "type":"nacional"},
+    {"date":"2026-11-16","name":"Independencia de Cartagena", "type":"nacional"},
+    {"date":"2026-12-08","name":"Inmaculada Concepción",      "type":"nacional"},
+    {"date":"2026-12-25","name":"Navidad",                    "type":"nacional"}
+  ],
+
+  "timia_circuitos": [
+    {"id":"c1","projectId":"FICO","titulo":"Validación Diccionario Técnico v2","columna":"En revisión","fechaEnvio":"2026-06-01","responsable":"Juliana Garzón","prioridad":"Alta","observaciones":"Enviado con correcciones de campos solicitadas","historial":[{"fecha":"2026-05-26","columna":"Enviado","nota":"Envío inicial al equipo BBVA"},{"fecha":"2026-06-01","columna":"En revisión","nota":"BBVA confirmó recepción"}]},
+    {"id":"c2","projectId":"BCBS239","titulo":"Despliegue Control-M producción","columna":"Pendiente","responsable":"Diego Sánchez","prioridad":"Crítica","historial":[]},
+    {"id":"c3","projectId":"NGA","titulo":"Aprobación ETL t_nga_output","columna":"Aprobado","fechaEnvio":"2026-05-20","responsable":"Juliana Garzón","prioridad":"Media","historial":[{"fecha":"2026-05-20","columna":"Enviado","nota":"Envío v1"},{"fecha":"2026-05-28","columna":"Aprobado","nota":"Aprobado sin observaciones"}]},
+    {"id":"c4","projectId":"SDM1","titulo":"Certificación calidad datos SDM","columna":"Observaciones","fechaEnvio":"2026-05-28","responsable":"Diego Sánchez","prioridad":"Alta","observaciones":"3 campos requieren ajuste en nomenclatura","historial":[{"fecha":"2026-05-28","columna":"Enviado","nota":"Envío inicial"},{"fecha":"2026-06-03","columna":"Observaciones","nota":"BBVA devolvió con 3 observaciones"}]},
+    {"id":"c5","projectId":"CRONOS","titulo":"Aprobación Hammurabi Rules v3","columna":"Enviado","fechaEnvio":"2026-06-05","responsable":"Fabrizio Atiquipa","prioridad":"Alta","historial":[{"fecha":"2026-06-05","columna":"Enviado","nota":"Envío v3 con correcciones"}]},
+    {"id":"c6","projectId":"FICO","titulo":"Aprobación MSD FICO v1","columna":"Aprobado","fechaEnvio":"2026-03-10","responsable":"Juliana Garzón","prioridad":"Alta","historial":[{"fecha":"2026-03-10","columna":"Enviado","nota":"Envío MSD inicial"},{"fecha":"2026-03-18","columna":"En revisión","nota":"BBVA solicitó ajustes en granularidad"},{"fecha":"2026-03-25","columna":"Aprobado","nota":"Aprobado con observaciones menores"}]},
+    {"id":"c7","projectId":"NGA","titulo":"Solicitud ACLs entorno Work NGA","columna":"En revisión","fechaEnvio":"2026-06-10","responsable":"Ana Restrepo","prioridad":"Media","historial":[{"fecha":"2026-06-10","columna":"Enviado","nota":"Solicitud accesos Hive Work"},{"fecha":"2026-06-17","columna":"En revisión","nota":"Pendiente aprobación arquitectura BBVA"}]},
+    {"id":"c8","projectId":"SDM2","titulo":"Validación esquemas SDM 2 Work","columna":"Pendiente","responsable":"Diego Sánchez","prioridad":"Alta","historial":[]},
+    {"id":"c9","projectId":"MURIC","titulo":"Circuito Gobierno Técnico MURIC v1","columna":"Enviado","fechaEnvio":"2026-06-12","responsable":"Diego Sánchez","prioridad":"Media","historial":[{"fecha":"2026-06-12","columna":"Enviado","nota":"Primer envío diccionario técnico MURIC"}]},
+    {"id":"c10","projectId":"BRICKELL","titulo":"Aprobación arquitectura datos BRICKELL","columna":"Observaciones","fechaEnvio":"2026-05-30","responsable":"Diego Sánchez","prioridad":"Alta","observaciones":"BBVA requiere alineación con modelo estrella corporativo","historial":[{"fecha":"2026-05-30","columna":"Enviado","nota":"Envío diseño inicial"},{"fecha":"2026-06-06","columna":"Observaciones","nota":"Solicitan ajustar modelo a estándar DW BBVA"}]},
+    {"id":"c11","projectId":"PINTO","titulo":"Accesos repositorio Bitbucket PINTO","columna":"Aprobado","fechaEnvio":"2026-04-15","responsable":"Juan Pablo Arévalo","prioridad":"Baja","historial":[{"fecha":"2026-04-15","columna":"Enviado","nota":"Solicitud permisos Bitbucket"},{"fecha":"2026-04-18","columna":"Aprobado","nota":"Accesos otorgados sin observaciones"}]},
+    {"id":"c12","projectId":"BCBS239","titulo":"Validación Modelo Solución del Dato BCBS239","columna":"En revisión","fechaEnvio":"2026-06-08","responsable":"Diego Sánchez","prioridad":"Crítica","historial":[{"fecha":"2026-06-08","columna":"Enviado","nota":"Envío MSD con alineación BCBS239"},{"fecha":"2026-06-16","columna":"En revisión","nota":"Comité Riesgo BBVA en revisión"}]},
+    {"id":"c13","projectId":"FICO","titulo":"Certificación QA componentes ADA FICO","columna":"Pendiente","responsable":"Juliana Garzón","prioridad":"Alta","historial":[]},
+    {"id":"c14","projectId":"CRONOS","titulo":"Solicitud acceso Control-M distribuido","columna":"Pendiente","responsable":"Sergio David Rodriguez","prioridad":"Media","historial":[]},
+    {"id":"c15","projectId":"SDM1","titulo":"Aprobación mallas orquestación SDM1","columna":"Pendiente","responsable":"Diego Sánchez","prioridad":"Alta","historial":[]}
+  ],
+
+  "timia_imputaciones": [
+    {"id":"imp-1450",  "projectId":"FICO","jiraId":"DECRONOS-1450","summary":"Creación y productivización Tablón FICO",                           "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Enero",   "weeks":"2-13",  "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":96,  "hoursImputed":96,  "context":"CRONOS-4Q25-DATCAL01",                                    "createdBy":"Juan Pablo Arévalo","createdAt":"2026-01-02"},
+    {"id":"imp-1600",  "projectId":"FICO","jiraId":"DECRONOS-1600","summary":"Tablón FICO — validación de componentes",                           "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Enero",   "weeks":"14-15", "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":16,  "hoursImputed":16,  "context":"CRONOS-4Q25-DATCAL01",                                    "createdBy":"Juan Pablo Arévalo","createdAt":"2026-01-14"},
+    {"id":"imp-1682",  "projectId":"FICO","jiraId":"DECRONOS-1682","summary":"Creación y productivización tablón de insumo",                      "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Enero",   "weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":40,  "hoursImputed":40,  "context":"CRONOS-Q126-DATCAL01",                                    "createdBy":"Juan Pablo Arévalo","createdAt":"2026-01-05"},
+    {"id":"imp-1687",  "projectId":"FICO","jiraId":"DECRONOS-1687","summary":"Migración proceso Holding Campañas a Local",                        "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Enero",   "weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":40,  "hoursImputed":40,  "context":"CRONOS-1Q26-DATCAL01",                                    "createdBy":"Juan Pablo Arévalo","createdAt":"2026-01-05"},
+    {"id":"imp-1726",  "projectId":"FICO","jiraId":"DECRONOS-1726","summary":"Codificación componentes proceso principal",                        "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Febrero", "weeks":"16-26", "q":"Q1-2026",   "phase":"Codificación",    "hoursEst":88,  "hoursImputed":88,  "context":"Refs: DECRONOS-1450 · DECRONOS-1600",                     "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-16"},
+    {"id":"imp-1727",  "projectId":"FICO","jiraId":"DECRONOS-1727","summary":"Codificación ajuste y validación de datos",                         "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-sergio"],                          "month":"Febrero", "weeks":"27",    "q":"Q1-2026",   "phase":"Codificación",    "hoursEst":8,   "hoursImputed":8,   "context":"DECRONOS-1600 · 6h | DECRONOS-1450 · 2h",                "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-27"},
+    {"id":"imp-1834",  "projectId":"FICO","jiraId":"DECRONOS-1834","summary":"Creación y productivización malla Certificación componentes T02",   "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-amilkar"],                         "month":"Febrero", "weeks":"27",    "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":8,   "hoursImputed":8,   "context":"DECRONOS-1682 · 6h | DECRONOS-1450 · 2h — CRONOS-Q226", "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-27"},
+    {"id":"imp-1835",  "projectId":"FICO","jiraId":"DECRONOS-1835","summary":"Malla Certificación componentes T02 — Deployment",                 "type":"Deployment",      "status":"Deployed",    "assigneeIds":["u-fabrizio"],                        "month":"Febrero", "weeks":"27",    "q":"Q2-2026",   "phase":"Despliegue",      "hoursEst":8,   "hoursImputed":8,   "context":"DECRONOS-1687 · 6h | DECRONOS-1450 · 2h — CRONOS-Q226", "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-27"},
+    {"id":"imp-1794",  "projectId":"FICO","jiraId":"DECRONOS-1794","summary":"Procesamiento FICO – ADA",                                          "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Marzo",   "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":80,  "hoursImputed":80,  "context":"CRONOS-Q2 2026-DATCAL01",                                 "createdBy":"Juan Pablo Arévalo","createdAt":"2026-03-01"},
+    {"id":"imp-1814",  "projectId":"FICO","jiraId":"DECRONOS-1814","summary":"Procesamiento Input FICO – ADA",                                    "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Marzo",   "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":80,  "hoursImputed":80,  "context":"CRONOS-Q2 2026-DATCAL01",                                 "createdBy":"Juan Pablo Arévalo","createdAt":"2026-03-05"},
+    {"id":"imp-1804a", "projectId":"FICO","jiraId":"DECRONOS-1804","summary":"Procesamiento FICO Output Proactivo – ADA",                        "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Abril",   "weeks":"1",     "q":"Q2-2026",   "phase":"Pruebas",         "hoursEst":8,   "hoursImputed":8,   "context":"Refs: DECRONOS-1726 · DECRONOS-1727 — CRONOS-Q2 2026",   "createdBy":"Juan Pablo Arévalo","createdAt":"2026-04-01"},
+    {"id":"imp-1846a", "projectId":"FICO","jiraId":"DECRONOS-1846","summary":"Historificación FICO – ADA",                                        "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Abril",   "weeks":"6",     "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":8,   "hoursImputed":8,   "context":"Ref: DECRONOS-1794 — CRONOS-Q2 2026-DATCAL01",           "createdBy":"Juan Pablo Arévalo","createdAt":"2026-04-06"},
+    {"id":"imp-1846b", "projectId":"FICO","jiraId":"DECRONOS-1846","summary":"Historificación FICO – ADA · Codificación",                        "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Abril",   "weeks":"7-23",  "q":"Q2-II-2026","phase":"Codificación",    "hoursEst":136, "hoursImputed":136, "context":"Refs: DECRONOS-1794 · DECRONOS-1814",                     "createdBy":"Juan Pablo Arévalo","createdAt":"2026-04-07"},
+    {"id":"imp-1804b", "projectId":"FICO","jiraId":"DECRONOS-1804","summary":"Procesamiento FICO Output Proactivo – ADA · Codificación",         "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["todos"],                             "month":"Abril",   "weeks":"23-30", "q":"Q2-II-2026","phase":"Codificación",    "hoursEst":64,  "hoursImputed":64,  "context":"Refs: DECRONOS-1794 · DECRONOS-1814 · DECRONOS-1804",    "createdBy":"Juan Pablo Arévalo","createdAt":"2026-04-23"},
+    {"id":"imp-1996",  "projectId":"FICO","jiraId":"DECRONOS-1996","summary":"Test — Validación componentes ADA",                                 "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-sergio"],                          "month":"Mayo",    "weeks":"",      "q":"Q2-II-2026","phase":"Pruebas",         "hoursEst":40,  "hoursImputed":24,  "context":"",                                                        "createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-01"},
+    {"id":"imp-1997",  "projectId":"FICO","jiraId":"DECRONOS-1997","summary":"Test — Validación componentes ADA",                                 "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-amilkar"],                         "month":"Mayo",    "weeks":"1-10",  "q":"Q2-II-2026","phase":"Codificación",    "hoursEst":80,  "hoursImputed":40,  "context":"Refs: DECRONOS-1794 · 1814 · 1804 · 1846",               "createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-01"},
+    {"id":"imp-1999",  "projectId":"FICO","jiraId":"DECRONOS-1999","summary":"Test — Validación componentes ADA",                                 "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-fabrizio"],                        "month":"Mayo",    "weeks":"11-25", "q":"Q2-II-2026","phase":"Pruebas",         "hoursEst":120, "hoursImputed":60,  "context":"Refs: DECRONOS-1794 · 1814 · 1804 · 1846",               "createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-11"},
+    {"id":"imp-2000",  "projectId":"FICO","jiraId":"DECRONOS-2000","summary":"Test — Integración y validación final del equipo",                  "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-sergio","u-fabrizio","u-amilkar"],"month":"Mayo",    "weeks":"26-30", "q":"Q2-II-2026","phase":"Codificación",    "hoursEst":40,  "hoursImputed":0,   "context":"Cada uno tiene asignado su sub-ticket. Refs: 1996·1997·1999·2000","createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-26"},
+    {"id":"imp-1537",  "projectId":"FICO","jiraId":"DECRONOS-1537","summary":"Procesamiento FICO – integración completa y cierre",                "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-sergio","u-fabrizio","u-amilkar"],"month":"Mayo",    "weeks":"",      "q":"Q2-II-2026","phase":"Codificación",    "hoursEst":120, "hoursImputed":48,  "context":"",                                                        "createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-01"},
+
+    {"id":"imp-cro-01","projectId":"CRONOS","jiraId":"DECRONOS-2041","summary":"Análisis y resolución de dudas técnicas CRONOS",                "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-juan"],                          "month":"Junio",  "weeks":"1-2",   "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":16,  "hoursImputed":16,  "context":"CRONOS - S1-S2",                          "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-02"},
+    {"id":"imp-cro-02","projectId":"CRONOS","jiraId":"DECRONOS-2042","summary":"Elaboración diccionario técnico 285 campos CRONOS",             "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-juan","u-sergio"],               "month":"Junio",  "weeks":"1-3",   "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":48,  "hoursImputed":36,  "context":"CRONOS - S1-S3",                          "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-02"},
+    {"id":"imp-cro-03","projectId":"CRONOS","jiraId":"DECRONOS-2043","summary":"Inicialización en Nebula y gestión repos Bitbucket",            "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-fabrizio"],                      "month":"Junio",  "weeks":"1",     "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":8,   "hoursImputed":8,   "context":"CRONOS - S1",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-02"},
+    {"id":"imp-cro-04","projectId":"CRONOS","jiraId":"DECRONOS-2044","summary":"Documentación técnica ETL y mapeo de campos",                   "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-juan"],                          "month":"Junio",  "weeks":"2-4",   "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":32,  "hoursImputed":16,  "context":"CRONOS - S2-S4",                          "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-10"},
+    {"id":"imp-cro-05","projectId":"CRONOS","jiraId":"DECRONOS-2045","summary":"Construcción componente Spark · Scala — clases principales",    "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-sergio","u-fabrizio"],           "month":"Junio",  "weeks":"3-9",   "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":120, "hoursImputed":12,  "context":"CRONOS - S3-S9 (en curso)",               "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-18"},
+    {"id":"imp-cro-06","projectId":"CRONOS","jiraId":"DECRONOS-2046","summary":"Construcción MSD — Modelo Solución del Dato",                   "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-juan"],                          "month":"Junio",  "weeks":"2-4",   "q":"Q2-2026",   "phase":"Análisis y Diseño","hoursEst":24,  "hoursImputed":8,   "context":"CRONOS - S2-S4",                          "createdBy":"Juan Pablo Arévalo","createdAt":"2026-06-10"},
+
+    {"id":"imp-nga-01","projectId":"NGA","jiraId":"DENGA-0341","summary":"Análisis fuentes Core Bancario NGA — levantamiento inicial",     "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-juan","u-juliana"],              "month":"Enero",  "weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":40,  "hoursImputed":40,  "context":"NGA-Q1-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-01-15"},
+    {"id":"imp-nga-02","projectId":"NGA","jiraId":"DENGA-0342","summary":"Diccionario de datos NGA — 412 campos fuente",                  "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-juliana"],                       "month":"Febrero","weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":64,  "hoursImputed":64,  "context":"NGA-Q1-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-01"},
+    {"id":"imp-nga-03","projectId":"NGA","jiraId":"DENGA-0360","summary":"Inicialización Nebula y repositorio Bitbucket NGA",            "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-ana"],                           "month":"Febrero","weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":8,   "hoursImputed":8,   "context":"NGA-Q1-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-01"},
+    {"id":"imp-nga-04","projectId":"NGA","jiraId":"DENGA-0375","summary":"Circuito Gobierno Técnico — aprobación diccionario NGA",       "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-juliana","u-juan"],              "month":"Febrero","weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":16,  "hoursImputed":16,  "context":"NGA-Q1-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-02-15"},
+    {"id":"imp-nga-05","projectId":"NGA","jiraId":"DENGA-0391","summary":"Construcción ETL Spark NGA — extracción Core Bancario",        "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-juan","u-ana"],                  "month":"Marzo",  "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":96,  "hoursImputed":60,  "context":"NGA-Q2-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-03-01"},
+    {"id":"imp-nga-06","projectId":"NGA","jiraId":"DENGA-0410","summary":"Construcción reglas calidad Hammurabi NGA",                   "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-ana"],                           "month":"Abril",  "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":40,  "hoursImputed":20,  "context":"NGA-Q2-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-04-01"},
+    {"id":"imp-nga-07","projectId":"NGA","jiraId":"DENGA-0425","summary":"Pruebas entorno local y despliegue Work NGA",                 "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-juan","u-ana"],                  "month":"Mayo",   "weeks":"",      "q":"Q2-2026",   "phase":"Pruebas",         "hoursEst":32,  "hoursImputed":8,   "context":"NGA-Q2-2026",                             "createdBy":"Juan Pablo Arévalo","createdAt":"2026-05-01"},
+
+    {"id":"imp-sdm-01","projectId":"SDM1","jiraId":"DESDM1-0101","summary":"Análisis modelo estrella SDM1 — dimensiones y hechos",      "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-diego"],                         "month":"Enero",  "weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":32,  "hoursImputed":32,  "context":"SDM1-Q1-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-01-15"},
+    {"id":"imp-sdm-02","projectId":"SDM1","jiraId":"DESDM1-0112","summary":"Construcción tablas dimensionales SDM1 — schemas Work",     "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-diego"],                         "month":"Marzo",  "weeks":"",      "q":"Q1-2026",   "phase":"Codificación",    "hoursEst":80,  "hoursImputed":48,  "context":"SDM1-Q1-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-03-01"},
+    {"id":"imp-sdm-03","projectId":"SDM1","jiraId":"DESDM1-0130","summary":"Mallas Control-M SDM1 — orquestación carga incremental",   "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-diego"],                         "month":"Mayo",   "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":40,  "hoursImputed":16,  "context":"SDM1-Q2-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-05-01"}
+  ],
+
+  "_comment_tr": "Activity Report (TR): features Jira con horas planificadas por fase SDA y horas imputadas por persona/día leídas de las capturas del TR.",
+  "timia_tr_features": [
+    {"id":"DECRONOS-2169","projectId":"CRONOS","title":"CRONOS-Q3 2026 DATCAL01 Disponibilizar tablas intermedias FICO","q":"Q3-2026","hoursByPhase":{"Análisis y diseño":16,"Desarrollo / Gestión datos":64,"Pruebas":24,"Despliegue":8},"defaultPhase":"Desarrollo / Gestión datos","assigneeIds":["u-juan","u-sergio"],"active":true,"createdAt":"2026-07-01T12:00:00.000Z"},
+    {"id":"DECRONOS-2238","projectId":"CRONOS","title":"CRONOS-Q3 2026 DATCAL01 Cambio de tablon temporal","q":"Q3-2026","hoursByPhase":{"Análisis y diseño":8,"Desarrollo / Gestión datos":40,"Pruebas":16,"Despliegue":8},"defaultPhase":"Desarrollo / Gestión datos","assigneeIds":["u-sergio"],"active":true,"createdAt":"2026-07-15T12:00:00.000Z"},
+    {"id":"DECRONOS-2343","projectId":"CRONOS","title":"CRONOS-Q3 2026 DATCAL01 Cambio de tablon temporal - Validación","q":"Q3-2026","hoursByPhase":{"Desarrollo / Gestión datos":24,"Pruebas":32,"Despliegue":8},"defaultPhase":"Pruebas","assigneeIds":["u-juan"],"active":true,"createdAt":"2026-08-01T12:00:00.000Z"}
+  ],
+  "timia_tr_entries": [
+    {"id":"tr-1","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-26","featureId":"DECRONOS-2169","phase":"Desarrollo / Gestión datos","hours":3,"actividad":"DATIO (Dataproc)","source":"ocr","createdAt":"2026-08-26T18:00:00.000Z"},
+    {"id":"tr-2","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-26","featureId":"DECRONOS-2238","phase":"Desarrollo / Gestión datos","hours":3,"actividad":"DATIO (Dataproc)","source":"ocr","createdAt":"2026-08-26T18:00:00.000Z"},
+    {"id":"tr-3","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-26","featureId":"DECRONOS-2343","phase":"Pruebas","hours":2,"actividad":"DATIO (Dataproc)","source":"ocr","createdAt":"2026-08-26T18:00:00.000Z"},
+    {"id":"tr-4","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-28","featureId":"DECRONOS-2169","phase":"Desarrollo / Gestión datos","hours":3,"source":"ocr","createdAt":"2026-08-28T18:00:00.000Z"},
+    {"id":"tr-5","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-28","featureId":"DECRONOS-2238","phase":"Desarrollo / Gestión datos","hours":3,"source":"ocr","createdAt":"2026-08-28T18:00:00.000Z"},
+    {"id":"tr-6","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-28","featureId":"DECRONOS-2343","phase":"Pruebas","hours":2,"source":"ocr","createdAt":"2026-08-28T18:00:00.000Z"},
+    {"id":"tr-7","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-31","featureId":"DECRONOS-2169","phase":"Desarrollo / Gestión datos","hours":2,"source":"ocr","createdAt":"2026-08-31T18:00:00.000Z"},
+    {"id":"tr-8","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-31","featureId":"DECRONOS-2238","phase":"Pruebas","hours":2,"source":"ocr","createdAt":"2026-08-31T18:00:00.000Z"},
+    {"id":"tr-9","userId":"u-sergio","userName":"Sergio David Rodriguez","date":"2026-08-31","featureId":"DECRONOS-2343","phase":"Pruebas","hours":4,"source":"ocr","createdAt":"2026-08-31T18:00:00.000Z"},
+    {"id":"tr-10","userId":"u-juan","userName":"Juan Pablo Arévalo","date":"2026-08-31","featureId":"DECRONOS-2169","phase":"Análisis y diseño","hours":4,"source":"manual","createdAt":"2026-08-31T18:00:00.000Z"},
+    {"id":"tr-11","userId":"u-juan","userName":"Juan Pablo Arévalo","date":"2026-08-31","featureId":"DECRONOS-2343","phase":"Pruebas","hours":4,"source":"manual","createdAt":"2026-08-31T18:00:00.000Z"},
+    {"id":"tr-12","userId":"u-juan","userName":"Juan Pablo Arévalo","date":"2026-09-01","featureId":"DECRONOS-2169","phase":"Desarrollo / Gestión datos","hours":8,"source":"manual","createdAt":"2026-09-01T18:00:00.000Z"}
+  ],
+  "_comment_issues": "Alertas y bloqueantes con fecha de inicio/fin e impacto (planKey + entregableId + actIdx [+ etapaId]). endDate ausente = abierta.",
+  "timia_plan_issues": [
+    {"id":"is-cro-01","planKey":"CRONOS","type":"bloqueante","title":"Acceso Control-M distribuido sin aprobar por BBVA","detail":"Ticket de acceso abierto desde el 18/08. Sin acceso no se pueden construir las mallas.","startDate":"2026-08-18","impacts":[{"planKey":"CRONOS","entregableId":"auto","actIdx":0},{"planKey":"CRONOS","entregableId":"auto","actIdx":2}],"createdBy":"Juan Pablo Arévalo","createdAt":"2026-08-18T14:00:00.000Z"},
+    {"id":"is-cro-02","planKey":"CRONOS","type":"alerta","title":"Circuito validación Gobierno Técnico sin respuesta","detail":"Enviado el 11/08, BBVA no ha dado feedback. Riesgo de retrasar despliegue de esquemas.","startDate":"2026-08-11","impacts":[{"planKey":"CRONOS","entregableId":"doc","actIdx":2}],"createdBy":"Juan Pablo Arévalo","createdAt":"2026-08-11T09:30:00.000Z"},
+    {"id":"is-cro-03","planKey":"CRONOS","type":"alerta","title":"Datos de prueba insuficientes en Sandbox","startDate":"2026-07-27","endDate":"2026-08-05","impacts":[{"planKey":"CRONOS","entregableId":"ada","actIdx":3}],"createdBy":"Sergio David Rodriguez","createdAt":"2026-07-27T10:00:00.000Z","closedBy":"Juan Pablo Arévalo","closedAt":"2026-08-05T16:00:00.000Z"},
+    {"id":"is-fico-rnd-01","planKey":"FICO::randomico","type":"alerta","title":"Certificación QLT en curso — WO0000102642840 pendiente de cierre","startDate":"2026-08-12","impacts":[{"planKey":"FICO::randomico","entregableId":"desarrollo-d-1","actIdx":9}],"createdBy":"Amilkar José Bolaño","createdAt":"2026-08-12T11:00:00.000Z"},
+    {"id":"is-fico-inp-01","planKey":"FICO::input","type":"bloqueante","title":"Solicitud de esquemas Live sin desplegar","detail":"Depende de BBVA Gobierno. Bloquea generación de datos en Sandbox.","startDate":"2026-08-25","impacts":[{"planKey":"FICO::input","entregableId":"documentaci-","actIdx":6}],"createdBy":"Amilkar José Bolaño","createdAt":"2026-08-25T08:45:00.000Z"}
+  ],
+  "timia_plan_configs": {
+    "CRONOS": {
+      "projectId": "CRONOS",
+      "startDate": "2026-06-02",
+      "totalWeeks": 13,
+      "generatedAt": "2026-06-25T12:00:00.000Z",
+      "weekLabels": [
+        "S1 · 2 jun",  "S2 · 10 jun", "S3 · 18 jun", "S4 · 25 jun",
+        "S5 · 3 jul",  "S6 · 10 jul", "S7 · 17 jul", "S8 · 27 jul",
+        "S9 · 3 ago",  "S10 · 11 ago","S11 · 19 ago","S12 · 26 ago","S13 · 2 sep"
+      ],
+      "entregables": [
+        {
+          "id": "doc", "label": "I. Documentación y gobierno",
+          "activities": [
+            {"label": "Análisis y resolución de dudas",         "startWeek": 1, "endWeek": 2},
+            {"label": "Elaboración diccionario técnico",        "startWeek": 1, "endWeek": 3,
+             "etapas": [
+               {"id":"dt-1","label":"Levantamiento inicial de campos",  "peso":25},
+               {"id":"dt-2","label":"Envío a Gobierno de datos",        "peso":25},
+               {"id":"dt-3","label":"Correcciones de Gobierno",         "peso":25,"optional":true},
+               {"id":"dt-4","label":"Validación final del diccionario", "peso":25}
+             ]},
+            {"label": "Inicialización en Nebula",              "startWeek": 1, "endWeek": 1, "bbva": true},
+            {"label": "Documentación técnica ETL",             "startWeek": 2, "endWeek": 4},
+            {"label": "Circuito validación Gobierno Técnico",  "startWeek": 3, "endWeek": 6, "bbva": true},
+            {"label": "Construcción Modelo Solución del Dato", "startWeek": 2, "endWeek": 4}
+          ]
+        },
+        {
+          "id": "ada", "label": "II. Componentes ADA",
+          "activities": [
+            {"label": "Gestión repos Bitbucket · Procesamiento","startWeek": 1, "endWeek": 1, "bbva": true},
+            {"label": "Construcción Spark · Scala",             "startWeek": 3, "endWeek": 9,
+             "etapas": [
+               {"id":"sp-1","label":"Ambientación repositorio local",      "peso":10},
+               {"id":"sp-2","label":"Construcción clases principales",     "peso":40},
+               {"id":"sp-3","label":"Config y utilitarios",                "peso":20},
+               {"id":"sp-4","label":"Test unitarios y aceptación",         "peso":20},
+               {"id":"sp-5","label":"Escritura local · validación salida", "peso":10}
+             ]},
+            {"label": "Construcción reglas calidad (Hammurabi)","startWeek":  6, "endWeek":  8},
+            {"label": "Pruebas en entorno local",               "startWeek":  8, "endWeek":  9},
+            {"label": "Despliegue y pruebas entornos Work",     "startWeek":  9, "endWeek": 10, "bbva": true},
+            {"label": "Certificación calidad por equipo QA",    "startWeek": 10, "endWeek": 11, "bbva": true}
+          ]
+        },
+        {
+          "id": "auto", "label": "III. Automatización y orquestación",
+          "activities": [
+            {"label": "Gestión acceso Control-M distribuido",  "startWeek":  4, "endWeek":  5, "bbva": true},
+            {"label": "Definición de la automatización",       "startWeek":  5, "endWeek":  6},
+            {"label": "Construcción Mallas Control-M",         "startWeek":  7, "endWeek": 10},
+            {"label": "Pruebas orquestación en Work",          "startWeek":  9, "endWeek": 11},
+            {"label": "Certificación mallas Control-M",        "startWeek": 10, "endWeek": 12, "bbva": true},
+            {"label": "Estabilización en producción",          "startWeek": 12, "endWeek": 13}
+          ]
+        }
+      ]
+    },
+    "FICO::input": {
+      "projectId":"FICO", "cronoId":"input", "cronoName":"Input · t_kbrb_input_data_co_proactivo",
+      "startDate":"2026-06-08", "totalWeeks":8, "generatedAt":"2026-08-20T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Análisis y resolución de dudas", "startWeek": 1, "endWeek": 3},
+          {"label": "Circuito de validación Gobierno Técnico", "startWeek": 1, "endWeek": 2, "bbva": true},
+          {"label": "Ajuste de documentación técnica (mapeo de campos y ETL)", "startWeek": 3, "endWeek": 3},
+          {"label": "Ajuste Modelo de Solución del Dato (MSD)", "startWeek": 1, "endWeek": 1},
+          {"label": "Circuito de validación Modelo de Solución del Dato (MSD)", "startWeek": 2, "endWeek": 3, "bbva": true},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 3, "endWeek": 3},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 6, "endWeek": 6, "bbva": true}
+        ]},
+        {"id":"desarrollo-d-1", "label":"II. Desarrollo de Procesamientos",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 1},
+          {"label": "Estandarización del procesamiento (de Path a Table)", "startWeek": 2, "endWeek": 2},
+          {"label": "Ajuste en la construcción de procesamiento Spark - Scala", "startWeek": 3, "endWeek": 4},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 4, "endWeek": 4},
+          {"label": "Pruebas en entorno local", "startWeek": 4, "endWeek": 4},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 4, "endWeek": 4},
+          {"label": "Generación de Datos - Sandbox - Acompañamiento en validación de Datos", "startWeek": 4, "endWeek": 5, "bbva": true},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 5, "endWeek": 6, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 6, "endWeek": 6},
+          {"label": "Estabilización de procesos en producción", "startWeek": 6, "endWeek": 6}
+        ]},
+        {"id":"migration-to-2", "label":"III. Migration Tool",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Migration Tool", "startWeek": 2, "endWeek": 3},
+          {"label": "Construcción Migration tool", "startWeek": 3, "endWeek": 3},
+          {"label": "Pruebas en ambientes previos", "startWeek": 4, "endWeek": 4},
+          {"label": "Certificación de calidad por el equipo de QA.", "startWeek": 4, "endWeek": 5, "bbva": true},
+          {"label": "Construcción malla temporal", "startWeek": 5, "endWeek": 6},
+          {"label": "Ejecución históricos - Migration tool", "startWeek": 6, "endWeek": 6},
+          {"label": "Validación de Datos - Migration tool", "startWeek": 6, "endWeek": 6}
+        ]}
+      ]
+    },
+    "FICO::output": {
+      "projectId":"FICO", "cronoId":"output", "cronoName":"Output · t_kbrb_output_data_co_proactivo",
+      "startDate":"2026-06-22", "totalWeeks":8, "generatedAt":"2026-08-20T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Análisis y resolución de dudas", "startWeek": 3, "endWeek": 3},
+          {"label": "Circuito de validación Gobierno Técnico", "startWeek": 2, "endWeek": 2, "bbva": true},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 2, "endWeek": 2},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 6, "endWeek": 6, "bbva": true}
+        ]},
+        {"id":"desarrollo-d-1", "label":"II. Desarrollo de Procesamientos",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 2, "endWeek": 2},
+          {"label": "Implementación componentes aprovisionados Holding", "startWeek": 4, "endWeek": 4},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 4, "endWeek": 4},
+          {"label": "Generación de Datos - Acompañamiento en validación de Datos", "startWeek": 4, "endWeek": 5, "bbva": true},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 5, "endWeek": 6, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 6, "endWeek": 6},
+          {"label": "Acompañamiento en validación de Datos - ADA Live", "startWeek": 6, "endWeek": 6, "bbva": true}
+        ]},
+        {"id":"migration-to-2", "label":"III. Migration Tool",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Migration Tool", "startWeek": 2, "endWeek": 3},
+          {"label": "Construcción Migration tool", "startWeek": 4, "endWeek": 4},
+          {"label": "Pruebas en ambientes previos", "startWeek": 4, "endWeek": 4},
+          {"label": "Certificación de calidad por el equipo de QA.", "startWeek": 4, "endWeek": 5, "bbva": true},
+          {"label": "Construcción malla temporal", "startWeek": 4, "endWeek": 5},
+          {"label": "Ejecución históricos - Migration tool", "startWeek": 6, "endWeek": 6},
+          {"label": "Validación de Datos - Migration tool", "startWeek": 6, "endWeek": 6}
+        ]}
+      ]
+    },
+    "FICO::fico2": {
+      "projectId":"FICO", "cronoId":"fico2", "cronoName":"FICO 2.0 · Tablones KFCA",
+      "startDate":"2026-05-04", "totalWeeks":16, "generatedAt":"2026-08-20T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Análisis y resolución de dudas", "startWeek": 1, "endWeek": 5},
+          {"label": "Elaboración diccionario técnico 5 procesamiento 552 campos", "startWeek": 1, "endWeek": 3},
+          {"label": "Inicialización en Nebula", "startWeek": 1, "endWeek": 1},
+          {"label": "Circuito de validación Gobierno Técnico", "startWeek": 3, "endWeek": 4, "bbva": true},
+          {"label": "Construcción Modelo de Solución del Dato (MSD)", "startWeek": 4, "endWeek": 4},
+          {"label": "Circuito de validación Modelo de Solución del Dato (MSD)", "startWeek": 5, "endWeek": 6, "bbva": true},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 5, "endWeek": 5},
+          {"label": "Solicitud de ACLs", "startWeek": 5, "endWeek": 5, "bbva": true},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 11, "endWeek": 11, "bbva": true}
+        ]},
+        {"id":"desarrollo-d-1", "label":"II. Desarrollo de Procesamientos · t_kfca_input_data_card",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 2},
+          {"label": "Homologación FICO a DATA CARD", "startWeek": 2, "endWeek": 2},
+          {"label": "Creación de documentación técnica (mapeo de campos y ETL)", "startWeek": 4, "endWeek": 4},
+          {"label": "Construcción de procesamiento Spark - Scala", "startWeek": 4, "endWeek": 5},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 6, "endWeek": 6},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 6, "endWeek": 7},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos", "startWeek": 6, "endWeek": 7, "bbva": true},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi)", "startWeek": 7, "endWeek": 7},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 7, "endWeek": 7},
+          {"label": "Pruebas en entorno local", "startWeek": 6, "endWeek": 7},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 7, "endWeek": 8, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 8, "endWeek": 8}
+        ]},
+        {"id":"desarrollo-d-2", "label":"III. Desarrollo de Procesamientos · t_kfca_input_data_client",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 2},
+          {"label": "Homologación FICO a DATA CLIENT", "startWeek": 2, "endWeek": 2},
+          {"label": "Creación de documentación técnica (mapeo de campos y ETL)", "startWeek": 3, "endWeek": 3},
+          {"label": "Construcción de procesamiento Spark - Scala", "startWeek": 3, "endWeek": 6},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 6, "endWeek": 6},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 6, "endWeek": 7},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos", "startWeek": 7, "endWeek": 8, "bbva": true},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi)", "startWeek": 8, "endWeek": 8},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 8, "endWeek": 8},
+          {"label": "Pruebas en entorno local", "startWeek": 8, "endWeek": 8},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 9, "endWeek": 10, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 10, "endWeek": 10}
+        ]},
+        {"id":"desarrollo-d-3", "label":"IV. Desarrollo de Procesamientos · t_kfca_input_data_proposal",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 2},
+          {"label": "Homologación FICO a DATA PROPOSAL", "startWeek": 2, "endWeek": 2},
+          {"label": "Creación de documentación técnica (mapeo de campos y ETL)", "startWeek": 3, "endWeek": 3},
+          {"label": "Construcción de procesamiento Spark - Scala", "startWeek": 4, "endWeek": 5},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 6, "endWeek": 6},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 6, "endWeek": 7},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos", "startWeek": 8, "endWeek": 9, "bbva": true},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi)", "startWeek": 8, "endWeek": 8},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 8, "endWeek": 8},
+          {"label": "Pruebas en entorno local", "startWeek": 9, "endWeek": 9},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 9, "endWeek": 10, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 10, "endWeek": 10}
+        ]},
+        {"id":"desarrollo-d-4", "label":"V. Desarrollo de Procesamientos · t_kfca_input_data_contract",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 2},
+          {"label": "Homologación FICO a DATA CONTRACT", "startWeek": 2, "endWeek": 2},
+          {"label": "Creación de documentación técnica (mapeo de campos y ETL)", "startWeek": 6, "endWeek": 6},
+          {"label": "Construcción de procesamiento Spark - Scala", "startWeek": 7, "endWeek": 9},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 9, "endWeek": 9},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 9, "endWeek": 10},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos", "startWeek": 10, "endWeek": 11, "bbva": true},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi)", "startWeek": 11, "endWeek": 11},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 11, "endWeek": 11},
+          {"label": "Pruebas en entorno local", "startWeek": 11, "endWeek": 11},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 11, "endWeek": 12, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 12, "endWeek": 12}
+        ]},
+        {"id":"desarrollo-d-5", "label":"VI. Desarrollo de Procesamientos · t_kfca_output_data_optimizer",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Componentes", "startWeek": 1, "endWeek": 2},
+          {"label": "Implementación de componentes Kirby", "startWeek": 9, "endWeek": 9},
+          {"label": "Implementación de componentes Hammurabi", "startWeek": 10, "endWeek": 10},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 10, "endWeek": 10},
+          {"label": "Pruebas en entornos previos (Work)", "startWeek": 10, "endWeek": 10},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos (Si es viable)", "startWeek": 10, "endWeek": 11, "bbva": true},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 11, "endWeek": 12, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 12, "endWeek": 12}
+        ]},
+        {"id":"automatizaci-6", "label":"VII. Automatización y Orquestación",
+         "activities":[
+          {"label": "Gestión de accesos a Control-M distribuido", "startWeek": 7, "endWeek": 7},
+          {"label": "Definición automatización", "startWeek": 8, "endWeek": 9},
+          {"label": "Construcción de Mallas en Control-M distribuido.", "startWeek": 10, "endWeek": 12},
+          {"label": "Pruebas en entornos previos (Work) - Mallas Control-M distribuido", "startWeek": 11, "endWeek": 12},
+          {"label": "Elaboración de documentación - Mallas Control-M distribuido (ADA)", "startWeek": 12, "endWeek": 13},
+          {"label": "Certificación de mallas Control-M Distribuido", "startWeek": 14, "endWeek": 16, "bbva": true},
+          {"label": "Instalación de mallas Control-M en ambiente de producción", "startWeek": 16, "endWeek": 16},
+          {"label": "Estabilización de procesos en producción", "startWeek": 16, "endWeek": 16}
+        ]}
+      ]
+    },
+    "FICO::randomico": {
+      "projectId":"FICO", "cronoId":"randomico", "cronoName":"Randómico · t_ccrt_pl_cli_campania",
+      "startDate":"2026-07-13", "totalWeeks":12, "generatedAt":"2026-08-20T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Análisis y resolución de dudas", "startWeek": 1, "endWeek": 2},
+          {"label": "Construcción Diccionario Técnico - 5 campos aprox", "startWeek": 1, "endWeek": 1},
+          {"label": "Suscripción t_kbrb_input_data_co_proactivo", "startWeek": 1, "endWeek": 1},
+          {"label": "Circuito de validación Gobierno Técnico", "startWeek": 1, "endWeek": 2, "bbva": true},
+          {"label": "Construcción/ Modificación Modelo de Solución del Dato (MSD)", "startWeek": 2, "endWeek": 2},
+          {"label": "Circuito de validación Modelo de Solución del Dato (MSD)", "startWeek": 2, "endWeek": 3, "bbva": true},
+          {"label": "Construcción/Modificación de documentación técnica (mapeo de campos y ETL)", "startWeek": 2, "endWeek": 2},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 3, "endWeek": 3},
+          {"label": "Solicitud de ACLs", "startWeek": 3, "endWeek": 3, "bbva": true},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 5, "endWeek": 5, "bbva": true}
+        ]},
+        {"id":"desarrollo-d-1", "label":"II. Desarrollo de Procesamientos",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket", "startWeek": 2, "endWeek": 3},
+          {"label": "Construcción de procesamiento Spark - Scala", "startWeek": 3, "endWeek": 4},
+          {"label": "Construcción de Test unitarios y Test de Aceptación", "startWeek": 4, "endWeek": 4},
+          {"label": "Pruebas en entorno local", "startWeek": 4, "endWeek": 4},
+          {"label": "Ajuste procesamiento t_kbrb_input_data_co_proactivo", "startWeek": 5, "endWeek": 5},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 5, "endWeek": 7},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos", "startWeek": 5, "endWeek": 6, "bbva": true},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi)", "startWeek": 7, "endWeek": 7},
+          {"label": "Construcción de Smart Cleaner para procesamiento", "startWeek": 7, "endWeek": 7},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 7, "endWeek": 7, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA", "startWeek": 8, "endWeek": 8}
+        ]},
+        {"id":"migration-to-2", "label":"III. Migration Tool",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Migration Tool", "startWeek": 1, "endWeek": 1},
+          {"label": "Construcción Migration tool", "startWeek": 3, "endWeek": 3},
+          {"label": "Pruebas en ambientes previos", "startWeek": 3, "endWeek": 3},
+          {"label": "Certificación de calidad por el equipo de QA.", "startWeek": 3, "endWeek": 4, "bbva": true},
+          {"label": "Construcción malla temporal", "startWeek": 4, "endWeek": 4},
+          {"label": "Ejecución históricos - Migration tool", "startWeek": 4, "endWeek": 5},
+          {"label": "Validación de Datos - Migration tool", "startWeek": 4, "endWeek": 5}
+        ]},
+        {"id":"automatizaci-3", "label":"IV. Automatización y Orquestación",
+         "activities":[
+          {"label": "Gestión de accesos a Control-M distribuido", "startWeek": 1, "endWeek": 1},
+          {"label": "Definición automatización", "startWeek": 6, "endWeek": 6},
+          {"label": "Construcción/Modificación de Mallas en Control-M distribuido.", "startWeek": 6, "endWeek": 6},
+          {"label": "Pruebas en entornos previos (Work) - Mallas Control-M distribuido", "startWeek": 7, "endWeek": 7},
+          {"label": "Elaboración de documentación - Mallas Control-M distribuido (ADA)", "startWeek": 8, "endWeek": 8},
+          {"label": "Certificación de mallas Control-M Distribuido", "startWeek": 8, "endWeek": 9, "bbva": true},
+          {"label": "Instalación de mallas Control-M en ambiente de producción", "startWeek": 9, "endWeek": 10}
+        ]}
+      ]
+    },
+    "FICO::comportamental": {
+      "projectId":"FICO", "cronoId":"comportamental", "cronoName":"Base Comportamental",
+      "startDate":"2026-08-03", "totalWeeks":13, "generatedAt":"2026-08-20T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Análisis y resolución de dudas", "startWeek": 1, "endWeek": 2},
+          {"label": "Construcción Diccionario Técnico - 74 campos", "startWeek": 1, "endWeek": 3},
+          {"label": "Circuito de validación Gobierno Técnico", "startWeek": 2, "endWeek": 3, "bbva": true},
+          {"label": "Construcción Modelo de Solución del Dato (MSD)", "startWeek": 3, "endWeek": 3},
+          {"label": "Circuito de validación Modelo de Solución del Dato (MSD)", "startWeek": 4, "endWeek": 5, "bbva": true},
+          {"label": "Modificación de documentación técnica (mapeo de campos y ETL) (6 procesamientos)", "startWeek": 2, "endWeek": 3},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 4, "endWeek": 4},
+          {"label": "Solicitud de ACLs", "startWeek": 4, "endWeek": 4, "bbva": true},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 6, "endWeek": 6, "bbva": true}
+        ]},
+        {"id":"desarrollo-d-1", "label":"II. Desarrollo de Componentes Ada",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket (3 Procesamientos 1 Libreria 1 Hammurabi)", "startWeek": 1, "endWeek": 2},
+          {"label": "Migracion repositorios antiguos a nuevos repositorios (3 Procesamientos y 1 Libreria)", "startWeek": 3, "endWeek": 4},
+          {"label": "Migración del procesamiento a objetos tipo table (5 Procesamientos)", "startWeek": 4, "endWeek": 6},
+          {"label": "Ajuste escritura de Tmp a Table (1 Procesamiento)", "startWeek": 4, "endWeek": 4},
+          {"label": "Ajuste lectura t_cdar_pl_base_comportamental Spark - Scala (5 Procesamientos)", "startWeek": 5, "endWeek": 6},
+          {"label": "Construcción/Modificación de Test unitarios y Test de Aceptación (6 procesamientos)", "startWeek": 6, "endWeek": 7},
+          {"label": "Pruebas en entorno local (6 procesamientos)", "startWeek": 7, "endWeek": 7},
+          {"label": "Construcción reglas de calidad MVP (Hammurabi) t_kbrb_input_data_co_proactivo", "startWeek": 2, "endWeek": 2},
+          {"label": "Despliegue y pruebas en entornos previos (Work) (6 Procesamientos 1 Hammurabi)", "startWeek": 6, "endWeek": 7},
+          {"label": "Generación de Datos - Sandbox/Test - Acompañamiento en validación de Datos (6 procesamientos)", "startWeek": 8, "endWeek": 9, "bbva": true},
+          {"label": "Certificación de calidad por el equipo de QA (6 procesamientos 1 Hammurabi)", "startWeek": 8, "endWeek": 11, "bbva": true},
+          {"label": "Despliegue en producción de componentes ADA (6 procesamientos 1 Hammurabi)", "startWeek": 10, "endWeek": 11},
+          {"label": "Estabilización de procesos en producción", "startWeek": 11, "endWeek": 12}
+        ]},
+        {"id":"automatizaci-2", "label":"III. Automatización y Orquestación",
+         "activities":[
+          {"label": "Gestión de accesos a Control-M distribuido", "startWeek": 1, "endWeek": 1},
+          {"label": "Definición automatización", "startWeek": 3, "endWeek": 3},
+          {"label": "Construcción/Modificación de Mallas en Control-M distribuido.", "startWeek": 6, "endWeek": 7},
+          {"label": "Pruebas en entornos previos (Work) - Mallas Control-M distribuido", "startWeek": 7, "endWeek": 7},
+          {"label": "Elaboración de documentación - Mallas Control-M distribuido (ADA)", "startWeek": 8, "endWeek": 8},
+          {"label": "Certificación de mallas Control-M Distribuido", "startWeek": 9, "endWeek": 10, "bbva": true},
+          {"label": "Instalación de mallas Control-M en ambiente de producción", "startWeek": 11, "endWeek": 11},
+          {"label": "Estabilización de procesos en producción", "startWeek": 11, "endWeek": 12}
+        ]}
+      ]
+    }
+  },
+
+  "timia_plan_pcts": {
+    "CRONOS-doc-0": 100,
+    "CRONOS-doc-2": 100,
+    "CRONOS-doc-3": 50,
+    "CRONOS-doc-4": 0,
+    "CRONOS-doc-5": 30,
+    "CRONOS-ada-0": 100,
+    "CRONOS-ada-2": 0,
+    "CRONOS-ada-3": 0,
+    "CRONOS-ada-4": 0,
+    "CRONOS-ada-5": 0,
+    "CRONOS-auto-0": 0,
+    "CRONOS-auto-1": 0,
+    "CRONOS-auto-2": 0,
+    "CRONOS-auto-3": 0,
+    "CRONOS-auto-4": 0,
+    "CRONOS-auto-5": 0
+  },
+
+  "timia_etapa_states": {
+    "CRONOS__doc__1__dt-1": {"done":true,  "doneBy":"Juliana Garzón",         "doneAt":"2026-06-10T10:00:00.000Z"},
+    "CRONOS__doc__1__dt-2": {"done":true,  "doneBy":"Juliana Garzón",         "doneAt":"2026-06-15T14:00:00.000Z"},
+    "CRONOS__doc__1__dt-3": {"done":true,  "doneBy":"Sergio David Rodriguez", "doneAt":"2026-06-19T11:00:00.000Z"},
+    "CRONOS__doc__1__dt-4": {"done":false, "doneBy":"",                       "doneAt":""},
+    "CRONOS__ada__1__sp-1": {"done":true,  "doneBy":"Fabrizio Atiquipa",      "doneAt":"2026-06-17T09:00:00.000Z"},
+    "CRONOS__ada__1__sp-2": {"done":false, "doneBy":"",                       "doneAt":""},
+    "CRONOS__ada__1__sp-3": {"done":false, "doneBy":"",                       "doneAt":""},
+    "CRONOS__ada__1__sp-4": {"done":false, "doneBy":"",                       "doneAt":""},
+    "CRONOS__ada__1__sp-5": {"done":false, "doneBy":"",                       "doneAt":""}
+  },
+
+  "timia_activity_done_dates": {
+    "CRONOS-doc-0": "2026-06-09T15:00:00.000Z",
+    "CRONOS-doc-2": "2026-06-03T11:00:00.000Z",
+    "CRONOS-ada-0": "2026-06-03T09:00:00.000Z"
+  },
+
+  "timia_kanban_tasks": [
+    {"id":"kt-1","title":"Análisis y resolución de dudas FICO","description":"Recopilación y resolución de dudas técnicas con BBVA para inicio del proyecto FICO.","priority":"Alta","startDate":"2026-01-26","endDate":"2026-02-08","status":"done","assigneeIds":["u-juliana"],"projectId":"FICO","entregableId":"doc","actIdx":0,"fromPlan":true,"jiraId":"FICO-100","links":[],"comments":[]},
+    {"id":"kt-2","title":"Diccionario técnico FICO (370 campos)","description":"Levantamiento, envío a Gobierno de Datos BBVA y validación del diccionario técnico con 370 campos fuente.","priority":"Alta","startDate":"2026-01-26","endDate":"2026-02-15","status":"done","assigneeIds":["u-juliana","u-sergio"],"projectId":"FICO","entregableId":"doc","actIdx":1,"fromPlan":true,"jiraId":"FICO-101","links":[],"comments":[]},
+    {"id":"kt-3","title":"Documentación ETL y mapeo campos FICO","description":"Documentar flujos ETL y mapeo campo a campo entre fuente y destino en Confluence.","priority":"Media","startDate":"2026-02-09","endDate":"2026-03-01","status":"in-progress","assigneeIds":["u-juliana"],"projectId":"FICO","entregableId":"doc","actIdx":4,"fromPlan":true,"jiraId":"FICO-104","links":[],"comments":[]},
+    {"id":"kt-4","title":"Construcción Spark·Scala FICO — ADA","description":"Desarrollo del componente ADA con Spark-Scala: clases principales, config, test unitarios.","priority":"Crítica","startDate":"2026-02-16","endDate":"2026-04-05","status":"in-progress","assigneeIds":["u-sergio","u-fabrizio"],"projectId":"FICO","entregableId":"ada","actIdx":1,"fromPlan":true,"jiraId":"FICO-110","links":[],"comments":[]},
+    {"id":"kt-5","title":"Reglas calidad Hammurabi FICO","description":"Implementar reglas de calidad de datos usando el framework Hammurabi de BBVA.","priority":"Alta","startDate":"2026-03-16","endDate":"2026-04-12","status":"backlog","assigneeIds":["u-fabrizio"],"projectId":"FICO","entregableId":"ada","actIdx":3,"fromPlan":true,"jiraId":"FICO-115","links":[],"comments":[]},
+    {"id":"kt-6","title":"Circuito Gobierno Técnico FICO","description":"Presentación al comité técnico BBVA, gestión de observaciones y obtención de aprobación.","priority":"Alta","startDate":"2026-02-23","endDate":"2026-03-08","status":"review","assigneeIds":["u-juliana","u-juan"],"projectId":"FICO","entregableId":"doc","actIdx":3,"fromPlan":true,"jiraId":"FICO-142","links":[],"comments":[]},
+    {"id":"kt-7","title":"Despliegue Work · verificación VBox FICO","description":"Creación y ejecución del job ADA en entorno Work, verificación de escritura en VBox.","priority":"Alta","startDate":"2026-04-13","endDate":"2026-04-26","status":"backlog","assigneeIds":["u-sergio"],"projectId":"FICO","entregableId":"ada","actIdx":6,"fromPlan":true,"jiraId":"FICO-120","links":[],"comments":[]},
+    {"id":"kt-8","title":"MSD FICO — Modelo Solución del Dato","description":"Elaboración y aprobación del Modelo de Solución del Dato versión 1 para FICO.","priority":"Alta","startDate":"2026-01-26","endDate":"2026-02-28","status":"done","assigneeIds":["u-juliana"],"projectId":"FICO","entregableId":"doc","actIdx":2,"fromPlan":true,"jiraId":"FICO-102","links":[],"comments":[]},
+
+    {"id":"kt-nga-1","title":"Análisis fuentes Core Bancario NGA","description":"Levantamiento de fuentes del Core Bancario para NGA: inventario de tablas, volúmenes y cardinalidades.","priority":"Alta","startDate":"2026-01-15","endDate":"2026-02-15","status":"done","assigneeIds":["u-juan","u-juliana"],"projectId":"NGA","jiraId":"NGA-0341","links":[],"comments":[]},
+    {"id":"kt-nga-2","title":"Diccionario de datos NGA (412 campos)","description":"Elaboración del diccionario técnico de 412 campos NGA y validación con Gobierno de Datos BBVA.","priority":"Media","startDate":"2026-02-01","endDate":"2026-03-01","status":"done","assigneeIds":["u-juliana"],"projectId":"NGA","jiraId":"NGA-0342","links":[],"comments":[]},
+    {"id":"kt-nga-3","title":"Circuito Gobierno Técnico NGA","description":"Aprobación del diccionario NGA con el comité de Gobierno de Datos BBVA Colombia.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-03-22","status":"done","assigneeIds":["u-juan","u-juliana"],"projectId":"NGA","jiraId":"NGA-0375","links":[],"comments":[]},
+    {"id":"kt-nga-4","title":"ETL Spark — extracción Core Bancario NGA","description":"Construcción del componente ETL en Spark para extracción desde Core Bancario.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-05-15","status":"in-progress","assigneeIds":["u-juan","u-ana"],"projectId":"NGA","jiraId":"NGA-0391","links":[],"comments":[]},
+    {"id":"kt-nga-5","title":"Reglas calidad Hammurabi NGA","description":"Construcción de reglas de calidad en Hammurabi para validación de datos NGA.","priority":"Alta","startDate":"2026-04-01","endDate":"2026-05-31","status":"in-progress","assigneeIds":["u-ana"],"projectId":"NGA","jiraId":"NGA-0410","links":[],"comments":[]},
+    {"id":"kt-nga-6","title":"Pruebas entorno local NGA","description":"Pruebas de integración en entorno local Sandbox, verificación de resultados.","priority":"Media","startDate":"2026-05-01","endDate":"2026-06-30","status":"review","assigneeIds":["u-juan","u-ana"],"projectId":"NGA","jiraId":"NGA-0425","links":[],"comments":[]},
+    {"id":"kt-nga-7","title":"Solicitud acceso entorno Work NGA","description":"Solicitud y gestión de ACLs para acceso al entorno Work de Hive en BBVA Colombia.","priority":"Media","startDate":"2026-06-10","endDate":"2026-06-25","status":"in-progress","assigneeIds":["u-ana"],"projectId":"NGA","jiraId":"NGA-0441","links":[],"comments":[]},
+
+    {"id":"kt-cro-1","title":"Dudas técnicas y resolución CRONOS","description":"Levantamiento y resolución de dudas técnicas con el equipo BBVA para arrancar CRONOS.","priority":"Alta","startDate":"2026-06-02","endDate":"2026-06-13","status":"done","assigneeIds":["u-juan"],"projectId":"CRONOS","entregableId":"doc","actIdx":0,"fromPlan":true,"jiraId":"DECRONOS-2041","links":[],"comments":[]},
+    {"id":"kt-cro-2","title":"Diccionario técnico CRONOS (285 campos)","description":"Elaboración del diccionario técnico de 285 campos para CRONOS y envío a Gobierno de Datos.","priority":"Crítica","startDate":"2026-06-02","endDate":"2026-06-25","status":"in-progress","assigneeIds":["u-juan","u-sergio"],"projectId":"CRONOS","entregableId":"doc","actIdx":1,"fromPlan":true,"jiraId":"DECRONOS-2042","links":[],"comments":[]},
+    {"id":"kt-cro-3","title":"Inicialización Nebula y repos Bitbucket CRONOS","description":"Alta del proyecto en Nebula y creación de repositorios en Bitbucket con estructura de ramas.","priority":"Media","startDate":"2026-06-02","endDate":"2026-06-09","status":"done","assigneeIds":["u-fabrizio"],"projectId":"CRONOS","entregableId":"doc","actIdx":5,"fromPlan":true,"jiraId":"DECRONOS-2043","links":[],"comments":[]},
+    {"id":"kt-cro-4","title":"MSD CRONOS — Modelo Solución del Dato","description":"Elaboración del Modelo de Solución del Dato para CRONOS, incluyendo diseño del modelo estrella.","priority":"Alta","startDate":"2026-06-10","endDate":"2026-06-25","status":"in-progress","assigneeIds":["u-juan"],"projectId":"CRONOS","entregableId":"doc","actIdx":2,"fromPlan":true,"jiraId":"DECRONOS-2046","links":[],"comments":[]},
+    {"id":"kt-cro-5","title":"Construcción Spark·Scala CRONOS","description":"Implementación del componente de procesamiento Spark·Scala con todas las transformaciones requeridas.","priority":"Crítica","startDate":"2026-06-18","endDate":"2026-08-26","status":"backlog","assigneeIds":["u-sergio","u-fabrizio"],"projectId":"CRONOS","entregableId":"spark","actIdx":1,"fromPlan":true,"jiraId":"DECRONOS-2045","links":[],"comments":[]},
+    {"id":"kt-cro-6","title":"Hammurabi Rules CRONOS — v3","description":"Construcción e implementación de reglas de calidad de datos con Hammurabi para CRONOS.","priority":"Alta","startDate":"2026-07-17","endDate":"2026-08-26","status":"backlog","assigneeIds":["u-fabrizio"],"projectId":"CRONOS","entregableId":"spark","actIdx":3,"fromPlan":true,"jiraId":"DECRONOS-2047","links":[],"comments":[]},
+
+    {"id":"kt-sdm1-1","title":"Análisis modelo estrella SDM1","description":"Diseño de dimensiones y tabla de hechos principal para el modelo Data Mart SDM1.","priority":"Alta","startDate":"2026-01-15","endDate":"2026-02-15","status":"done","assigneeIds":["u-diego"],"projectId":"SDM1","jiraId":"DESDM1-0101","links":[],"comments":[]},
+    {"id":"kt-sdm1-2","title":"Construcción tablas dimensionales SDM1","description":"Implementación de tablas dimensionales en Hive — entorno Work.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-05-01","status":"in-progress","assigneeIds":["u-diego"],"projectId":"SDM1","jiraId":"DESDM1-0112","links":[],"comments":[]},
+    {"id":"kt-sdm1-3","title":"Certificación calidad datos SDM1","description":"Proceso de certificación con Gobierno de Datos BBVA para validar calidad de SDM1.","priority":"Crítica","startDate":"2026-05-28","endDate":"2026-06-25","status":"review","assigneeIds":["u-diego"],"projectId":"SDM1","jiraId":"DESDM1-0125","links":[],"comments":[]},
+    {"id":"kt-sdm1-4","title":"Mallas Control-M SDM1","description":"Construcción y prueba de mallas de orquestación en Control-M para carga incremental.","priority":"Alta","startDate":"2026-05-01","endDate":"2026-06-30","status":"in-progress","assigneeIds":["u-diego"],"projectId":"SDM1","jiraId":"DESDM1-0130","links":[],"comments":[]},
+
+    {"id":"kt-sdm2-1","title":"Diseño esquemas SDM2","description":"Diseño del esquema relacional y modelo dimensional para SDM2.","priority":"Alta","startDate":"2026-01-15","endDate":"2026-02-28","status":"done","assigneeIds":["u-diego"],"projectId":"SDM2","jiraId":"DESDM2-0051","links":[],"comments":[]},
+    {"id":"kt-sdm2-2","title":"ETL carga inicial SDM2","description":"Construcción ETL para carga inicial histórica desde fuentes transaccionales.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-05-01","status":"in-progress","assigneeIds":["u-diego"],"projectId":"SDM2","jiraId":"DESDM2-0062","links":[],"comments":[]},
+    {"id":"kt-sdm2-3","title":"Validación schemas Work SDM2","description":"Validación de los esquemas en el entorno Work con datos representativos.","priority":"Media","startDate":"2026-06-01","endDate":"2026-06-30","status":"backlog","assigneeIds":["u-diego"],"projectId":"SDM2","jiraId":"DESDM2-0075","links":[],"comments":[]},
+
+    {"id":"kt-bcbs-1","title":"Análisis regulatorio BCBS239","description":"Análisis de los requerimientos del estándar BCBS239 y mapeo a fuentes internas BBVA.","priority":"Crítica","startDate":"2026-01-15","endDate":"2026-02-28","status":"done","assigneeIds":["u-diego"],"projectId":"BCBS239","jiraId":"BCBS-0041","links":[],"comments":[]},
+    {"id":"kt-bcbs-2","title":"MSD BCBS239 — Modelo Solución del Dato","description":"Elaboración del MSD con alineación al estándar BCBS239 para revisión del Comité de Riesgo.","priority":"Crítica","startDate":"2026-06-08","endDate":"2026-07-10","status":"in-progress","assigneeIds":["u-diego"],"projectId":"BCBS239","jiraId":"BCBS-0058","links":[],"comments":[]},
+    {"id":"kt-bcbs-3","title":"Control-M producción BCBS239","description":"Despliegue de mallas de producción en Control-M para el proceso BCBS239.","priority":"Crítica","startDate":"2026-07-01","endDate":"2026-08-01","status":"backlog","assigneeIds":["u-diego"],"projectId":"BCBS239","jiraId":"BCBS-0072","links":[],"comments":[]},
+
+    {"id":"kt-muric-1","title":"Diccionario Gobierno MURIC","description":"Elaboración y envío del diccionario técnico MURIC al área de Gobierno de Datos.","priority":"Media","startDate":"2026-02-01","endDate":"2026-03-15","status":"done","assigneeIds":["u-diego"],"projectId":"MURIC","jiraId":"MURIC-0011","links":[],"comments":[]},
+    {"id":"kt-muric-2","title":"ETL Spark MURIC — fuentes internas","description":"Construcción del ETL Spark para integración de fuentes internas MURIC.","priority":"Alta","startDate":"2026-03-15","endDate":"2026-06-01","status":"in-progress","assigneeIds":["u-diego"],"projectId":"MURIC","jiraId":"MURIC-0022","links":[],"comments":[]},
+    {"id":"kt-muric-3","title":"Circuito Gobierno Técnico MURIC","description":"Proceso de aprobación del diccionario técnico MURIC con Gobierno de Datos.","priority":"Media","startDate":"2026-06-12","endDate":"2026-07-01","status":"review","assigneeIds":["u-diego"],"projectId":"MURIC","jiraId":"MURIC-0031","links":[],"comments":[]},
+
+    {"id":"kt-brickell-1","title":"Arquitectura DW BRICKELL","description":"Diseño de la arquitectura del Data Warehouse BRICKELL, alineado con modelo estrella corporativo BBVA.","priority":"Alta","startDate":"2026-02-01","endDate":"2026-03-31","status":"review","assigneeIds":["u-diego"],"projectId":"BRICKELL","jiraId":"BRICK-0021","links":[],"comments":[]},
+    {"id":"kt-brickell-2","title":"Corrección modelo BRICKELL según BBVA","description":"Ajustes al modelo de datos según observaciones del comité BBVA: alineación con estándar DW.","priority":"Alta","startDate":"2026-06-06","endDate":"2026-06-30","status":"in-progress","assigneeIds":["u-diego"],"projectId":"BRICKELL","jiraId":"BRICK-0032","links":[],"comments":[]},
+
+    {"id":"kt-optim-1","title":"Análisis modelo optimización Credicorp","description":"Levantamiento de requerimientos y análisis del modelo matemático de optimización de portafolio.","priority":"Alta","startDate":"2026-02-01","endDate":"2026-03-01","status":"done","assigneeIds":["u-david"],"projectId":"OPTIM","jiraId":"OPT-0011","links":[],"comments":[]},
+    {"id":"kt-optim-2","title":"Implementación modelo optimización Python","description":"Desarrollo del modelo de optimización en Python usando libraries de programación lineal.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-05-15","status":"in-progress","assigneeIds":["u-david"],"projectId":"OPTIM","jiraId":"OPT-0023","links":[],"comments":[]},
+    {"id":"kt-optim-3","title":"Backtesting y validación modelo OPTIM","description":"Validación del modelo con datos históricos y comparación vs benchmarks de mercado.","priority":"Media","startDate":"2026-05-15","endDate":"2026-07-01","status":"backlog","assigneeIds":["u-david"],"projectId":"OPTIM","jiraId":"OPT-0034","links":[],"comments":[]},
+
+    {"id":"kt-fab-1","title":"Setup infraestructura Fábrica","description":"Configuración del entorno de desarrollo y CI/CD para la fábrica de modelos Credicorp.","priority":"Alta","startDate":"2026-01-15","endDate":"2026-02-15","status":"done","assigneeIds":["u-david"],"projectId":"FABRICA","jiraId":"FAB-0011","links":[],"comments":[]},
+    {"id":"kt-fab-2","title":"Modelo scoring crediticio Fábrica","description":"Construcción del modelo de scoring crediticio usando LightGBM y validación con datos Credicorp.","priority":"Crítica","startDate":"2026-02-15","endDate":"2026-05-31","status":"in-progress","assigneeIds":["u-david"],"projectId":"FABRICA","jiraId":"FAB-0025","links":[],"comments":[]},
+    {"id":"kt-fab-3","title":"Pipeline MLOps Fábrica","description":"Implementación del pipeline MLOps con control de versiones de modelos y monitoreo en producción.","priority":"Alta","startDate":"2026-04-01","endDate":"2026-07-01","status":"backlog","assigneeIds":["u-david"],"projectId":"FABRICA","jiraId":"FAB-0038","links":[],"comments":[]},
+
+    {"id":"kt-pinto-1","title":"Análisis fuentes PINTO","description":"Levantamiento de fuentes de datos para proyecto PINTO — identificación de tablas y campos clave.","priority":"Media","startDate":"2026-02-01","endDate":"2026-02-28","status":"done","assigneeIds":["u-juan","u-ana"],"projectId":"PINTO","jiraId":"PINTO-001","links":[],"comments":[]},
+    {"id":"kt-pinto-2","title":"ETL PINTO — transformación datos","description":"Construcción del ETL con transformaciones de negocio para PINTO.","priority":"Alta","startDate":"2026-03-01","endDate":"2026-05-31","status":"in-progress","assigneeIds":["u-ana"],"projectId":"PINTO","jiraId":"PINTO-012","links":[],"comments":[]},
+    {"id":"kt-pinto-3","title":"Documentación técnica PINTO","description":"Documentación técnica completa del proyecto PINTO en Confluence.","priority":"Baja","startDate":"2026-05-01","endDate":"2026-06-30","status":"backlog","assigneeIds":["u-ana"],"projectId":"PINTO","jiraId":"PINTO-021","links":[],"comments":[]},
+
+    {"id":"kt-qa-1","title":"Framework de pruebas QA","description":"Definición y construcción del framework de pruebas automatizadas para validar calidad de datos en todos los proyectos BBVA Colombia.","priority":"Alta","startDate":"2026-02-01","endDate":"2026-04-01","status":"in-progress","assigneeIds":["u-juan"],"projectId":"QA","jiraId":"QA-0001","links":[],"comments":[]},
+    {"id":"kt-qa-2","title":"Pruebas regresión FICO en QA","description":"Ejecución de suite de pruebas de regresión para FICO dentro del entorno QA centralizado.","priority":"Alta","startDate":"2026-04-01","endDate":"2026-05-31","status":"in-progress","assigneeIds":["u-juan"],"projectId":"QA","jiraId":"QA-0015","links":[],"comments":[]},
+    {"id":"kt-qa-3","title":"Dashboard métricas calidad QA","description":"Construcción del dashboard de métricas de calidad de datos para todos los proyectos activos.","priority":"Media","startDate":"2026-05-01","endDate":"2026-07-01","status":"backlog","assigneeIds":["u-juan"],"projectId":"QA","jiraId":"QA-0028","links":[],"comments":[]}
+  ],
+
+  "timia_links": [
+    {"id":"lk-fico-1","projectId":"FICO","title":"Jira · FICO","url":"https://jira.bbvacol.com/projects/FICO","category":"Jira","descripcion":"Board de tareas y epics del proyecto FICO en el Jira corporativo BBVA Colombia.","fecha":"2026-01-15","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-fico-2","projectId":"FICO","title":"Confluence · FICO","url":"https://confluence.bbvacol.com/display/FICO","category":"Confluence","descripcion":"Espacio Confluence con documentación técnica, diccionario de datos y minutas.","fecha":"2026-01-15","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-fico-3","projectId":"FICO","title":"Bitbucket · FICO","url":"https://bitbucket.org/bbvacol/fico","category":"Bitbucket","descripcion":"Repositorio de código fuente Spark-Scala y scripts ETL de FICO.","fecha":"2026-01-20","quien":"Fabrizio Atiquipa"},
+    {"id":"lk-fico-4","projectId":"FICO","title":"Documentación Técnica FICO v2","url":"https://confluence.bbvacol.com/display/FICO/doc-tecnica-v2","category":"Documentación","descripcion":"Documento técnico oficial versión 2 con mapeo completo de campos y reglas de transformación.","fecha":"2026-02-28","quien":"Juliana Garzón"},
+    {"id":"lk-fico-5","projectId":"FICO","title":"Monitoreo Grafana · FICO","url":"https://grafana.bbvacol.com/d/fico-prod","category":"Monitoreo","descripcion":"Dashboard Grafana con métricas de ejecución del ADA en producción.","fecha":"2026-04-01","quien":"Sergio David Rodriguez"},
+
+    {"id":"lk-nga-1","projectId":"NGA","title":"Jira · NGA","url":"https://jira.bbvacol.com/projects/NGA","category":"Jira","descripcion":"Board Jira con todas las historias de usuario e incidencias del proyecto NGA.","fecha":"2026-01-15","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-nga-2","projectId":"NGA","title":"Confluence · NGA","url":"https://confluence.bbvacol.com/display/NGA","category":"Confluence","descripcion":"Espacio de documentación NGA: análisis, MSD, diccionario y minutas de reunión.","fecha":"2026-01-15","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-nga-3","projectId":"NGA","title":"Bitbucket · NGA","url":"https://bitbucket.org/bbvacol/nga","category":"Bitbucket","descripcion":"Repositorio código fuente ETL Spark y reglas Hammurabi de NGA.","fecha":"2026-01-20","quien":"Ana Restrepo"},
+    {"id":"lk-nga-4","projectId":"NGA","title":"Diccionario NGA v1","url":"https://confluence.bbvacol.com/display/NGA/diccionario-v1","category":"Documentación","descripcion":"Diccionario técnico con 412 campos validado y aprobado por Gobierno de Datos BBVA.","fecha":"2026-03-01","quien":"Juliana Garzón"},
+    {"id":"lk-nga-5","projectId":"NGA","title":"Monitoreo Spark NGA","url":"https://spark-ui.bbvacol.com/nga","category":"Monitoreo","descripcion":"Interfaz Spark UI para monitoreo de jobs NGA en entorno Work.","fecha":"2026-05-01","quien":"Ana Restrepo"},
+
+    {"id":"lk-cro-1","projectId":"CRONOS","title":"Jira · CRONOS","url":"https://jira.bbvacol.com/projects/DECRONOS","category":"Jira","descripcion":"Board Jira con epics, historias y subtareas del proyecto CRONOS (SDA BCOL-2026-0012).","fecha":"2026-06-02","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-cro-2","projectId":"CRONOS","title":"Confluence · CRONOS","url":"https://confluence.bbvacol.com/display/CRONOS","category":"Confluence","descripcion":"Espacio técnico CRONOS con análisis de fuentes, MSD y documentación de ETL.","fecha":"2026-06-02","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-cro-3","projectId":"CRONOS","title":"Bitbucket · CRONOS","url":"https://bitbucket.org/bbvacol/cronos-spark","category":"Bitbucket","descripcion":"Repositorio Spark-Scala de CRONOS: rama develop activa, MR pendiente de revisión.","fecha":"2026-06-09","quien":"Fabrizio Atiquipa"},
+    {"id":"lk-cro-4","projectId":"CRONOS","title":"Diccionario Técnico CRONOS","url":"https://confluence.bbvacol.com/display/CRONOS/diccionario-285","category":"Documentación","descripcion":"Diccionario de los 285 campos fuente de CRONOS — en elaboración.","fecha":"2026-06-10","quien":"Juan Pablo Arévalo"},
+    {"id":"lk-cro-5","projectId":"CRONOS","title":"Nebula — CRONOS Entorno Work","url":"https://nebula.bbvacol.com/cronos","category":"Monitoreo","descripcion":"Consola Nebula para gestión de recursos y monitoreo del entorno Work de CRONOS.","fecha":"2026-06-09","quien":"Fabrizio Atiquipa"},
+
+    {"id":"lk-sdm1-1","projectId":"SDM1","title":"Jira · SDM1","url":"https://jira.bbvacol.com/projects/DESDM1","category":"Jira","descripcion":"Tablero de seguimiento SDM1 con historias de usuario y bugs activos.","fecha":"2026-01-15","quien":"Diego Sánchez"},
+    {"id":"lk-sdm1-2","projectId":"SDM1","title":"Confluence · SDM1","url":"https://confluence.bbvacol.com/display/SDM1","category":"Confluence","descripcion":"Documentación SDM1: diseño de modelo estrella, ETL, mallas y actas.","fecha":"2026-01-15","quien":"Diego Sánchez"},
+    {"id":"lk-sdm1-3","projectId":"SDM1","title":"Bitbucket · SDM1","url":"https://bitbucket.org/bbvacol/sdm1","category":"Bitbucket","descripcion":"Código fuente ETL y scripts Hive para SDM1.","fecha":"2026-01-20","quien":"Diego Sánchez"},
+    {"id":"lk-sdm1-4","projectId":"SDM1","title":"Diseño Modelo SDM1","url":"https://confluence.bbvacol.com/display/SDM1/modelo-estrella","category":"Documentación","descripcion":"Diseño del modelo estrella SDM1 con diagrama entidad-relación y definición de grain.","fecha":"2026-02-15","quien":"Diego Sánchez"},
+    {"id":"lk-sdm1-5","projectId":"SDM1","title":"Control-M · SDM1 Jobs","url":"https://controlm.bbvacol.com/jobs/sdm1","category":"Monitoreo","descripcion":"Consola Control-M con las mallas de orquestación SDM1 en ejecución.","fecha":"2026-05-01","quien":"Diego Sánchez"},
+
+    {"id":"lk-bcbs-1","projectId":"BCBS239","title":"Jira · BCBS239","url":"https://jira.bbvacol.com/projects/BCBS","category":"Jira","descripcion":"Tablero Jira para BCBS239: requerimientos regulatorios y entregas de artefactos.","fecha":"2026-01-15","quien":"Diego Sánchez"},
+    {"id":"lk-bcbs-2","projectId":"BCBS239","title":"Marco Regulatorio BCBS239","url":"https://confluence.bbvacol.com/display/BCBS/marco-regulatorio","category":"Documentación","descripcion":"Documento con los 14 principios BCBS239 y el mapeo a capacidades de dato BBVA Colombia.","fecha":"2026-01-15","quien":"Diego Sánchez"},
+    {"id":"lk-bcbs-3","projectId":"BCBS239","title":"MSD BCBS239","url":"https://confluence.bbvacol.com/display/BCBS/msd-v1","category":"Documentación","descripcion":"Modelo Solución del Dato para BCBS239 — enviado a Comité de Riesgo BBVA.","fecha":"2026-06-08","quien":"Diego Sánchez"},
+
+    {"id":"lk-muric-1","projectId":"MURIC","title":"Jira · MURIC","url":"https://jira.bbvacol.com/projects/MURIC","category":"Jira","descripcion":"Tablero de tareas e incidencias MURIC.","fecha":"2026-02-01","quien":"Diego Sánchez"},
+    {"id":"lk-muric-2","projectId":"MURIC","title":"Confluence · MURIC","url":"https://confluence.bbvacol.com/display/MURIC","category":"Confluence","descripcion":"Documentación técnica y actas de reunión del proyecto MURIC.","fecha":"2026-02-01","quien":"Diego Sánchez"},
+    {"id":"lk-muric-3","projectId":"MURIC","title":"Bitbucket · MURIC","url":"https://bitbucket.org/bbvacol/muric","category":"Bitbucket","descripcion":"Repositorio ETL Spark MURIC — rama develop activa.","fecha":"2026-02-15","quien":"Diego Sánchez"},
+
+    {"id":"lk-brickell-1","projectId":"BRICKELL","title":"Jira · BRICKELL","url":"https://jira.bbvacol.com/projects/BRICKELL","category":"Jira","descripcion":"Board de BRICKELL con tareas de arquitectura y construcción.","fecha":"2026-02-01","quien":"Diego Sánchez"},
+    {"id":"lk-brickell-2","projectId":"BRICKELL","title":"Diseño Arquitectura BRICKELL","url":"https://confluence.bbvacol.com/display/BRICKELL/arquitectura","category":"Documentación","descripcion":"Arquitectura de datos BRICKELL — en revisión tras observaciones BBVA.","fecha":"2026-05-30","quien":"Diego Sánchez"},
+
+    {"id":"lk-optim-1","projectId":"OPTIM","title":"Jira · OPTIM","url":"https://jira.credicorp.com/projects/OPTIM","category":"Jira","descripcion":"Board de tareas Optimización en el Jira de Credicorp Capital.","fecha":"2026-02-01","quien":"David Huamán"},
+    {"id":"lk-optim-2","projectId":"OPTIM","title":"Confluence · Optimización","url":"https://confluence.credicorp.com/display/OPTIM","category":"Confluence","descripcion":"Espacio técnico de Optimización con modelos matemáticos y documentación.","fecha":"2026-02-01","quien":"David Huamán"},
+    {"id":"lk-optim-3","projectId":"OPTIM","title":"Repositorio Python OPTIM","url":"https://github.com/credicorp/optim-model","category":"Bitbucket","descripcion":"Código fuente del modelo de optimización de portafolio en Python.","fecha":"2026-02-10","quien":"David Huamán"},
+
+    {"id":"lk-fab-1","projectId":"FABRICA","title":"Jira · Fábrica","url":"https://jira.credicorp.com/projects/FABRICA","category":"Jira","descripcion":"Board de la Fábrica de Modelos Credicorp — historias, bugs y releases.","fecha":"2026-01-15","quien":"David Huamán"},
+    {"id":"lk-fab-2","projectId":"FABRICA","title":"MLflow · Fábrica","url":"https://mlflow.credicorp.com","category":"Monitoreo","descripcion":"Servidor MLflow para tracking de experimentos y versiones de modelos de la Fábrica.","fecha":"2026-02-01","quien":"David Huamán"},
+    {"id":"lk-fab-3","projectId":"FABRICA","title":"Documentación Modelos Fábrica","url":"https://confluence.credicorp.com/display/FABRICA/modelos","category":"Documentación","descripcion":"Documentación técnica de los modelos productivos: scoring crediticio, churn y pricing.","fecha":"2026-03-01","quien":"David Huamán"}
+  ],
+
+  "timia_inv_stages": [
+    {"id":"env-msd",    "label":"Env. MSD",    "group":"Inicio"},
+    {"id":"apr-msd",    "label":"Apr. MSD",    "group":"Inicio"},
+    {"id":"env-gob",    "label":"Env. Gob",    "group":"Inicio"},
+    {"id":"sch-work",   "label":"Sch. Work",   "group":"Inicio"},
+    {"id":"sol-live",   "label":"Sol. Live",   "group":"Inicio"},
+    {"id":"sch-live",   "label":"Sch. Live",   "group":"Inicio"},
+    {"id":"constr",     "label":"Construcción","group":"Construcción"},
+    {"id":"test-unit",  "label":"T. Unitarios","group":"Construcción"},
+    {"id":"test-acept", "label":"T. Aceptación","group":"Construcción"},
+    {"id":"muestras",   "label":"Muestras",    "group":"QA"},
+    {"id":"prueb-work", "label":"Prueb. Work", "group":"QA"},
+    {"id":"dat-sandbox","label":"Dat. Sandbox","group":"QA"},
+    {"id":"dat-test",   "label":"Dat. Test",   "group":"QA"},
+    {"id":"valid",      "label":"Validación",  "group":"QA"},
+    {"id":"qlt",        "label":"Calidad",     "group":"QA"},
+    {"id":"prueb-qlt",  "label":"Prueb. QA",   "group":"QA"},
+    {"id":"sc",         "label":"Self-Cert.",  "group":"Certificación"},
+    {"id":"prueb-sc",   "label":"Prueb. SC",   "group":"Certificación"},
+    {"id":"cert-proc",  "label":"Cert. Proc.", "group":"Certificación"},
+    {"id":"cert-qlt",   "label":"Cert. QA",    "group":"Certificación"},
+    {"id":"cert-sc",    "label":"Cert. SC",    "group":"Certificación"},
+    {"id":"jobs-proc",  "label":"Jobs Proc.",  "group":"Producción"},
+    {"id":"jobs-qlt",   "label":"Jobs QA",     "group":"Producción"},
+    {"id":"jobs-sc",    "label":"Jobs SC",     "group":"Producción"}
+  ],
+
+  "timia_inv_v2": [
+    {"id":"inv-fico-1","projectId":"FICO","objeto":"t_fico_customer_risk","descripcion":"Tabla de hechos con score de riesgo por cliente. Contiene el cálculo FICO agregado a nivel mensual.","documentacion":"https://confluence.bbvacol.com/display/FICO/t-fico-customer-risk","versionModelo":"1.0.2","versionObjeto":"v3","diccionario":"https://confluence.bbvacol.com/display/FICO/diccionario-370","stages":{"env-msd":"Sí","apr-msd":"Sí","env-gob":"Sí","sch-work":"Sí","sol-live":"","sch-live":"","constr":"Sí","test-unit":"Sí","test-acept":"Sí","muestras":"Sí","prueb-work":"Sí","dat-sandbox":"Sí","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-fico-2","projectId":"FICO","objeto":"t_fico_segment_agg","descripcion":"Tabla de agregación de scores FICO por segmento y producto bancario.","documentacion":"https://confluence.bbvacol.com/display/FICO/t-fico-segment","versionModelo":"1.0.2","versionObjeto":"v2","diccionario":"https://confluence.bbvacol.com/display/FICO/diccionario-370","stages":{"env-msd":"Sí","apr-msd":"Sí","env-gob":"Sí","sch-work":"Sí","sol-live":"","sch-live":"","constr":"Sí","test-unit":"Sí","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-fico-3","projectId":"FICO","objeto":"j_fico_ada_daily","descripcion":"Job Control-M que ejecuta el ADA FICO de forma diaria en entorno productivo.","documentacion":"https://confluence.bbvacol.com/display/FICO/job-ada-daily","versionModelo":"N/A","versionObjeto":"v1","diccionario":"N/A","stages":{"env-msd":"N/A","apr-msd":"N/A","env-gob":"N/A","sch-work":"Sí","sol-live":"","sch-live":"","constr":"Sí","test-unit":"Sí","test-acept":"Sí","muestras":"N/A","prueb-work":"Sí","dat-sandbox":"N/A","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-fico-4","projectId":"FICO","objeto":"r_fico_quality_rules","descripcion":"Conjunto de reglas Hammurabi para validación de calidad del dato FICO: 47 reglas implementadas.","documentacion":"https://confluence.bbvacol.com/display/FICO/hammurabi-rules","versionModelo":"1.0.0","versionObjeto":"v1","diccionario":"","stages":{"env-msd":"N/A","apr-msd":"N/A","env-gob":"N/A","sch-work":"N/A","sol-live":"N/A","sch-live":"N/A","constr":"Sí","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+
+    {"id":"inv-nga-1","projectId":"NGA","objeto":"t_nga_cuenta_aho","descripcion":"Tabla de dimensión con información de cuentas de ahorro del Core Bancario NGA.","documentacion":"https://confluence.bbvacol.com/display/NGA/t-nga-cuenta-aho","versionModelo":"1.0.0","versionObjeto":"v2","diccionario":"https://confluence.bbvacol.com/display/NGA/diccionario-412","stages":{"env-msd":"Sí","apr-msd":"Sí","env-gob":"Sí","sch-work":"Sí","sol-live":"","sch-live":"","constr":"Sí","test-unit":"Sí","test-acept":"Sí","muestras":"Sí","prueb-work":"Sí","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-nga-2","projectId":"NGA","objeto":"t_nga_cliente_nat","descripcion":"Tabla de clientes naturales del Core Bancario con atributos demográficos y segmentación.","documentacion":"https://confluence.bbvacol.com/display/NGA/t-nga-cliente-nat","versionModelo":"1.0.0","versionObjeto":"v1","diccionario":"https://confluence.bbvacol.com/display/NGA/diccionario-412","stages":{"env-msd":"Sí","apr-msd":"Sí","env-gob":"","sch-work":"","sol-live":"","sch-live":"","constr":"Sí","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-nga-3","projectId":"NGA","objeto":"t_nga_output","descripcion":"Tabla de salida consolidada NGA con todos los atributos procesados y validados para consumo aguas abajo.","documentacion":"https://confluence.bbvacol.com/display/NGA/t-nga-output","versionModelo":"1.0.1","versionObjeto":"v3","diccionario":"https://confluence.bbvacol.com/display/NGA/diccionario-412","stages":{"env-msd":"Sí","apr-msd":"Sí","env-gob":"Sí","sch-work":"Sí","sol-live":"","sch-live":"","constr":"Sí","test-unit":"Sí","test-acept":"Sí","muestras":"Sí","prueb-work":"Sí","dat-sandbox":"Sí","dat-test":"Sí","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+
+    {"id":"inv-cro-1","projectId":"CRONOS","objeto":"t_cronos_transacciones","descripcion":"Tabla de hechos con transacciones diarias de CRONOS procesadas desde el Core. Grain: transacción-día.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/t-cronos-transacciones","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"https://confluence.bbvacol.com/display/CRONOS/diccionario-285","stages":{"env-msd":"Sí","apr-msd":"","env-gob":"","sch-work":"","sol-live":"","sch-live":"","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-cro-2","projectId":"CRONOS","objeto":"t_cronos_dim_canal","descripcion":"Dimensión de canal de transacción para CRONOS: ATM, Banca Web, App Móvil, Sucursal.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/t-cronos-dim-canal","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"https://confluence.bbvacol.com/display/CRONOS/diccionario-285","stages":{"env-msd":"Sí","apr-msd":"","env-gob":"","sch-work":"","sol-live":"","sch-live":"","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id":"inv-cro-3","projectId":"CRONOS","objeto":"r_cronos_quality_rules","descripcion":"Reglas Hammurabi para CRONOS: validaciones de nulidad, consistencia temporal y cardinalidades.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/hammurabi","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"","stages":{"env-msd":"N/A","apr-msd":"N/A","env-gob":"N/A","sch-work":"N/A","sol-live":"N/A","sch-live":"N/A","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}}
+  ],
+
+  "timia_bitacora": [
+    {"id":"b-cro-chg-1","projectId":"CRONOS","fecha":"2026-08-24","quien":"Juan Pablo Arévalo","tipo":"Regla","descripcion":"Nueva regla Hammurabi: validar gf_cutoff_date contra calendario de cierre","motivo":"BBVA Riesgos solicitó control adicional el 21/08","tablasAfectadas":"t_cronos_output","jira":"DECRONOS-2061","responsableId":"u-sergio","responsable":"Sergio David Rodriguez","solicitadoPor":"Pedro Gómez · BBVA Riesgos","horasEstimadas":12,"modo":"extiende","impacts":[{"planKey":"CRONOS","entregableId":"ada","actIdx":2},{"planKey":"CRONOS","entregableId":"ada","actIdx":3}]},
+    {"id":"b-fico-chg-1","projectId":"FICO","fecha":"2026-08-27","quien":"Amilkar José Bolaño","tipo":"Campo","descripcion":"gf_opportunity_id: reasignación de fuente en proposal y contract","motivo":"Redefinición funcional BBVA 27/08","tablasAfectadas":"t_kfca_input_data_proposal, t_kfca_input_data_contract","jira":"DECRONOS-2070","responsableId":"u-juan","responsable":"Juan Pablo Arévalo","solicitadoPor":"Gobierno de Datos BBVA","horasEstimadas":8,"modo":"extiende","impacts":[{"planKey":"FICO::fico2","entregableId":"desarrollo-d-3","actIdx":3},{"planKey":"FICO::fico2","entregableId":"desarrollo-d-4","actIdx":3}]},
+    {"id":"bit-1","projectId":"FICO","fecha":"2026-01-20","quien":"Juliana Garzón","tipo":"Campo","descripcion":"Se agrega campo 'score_fico_ajustado' al diccionario técnico por solicitud de BBVA Riesgo.","motivo":"Requerimiento nuevo — Comité Riesgo BBVA solicitó campo calculado no previsto en el análisis inicial.","tablasAfectadas":"t_fico_customer_risk","jira":"FICO-101"},
+    {"id":"bit-2","projectId":"FICO","fecha":"2026-02-05","quien":"Juliana Garzón","tipo":"Regla","descripcion":"Ajuste en regla Hammurabi HR_FICO_003: cambio en umbral de nulidad de 5% a 2% para campo id_cliente.","motivo":"Observación de Gobierno de Datos BBVA durante circuito de validación diccionario.","tablasAfectadas":"t_fico_customer_risk","jira":"FICO-142"},
+    {"id":"bit-3","projectId":"FICO","fecha":"2026-02-18","quien":"Juan Pablo Arévalo","tipo":"Modelo","descripcion":"Actualización versión del modelo FICO de 1.0.0 a 1.0.2 por incorporación de nuevas variables de segmentación.","motivo":"BBVA solicitó incorporar segmento 'banca digital' como variable de control en el modelo FICO.","tablasAfectadas":"t_fico_customer_risk, t_fico_segment_agg","jira":"FICO-115"},
+    {"id":"bit-4","projectId":"NGA","fecha":"2026-02-12","quien":"Juliana Garzón","tipo":"Campo","descripcion":"Eliminación del campo 'tel_fijo' del diccionario NGA — campo deprecado en el Core Bancario.","motivo":"Fuente Core Bancario dejó de poblar el campo tel_fijo a partir de enero 2026.","tablasAfectadas":"t_nga_cliente_nat","jira":"NGA-0342"},
+    {"id":"bit-5","projectId":"NGA","fecha":"2026-03-08","quien":"Juan Pablo Arévalo","tipo":"ETL","descripcion":"Modificación en lógica de join entre t_nga_cuenta_aho y t_nga_cliente_nat: cambio de INNER a LEFT JOIN para mantener clientes sin cuenta activa.","motivo":"Análisis de datos reveló 12% de clientes NGA sin cuenta de ahorro activa — requerimiento de negocio mantenerlos.","tablasAfectadas":"t_nga_cuenta_aho, t_nga_cliente_nat, t_nga_output","jira":"NGA-0391"},
+    {"id":"bit-6","projectId":"NGA","fecha":"2026-04-15","quien":"Ana Restrepo","tipo":"Regla","descripcion":"Se agregan 8 nuevas reglas Hammurabi HR_NGA_018 a HR_NGA_025 para validación de campos de cuenta.","motivo":"Gobierno de Datos BBVA solicitó ampliar cobertura de reglas de calidad tras auditoría interna.","tablasAfectadas":"t_nga_output","jira":"NGA-0410"},
+    {"id":"bit-7","projectId":"CRONOS","fecha":"2026-06-03","quien":"Juan Pablo Arévalo","tipo":"Campo","descripcion":"Definición inicial de los 285 campos fuente de CRONOS — primera versión del diccionario técnico.","motivo":"Kickoff del proyecto CRONOS (SDA BCOL-2026-0012). Primera versión del diccionario para revisión BBVA.","tablasAfectadas":"t_cronos_transacciones, t_cronos_dim_canal","jira":"DECRONOS-2042"},
+    {"id":"bit-8","projectId":"CRONOS","fecha":"2026-06-11","quien":"Juan Pablo Arévalo","tipo":"Modelo","descripcion":"Ajuste en granularidad del MSD CRONOS: cambio de nivel cliente a nivel transacción-día.","motivo":"Reunión técnica con BBVA reveló que el nivel de granularidad cliente no satisface los requerimientos del área de riesgo operativo.","tablasAfectadas":"t_cronos_transacciones","jira":"DECRONOS-2046"},
+    {"id":"bit-9","projectId":"SDM1","fecha":"2026-02-20","quien":"Diego Sánchez","tipo":"Modelo","descripcion":"Cambio en grain de la tabla de hechos SDM1 de mensual a diario por requerimiento regulatorio.","motivo":"Área de Riesgo BBVA exige granularidad diaria para cumplimiento con reglamentación SFC.","tablasAfectadas":"t_sdm1_hechos_diario","jira":"DESDM1-0101"},
+    {"id":"bit-10","projectId":"SDM1","fecha":"2026-05-05","quien":"Diego Sánchez","tipo":"ETL","descripcion":"Optimización de la lógica de carga incremental SDM1: reducción del tiempo de procesamiento de 4h a 45min.","motivo":"La carga completa superaba la ventana operativa disponible en Control-M.","tablasAfectadas":"t_sdm1_hechos_diario","jira":"DESDM1-0130"},
+    {"id":"bit-11","projectId":"BCBS239","fecha":"2026-03-10","quien":"Diego Sánchez","tipo":"Modelo","descripcion":"Incorporación del principio P11 (Exactitud) al scope del MSD BCBS239 — no estaba en el análisis inicial.","motivo":"Revisión del comité regulatorio BBVA identificó que el principio P11 aplica al modelo de dato propuesto.","tablasAfectadas":"msd_bcbs239_v1","jira":"BCBS-0041"},
+    {"id":"bit-12","projectId":"BRICKELL","fecha":"2026-06-06","quien":"Diego Sánchez","tipo":"Modelo","descripcion":"Rediseño de arquitectura BRICKELL: paso de modelo copo de nieve a modelo estrella por observación BBVA.","motivo":"Comité de Arquitectura BBVA rechazó el modelo snowflake y exigió alineación con el estándar DW corporativo (estrella).","tablasAfectadas":"t_brickell_hechos, t_brickell_dim_*","jira":"BRICK-0032"},
+    {"id":"bit-13","projectId":"NGA","fecha":"2026-06-18","quien":"Ana Restrepo","tipo":"Otro","descripcion":"Solicitud de ACLs para acceso al entorno Work NGA — pendiente aprobación por arquitectura BBVA.","motivo":"Sin acceso al entorno Work no es posible ejecutar las pruebas de integración del ETL Spark NGA.","tablasAfectadas":"","jira":"NGA-0441"},
+    {"id":"bit-14","projectId":"FICO","fecha":"2026-06-20","quien":"Sergio David Rodriguez","tipo":"ETL","descripcion":"Actualización de versión Spark de 3.3.1 a 3.4.0 en el ADA FICO — alineación con nueva imagen base BBVA.","motivo":"BBVA actualizó la imagen base de Nebula y requiere que todos los proyectos usen Spark 3.4+.","tablasAfectadas":"j_fico_ada_daily","jira":"FICO-120"},
+    {"id":"bit-15","projectId":"CRONOS","fecha":"2026-06-24","quien":"Fabrizio Atiquipa","tipo":"Otro","descripcion":"Configuración de pipeline CI/CD en Bitbucket para CRONOS con etapas de lint, test y deploy a Work.","motivo":"Estandarización del proceso de integración continua solicitada por el área de DevOps BBVA.","tablasAfectadas":"","jira":"DECRONOS-2043"}
+  ]
+}

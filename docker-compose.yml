@@ -1,0 +1,33 @@
+# Timia Hub API — api + mongo (el front se despliega aparte o con el compose de timia-hub)
+#   cp .env.example .env && docker compose up -d --build   → http://localhost:8000/docs
+services:
+  mongo:
+    image: mongo:7
+    container_name: timia-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "127.0.0.1:27017:27017"      # solo administración local; en AWS no lo expongas
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    image: timia-hub-api:latest
+    container_name: timia-api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MONGO_URL: ${MONGO_URL:-mongodb://mongo:27017}
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+volumes:
+  mongo_data:
