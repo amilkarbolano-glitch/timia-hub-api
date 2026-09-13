@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from .. import db
 from ..config import settings
-from ..permissions import effective_matrix
+from ..permissions import effective_matrix, normalize_role
 from ..security import (Principal, clear_session_cookie, create_session_token, current_principal, public_user,
                         rate_limit, set_session_cookie)
 
@@ -86,7 +86,7 @@ async def me(p: Principal = Depends(current_principal)):
         raise HTTPException(status_code=401, detail="Sesión inválida (usuario eliminado o inactivo)")
     matrix = effective_matrix(await db.read_key("timia_role_permissions"))
     return {"user": public_user(user), "provider": p.user.get("prv"), "exp": p.user.get("exp"),
-            "permissions": matrix.get(user.get("role", "developer"), [])}
+            "permissions": matrix.get(normalize_role(user.get("role")), [])}
 
 
 @router.post("/logout")

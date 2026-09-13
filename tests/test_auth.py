@@ -40,4 +40,4 @@ def test_demo_accounts_public(client):
 def test_permissions_catalog(client):
     login(client, "u-rodolfo")
     p = client.get("/api/permissions").json()
-    assert "matrix" in p and p["matrix"]["pm"] and "tasks.view" in p["matrix"]["developer"]
+    assert "matrix" in p and p["matrix"]["account_manager"] and "tasks.view" in p["matrix"]["developer"] and set(p["roles"]) == {"account_manager", "pm", "tech_lead", "developer"}

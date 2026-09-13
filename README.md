@@ -13,7 +13,7 @@ open http://localhost:8000/docs
 Sin Docker: `pip install -r requirements-dev.txt && python dev_mock.py` (Mongo en memoria) o
 `MONGO_URL=mongodb://localhost:27017 uvicorn app.main:app --reload`.
 
-Pruebas: `python -m pytest -q` (20 pruebas: auth, permisos, alcance por proyecto, cambios parciales, TR propio, matriz editable).
+Pruebas: `python -m pytest -q` (22 pruebas: auth, permisos, alcance por proyecto, cambios parciales, TR propio, matriz editable).
 
 ## Estructura
 ```
@@ -46,9 +46,11 @@ tests/             pytest (mongomock)
 | POST | `/api/seed?force=` | pm | carga `seed.json` |
 
 ## Roles y permisos
-- 5 roles: `pm`, `tech_lead`, `project_lead`, `tech_ref`, `developer`. Catálogo y defaults en `app/permissions.py`.
+- 4 roles: `account_manager` (gerente de cuenta: todo, sobre todos los proyectos del cliente), `pm` (todo sobre sus proyectos),
+  `tech_lead` (líder / referente técnico: apoya al PM), `developer`. Catálogo y defaults en `app/permissions.py`.
+  Roles antiguos `project_lead`/`tech_ref` se normalizan a `tech_lead`.
 - El PM edita la matriz desde el front (**Herramientas › Roles y permisos**); se guarda en `timia_role_permissions`
-  y el servidor la aplica en la siguiente petición. El PM siempre conserva todos los permisos.
+  y el servidor la aplica en la siguiente petición. El gerente de cuenta siempre conserva todos los permisos.
 - Cada colección tiene una regla (`KEY_RULES`): permiso requerido + alcance
   (`global`, `project` = solo ítems de proyectos asignados salvo `projects.view_all`, `own` = solo registros propios).
 - `timia_kanban_tasks` admite cambios parciales: sin `tasks.manage` un usuario solo puede cambiar `status`
