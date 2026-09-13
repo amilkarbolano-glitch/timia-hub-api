@@ -33,7 +33,7 @@ def test_google_not_configured(client):
 
 def test_demo_accounts_public(client):
     accs = client.get("/api/auth/demo-accounts").json()
-    assert any(a["id"] == "u-rodolfo" for a in accs)
+    assert {a["id"] for a in accs} == {"u-amilkar", "u-rodolfo", "u-juan"}     # solo cuentas demo
     assert all("email" in a and "role" in a for a in accs)
 
 
