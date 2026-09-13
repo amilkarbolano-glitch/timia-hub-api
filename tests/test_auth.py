@@ -14,10 +14,10 @@ def test_state_requires_session(client):
 
 
 def test_demo_login_me_logout(client):
-    u = login(client, "u-sergio")
+    u = login(client, "u-santiago")
     assert u["role"] == "developer"
     me = client.get("/api/auth/me").json()
-    assert me["user"]["id"] == "u-sergio" and "plan.view" in me["permissions"] and "team.manage" not in me["permissions"]
+    assert me["user"]["id"] == "u-santiago" and "tasks.view" in me["permissions"] and "team.manage" not in me["permissions"]
     assert client.post("/api/auth/logout").status_code == 200
     assert client.get("/api/auth/me").status_code == 401
 

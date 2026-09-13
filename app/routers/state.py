@@ -56,8 +56,10 @@ async def put_key(key: str, body: PutBody, p: Principal = Depends(current_princi
         if not user:
             raise HTTPException(status_code=401, detail="Sesión inválida")
         old = await db.read_key(key)
+        project_roles = await db.read_key("timia_project_roles") or {}
         reason = check_write(key, old, body.value, role=normalize_role(user.get("role")), user_id=p.id,
-                             project_ids=list(user.get("projectIds", [])), matrix=await current_matrix())
+                             project_ids=list(user.get("projectIds", [])), matrix=await current_matrix(),
+                             project_roles=project_roles if isinstance(project_roles, dict) else None)
         if reason:
             raise HTTPException(status_code=403, detail=reason)
     await db.write_key(key, body.value, by=p.id)
