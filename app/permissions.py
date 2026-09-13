@@ -16,12 +16,21 @@ from __future__ import annotations
 
 from typing import Any
 
-ROLES = ("pm", "tech_lead", "project_lead", "tech_ref", "developer")
+ROLES = ("account_manager", "pm", "tech_lead", "developer")
 
 ROLE_LABELS = {
-    "pm": "Project Manager", "tech_lead": "Líder Técnico", "project_lead": "Líder de Proyecto",
-    "tech_ref": "Referente Técnico", "developer": "Desarrollador",
+    "account_manager": "Gerente de cuenta",
+    "pm": "Project Manager",
+    "tech_lead": "Líder / Referente técnico",
+    "developer": "Desarrollador",
 }
+# Roles antiguos → nuevos (migración de usuarios guardados)
+LEGACY_ROLES = {"project_lead": "tech_lead", "tech_ref": "tech_lead"}
+
+
+def normalize_role(role: str | None) -> str:
+    r = LEGACY_ROLES.get(role or "", role or "developer")
+    return r if r in ROLES else "developer"
 
 # id → (módulo, etiqueta)
 PERMISSIONS: dict[str, tuple[str, str]] = {
@@ -74,37 +83,23 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
 ALL = list(PERMISSIONS.keys())
 
 DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
-    "pm": ALL,
+    # Gerente de cuenta: todo, sobre todos los proyectos del cliente (números globales, dirección)
+    "account_manager": ALL,
+    # PM: todo sobre sus proyectos (no ve los de otros PM salvo projects.view_all)
+    "pm": [p for p in ALL if p not in ("projects.view_all",)],
+    # Líder / Referente técnico: apoya al PM — plan, estimaciones, alertas, inventario, TR del equipo
     "tech_lead": [
-        "projects.view_all", "projects.create", "projects.manage", "config.manage",
         "plan.view", "plan.edit_progress", "plan.manage_issues", "plan.export",
-        "estimaciones.view", "estimaciones.edit", "estimaciones.generate",
+        "estimaciones.view", "estimaciones.edit",
         "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment",
         "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
         "inventario.view", "inventario.edit", "inventario.configure", "links.edit", "imputaciones.edit",
         "tr.view", "tr.load_own", "tr.load_any", "tr.manage_features",
-        "bank_status.view", "standup.generate", "audit.view",
+        "bank_status.view", "standup.generate",
     ],
-    "project_lead": [
-        "plan.view", "plan.manage_issues", "plan.export",
-        "estimaciones.view",
-        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment",
-        "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
-        "inventario.view", "inventario.edit", "links.edit",
-        "tr.view", "tr.load_own", "tr.load_any",
-        "bank_status.view",
-    ],
-    "tech_ref": [
-        "plan.view", "plan.edit_progress", "plan.manage_issues",
-        "estimaciones.view", "estimaciones.edit",
-        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.comment",
-        "bitacora.view", "bitacora.write", "circuitos.view",
-        "inventario.view", "inventario.edit", "links.edit",
-        "tr.view", "tr.load_own",
-        "bank_status.view",
-    ],
+    # Desarrollador: ve lo suyo, mueve sus tareas, reporta bloqueantes, carga su TR
     "developer": [
-        "plan.view", "plan.manage_issues",           # un dev reporta los bloqueantes que encuentra
+        "plan.manage_issues",                        # reporta bloqueantes; no ve el plan de trabajo
         "tasks.view", "tasks.update_status", "tasks.comment",
         "bitacora.view", "bitacora.write", "circuitos.view",
         "inventario.view", "inventario.edit",
@@ -164,7 +159,7 @@ def effective_matrix(stored: dict | None) -> dict[str, list[str]]:
         for role, perms in stored.items():
             if role in ROLES and isinstance(perms, list):
                 out[role] = [p for p in perms if p in PERMISSIONS]
-    out["pm"] = ALL   # el PM siempre tiene todo (evita bloquearse a sí mismo)
+    out["account_manager"] = ALL   # el gerente de cuenta siempre tiene todo (evita bloquearse a sí mismo)
     return out
 
 
@@ -217,17 +212,54 @@ def changed_items(old: Any, new: Any) -> list[tuple[str, Any, Any]]:
     return out
 
 
-def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, project_ids: list[str], matrix: dict[str, list[str]]) -> str | None:
-    """Devuelve None si la escritura está permitida; si no, el motivo."""
+def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, project_ids: list[str], matrix: dict[str, list[str]],
+                project_roles: dict[str, str] | None = None) -> str | None:
+    """Devuelve None si la escritura está permitida; si no, el motivo.
+    `role` es el rol base; `project_roles` ("userId:projectId" → rol) da el rol efectivo por proyecto."""
     rule = rule_for(key)
     if rule is None:
         return None                                   # colecciones sin regla: cualquier usuario autenticado
     perm, scope = rule["perm"], rule["scope"]
-    full = has(matrix, role, perm)
-    all_projects = has(matrix, role, "projects.view_all")
     diffs = changed_items(old, new)
     if not diffs:
         return None
+    all_projects = has(matrix, role, "projects.view_all")
+
+    def role_in(project: str | None) -> str:
+        if role == "account_manager" or not project or not project_roles:
+            return role
+        r = project_roles.get(f"{user_id}:{project}")
+        return normalize_role(r) if r else role
+
+    # Alcance por proyecto: evaluar cada ítem con el rol efectivo en su proyecto
+    if scope == "project":
+        for _id, before, after in diffs:
+            projs = {p for it in (before, after) if (p := project_of_item(it))}
+            if not projs and isinstance(new, dict):
+                p = project_of_object_key(_id)
+                if p:
+                    projs.add(p)
+            for proj in (projs or {None}):
+                r = role_in(proj)
+                if not has(matrix, r, perm):
+                    # cambios parciales permitidos (ej. kanban: solo status/comments)
+                    partial = rule.get("partial", {})
+                    allowed_fields: set[str] = set()
+                    for pp, fields in partial.items():
+                        if has(matrix, r, pp):
+                            allowed_fields.update(fields)
+                    if not allowed_fields:
+                        return f"Requiere el permiso '{perm}'" + (f" en {proj}" if proj else "")
+                    if before is None or after is None or not isinstance(before, dict) or not isinstance(after, dict):
+                        return f"Crear o eliminar requiere el permiso '{perm}'" + (f" en {proj}" if proj else "")
+                    changed = {f for f in set(before) | set(after) if before.get(f) != after.get(f)}
+                    if not changed <= allowed_fields:
+                        return f"Solo puedes cambiar {', '.join(sorted(allowed_fields))} (requiere '{perm}' para más)"
+                if proj and not all_projects and proj not in project_ids:
+                    return f"No tienes acceso al proyecto {proj}"
+        return None
+
+    full = has(matrix, role, perm)
 
     if scope == "global":
         return None if full else f"Requiere el permiso '{perm}'"
@@ -244,36 +276,4 @@ def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, projec
                         return "Solo puedes modificar tus propios registros"
         return None
 
-    # scope == 'project'
-    partial = rule.get("partial", {})
-    if not full:
-        allowed_fields: set[str] = set()
-        for p, fields in partial.items():
-            if has(matrix, role, p):
-                allowed_fields.update(fields)
-        if not allowed_fields:
-            return f"Requiere el permiso '{perm}'"
-        # Solo cambios parciales sobre ítems existentes
-        for _id, before, after in diffs:
-            if before is None or after is None or not isinstance(before, dict) or not isinstance(after, dict):
-                return f"Crear o eliminar requiere el permiso '{perm}'"
-            changed = {f for f in set(before) | set(after) if before.get(f) != after.get(f)}
-            if not changed <= allowed_fields:
-                return f"Solo puedes cambiar {', '.join(sorted(allowed_fields))} (requiere '{perm}' para más)"
-    if all_projects:
-        return None
-    # Alcance por proyecto
-    for _id, before, after in diffs:
-        projs = set()
-        for it in (before, after):
-            p = project_of_item(it)
-            if p:
-                projs.add(p)
-        if not projs and isinstance(new, dict):
-            p = project_of_object_key(_id)
-            if p:
-                projs.add(p)
-        for p in projs:
-            if p not in project_ids:
-                return f"No tienes acceso al proyecto {p}"
     return None

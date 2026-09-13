@@ -11,7 +11,7 @@ from fastapi import Depends, HTTPException, Request, Response, status
 
 from .config import settings
 
-from .permissions import ROLES  # noqa: F401
+from .permissions import ROLES, normalize_role  # noqa: F401
 
 
 def public_user(u: dict) -> dict:
@@ -19,7 +19,7 @@ def public_user(u: dict) -> dict:
     name = str(u.get("name", ""))
     initials = u.get("initials") or "".join(p[0] for p in name.split()[:2]).upper()
     return {
-        "id": u["id"], "name": name, "email": u.get("email", ""), "role": u.get("role", "developer"),
+        "id": u["id"], "name": name, "email": u.get("email", ""), "role": normalize_role(u.get("role")),
         "projectIds": u.get("projectIds", []), "initials": initials, "avatarColor": u.get("avatarColor", "#64748b"),
         "areaLabel": u.get("areaLabel"),
     }
@@ -64,7 +64,7 @@ class Principal:
 
     @property
     def role(self) -> str:
-        return "pm" if self.kind == "service" else self.user.get("role", "developer")
+        return "account_manager" if self.kind == "service" else normalize_role(self.user.get("role"))
 
 
 async def current_principal(request: Request) -> Principal:

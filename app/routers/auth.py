@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from .. import db
 from ..config import settings
-from ..permissions import effective_matrix
+from ..permissions import effective_matrix, normalize_role
 from ..security import (Principal, clear_session_cookie, create_session_token, current_principal, public_user,
                         rate_limit, set_session_cookie)
 
@@ -56,12 +56,10 @@ async def demo_accounts():
     """Cuentas disponibles para el login demo (solo si está activo). No expone nada sensible."""
     if not settings.ALLOW_DEMO_LOGIN:
         raise HTTPException(status_code=403, detail="El acceso demo está desactivado")
-    out = []
-    async for doc in db.db()[db.USERS_KEY].find({}, {"item": 1}).sort("_ord", 1):
-        u = doc["item"]
-        if u.get("active", True):
-            out.append(public_user(u))
-    return out
+    users = [doc["item"] async for doc in db.db()[db.USERS_KEY].find({}, {"item": 1}).sort("_ord", 1)]
+    active = [u for u in users if u.get("active", True)]
+    demo = [u for u in active if u.get("demo")]          # si hay cuentas marcadas como demo, solo esas
+    return [public_user(u) for u in (demo or active)]
 
 
 @router.post("/demo")
@@ -86,7 +84,7 @@ async def me(p: Principal = Depends(current_principal)):
         raise HTTPException(status_code=401, detail="Sesión inválida (usuario eliminado o inactivo)")
     matrix = effective_matrix(await db.read_key("timia_role_permissions"))
     return {"user": public_user(user), "provider": p.user.get("prv"), "exp": p.user.get("exp"),
-            "permissions": matrix.get(user.get("role", "developer"), [])}
+            "permissions": matrix.get(normalize_role(user.get("role")), [])}
 
 
 @router.post("/logout")

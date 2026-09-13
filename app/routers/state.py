@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
 from .. import db
-from ..permissions import DEFAULT_ROLE_PERMISSIONS, PERMISSIONS, ROLE_LABELS, check_write, effective_matrix
+from ..permissions import DEFAULT_ROLE_PERMISSIONS, PERMISSIONS, ROLE_LABELS, check_write, effective_matrix, normalize_role
 from ..security import Principal, current_principal, require_role
 
 router = APIRouter(prefix="/api", tags=["state"])
@@ -56,8 +56,10 @@ async def put_key(key: str, body: PutBody, p: Principal = Depends(current_princi
         if not user:
             raise HTTPException(status_code=401, detail="Sesión inválida")
         old = await db.read_key(key)
-        reason = check_write(key, old, body.value, role=user.get("role", "developer"), user_id=p.id,
-                             project_ids=list(user.get("projectIds", [])), matrix=await current_matrix())
+        project_roles = await db.read_key("timia_project_roles") or {}
+        reason = check_write(key, old, body.value, role=normalize_role(user.get("role")), user_id=p.id,
+                             project_ids=list(user.get("projectIds", [])), matrix=await current_matrix(),
+                             project_roles=project_roles if isinstance(project_roles, dict) else None)
         if reason:
             raise HTTPException(status_code=403, detail=reason)
     await db.write_key(key, body.value, by=p.id)
@@ -65,7 +67,7 @@ async def put_key(key: str, body: PutBody, p: Principal = Depends(current_princi
 
 
 @router.delete("/state/{key}")
-async def delete_key(key: str, p: Principal = Depends(require_role("pm"))):
+async def delete_key(key: str, p: Principal = Depends(require_role("account_manager", "pm"))):
     await db.delete_key(valid_key(key))
     return {"key": key, "deleted": True}
 
@@ -76,5 +78,5 @@ async def keys(p: Principal = Depends(current_principal)):
 
 
 @router.post("/seed")
-async def seed(force: bool = Query(default=False), p: Principal = Depends(require_role("pm"))):
+async def seed(force: bool = Query(default=False), p: Principal = Depends(require_role("account_manager", "pm"))):
     return await db.seed_from_file(force)

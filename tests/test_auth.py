@@ -14,10 +14,10 @@ def test_state_requires_session(client):
 
 
 def test_demo_login_me_logout(client):
-    u = login(client, "u-sergio")
+    u = login(client, "u-santiago")
     assert u["role"] == "developer"
     me = client.get("/api/auth/me").json()
-    assert me["user"]["id"] == "u-sergio" and "plan.view" in me["permissions"] and "team.manage" not in me["permissions"]
+    assert me["user"]["id"] == "u-santiago" and "tasks.view" in me["permissions"] and "team.manage" not in me["permissions"]
     assert client.post("/api/auth/logout").status_code == 200
     assert client.get("/api/auth/me").status_code == 401
 
@@ -33,11 +33,11 @@ def test_google_not_configured(client):
 
 def test_demo_accounts_public(client):
     accs = client.get("/api/auth/demo-accounts").json()
-    assert any(a["id"] == "u-rodolfo" for a in accs)
+    assert {a["id"] for a in accs} == {"u-amilkar", "u-rodolfo", "u-juan"}     # solo cuentas demo
     assert all("email" in a and "role" in a for a in accs)
 
 
 def test_permissions_catalog(client):
     login(client, "u-rodolfo")
     p = client.get("/api/permissions").json()
-    assert "matrix" in p and p["matrix"]["pm"] and "tasks.view" in p["matrix"]["developer"]
+    assert "matrix" in p and p["matrix"]["account_manager"] and "tasks.view" in p["matrix"]["developer"] and set(p["roles"]) == {"account_manager", "pm", "tech_lead", "developer"}
