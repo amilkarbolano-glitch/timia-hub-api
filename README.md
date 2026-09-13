@@ -13,7 +13,7 @@ open http://localhost:8000/docs
 Sin Docker: `pip install -r requirements-dev.txt && python dev_mock.py` (Mongo en memoria) o
 `MONGO_URL=mongodb://localhost:27017 uvicorn app.main:app --reload`.
 
-Pruebas: `python -m pytest -q` (22 pruebas: auth, permisos, alcance por proyecto, cambios parciales, TR propio, matriz editable).
+Pruebas: `python -m pytest -q` (25 pruebas: auth, permisos, alcance por proyecto, cambios parciales, TR propio, matriz editable).
 
 ## Estructura
 ```
