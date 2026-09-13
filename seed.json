@@ -38,13 +38,13 @@
     {
       "id":"u-rodolfo", "name":"Rodolfo Pereda", "email":"rodolfo.pereda@timia.ai",
       "role":"account_manager", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","SDM1","SDM2","MURIC","BRICKELL","BCBS239","OPTIM","FABRICA","MIGBD"],
-      "initials":"RP", "avatarColor":"#dc2626", "active":true,
+      "initials":"RP", "avatarColor":"#dc2626", "active":true, "demo":true,
       "areaLabel":"Gerente de cuenta · BBVA Colombia"
     },
     {
       "id":"u-juan", "name":"Juan Pablo Arévalo", "email":"juanpablo.arevalo@timia.ai",
       "role":"pm", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","MIGBD"],
-      "initials":"JA", "avatarColor":"#7c3aed", "active":true,
+      "initials":"JA", "avatarColor":"#7c3aed", "active":true, "demo":true,
       "areaLabel":"Project Manager · FICO · NGA · CRONOS · PINTO · QA · Migración BD"
     },
     {
@@ -80,7 +80,7 @@
     {
       "id":"u-amilkar", "name":"Amilkar José Bolaño", "email":"amilkar.bolano@timia.ai",
       "role":"tech_lead", "projectIds":["FICO","MIGBD"],
-      "initials":"AB", "avatarColor":"#7c3aed", "active":true,
+      "initials":"AB", "avatarColor":"#7c3aed", "active":true, "demo":true,
       "areaLabel":"Líder técnico · FICO · Migración BD"
     },
     {
@@ -98,7 +98,7 @@
   ],
 
   "timia_project_roles": {
-    "u-amilkar:FICO": "tech_lead"
+    "u-amilkar:FICO": "developer"
   },
 
   "timia_ans_config": { "Baja": 2, "Media": 5, "Alta": 10, "Crítica": 15 },

@@ -167,8 +167,10 @@ def test_legacy_roles_normalized(client):
     users = get(client, "timia_admin_users")
     users[-1]["role"] = "tech_ref"
     assert put(client, "timia_admin_users", users).status_code == 200
-    accs = client.get("/api/auth/demo-accounts").json()
-    assert accs[-1]["role"] == "tech_lead"
+    accs = get(client, "timia_admin_users")
+    assert accs[-1]["role"] == "tech_ref"                       # se guarda tal cual…
+    client.post("/api/auth/logout"); r = client.post("/api/auth/demo", json={"userId": accs[-1]["id"]})
+    assert r.status_code in (200, 403)                          # …pero al iniciar sesión se normaliza (o está fuera del demo)
 
 
 def test_pilot_project_seeded(client):

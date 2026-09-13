@@ -56,12 +56,10 @@ async def demo_accounts():
     """Cuentas disponibles para el login demo (solo si está activo). No expone nada sensible."""
     if not settings.ALLOW_DEMO_LOGIN:
         raise HTTPException(status_code=403, detail="El acceso demo está desactivado")
-    out = []
-    async for doc in db.db()[db.USERS_KEY].find({}, {"item": 1}).sort("_ord", 1):
-        u = doc["item"]
-        if u.get("active", True):
-            out.append(public_user(u))
-    return out
+    users = [doc["item"] async for doc in db.db()[db.USERS_KEY].find({}, {"item": 1}).sort("_ord", 1)]
+    active = [u for u in users if u.get("active", True)]
+    demo = [u for u in active if u.get("demo")]          # si hay cuentas marcadas como demo, solo esas
+    return [public_user(u) for u in (demo or active)]
 
 
 @router.post("/demo")
