@@ -16,12 +16,21 @@ from __future__ import annotations
 
 from typing import Any
 
-ROLES = ("pm", "tech_lead", "project_lead", "tech_ref", "developer")
+ROLES = ("account_manager", "pm", "tech_lead", "developer")
 
 ROLE_LABELS = {
-    "pm": "Project Manager", "tech_lead": "Líder Técnico", "project_lead": "Líder de Proyecto",
-    "tech_ref": "Referente Técnico", "developer": "Desarrollador",
+    "account_manager": "Gerente de cuenta",
+    "pm": "Project Manager",
+    "tech_lead": "Líder / Referente técnico",
+    "developer": "Desarrollador",
 }
+# Roles antiguos → nuevos (migración de usuarios guardados)
+LEGACY_ROLES = {"project_lead": "tech_lead", "tech_ref": "tech_lead"}
+
+
+def normalize_role(role: str | None) -> str:
+    r = LEGACY_ROLES.get(role or "", role or "developer")
+    return r if r in ROLES else "developer"
 
 # id → (módulo, etiqueta)
 PERMISSIONS: dict[str, tuple[str, str]] = {
@@ -74,37 +83,23 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
 ALL = list(PERMISSIONS.keys())
 
 DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
-    "pm": ALL,
+    # Gerente de cuenta: todo, sobre todos los proyectos del cliente (números globales, dirección)
+    "account_manager": ALL,
+    # PM: todo sobre sus proyectos (no ve los de otros PM salvo projects.view_all)
+    "pm": [p for p in ALL if p not in ("projects.view_all",)],
+    # Líder / Referente técnico: apoya al PM — plan, estimaciones, alertas, inventario, TR del equipo
     "tech_lead": [
-        "projects.view_all", "projects.create", "projects.manage", "config.manage",
         "plan.view", "plan.edit_progress", "plan.manage_issues", "plan.export",
-        "estimaciones.view", "estimaciones.edit", "estimaciones.generate",
+        "estimaciones.view", "estimaciones.edit",
         "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment",
         "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
         "inventario.view", "inventario.edit", "inventario.configure", "links.edit", "imputaciones.edit",
         "tr.view", "tr.load_own", "tr.load_any", "tr.manage_features",
-        "bank_status.view", "standup.generate", "audit.view",
+        "bank_status.view", "standup.generate",
     ],
-    "project_lead": [
-        "plan.view", "plan.manage_issues", "plan.export",
-        "estimaciones.view",
-        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment",
-        "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
-        "inventario.view", "inventario.edit", "links.edit",
-        "tr.view", "tr.load_own", "tr.load_any",
-        "bank_status.view",
-    ],
-    "tech_ref": [
-        "plan.view", "plan.edit_progress", "plan.manage_issues",
-        "estimaciones.view", "estimaciones.edit",
-        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.comment",
-        "bitacora.view", "bitacora.write", "circuitos.view",
-        "inventario.view", "inventario.edit", "links.edit",
-        "tr.view", "tr.load_own",
-        "bank_status.view",
-    ],
+    # Desarrollador: ve lo suyo, mueve sus tareas, reporta bloqueantes, carga su TR
     "developer": [
-        "plan.view", "plan.manage_issues",           # un dev reporta los bloqueantes que encuentra
+        "plan.view", "plan.manage_issues",
         "tasks.view", "tasks.update_status", "tasks.comment",
         "bitacora.view", "bitacora.write", "circuitos.view",
         "inventario.view", "inventario.edit",
@@ -164,7 +159,7 @@ def effective_matrix(stored: dict | None) -> dict[str, list[str]]:
         for role, perms in stored.items():
             if role in ROLES and isinstance(perms, list):
                 out[role] = [p for p in perms if p in PERMISSIONS]
-    out["pm"] = ALL   # el PM siempre tiene todo (evita bloquearse a sí mismo)
+    out["account_manager"] = ALL   # el gerente de cuenta siempre tiene todo (evita bloquearse a sí mismo)
     return out
 
 

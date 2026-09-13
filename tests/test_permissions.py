@@ -57,15 +57,17 @@ def test_object_keys_scoped_by_project(client):
     pcts = get(client, "timia_plan_pcts") or {}
     ok = dict(pcts); ok["CRONOS-doc-0"] = 50
     assert put(client, "timia_plan_pcts", ok).status_code == 403   # developer no tiene plan.edit_progress
-    login(client, "u-juan")                                           # tech_lead: sí, y ve todos los proyectos
+    login(client, "u-juan")                                           # pm: sí, pero solo sus proyectos
     bad = dict(pcts); bad[f"{other}-doc-0"] = 50
+    assert put(client, "timia_plan_pcts", bad).status_code == 403
+    login(client, "u-rodolfo")                                        # gerente de cuenta: todos
     assert put(client, "timia_plan_pcts", bad).status_code == 200
 
 
-def test_tech_ref_scoped_progress(client):
-    # tech_ref tiene plan.edit_progress pero no projects.view_all → solo sus proyectos
+def test_tech_lead_scoped_progress(client):
+    # tech_lead tiene plan.edit_progress pero no projects.view_all → solo sus proyectos
     users = client.get("/api/auth/demo-accounts").json()
-    ref = next((x for x in users if x["role"] == "tech_ref"), None)
+    ref = next((x for x in users if x["role"] == "tech_lead"), None)
     if not ref:
         return
     login(client, ref["id"])
@@ -100,7 +102,7 @@ def test_developer_can_move_task_but_not_create(client):
     assert put(client, "timia_kanban_tasks", created).status_code == 403
 
 
-def test_tech_lead_can_create_task(client):
+def test_pm_can_create_task(client):
     login(client, "u-juan")
     tasks = get(client, "timia_kanban_tasks")
     tasks.append({"id": "kt-new-2", "title": "nueva", "description": "", "priority": "Media", "startDate": "2026-09-07", "endDate": "2026-09-08",
@@ -120,9 +122,9 @@ def test_developer_loads_only_own_tr(client):
     assert r.status_code == 403 and "propios" in r.json()["detail"]
 
 
-def test_project_lead_loads_any_tr(client):
+def test_tech_lead_loads_any_tr(client):
     users = client.get("/api/auth/demo-accounts").json()
-    pl = next((x for x in users if x["role"] == "project_lead"), None)
+    pl = next((x for x in users if x["role"] == "tech_lead" and "CRONOS" in x["projectIds"]), None) or next((x for x in users if x["role"] == "tech_lead"), None)
     if not pl:
         return
     login(client, pl["id"])
@@ -152,8 +154,29 @@ def test_pm_edits_matrix_and_server_applies_it(client):
     assert put(client, "timia_role_permissions", hack).status_code == 403
 
 
-def test_pm_always_has_everything(client):
+def test_account_manager_always_has_everything(client):
     login(client, "u-rodolfo")
-    assert put(client, "timia_role_permissions", {"pm": []}).status_code == 200
+    assert put(client, "timia_role_permissions", {"account_manager": []}).status_code == 200
     me = client.get("/api/auth/me").json()
-    assert "team.manage" in me["permissions"]
+    assert me["user"]["role"] == "account_manager" and "team.manage" in me["permissions"]
+
+
+def test_legacy_roles_normalized(client):
+    # usuarios guardados con roles antiguos se normalizan
+    login(client, "u-rodolfo")
+    users = get(client, "timia_admin_users")
+    users[-1]["role"] = "tech_ref"
+    assert put(client, "timia_admin_users", users).status_code == 200
+    accs = client.get("/api/auth/demo-accounts").json()
+    assert accs[-1]["role"] == "tech_lead"
+
+
+def test_pilot_project_seeded(client):
+    login(client, "u-amilkar")
+    me = client.get("/api/auth/me").json()
+    assert me["user"]["role"] == "tech_lead" and "MIGBD" in me["user"]["projectIds"]
+    projs = get(client, "timia_admin_projects")
+    p = next(x for x in projs if x["id"] == "MIGBD")
+    assert p["sda"] == "SDATOOL-54364"
+    cfg = get(client, "timia_plan_configs")["MIGBD"]
+    assert cfg["startDate"] == "2026-02-18" and len(cfg["entregables"]) == 9

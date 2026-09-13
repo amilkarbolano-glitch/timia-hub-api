@@ -19,50 +19,51 @@
   },
 
   "timia_admin_projects": [
-    {"id":"FICO",     "name":"FICO",         "area":"Juan Pablo Arévalo", "color":"#dc2626", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0082"},
-    {"id":"NGA",      "name":"NGA",          "area":"Juan Pablo Arévalo", "color":"#7c3aed", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0091"},
-    {"id":"CRONOS",   "name":"CRONOS",       "area":"Juan Pablo Arévalo", "color":"#0891b2", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-06-02", "active":true, "sda":"BCOL-2026-0012"},
-    {"id":"PINTO",    "name":"PINTO",        "area":"Juan Pablo Arévalo", "color":"#059669", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0018"},
-    {"id":"QA",       "name":"QA",           "area":"Juan Pablo Arévalo", "color":"#d97706", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0024"},
-    {"id":"SDM1",     "name":"SDM 1",        "area":"Diego Sánchez",      "color":"#2563eb", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0074"},
-    {"id":"SDM2",     "name":"SDM 2",        "area":"Diego Sánchez",      "color":"#4f46e5", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0075"},
-    {"id":"MURIC",    "name":"MURIC",        "area":"Diego Sánchez",      "color":"#0f766e", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0031"},
-    {"id":"BRICKELL", "name":"BRICKELL",     "area":"Diego Sánchez",      "color":"#b45309", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true, "sda":"BCOL-2026-0033"},
-    {"id":"BCBS239",  "name":"BCBS239",      "area":"Diego Sánchez",      "color":"#7e22ce", "priority":"Crítica", "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"BCOL-2025-0061"},
+    {"id":"FICO",     "name":"FICO",         "area":"Juan Pablo Arévalo", "color":"#dc2626", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true, "sda":"SDATOOL-53017"},
+    {"id":"NGA",      "name":"NGA",          "area":"Juan Pablo Arévalo", "color":"#7c3aed", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true},
+    {"id":"CRONOS",   "name":"CRONOS",       "area":"Juan Pablo Arévalo", "color":"#0891b2", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-06-02", "active":true},
+    {"id":"PINTO",    "name":"PINTO",        "area":"Juan Pablo Arévalo", "color":"#059669", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true},
+    {"id":"QA",       "name":"QA",           "area":"Juan Pablo Arévalo", "color":"#d97706", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true},
+    {"id":"SDM1",     "name":"SDM 1",        "area":"Diego Sánchez",      "color":"#2563eb", "priority":"Alta",    "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true},
+    {"id":"SDM2",     "name":"SDM 2",        "area":"Diego Sánchez",      "color":"#4f46e5", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true},
+    {"id":"MURIC",    "name":"MURIC",        "area":"Diego Sánchez",      "color":"#0f766e", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true},
+    {"id":"BRICKELL", "name":"BRICKELL",     "area":"Diego Sánchez",      "color":"#b45309", "priority":"Media",   "client":"BBVA Colombia",     "startDate":"2026-02-01", "active":true},
+    {"id":"BCBS239",  "name":"BCBS239",      "area":"Diego Sánchez",      "color":"#7e22ce", "priority":"Crítica", "client":"BBVA Colombia",     "startDate":"2026-01-15", "active":true},
     {"id":"OPTIM",    "name":"Optimización", "area":"David Huamán",       "color":"#0369a1", "priority":"Media",   "client":"Credicorp Capital", "startDate":"2026-02-01", "active":true},
-    {"id":"FABRICA",  "name":"Fábrica",      "area":"David Huamán",       "color":"#be185d", "priority":"Alta",    "client":"Credicorp Capital", "startDate":"2026-01-15", "active":true}
+    {"id":"FABRICA",  "name":"Fábrica",      "area":"David Huamán",       "color":"#be185d", "priority":"Alta",    "client":"Credicorp Capital", "startDate":"2026-01-15", "active":true},
+    {"id":"MIGBD",    "name":"Migración BD a ADA", "area":"Juan Pablo Arévalo", "color":"#0e7490", "priority":"Alta", "client":"BBVA Colombia", "startDate":"2026-02-18", "active":true, "sda":"SDATOOL-54364"}
   ],
 
   "timia_admin_users": [
     {
       "id":"u-rodolfo", "name":"Rodolfo Pereda", "email":"rodolfo.pereda@timia.ai",
-      "role":"pm", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","SDM1","SDM2","MURIC","BRICKELL","BCBS239","OPTIM","FABRICA"],
+      "role":"account_manager", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","SDM1","SDM2","MURIC","BRICKELL","BCBS239","OPTIM","FABRICA","MIGBD"],
       "initials":"RP", "avatarColor":"#dc2626", "active":true,
-      "areaLabel":"Project Manager · BBVA CO & Credicorp Capital"
+      "areaLabel":"Gerente de cuenta · BBVA Colombia"
     },
     {
       "id":"u-juan", "name":"Juan Pablo Arévalo", "email":"juanpablo.arevalo@timia.ai",
-      "role":"tech_lead", "projectIds":["FICO","NGA","CRONOS","PINTO","QA"],
+      "role":"pm", "projectIds":["FICO","NGA","CRONOS","PINTO","QA","MIGBD"],
       "initials":"JA", "avatarColor":"#7c3aed", "active":true,
-      "areaLabel":"Líder Técnico · FICO · NGA · CRONOS · PINTO · QA"
+      "areaLabel":"Project Manager · FICO · NGA · CRONOS · PINTO · QA · Migración BD"
     },
     {
       "id":"u-david", "name":"David Huamán", "email":"david.huaman@timia.ai",
-      "role":"tech_lead", "projectIds":["OPTIM","FABRICA","SDM1","SDM2"],
+      "role":"pm", "projectIds":["OPTIM","FABRICA"],
       "initials":"DH", "avatarColor":"#0369a1", "active":true,
-      "areaLabel":"Líder Técnico · Credicorp Capital · SDM"
+      "areaLabel":"Project Manager · Credicorp Capital"
     },
     {
       "id":"u-diego", "name":"Diego Sánchez", "email":"diego.sanchez@timia.ai",
-      "role":"tech_lead", "projectIds":["SDM1","SDM2","MURIC","BRICKELL","BCBS239"],
+      "role":"pm", "projectIds":["SDM1","SDM2","MURIC","BRICKELL","BCBS239"],
       "initials":"DS", "avatarColor":"#2563eb", "active":true,
-      "areaLabel":"Líder Técnico · SDM · MURIC · BRICKELL · BCBS239"
+      "areaLabel":"Project Manager · SDM · MURIC · BRICKELL · BCBS239"
     },
     {
       "id":"u-juliana", "name":"Juliana Garzón", "email":"juliana.garzon@timia.ai",
-      "role":"tech_ref", "projectIds":["FICO","NGA"],
+      "role":"tech_lead", "projectIds":["FICO","NGA","MIGBD"],
       "initials":"JG", "avatarColor":"#0f766e", "active":true,
-      "areaLabel":"Referente Técnico · FICO · NGA"
+      "areaLabel":"Líder técnico · FICO · NGA · Migración BD"
     },
     {
       "id":"u-sergio", "name":"Sergio David Rodriguez", "email":"sergio.rodriguez@timia.ai",
@@ -78,9 +79,15 @@
     },
     {
       "id":"u-amilkar", "name":"Amilkar José Bolaño", "email":"amilkar.bolano@timia.ai",
-      "role":"developer", "projectIds":["FICO"],
+      "role":"tech_lead", "projectIds":["FICO","MIGBD"],
       "initials":"AB", "avatarColor":"#7c3aed", "active":true,
-      "areaLabel":"Desarrollador · FICO"
+      "areaLabel":"Líder técnico · FICO · Migración BD"
+    },
+    {
+      "id":"u-santiago", "name":"Santiago Coronado", "email":"santiago.coronado@timia.ai",
+      "role":"developer", "projectIds":["MIGBD"],
+      "initials":"SC", "avatarColor":"#0e7490", "active":true,
+      "areaLabel":"Desarrollador · Migración BD"
     },
     {
       "id":"u-ana", "name":"Ana Restrepo", "email":"ana.restrepo@timia.ai",
@@ -91,7 +98,7 @@
   ],
 
   "timia_project_roles": {
-    "u-amilkar:FICO": "developer"
+    "u-amilkar:FICO": "tech_lead"
   },
 
   "timia_ans_config": { "Baja": 2, "Media": 5, "Alta": 10, "Crítica": 15 },
@@ -174,7 +181,10 @@
 
     {"id":"imp-sdm-01","projectId":"SDM1","jiraId":"DESDM1-0101","summary":"Análisis modelo estrella SDM1 — dimensiones y hechos",      "type":"Enabler Delivery","status":"Deployed",    "assigneeIds":["u-diego"],                         "month":"Enero",  "weeks":"",      "q":"Q1-2026",   "phase":"Análisis y Diseño","hoursEst":32,  "hoursImputed":32,  "context":"SDM1-Q1-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-01-15"},
     {"id":"imp-sdm-02","projectId":"SDM1","jiraId":"DESDM1-0112","summary":"Construcción tablas dimensionales SDM1 — schemas Work",     "type":"Enabler Delivery","status":"In Progress","assigneeIds":["u-diego"],                         "month":"Marzo",  "weeks":"",      "q":"Q1-2026",   "phase":"Codificación",    "hoursEst":80,  "hoursImputed":48,  "context":"SDM1-Q1-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-03-01"},
-    {"id":"imp-sdm-03","projectId":"SDM1","jiraId":"DESDM1-0130","summary":"Mallas Control-M SDM1 — orquestación carga incremental",   "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-diego"],                         "month":"Mayo",   "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":40,  "hoursImputed":16,  "context":"SDM1-Q2-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-05-01"}
+    {"id":"imp-sdm-03","projectId":"SDM1","jiraId":"DESDM1-0130","summary":"Mallas Control-M SDM1 — orquestación carga incremental",   "type":"Enabler Delivery","status":"Test",        "assigneeIds":["u-diego"],                         "month":"Mayo",   "weeks":"",      "q":"Q2-2026",   "phase":"Codificación",    "hoursEst":40,  "hoursImputed":16,  "context":"SDM1-Q2-2026",                            "createdBy":"Diego Sánchez","createdAt":"2026-05-01"},
+    {"id": "imp-migbd-1", "projectId": "MIGBD", "jiraId": "DECIBCUMPL-727", "summary": "Análisis y Diseño · ADA", "type": "Enabler Delivery", "status": "Analysing", "assigneeIds": ["u-amilkar", "u-santiago"], "month": "Febrero", "weeks": "18 - 25", "q": "Q1-2026", "phase": "Análisis y Diseño", "hoursEst": 48, "hoursImputed": 0, "context": "Feature DECIBCUMPL-727 · 8 por día", "createdBy": "Juan Pablo Arévalo", "createdAt": "2026-02-18"},
+    {"id": "imp-migbd-2", "projectId": "MIGBD", "jiraId": "DECIBCUMPL-832", "summary": "Construcción · ADA", "type": "Enabler Delivery", "status": "In Progress", "assigneeIds": ["u-amilkar", "u-santiago"], "month": "Marzo", "weeks": "10.0", "q": "Q2-2026", "phase": "Construcción", "hoursEst": 16, "hoursImputed": 0, "context": "Feature DECIBCUMPL-727 · 16 por día", "createdBy": "Juan Pablo Arévalo", "createdAt": "2026-02-18"},
+    {"id": "imp-migbd-3", "projectId": "MIGBD", "jiraId": "DECIBCUMPL-1191", "summary": "Despliegue · ADA", "type": "Enabler Delivery", "status": "Analysing", "assigneeIds": ["u-amilkar", "u-santiago"], "month": "Marzo", "weeks": "20 - 31", "q": "https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1191", "phase": "Despliegue", "hoursEst": 0, "hoursImputed": 0, "context": "Feature DECIBCUMPL-727 · 8 por día", "createdBy": "Juan Pablo Arévalo", "createdAt": "2026-02-18"}
   ],
 
   "_comment_tr": "Activity Report (TR): features Jira con horas planificadas por fase SDA y horas imputadas por persona/día leídas de las capturas del TR.",
@@ -534,6 +544,101 @@
           {"label": "Estabilización de procesos en producción", "startWeek": 11, "endWeek": 12}
         ]}
       ]
+    },
+    "MIGBD": {
+      "projectId":"MIGBD", "startDate":"2026-02-18", "totalWeeks":24, "generatedAt":"2026-02-17T12:00:00.000Z",
+      "entregables":[
+        {"id":"documentaci-n-", "label":"I. Documentación y Gobierno",
+         "activities":[
+          {"label": "Diagnóstico experto y resolución de preguntas técnicas", "startWeek": 7, "endWeek": 7},
+          {"label": "Elaboración de diccionarios técnicos", "startWeek": 8, "endWeek": 8},
+          {"label": "Inicialización en Nebula", "startWeek": 8, "endWeek": 8},
+          {"label": "Aprobación de la inicialización en nebula por parte de Gobierno técnico", "startWeek": 9, "endWeek": 9, "bbva": true},
+          {"label": "Subida de diccionarios, revisión y validación por parte del equipo de Gobierno Técnico.", "startWeek": 9, "endWeek": 10},
+          {"label": "Creación de los Modelos de Solución del Dato (MSD)", "startWeek": 9, "endWeek": 9},
+          {"label": "Circuito de validación de los Modelos de Solución del Dato (MSD)", "startWeek": 10, "endWeek": 11, "bbva": true},
+          {"label": "Solicitud y circuito de ACLs", "startWeek": 11, "endWeek": 11, "bbva": true},
+          {"label": "Despliegue de esquemas en entorno previo (Work)", "startWeek": 11, "endWeek": 11},
+          {"label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)", "startWeek": 12, "endWeek": 12, "bbva": true},
+          {"label": "Creación de documentación técnica para el procesamiento (ETL + DT)", "startWeek": 8, "endWeek": 9},
+          {"label": "Validación y análisis definición funcional entregada", "startWeek": 6, "endWeek": 6}
+        ]},
+        {"id":"transmisi-n-de-1", "label":"II. Transmisión de Datos",
+         "activities":[
+          {"label": "Gestión de acceso a los namespaces de DataX.", "startWeek": 9, "endWeek": 10, "bbva": true},
+          {"label": "Creación de los adaptadores en ambiente Work y Live", "startWeek": 10, "endWeek": 10},
+          {"label": "Creación de Schemas de los Data Objects para la transferencia", "startWeek": 10, "endWeek": 11},
+          {"label": "Creación de los Data Objects para la transferencia", "startWeek": 12, "endWeek": 12},
+          {"label": "Creación de la transferencias", "startWeek": 12, "endWeek": 13},
+          {"label": "Pruebas en entornos previos (Work) de la transmisión de datos", "startWeek": 14, "endWeek": 14},
+          {"label": "Solicitud de credenciales para el adaptador de Tantia en producción", "startWeek": 14, "endWeek": 15, "bbva": true},
+          {"label": "Publicación de componentes (DataX) y aprobación en entornos previos Work", "startWeek": 15, "endWeek": 16},
+          {"label": "Promoción de componentes (Live).", "startWeek": 17, "endWeek": 17}
+        ]},
+        {"id":"desarrollo-de--2", "label":"III. Desarrollo de Procesamientos",
+         "activities":[
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 10, "endWeek": 11},
+          {"label": "Construcción de procesamiento oper_tesoreria", "startWeek": 12, "endWeek": 15},
+          {"label": "Construcción de procesamiento histórico", "startWeek": 15, "endWeek": 16},
+          {"label": "Pruebas en entorno local - Procesamientos", "startWeek": 16, "endWeek": 16},
+          {"label": "Generación de datos, acompañamiento y VoBo de información generada", "startWeek": 16, "endWeek": 17, "bbva": true},
+          {"label": "Construcción de Test unitarios y Test de Aceptación - Procesamientos", "startWeek": 16, "endWeek": 17},
+          {"label": "Despliegue y pruebas en entornos previos y creación de Jobs Dataproc (work)", "startWeek": 17, "endWeek": 18},
+          {"label": "Construcción reglas de calidad MVP", "startWeek": 18, "endWeek": 18},
+          {"label": "Construcción borrado Smart Cleaner", "startWeek": 18, "endWeek": 18},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 19, "endWeek": 20, "bbva": true},
+          {"label": "Creación de Jobs Dataproc (live)", "startWeek": 21, "endWeek": 21},
+          {"label": "Validación y puesta en producción de componentes ADA", "startWeek": 21, "endWeek": 21}
+        ]},
+        {"id":"ajuste-de-proc-3", "label":"IV. Ajuste de Procesamientos Dynamic",
+         "activities":[
+          {"label": "Análisis casuísticas presentadas", "startWeek": 1, "endWeek": 19},
+          {"label": "Ajuste documentación técnica para el procesamiento", "startWeek": 5, "endWeek": 19},
+          {"label": "Ajuste MSD del procesamiento", "startWeek": 9, "endWeek": 10},
+          {"label": "Gestión de repositorios Bitbucket - Procesamiento", "startWeek": 1, "endWeek": 1},
+          {"label": "Estandarización Dynamic Pricing (de Path a Table)", "startWeek": 2, "endWeek": 3},
+          {"label": "Ajuste de procesamiento Dynamic pricing - Duplicados", "startWeek": 4, "endWeek": 4},
+          {"label": "Ajuste de procesamiento Dynamic pricing - t_crdc_hdagpclpre_cli_prec_pref", "startWeek": 5, "endWeek": 5},
+          {"label": "Ajuste de procesamiento Dynamic pricing - t_crdc_udamkcamp_camp_prec_pref", "startWeek": 5, "endWeek": 5},
+          {"label": "Ajuste de procesamiento Dynamic pricing - t_crdc_udaxcopt_oper_tesoreria", "startWeek": 19, "endWeek": 19},
+          {"label": "Pruebas en entorno local - Procesamientos", "startWeek": 6, "endWeek": 20}
+        ]},
+        {"id":"validaci-n-de--4", "label":"V. Validación de Datos Dynamic",
+         "activities":[
+          {"label": "Validación de datos generados", "startWeek": 7, "endWeek": 20},
+          {"label": "Acompañamiento VoBo de información generada", "startWeek": 7, "endWeek": 21, "bbva": true}
+        ]},
+        {"id":"pruebas-y-desp-5", "label":"VI. Pruebas y Despliegues Procesamientos Dynamic",
+         "activities":[
+          {"label": "Ajuste de Test unitarios y Test de Aceptación - Procesamientos", "startWeek": 7, "endWeek": 21},
+          {"label": "Despliegue y pruebas en entornos previos (Work)", "startWeek": 8, "endWeek": 21},
+          {"label": "Modificación de Jobs Dataproc (work)", "startWeek": 8, "endWeek": 21},
+          {"label": "Certificación de calidad por el equipo de QA", "startWeek": 8, "endWeek": 22, "bbva": true},
+          {"label": "Modificación de Jobs Dataproc (live)", "startWeek": 9, "endWeek": 22},
+          {"label": "Puesta en producción de componentes ADA", "startWeek": 9, "endWeek": 22}
+        ]},
+        {"id":"generaci-n-de--6", "label":"VII. Generación de Historia",
+         "activities":[
+          {"label": "Creación de mallas temporales", "startWeek": 18, "endWeek": 19},
+          {"label": "Gestión de mallas temporales", "startWeek": 20, "endWeek": 20},
+          {"label": "Validación de datos generados", "startWeek": 20, "endWeek": 21}
+        ]},
+        {"id":"automatizaci-n-7", "label":"VIII. Automatización y Orquestación",
+         "activities":[
+          {"label": "Gestión de accesos a Control-M distribuido", "startWeek": 16, "endWeek": 16, "bbva": true},
+          {"label": "Definición de automatización", "startWeek": 17, "endWeek": 17},
+          {"label": "Construcción de Mallas en Control-M distribuido.", "startWeek": 18, "endWeek": 19},
+          {"label": "Pruebas en entornos previos (Work) - Mallas Control-M distribuido", "startWeek": 19, "endWeek": 19},
+          {"label": "Elaboración de documentación - Mallas Control-M distribuido (ADA)", "startWeek": 19, "endWeek": 19}
+        ]},
+        {"id":"certificaci-n--8", "label":"IX. Certificación, Productivización y Estabilización",
+         "activities":[
+          {"label": "Certificación de mallas Control-M Distribuido", "startWeek": 20, "endWeek": 22, "bbva": true},
+          {"label": "Instalación de mallas Control-M en ambiente de producción", "startWeek": 22, "endWeek": 22},
+          {"label": "Estabilización de procesos en producción", "startWeek": 22, "endWeek": 22},
+          {"label": "ACTIVIDAD", "startWeek": 1, "endWeek": 24}
+        ]}
+      ]
     }
   },
 
@@ -678,7 +783,16 @@
 
     {"id":"lk-fab-1","projectId":"FABRICA","title":"Jira · Fábrica","url":"https://jira.credicorp.com/projects/FABRICA","category":"Jira","descripcion":"Board de la Fábrica de Modelos Credicorp — historias, bugs y releases.","fecha":"2026-01-15","quien":"David Huamán"},
     {"id":"lk-fab-2","projectId":"FABRICA","title":"MLflow · Fábrica","url":"https://mlflow.credicorp.com","category":"Monitoreo","descripcion":"Servidor MLflow para tracking de experimentos y versiones de modelos de la Fábrica.","fecha":"2026-02-01","quien":"David Huamán"},
-    {"id":"lk-fab-3","projectId":"FABRICA","title":"Documentación Modelos Fábrica","url":"https://confluence.credicorp.com/display/FABRICA/modelos","category":"Documentación","descripcion":"Documentación técnica de los modelos productivos: scoring crediticio, churn y pricing.","fecha":"2026-03-01","quien":"David Huamán"}
+    {"id":"lk-fab-3","projectId":"FABRICA","title":"Documentación Modelos Fábrica","url":"https://confluence.credicorp.com/display/FABRICA/modelos","category":"Documentación","descripcion":"Documentación técnica de los modelos productivos: scoring crediticio, churn y pricing.","fecha":"2026-03-01","quien":"David Huamán"},
+    {"id": "lk-migbd-1", "projectId": "MIGBD", "title": "Definición Alcance", "url": "https://docs.google.com/document/d/1Vv9-tq-4bQjZFflXd2ma_NjzugkUWpoKm6hfCUV08bo/edit?tab=t.0", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-2", "projectId": "MIGBD", "title": "Diccionarios", "url": "https://docs.google.com/spreadsheets/d/13YIGLakwsj6dMqd0g00jg352ZC2Wlpme4p9yz9eNkig/edit?usp=sharing", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-3", "projectId": "MIGBD", "title": "MSD · SRMSD-00232", "url": "https://jira.bbvacol.com/browse/SRMSD-00232", "category": "Ticket", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-4", "projectId": "MIGBD", "title": "MSD Ingestas", "url": "https://docs.google.com/document/d/1ZwQ9SO_rLwM1Hhfb5g52ZCsJGvzD2hqLLOvVS0G9Iys/edit?tab=t.0", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-5", "projectId": "MIGBD", "title": "SFI", "url": "https://docs.google.com/spreadsheets/d/1tp8V4vT631tfMzaEsjtKJf1Sdo5eFY1lb-EfHrxEIJQ/edit?gid=0#gid=0", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-6", "projectId": "MIGBD", "title": "Prediccionario spot_interbancario", "url": "https://docs.google.com/spreadsheets/d/1OWaGEhXyj7vVTBV2rVJuRQIAN8dwuWDGtA8Ttqu-B2Q/edit?gid=0#gid=0", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-7", "projectId": "MIGBD", "title": "Prediccionario spot_retail", "url": "https://docs.google.com/spreadsheets/d/1DjXImXMeqCRgcvaOO1-7lFxizgrRidP_K_ZurwY0KV0/edit?gid=0#gid=0", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-8", "projectId": "MIGBD", "title": "Ticket Procesamiento - Dynamic I · WO0000102474731", "url": "https://remedy.bbva.com/WO0000102474731", "category": "Ticket", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"},
+    {"id": "lk-migbd-9", "projectId": "MIGBD", "title": "CARPETA PROYECTO 01/09/2026 - BBVA", "url": "https://drive.google.com/drive/u/1/folders/1WMVfiRX-bzR3-PWQmlI6Rr4Phrw89yYl", "category": "Documentación", "descripcion": "Del Excel de seguimiento SDATOOL-54364", "fecha": "2026-02-18", "quien": "Amilkar José Bolaño"}
   ],
 
   "timia_inv_stages": [
@@ -705,7 +819,18 @@
     {"id":"cert-sc",    "label":"Cert. SC",    "group":"Certificación"},
     {"id":"jobs-proc",  "label":"Jobs Proc.",  "group":"Producción"},
     {"id":"jobs-qlt",   "label":"Jobs QA",     "group":"Producción"},
-    {"id":"jobs-sc",    "label":"Jobs SC",     "group":"Producción"}
+    {"id":"jobs-sc",    "label":"Jobs SC",     "group":"Producción"},
+    {"id": "gob-func", "label": "Gob. Func.", "group": "Inicio"},
+    {"id": "datax-constr", "label": "DataX Constr.", "group": "Ingesta DataX"},
+    {"id": "datax-transfer", "label": "Transfer", "group": "Ingesta DataX"},
+    {"id": "datax-do", "label": "Data Object", "group": "Ingesta DataX"},
+    {"id": "datax-work", "label": "DataX Work", "group": "Ingesta DataX"},
+    {"id": "datax-apr", "label": "Apr. DataX", "group": "Ingesta DataX"},
+    {"id": "datax-prod", "label": "Prom. Prod.", "group": "Ingesta DataX"},
+    {"id": "kirby-upd", "label": "Kirby Upd.", "group": "Ingesta DataX"},
+    {"id": "kirby-work", "label": "Kirby Work", "group": "Ingesta DataX"},
+    {"id": "qlt-upd", "label": "QLT Upd.", "group": "Ingesta DataX"},
+    {"id": "qlt-work", "label": "QLT Work", "group": "Ingesta DataX"}
   ],
 
   "timia_inv_v2": [
@@ -720,7 +845,12 @@
 
     {"id":"inv-cro-1","projectId":"CRONOS","objeto":"t_cronos_transacciones","descripcion":"Tabla de hechos con transacciones diarias de CRONOS procesadas desde el Core. Grain: transacción-día.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/t-cronos-transacciones","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"https://confluence.bbvacol.com/display/CRONOS/diccionario-285","stages":{"env-msd":"Sí","apr-msd":"","env-gob":"","sch-work":"","sol-live":"","sch-live":"","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
     {"id":"inv-cro-2","projectId":"CRONOS","objeto":"t_cronos_dim_canal","descripcion":"Dimensión de canal de transacción para CRONOS: ATM, Banca Web, App Móvil, Sucursal.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/t-cronos-dim-canal","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"https://confluence.bbvacol.com/display/CRONOS/diccionario-285","stages":{"env-msd":"Sí","apr-msd":"","env-gob":"","sch-work":"","sol-live":"","sch-live":"","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
-    {"id":"inv-cro-3","projectId":"CRONOS","objeto":"r_cronos_quality_rules","descripcion":"Reglas Hammurabi para CRONOS: validaciones de nulidad, consistencia temporal y cardinalidades.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/hammurabi","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"","stages":{"env-msd":"N/A","apr-msd":"N/A","env-gob":"N/A","sch-work":"N/A","sol-live":"N/A","sch-live":"N/A","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}}
+    {"id":"inv-cro-3","projectId":"CRONOS","objeto":"r_cronos_quality_rules","descripcion":"Reglas Hammurabi para CRONOS: validaciones de nulidad, consistencia temporal y cardinalidades.","documentacion":"https://confluence.bbvacol.com/display/CRONOS/hammurabi","versionModelo":"0.1.0","versionObjeto":"v1","diccionario":"","stages":{"env-msd":"N/A","apr-msd":"N/A","env-gob":"N/A","sch-work":"N/A","sol-live":"N/A","sch-live":"N/A","constr":"","test-unit":"","test-acept":"","muestras":"","prueb-work":"","dat-sandbox":"","dat-test":"","valid":"","qlt":"","prueb-qlt":"","sc":"","prueb-sc":"","cert-proc":"","cert-qlt":"","cert-sc":"","jobs-proc":"","jobs-qlt":"","jobs-sc":""}},
+    {"id": "inv-migbd-1", "projectId": "MIGBD", "objeto": "t_crdc_ddastpodiv_ope_divis_star", "descripcion": "POSICION_DIVISAS_AAAA-MM-DD_15_XX_XX · alias ddastpodiv · Distribuido (Tantia) · 20 campos · Diario · UUAA raw CSTD / master CRDC", "documentacion": "", "versionModelo": "", "versionObjeto": "", "diccionario": "Fábrica", "stages": {"gob-func": "Fábrica", "env-gob": "Fábrica", "sch-work": "Fábrica", "sol-live": "Fábrica", "sch-live": "Fábrica"}},
+    {"id": "inv-migbd-2", "projectId": "MIGBD", "objeto": "t_cmol_udaxtopb_ope_dia_banktrad", "descripcion": "POSICION_GLOBAL_BankTrad · alias udaxtopb · Tantia (Usuario) · 19 campos · Diario · UUAA raw CXTU / master CMOL", "documentacion": "", "versionModelo": "", "versionObjeto": "", "diccionario": "Fábrica", "stages": {"gob-func": "Fábrica", "env-gob": "Fábrica", "sch-work": "Fábrica", "sol-live": "Fábrica", "sch-live": "Fábrica"}},
+    {"id": "inv-migbd-3", "projectId": "MIGBD", "objeto": "t_crdc_udaslgmd_gestor_mesa_dine", "descripcion": "ASIGNACION_SALES_DD_MM_YYYY · alias udaslgmd · Tantia (Usuario) · 8 campos · Diario · UUAA raw CSLU / master CRDC", "documentacion": "", "versionModelo": "", "versionObjeto": "", "diccionario": "Fábrica", "stages": {"gob-func": "Fábrica", "env-gob": "Fábrica", "sch-work": "Fábrica", "sol-live": "Fábrica", "sch-live": "Fábrica"}},
+    {"id": "inv-migbd-4", "projectId": "MIGBD", "objeto": "t_crdc_hdagpncab_rep_notac_abono", "descripcion": "GOF.S0105.PGPD0094.D%%ODATE.GP010.INFONOCR · alias hdagpncab · Host · 22 campos · Diario · UUAA raw CGPH / master CRDC", "documentacion": "", "versionModelo": "", "versionObjeto": "", "diccionario": "Fábrica", "stages": {"gob-func": "Fábrica", "env-gob": "Fábrica", "sch-work": "Fábrica", "sol-live": "Fábrica", "sch-live": "Fábrica"}},
+    {"id": "inv-migbd-5", "projectId": "MIGBD", "objeto": "t_crdc_hdaxtncvd_negocia_divisas", "descripcion": "COBP.XT.FIX.REPORTE.F%%ODATE.COMEXNET · alias hdaxtncvd · Host · 35 campos · Diario · UUAA raw CXTH / master CRDC", "documentacion": "", "versionModelo": "", "versionObjeto": "", "diccionario": "Fábrica", "stages": {"gob-func": "Fábrica", "env-gob": "Fábrica", "sch-work": "Fábrica", "sol-live": "Fábrica", "sch-live": "Fábrica"}}
   ],
 
   "timia_bitacora": [
