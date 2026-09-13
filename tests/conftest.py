@@ -6,11 +6,13 @@ from mongomock_motor import AsyncMongoMockClient
 
 import app.db as dbmod
 import app.main as m
+import app.security as sec
 
 
 @pytest.fixture()
 def client(monkeypatch):
     monkeypatch.setattr(dbmod, "AsyncIOMotorClient", lambda *a, **k: AsyncMongoMockClient())
+    sec._hits.clear()                      # rate limit en memoria: reiniciar por prueba
     with TestClient(m.app) as c:
         yield c
 
