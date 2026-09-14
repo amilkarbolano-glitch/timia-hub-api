@@ -9,7 +9,7 @@ Metadata:
       - Label: { default: "Imagen y capacidad" }
         Parameters: [ImageTag, DesiredCount]
       - Label: { default: "Autenticacion (ver .env.example del repo)" }
-        Parameters: [SessionSecret, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
+        Parameters: [SessionSecret, FirebaseProjectId, FirebaseApiKey, FirebaseAppId, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
     ParameterLabels:
       ProjectName: { default: "Nombre del Proyecto" }
       AppName: { default: "Nombre de la Aplicacion" }
@@ -20,7 +20,10 @@ Metadata:
       ImageTag: { default: "Tag de la imagen en ECR" }
       DesiredCount: { default: "Numero de tareas" }
       SessionSecret: { default: "SESSION_SECRET" }
-      GoogleClientId: { default: "GOOGLE_CLIENT_ID [GOOGLE]" }
+      FirebaseProjectId: { default: "FIREBASE_PROJECT_ID [GOOGLE]" }
+      FirebaseApiKey: { default: "FIREBASE_API_KEY [GOOGLE]" }
+      FirebaseAppId: { default: "FIREBASE_APP_ID [GOOGLE]" }
+      GoogleClientId: { default: "GOOGLE_CLIENT_ID (alternativa sin Firebase)" }
       AllowedEmailDomains: { default: "ALLOWED_EMAIL_DOMAINS" }
       AllowDemoLogin: { default: "ALLOW_DEMO_LOGIN" }
       FrontendOrigin: { default: "Origen del front (CORS)" }
@@ -43,9 +46,12 @@ Parameters:
     Description: 'Secreto para firmar sesiones (openssl rand -base64 48)'
     NoEcho: true
     MinLength: 32
+  FirebaseProjectId: { Type: String, Default: '', Description: 'Firebase → Configuracion del proyecto → ID del proyecto' }
+  FirebaseApiKey: { Type: String, Default: '', Description: 'Firebase → SDK config → apiKey (publica)' }
+  FirebaseAppId: { Type: String, Default: '', Description: 'Firebase → SDK config → appId' }
   GoogleClientId:
     Type: String
-    Description: 'Client ID OAuth "Aplicacion web" (vacio = login demo)'
+    Description: 'Client ID OAuth "Aplicacion web" (solo si no se usa Firebase)'
     Default: ''
     NoEcho: true
   AllowedEmailDomains: { Type: String, Default: 'timia.ai' }
@@ -245,6 +251,9 @@ Resources:
             - { Name: COOKIE_SECURE, Value: 'true' }
             - { Name: COOKIE_SAMESITE, Value: 'none' }          # front y API en dominios distintos
             - { Name: CORS_ORIGINS, Value: !Ref FrontendOrigin }
+            - { Name: FIREBASE_PROJECT_ID, Value: !Ref FirebaseProjectId }
+            - { Name: FIREBASE_API_KEY, Value: !Ref FirebaseApiKey }
+            - { Name: FIREBASE_APP_ID, Value: !Ref FirebaseAppId }
             - { Name: ALLOWED_EMAIL_DOMAINS, Value: !Ref AllowedEmailDomains }
             - { Name: ALLOW_DEMO_LOGIN, Value: !Ref AllowDemoLogin }
             - { Name: SEED_ON_START, Value: 'true' }

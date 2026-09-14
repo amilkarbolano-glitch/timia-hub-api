@@ -17,6 +17,10 @@ class GoogleBody(BaseModel):
     credential: str            # ID token que entrega el botón de Google
 
 
+class FirebaseBody(BaseModel):
+    idToken: str               # ID token de Firebase Auth (getIdToken()) tras signInWithPopup(Google)
+
+
 class DemoBody(BaseModel):
     userId: str
 
@@ -24,8 +28,41 @@ class DemoBody(BaseModel):
 @router.get("/config")
 async def auth_config():
     """Público: le dice al front qué métodos de login están disponibles."""
-    return {"google": bool(settings.GOOGLE_CLIENT_ID), "googleClientId": settings.GOOGLE_CLIENT_ID or None,
+    firebase = None
+    if settings.FIREBASE_PROJECT_ID and settings.FIREBASE_API_KEY:
+        firebase = {"apiKey": settings.FIREBASE_API_KEY, "authDomain": settings.FIREBASE_AUTH_DOMAIN or f"{settings.FIREBASE_PROJECT_ID}.firebaseapp.com",
+                    "projectId": settings.FIREBASE_PROJECT_ID, "appId": settings.FIREBASE_APP_ID}
+    return {"firebase": firebase, "google": bool(settings.GOOGLE_CLIENT_ID), "googleClientId": settings.GOOGLE_CLIENT_ID or None,
             "demo": settings.ALLOW_DEMO_LOGIN, "allowedDomains": settings.ALLOWED_EMAIL_DOMAINS}
+
+
+async def _login_with_email(email: str, provider: str, response: Response):
+    email = email.strip().lower()
+    if settings.ALLOWED_EMAIL_DOMAINS and email.split("@")[-1] not in settings.ALLOWED_EMAIL_DOMAINS:
+        raise HTTPException(status_code=403, detail=f"Solo se permiten cuentas de {', '.join(settings.ALLOWED_EMAIL_DOMAINS)}")
+    user = await db.find_user_by_email(email)
+    if not user:
+        raise HTTPException(status_code=403, detail=f"{email} no está registrado en Timia Hub. Pide al PM que te agregue en Administración › Equipo.")
+    set_session_cookie(response, create_session_token(user, provider))
+    return {"user": public_user(user), "provider": provider}
+
+
+@router.post("/firebase")
+async def login_firebase(body: FirebaseBody, request: Request, response: Response):
+    """Login con Firebase Authentication (proveedor Google): verifica el ID token de Firebase."""
+    rate_limit(request)
+    if not settings.FIREBASE_PROJECT_ID:
+        raise HTTPException(status_code=400, detail="Firebase no está configurado (FIREBASE_PROJECT_ID)")
+    try:
+        from google.auth.transport import requests as g_requests
+        from google.oauth2 import id_token
+        info = id_token.verify_firebase_token(body.idToken, g_requests.Request(), audience=settings.FIREBASE_PROJECT_ID, clock_skew_in_seconds=10)
+    except Exception:
+        raise HTTPException(status_code=401, detail="Token de Firebase inválido o expirado")
+    email = str(info.get("email", "")).lower()
+    if not email or not info.get("email_verified", False):
+        raise HTTPException(status_code=401, detail="Correo no verificado por el proveedor")
+    return await _login_with_email(email, "firebase", response)
 
 
 @router.post("/google")
@@ -42,13 +79,7 @@ async def login_google(body: GoogleBody, request: Request, response: Response):
     email = str(info.get("email", "")).lower()
     if not info.get("email_verified", False) or not email:
         raise HTTPException(status_code=401, detail="Correo de Google no verificado")
-    if settings.ALLOWED_EMAIL_DOMAINS and email.split("@")[-1] not in settings.ALLOWED_EMAIL_DOMAINS:
-        raise HTTPException(status_code=403, detail=f"Solo se permiten cuentas de {', '.join(settings.ALLOWED_EMAIL_DOMAINS)}")
-    user = await db.find_user_by_email(email)
-    if not user:
-        raise HTTPException(status_code=403, detail=f"{email} no está registrado en Timia Hub. Pide al PM que te agregue en Administración › Equipo.")
-    set_session_cookie(response, create_session_token(user, "google"))
-    return {"user": public_user(user), "provider": "google"}
+    return await _login_with_email(email, "google", response)
 
 
 @router.get("/demo-accounts")
@@ -67,7 +98,7 @@ async def login_demo(body: DemoBody, request: Request, response: Response):
     """Login sin contraseña con una cuenta del panel. Solo si ALLOW_DEMO_LOGIN (por defecto: cuando no hay Google)."""
     rate_limit(request)
     if not settings.ALLOW_DEMO_LOGIN:
-        raise HTTPException(status_code=403, detail="El acceso demo está desactivado; usa Google")
+        raise HTTPException(status_code=403, detail="El acceso demo está desactivado; inicia sesión con Google")
     user = await db.find_user_by_id(body.userId)
     if not user:
         raise HTTPException(status_code=404, detail="Usuario no encontrado o inactivo")

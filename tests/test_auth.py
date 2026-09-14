@@ -41,3 +41,27 @@ def test_permissions_catalog(client):
     login(client, "u-rodolfo")
     p = client.get("/api/permissions").json()
     assert "matrix" in p and p["matrix"]["account_manager"] and "tasks.view" in p["matrix"]["developer"] and set(p["roles"]) == {"account_manager", "pm", "tech_lead", "developer"}
+
+
+def test_firebase_not_configured(client):
+    r = client.post("/api/auth/firebase", json={"idToken": "x"})
+    assert r.status_code == 400
+    assert client.get("/api/auth/config").json()["firebase"] is None
+
+
+def test_firebase_configured_disables_demo_and_rejects_bad_token(monkeypatch):
+    import importlib, app.config as cfg
+    monkeypatch.setenv("FIREBASE_PROJECT_ID", "timia-hub"); monkeypatch.setenv("FIREBASE_API_KEY", "AIza-x"); monkeypatch.setenv("FIREBASE_APP_ID", "1:1:web:x")
+    importlib.reload(cfg)
+    assert cfg.settings.ALLOW_DEMO_LOGIN is False
+    import app.routers.auth as auth_mod
+    monkeypatch.setattr(auth_mod, "settings", cfg.settings)
+    import app.db as dbmod, app.main as m, app.security as sec
+    from mongomock_motor import AsyncMongoMockClient
+    from fastapi.testclient import TestClient
+    monkeypatch.setattr(dbmod, "AsyncIOMotorClient", lambda *a, **k: AsyncMongoMockClient()); sec._hits.clear()
+    with TestClient(m.app) as c:
+        conf = c.get("/api/auth/config").json()
+        assert conf["firebase"]["projectId"] == "timia-hub" and conf["firebase"]["authDomain"] == "timia-hub.firebaseapp.com"
+        assert c.post("/api/auth/firebase", json={"idToken": "invalido"}).status_code == 401
+    monkeypatch.delenv("FIREBASE_PROJECT_ID"); monkeypatch.delenv("FIREBASE_API_KEY"); monkeypatch.delenv("FIREBASE_APP_ID"); importlib.reload(cfg); monkeypatch.setattr(auth_mod, "settings", cfg.settings)
