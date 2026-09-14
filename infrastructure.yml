@@ -1,0 +1,307 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Timia Hub API - ECS Fargate + ALB (imagen en ECR). Requiere el stack base (infrastructure_dev_base.yml)'
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label: { default: "Configuracion General" }
+        Parameters: [ProjectName, AppName, EnvironmentName, CostCenter, Owner, Region]
+      - Label: { default: "Imagen y capacidad" }
+        Parameters: [ImageTag, DesiredCount]
+      - Label: { default: "Autenticacion (ver .env.example del repo)" }
+        Parameters: [SessionSecret, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
+    ParameterLabels:
+      ProjectName: { default: "Nombre del Proyecto" }
+      AppName: { default: "Nombre de la Aplicacion" }
+      EnvironmentName: { default: "Ambiente" }
+      CostCenter: { default: "Centro de Costos" }
+      Owner: { default: "Propietario" }
+      Region: { default: "Region AWS" }
+      ImageTag: { default: "Tag de la imagen en ECR" }
+      DesiredCount: { default: "Numero de tareas" }
+      SessionSecret: { default: "SESSION_SECRET" }
+      GoogleClientId: { default: "GOOGLE_CLIENT_ID [GOOGLE]" }
+      AllowedEmailDomains: { default: "ALLOWED_EMAIL_DOMAINS" }
+      AllowDemoLogin: { default: "ALLOW_DEMO_LOGIN" }
+      FrontendOrigin: { default: "Origen del front (CORS)" }
+      ApiKey: { default: "TIMIA_API_KEY (opcional)" }
+
+Parameters:
+  ProjectName: { Type: String, Default: 'timia', MinLength: 1, MaxLength: 20, AllowedPattern: '[a-zA-Z0-9\-]+' }
+  AppName: { Type: String, Default: 'hub-api', MinLength: 1, MaxLength: 20, AllowedPattern: '[a-zA-Z0-9\-]+' }
+  EnvironmentName: { Type: String, Default: 'dev', AllowedValues: [dev, stg, prd] }
+  CostCenter: { Type: String, Default: 'operations', MinLength: 1, MaxLength: 50 }
+  Owner: { Type: String, Default: 'timia-hub', MinLength: 1, MaxLength: 50 }
+  Region: { Type: String, Default: 'us-east-1', AllowedValues: [us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-central-1, sa-east-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2] }
+  ImageTag:
+    Type: String
+    Description: 'Tag publicado en el repositorio ECR (el pipeline usa el SHA del commit o "latest")'
+    Default: 'latest'
+  DesiredCount: { Type: Number, Default: 1, MinValue: 0, MaxValue: 4 }
+  SessionSecret:
+    Type: String
+    Description: 'Secreto para firmar sesiones (openssl rand -base64 48)'
+    NoEcho: true
+    MinLength: 32
+  GoogleClientId:
+    Type: String
+    Description: 'Client ID OAuth "Aplicacion web" (vacio = login demo)'
+    Default: ''
+    NoEcho: true
+  AllowedEmailDomains: { Type: String, Default: 'timia.ai' }
+  AllowDemoLogin:
+    Type: String
+    Description: 'Vacio = demo activo solo sin Google · true/false para forzar'
+    Default: ''
+    AllowedValues: ['', 'true', 'false']
+  FrontendOrigin:
+    Type: String
+    Description: 'URL del front (Amplify o dominio) para CORS y cookies. Ej: https://main.d123.amplifyapp.com'
+    AllowedPattern: '^https?:\/\/.*'
+  ApiKey: { Type: String, Default: '', NoEcho: true }
+
+Mappings:
+  EnvironmentMap:
+    dev: { Cpu: '256', Memory: '512', LogRetention: '30' }
+    stg: { Cpu: '512', Memory: '1024', LogRetention: '30' }
+    prd: { Cpu: '1024', Memory: '2048', LogRetention: '90' }
+
+Conditions:
+  IsPrd: !Equals [!Ref EnvironmentName, 'prd']
+
+Resources:
+  # ─── Registro de imagenes ───────────────────────────────────────────────────
+  EcrRepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      ImageScanningConfiguration: { ScanOnPush: true }
+      LifecyclePolicy:
+        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"Conservar 20 imagenes","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":20},"action":{"type":"expire"}}]}'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+  # ─── Secretos de la aplicacion ──────────────────────────────────────────────
+  AppSecrets:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub '${ProjectName}/${EnvironmentName}/${AppName}'
+      SecretString: !Sub '{"SESSION_SECRET":"${SessionSecret}","GOOGLE_CLIENT_ID":"${GoogleClientId}","TIMIA_API_KEY":"${ApiKey}"}'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+  # ─── Red / balanceador ──────────────────────────────────────────────────────
+  AlbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-alb-sg'
+      GroupDescription: 'ALB publico (80/443)'
+      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      SecurityGroupIngress:
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0 }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  ServiceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-svc-sg'
+      GroupDescription: 'Tareas Fargate: solo desde el ALB'
+      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      SecurityGroupIngress:
+        - { IpProtocol: tcp, FromPort: 8000, ToPort: 8000, SourceSecurityGroupId: !Ref AlbSecurityGroup }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      Scheme: internet-facing
+      Type: application
+      SecurityGroups: [!Ref AlbSecurityGroup]
+      Subnets: !Split [',', { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-PublicSubnets' }]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  TargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      Port: 8000
+      Protocol: HTTP
+      TargetType: ip
+      HealthCheckPath: /api/health
+      HealthCheckIntervalSeconds: 30
+      HealthyThresholdCount: 2
+      UnhealthyThresholdCount: 3
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  HttpListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref LoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions: [{ Type: forward, TargetGroupArn: !Ref TargetGroup }]
+  # HTTPS: agregar un Listener 443 con certificado ACM cuando exista el dominio (api.<dominio>).
+
+  # ─── ECS Fargate ────────────────────────────────────────────────────────────
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub '${ProjectName}-${EnvironmentName}'
+      ClusterSettings: [{ Name: containerInsights, Value: !If [IsPrd, enabled, disabled] }]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/ecs/${ProjectName}-${AppName}-${EnvironmentName}'
+      RetentionInDays: !FindInMap [EnvironmentMap, !Ref EnvironmentName, LogRetention]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  ExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-exec'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{ Effect: Allow, Principal: { Service: ecs-tasks.amazonaws.com }, Action: sts:AssumeRole }]
+      ManagedPolicyArns: ['arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy']
+      Policies:
+        - PolicyName: secrets
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [secretsmanager:GetSecretValue]
+                Resource:
+                  - !Ref AppSecrets
+                  - { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-MongoUrlSecretArn' }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      Cpu: !FindInMap [EnvironmentMap, !Ref EnvironmentName, Cpu]
+      Memory: !FindInMap [EnvironmentMap, !Ref EnvironmentName, Memory]
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !GetAtt ExecutionRole.Arn
+      ContainerDefinitions:
+        - Name: api
+          Image: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}-${AppName}-${EnvironmentName}:${ImageTag}'
+          PortMappings: [{ ContainerPort: 8000, Protocol: tcp }]
+          Environment:
+            - { Name: MONGO_DB, Value: !Sub '${ProjectName}${EnvironmentName}' }
+            - { Name: COOKIE_SECURE, Value: 'true' }
+            - { Name: COOKIE_SAMESITE, Value: 'none' }          # front y API en dominios distintos
+            - { Name: CORS_ORIGINS, Value: !Ref FrontendOrigin }
+            - { Name: ALLOWED_EMAIL_DOMAINS, Value: !Ref AllowedEmailDomains }
+            - { Name: ALLOW_DEMO_LOGIN, Value: !Ref AllowDemoLogin }
+            - { Name: SEED_ON_START, Value: 'true' }
+          Secrets:
+            - { Name: MONGO_URL, ValueFrom: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-MongoUrlSecretArn' } }
+            - { Name: SESSION_SECRET, ValueFrom: !Sub '${AppSecrets}:SESSION_SECRET::' }
+            - { Name: GOOGLE_CLIENT_ID, ValueFrom: !Sub '${AppSecrets}:GOOGLE_CLIENT_ID::' }
+            - { Name: TIMIA_API_KEY, ValueFrom: !Sub '${AppSecrets}:TIMIA_API_KEY::' }
+          HealthCheck:
+            Command: ['CMD-SHELL', 'python -c "import urllib.request;urllib.request.urlopen(\"http://localhost:8000/api/health\")" || exit 1']
+            Interval: 30
+            Timeout: 5
+            Retries: 3
+            StartPeriod: 30
+          LogConfiguration:
+            LogDriver: awslogs
+            Options: { awslogs-group: !Ref LogGroup, awslogs-region: !Ref 'AWS::Region', awslogs-stream-prefix: api }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  Service:
+    Type: AWS::ECS::Service
+    DependsOn: HttpListener
+    Properties:
+      ServiceName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      Cluster: !Ref Cluster
+      LaunchType: FARGATE
+      DesiredCount: !Ref DesiredCount
+      TaskDefinition: !Ref TaskDefinition
+      HealthCheckGracePeriodSeconds: 60
+      DeploymentConfiguration: { MinimumHealthyPercent: 100, MaximumPercent: 200 }
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: DISABLED
+          SecurityGroups: [!Ref ServiceSecurityGroup]
+          Subnets: !Split [',', { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-PrivateSubnets' }]
+      LoadBalancers: [{ ContainerName: api, ContainerPort: 8000, TargetGroupArn: !Ref TargetGroup }]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+Outputs:
+  ApiUrl:
+    Description: 'URL de la API (usar como VITE_API_URL / window.TIMIA_API_URL en el front)'
+    Value: !Sub 'http://${LoadBalancer.DNSName}'
+    Export: { Name: !Sub '${AWS::StackName}-ApiUrl' }
+  EcrRepositoryUri:
+    Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}-${AppName}-${EnvironmentName}'
+    Export: { Name: !Sub '${AWS::StackName}-EcrRepositoryUri' }
+  ClusterName: { Value: !Ref Cluster }
+  ServiceName: { Value: !GetAtt Service.Name }
+  LogGroupName: { Value: !Ref LogGroup }
