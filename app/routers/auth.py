@@ -36,13 +36,17 @@ async def auth_config():
             "demo": settings.ALLOW_DEMO_LOGIN, "allowedDomains": settings.ALLOWED_EMAIL_DOMAINS}
 
 
-async def _login_with_email(email: str, provider: str, response: Response):
+async def _login_with_email(email: str, provider: str, response: Response, name: str = ""):
+    """Autenticado por Google ≠ autorizado: el correo debe existir y estar activo en timia_admin_users.
+    Si es del dominio permitido pero no está registrado, queda como solicitud de acceso pendiente."""
     email = email.strip().lower()
     if settings.ALLOWED_EMAIL_DOMAINS and email.split("@")[-1] not in settings.ALLOWED_EMAIL_DOMAINS:
         raise HTTPException(status_code=403, detail=f"Solo se permiten cuentas de {', '.join(settings.ALLOWED_EMAIL_DOMAINS)}")
     user = await db.find_user_by_email(email)
     if not user:
-        raise HTTPException(status_code=403, detail=f"{email} no está registrado en Timia Hub. Pide al PM que te agregue en Administración › Equipo.")
+        req = await db.upsert_access_request(email, name, provider)
+        raise HTTPException(status_code=403, detail={"code": "pending_approval", "email": email, "requestedAt": req.get("requestedAt"),
+                                                     "message": f"{email} aún no tiene acceso a Timia Hub. Tu solicitud quedó registrada; un PM o el gerente de cuenta debe aprobarla en Administración › Solicitudes."})
     set_session_cookie(response, create_session_token(user, provider))
     return {"user": public_user(user), "provider": provider}
 
@@ -62,7 +66,7 @@ async def login_firebase(body: FirebaseBody, request: Request, response: Respons
     email = str(info.get("email", "")).lower()
     if not email or not info.get("email_verified", False):
         raise HTTPException(status_code=401, detail="Correo no verificado por el proveedor")
-    return await _login_with_email(email, "firebase", response)
+    return await _login_with_email(email, "firebase", response, name=str(info.get("name", "")))
 
 
 @router.post("/google")
@@ -79,7 +83,7 @@ async def login_google(body: GoogleBody, request: Request, response: Response):
     email = str(info.get("email", "")).lower()
     if not info.get("email_verified", False) or not email:
         raise HTTPException(status_code=401, detail="Correo de Google no verificado")
-    return await _login_with_email(email, "google", response)
+    return await _login_with_email(email, "google", response, name=str(info.get("name", "")))
 
 
 @router.get("/demo-accounts")
