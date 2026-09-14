@@ -110,6 +110,7 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
 # Colección → (permiso para escribir, alcance, opciones)
 KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_admin_users":      {"perm": "team.manage",       "scope": "global"},
+    "timia_access_requests":  {"perm": "team.manage",       "scope": "global"},
     "timia_project_roles":    {"perm": "team.manage",       "scope": "global"},
     "timia_admin_projects":   {"perm": "projects.manage",   "scope": "global"},
     "timia_role_permissions": {"perm": "roles.manage",      "scope": "global"},

@@ -58,7 +58,11 @@ tests/             pytest (mongomock)
   (`tasks.update_status`), `comments` (`tasks.comment`) o `assigneeIds` (`tasks.assign`) de tareas existentes.
 - El servidor calcula el **diff** entre lo guardado y lo enviado; escrituras sin cambios siempre pasan.
 
-## Login con Google (Firebase Authentication)
+## Login con Google (Firebase Authentication) y autorización
+Autenticarse con Google **no** da acceso: el correo debe existir y estar activo en `timia_admin_users` (Administración › Equipo).
+Si es del dominio permitido pero no está registrado, la API responde 403 `pending_approval` y lo deja en `timia_access_requests`;
+un usuario con `team.manage` (PM / gerente) lo aprueba desde el front asignando rol y proyectos.
+
 Ver `.env.example` (sección `[GOOGLE]`). Con `FIREBASE_PROJECT_ID` + `FIREBASE_API_KEY` el front usa Firebase Auth
 (popup de Google) y la API verifica el ID token de Firebase contra el proyecto. El correo debe existir en
 **Administración › Equipo** (de ahí salen rol y proyectos). Alternativa sin Firebase: `GOOGLE_CLIENT_ID` (GIS).
