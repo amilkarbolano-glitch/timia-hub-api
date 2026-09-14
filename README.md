@@ -34,7 +34,8 @@ tests/             pytest (mongomock)
 |---|---|---|---|
 | GET | `/api/health` | — | estado, nº de colecciones, métodos de login |
 | GET | `/api/auth/config` | — | `{google, googleClientId, demo, allowedDomains}` |
-| POST | `/api/auth/google` | — | `{credential}` (ID token de Google) → cookie de sesión + `user` |
+| POST | `/api/auth/firebase` | — | `{idToken}` (Firebase Auth, proveedor Google) → cookie de sesión + `user` |
+| POST | `/api/auth/google` | — | `{credential}` (ID token de Google Identity Services, alternativa) → sesión |
 | POST | `/api/auth/demo` | — | `{userId}` → sesión (solo si `ALLOW_DEMO_LOGIN`) |
 | GET | `/api/auth/demo-accounts` | — | cuentas del panel (solo demo) |
 | GET | `/api/auth/me` | sesión | `user` + `permissions` efectivos |
@@ -57,9 +58,10 @@ tests/             pytest (mongomock)
   (`tasks.update_status`), `comments` (`tasks.comment`) o `assigneeIds` (`tasks.assign`) de tareas existentes.
 - El servidor calcula el **diff** entre lo guardado y lo enviado; escrituras sin cambios siempre pasan.
 
-## Google Sign-In
-Ver `.env.example` (sección `[GOOGLE]`). El front muestra el botón oficial de Google cuando `GOOGLE_CLIENT_ID`
-está definido; el correo debe existir en **Administración › Equipo** (de ahí salen rol y proyectos).
+## Login con Google (Firebase Authentication)
+Ver `.env.example` (sección `[GOOGLE]`). Con `FIREBASE_PROJECT_ID` + `FIREBASE_API_KEY` el front usa Firebase Auth
+(popup de Google) y la API verifica el ID token de Firebase contra el proyecto. El correo debe existir en
+**Administración › Equipo** (de ahí salen rol y proyectos). Alternativa sin Firebase: `GOOGLE_CLIENT_ID` (GIS).
 
 ## Modelo en Mongo
 ```js
