@@ -100,6 +100,26 @@ async def find_user_by_email(email: str) -> dict | None:
     return None
 
 
+ACCESS_REQUESTS_KEY = "timia_access_requests"
+
+
+async def upsert_access_request(email: str, name: str, provider: str) -> dict:
+    """Registra (o refresca) la solicitud de acceso de un correo del dominio que aún no está en el panel."""
+    email = email.strip().lower()
+    reqs = await read_key(ACCESS_REQUESTS_KEY) or []
+    existing = next((r for r in reqs if r.get("email") == email), None)
+    if existing and existing.get("status") == "pending":
+        existing["lastAttemptAt"] = now_iso(); existing["attempts"] = int(existing.get("attempts", 1)) + 1
+    elif existing:
+        existing.update({"status": "pending", "requestedAt": now_iso(), "lastAttemptAt": now_iso(), "attempts": 1, "name": name or existing.get("name", "")})
+    else:
+        existing = {"id": f"ar-{email}", "email": email, "name": name or "", "provider": provider, "status": "pending",
+                    "requestedAt": now_iso(), "lastAttemptAt": now_iso(), "attempts": 1}
+        reqs.append(existing)
+    await write_key(ACCESS_REQUESTS_KEY, reqs, by="login")
+    return existing
+
+
 async def find_user_by_id(user_id: str) -> dict | None:
     doc = await db()[USERS_KEY].find_one({"_id": user_id}, {"item": 1})
     return doc["item"] if doc and doc["item"].get("active", True) else None

@@ -1,0 +1,38 @@
+# Despliegue a AWS: construye la imagen, la publica en ECR y actualiza el servicio ECS.
+# Solo se ejecuta cuando DevOps haya creado la infraestructura (stacks CloudFormation) y configurado:
+#   Settings → Secrets: AWS_ROLE_ARN (rol asumible por GitHub OIDC)
+#   Settings → Variables: AWS_DEPLOY_ENABLED=true, AWS_REGION, PROJECT_NAME (timia), APP_NAME (hub-api)
+# Mientras AWS_DEPLOY_ENABLED no sea "true", el job se omite (no falla). También se puede lanzar a mano.
+name: Deploy API → AWS (ECS)
+on:
+  push:
+    branches: [develop, main]
+  workflow_dispatch:
+env:
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  PROJECT_NAME: ${{ vars.PROJECT_NAME || 'timia' }}
+  APP_NAME: ${{ vars.APP_NAME || 'hub-api' }}
+jobs:
+  deploy:
+    if: ${{ vars.AWS_DEPLOY_ENABLED == 'true' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    permissions: { id-token: write, contents: read }
+    environment: ${{ github.ref == 'refs/heads/main' && 'prd' || 'dev' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ambiente segun rama
+        run: echo "ENV_NAME=${{ github.ref == 'refs/heads/main' && 'prd' || 'dev' }}" >> $GITHUB_ENV
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - uses: aws-actions/amazon-ecr-login@v2
+        id: ecr
+      - name: Build & push
+        run: |
+          REPO=${{ steps.ecr.outputs.registry }}/${PROJECT_NAME}-${APP_NAME}-${ENV_NAME}
+          docker build -t $REPO:${GITHUB_SHA::7} -t $REPO:latest .
+          docker push $REPO:${GITHUB_SHA::7} && docker push $REPO:latest
+      - name: Actualizar servicio ECS (nueva revision con la imagen)
+        run: |
+          aws ecs update-service --cluster ${PROJECT_NAME}-${ENV_NAME} --service ${PROJECT_NAME}-${APP_NAME}-${ENV_NAME} --force-new-deployment --region $AWS_REGION

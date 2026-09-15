@@ -1,0 +1,350 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Timia Hub - Infraestructura base: VPC, subredes, NAT y Amazon DocumentDB (compatible MongoDB)'
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label: { default: "Configuracion General" }
+        Parameters: [ProjectName, EnvironmentName, Region, CostCenter, Owner]
+      - Label: { default: "Base de datos (DocumentDB)" }
+        Parameters: [DBUsername, DBPassword, DBInstanceClass]
+    ParameterLabels:
+      ProjectName: { default: "Nombre del Proyecto" }
+      EnvironmentName: { default: "Ambiente" }
+      Region: { default: "Region AWS" }
+      CostCenter: { default: "Centro de Costos" }
+      Owner: { default: "Propietario" }
+      DBUsername: { default: "Usuario DB" }
+      DBPassword: { default: "Contrasena DB" }
+      DBInstanceClass: { default: "Tamano instancia DocumentDB" }
+
+Parameters:
+  ProjectName:
+    Type: String
+    Description: 'Nombre del proyecto (ej: timia)'
+    Default: 'timia'
+    MinLength: 1
+    MaxLength: 20
+    AllowedPattern: '[a-zA-Z0-9\-]+'
+  EnvironmentName:
+    Type: String
+    Default: 'dev'
+    AllowedValues: [dev, stg, prd]
+  CostCenter:
+    Type: String
+    Default: 'operations'
+    MinLength: 1
+    MaxLength: 50
+  Owner:
+    Type: String
+    Default: 'timia-hub'
+    MinLength: 1
+    MaxLength: 50
+  Region:
+    Type: String
+    Default: 'us-east-1'
+    AllowedValues: [us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-central-1, sa-east-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2]
+  DBUsername:
+    Type: String
+    Description: 'Usuario administrador de DocumentDB'
+    Default: 'timiaadmin'
+    MinLength: 1
+    MaxLength: 16
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    NoEcho: true
+  DBPassword:
+    Type: String
+    Description: 'Contrasena (8-100 caracteres, sin / " @)'
+    MinLength: 8
+    MaxLength: 100
+    NoEcho: true
+  DBInstanceClass:
+    Type: String
+    Default: 'db.t3.medium'
+    AllowedValues: [db.t3.medium, db.t4g.medium, db.r6g.large, db.r6g.xlarge]
+
+Mappings:
+  EnvironmentMap:
+    dev: { CIDR: '10.1.0.0/16', PublicSubnet1CIDR: '10.1.1.0/24', PublicSubnet2CIDR: '10.1.2.0/24', PrivateSubnet1CIDR: '10.1.3.0/24', PrivateSubnet2CIDR: '10.1.4.0/24', BackupRetentionPeriod: '1', DeletionProtection: 'false', Instances: '1' }
+    stg: { CIDR: '10.2.0.0/16', PublicSubnet1CIDR: '10.2.1.0/24', PublicSubnet2CIDR: '10.2.2.0/24', PrivateSubnet1CIDR: '10.2.3.0/24', PrivateSubnet2CIDR: '10.2.4.0/24', BackupRetentionPeriod: '3', DeletionProtection: 'false', Instances: '1' }
+    prd: { CIDR: '10.0.0.0/16', PublicSubnet1CIDR: '10.0.1.0/24', PublicSubnet2CIDR: '10.0.2.0/24', PrivateSubnet1CIDR: '10.0.3.0/24', PrivateSubnet2CIDR: '10.0.4.0/24', BackupRetentionPeriod: '7', DeletionProtection: 'true', Instances: '2' }
+
+Conditions:
+  IsPrd: !Equals [!Ref EnvironmentName, 'prd']
+
+Resources:
+  # ─── Red ────────────────────────────────────────────────────────────────────
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !FindInMap [EnvironmentMap, !Ref EnvironmentName, CIDR]
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - { Key: Name, Value: !Sub '${ProjectName}-${EnvironmentName}' }
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: { InternetGatewayId: !Ref InternetGateway, VpcId: !Ref VPC }
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [0, !GetAZs '']
+      CidrBlock: !FindInMap [EnvironmentMap, !Ref EnvironmentName, PublicSubnet1CIDR]
+      MapPublicIpOnLaunch: true
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [1, !GetAZs '']
+      CidrBlock: !FindInMap [EnvironmentMap, !Ref EnvironmentName, PublicSubnet2CIDR]
+      MapPublicIpOnLaunch: true
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [0, !GetAZs '']
+      CidrBlock: !FindInMap [EnvironmentMap, !Ref EnvironmentName, PrivateSubnet1CIDR]
+      MapPublicIpOnLaunch: false
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [1, !GetAZs '']
+      CidrBlock: !FindInMap [EnvironmentMap, !Ref EnvironmentName, PrivateSubnet2CIDR]
+      MapPublicIpOnLaunch: false
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  NatGatewayEIP:
+    Type: AWS::EC2::EIP
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      Domain: vpc
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatGatewayEIP.AllocationId
+      SubnetId: !Ref PublicSubnet1
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties: { RouteTableId: !Ref PublicRouteTable, DestinationCidrBlock: 0.0.0.0/0, GatewayId: !Ref InternetGateway }
+  PrivateRoute:
+    Type: AWS::EC2::Route
+    Properties: { RouteTableId: !Ref PrivateRouteTable, DestinationCidrBlock: 0.0.0.0/0, NatGatewayId: !Ref NatGateway }
+  PublicSubnet1RTA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnet1 }
+  PublicSubnet2RTA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PublicRouteTable, SubnetId: !Ref PublicSubnet2 }
+  PrivateSubnet1RTA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PrivateRouteTable, SubnetId: !Ref PrivateSubnet1 }
+  PrivateSubnet2RTA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: { RouteTableId: !Ref PrivateRouteTable, SubnetId: !Ref PrivateSubnet2 }
+
+  # ─── DocumentDB (MongoDB compatible) — solo accesible desde la VPC ───────────
+  DocDBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub '${ProjectName}-${EnvironmentName}-docdb-sg'
+      GroupDescription: 'DocumentDB: acceso solo desde dentro de la VPC (API)'
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - { IpProtocol: tcp, FromPort: 27017, ToPort: 27017, CidrIp: !FindInMap [EnvironmentMap, !Ref EnvironmentName, CIDR] }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  DocDBSubnetGroup:
+    Type: AWS::DocDB::DBSubnetGroup
+    Properties:
+      DBSubnetGroupName: !Sub '${ProjectName}-${EnvironmentName}-docdb-subnets'
+      DBSubnetGroupDescription: 'Subredes privadas para DocumentDB'
+      SubnetIds: [!Ref PrivateSubnet1, !Ref PrivateSubnet2]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  DocDBParameterGroup:
+    Type: AWS::DocDB::DBClusterParameterGroup
+    Properties:
+      Family: docdb5.0
+      Description: 'Timia Hub - TLS habilitado'
+      Parameters: { tls: enabled }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  DocDBCluster:
+    Type: AWS::DocDB::DBCluster
+    Properties:
+      DBClusterIdentifier: !Sub '${ProjectName}-${EnvironmentName}-docdb'
+      EngineVersion: '5.0.0'
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBSubnetGroupName: !Ref DocDBSubnetGroup
+      DBClusterParameterGroupName: !Ref DocDBParameterGroup
+      VpcSecurityGroupIds: [!Ref DocDBSecurityGroup]
+      BackupRetentionPeriod: !FindInMap [EnvironmentMap, !Ref EnvironmentName, BackupRetentionPeriod]
+      PreferredBackupWindow: '03:00-04:00'
+      PreferredMaintenanceWindow: 'mon:04:00-mon:05:00'
+      DeletionProtection: !FindInMap [EnvironmentMap, !Ref EnvironmentName, DeletionProtection]
+      StorageEncrypted: true
+      Port: 27017
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  DocDBInstance1:
+    Type: AWS::DocDB::DBInstance
+    Properties:
+      DBClusterIdentifier: !Ref DocDBCluster
+      DBInstanceClass: !Ref DBInstanceClass
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+  DocDBInstance2:
+    Type: AWS::DocDB::DBInstance
+    Condition: IsPrd
+    Properties:
+      DBClusterIdentifier: !Ref DocDBCluster
+      DBInstanceClass: !Ref DBInstanceClass
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+  # ─── Secreto con la cadena de conexion (lo lee la API) ──────────────────────
+  MongoUrlSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub '${ProjectName}/${EnvironmentName}/MONGO_URL'
+      Description: 'Cadena de conexion a DocumentDB para timia-hub-api'
+      SecretString: !Sub 'mongodb://${DBUsername}:${DBPassword}@${DocDBCluster.Endpoint}:27017/?tls=true&tlsCAFile=/app/global-bundle.pem&retryWrites=false'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+Outputs:
+  VpcId:
+    Value: !Ref VPC
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+  PublicSubnets:
+    Value: !Join [',', [!Ref PublicSubnet1, !Ref PublicSubnet2]]
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-PublicSubnets' }
+  PrivateSubnets:
+    Value: !Join [',', [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-PrivateSubnets' }
+  DocDBEndpoint:
+    Value: !GetAtt DocDBCluster.Endpoint
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-DocDBEndpoint' }
+  MongoUrlSecretArn:
+    Value: !Ref MongoUrlSecret
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-MongoUrlSecretArn' }
+  DocDBSecurityGroupId:
+    Value: !Ref DocDBSecurityGroup
+    Export: { Name: !Sub '${ProjectName}-${EnvironmentName}-DocDBSecurityGroupId' }

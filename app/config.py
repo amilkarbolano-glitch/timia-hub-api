@@ -31,11 +31,16 @@ class Settings:
     COOKIE_NAME: str = _env("COOKIE_NAME") or "timia_session"
     COOKIE_SECURE: bool = _bool("COOKIE_SECURE", False)     # true detrás de HTTPS
     COOKIE_SAMESITE: str = _env("COOKIE_SAMESITE") or "lax"
-    # Google Sign-In (OIDC). Vacío ⇒ solo modo demo
-    GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "").strip()
+    # Firebase Authentication (proveedor Google). Vacío ⇒ ver GOOGLE_CLIENT_ID / demo
+    FIREBASE_PROJECT_ID: str = _env("FIREBASE_PROJECT_ID") or ""
+    FIREBASE_API_KEY: str = _env("FIREBASE_API_KEY") or ""          # config pública del front
+    FIREBASE_AUTH_DOMAIN: str = _env("FIREBASE_AUTH_DOMAIN") or ""
+    FIREBASE_APP_ID: str = _env("FIREBASE_APP_ID") or ""
+    # Google Sign-In directo (GIS/OIDC) — alternativa sin Firebase
+    GOOGLE_CLIENT_ID: str = _env("GOOGLE_CLIENT_ID") or ""
     ALLOWED_EMAIL_DOMAINS: list[str] = [d.strip().lower() for d in os.getenv("ALLOWED_EMAIL_DOMAINS", "").split(",") if d.strip()]
     # Login demo (cuentas del panel sin contraseña). Por defecto solo si no hay Google configurado
-    ALLOW_DEMO_LOGIN: bool = _bool("ALLOW_DEMO_LOGIN", _env("GOOGLE_CLIENT_ID") is None)
+    ALLOW_DEMO_LOGIN: bool = _bool("ALLOW_DEMO_LOGIN", _env("GOOGLE_CLIENT_ID") is None and _env("FIREBASE_PROJECT_ID") is None)
     # Acceso servicio-a-servicio (scripts, integraciones)
     API_KEY: str = os.getenv("TIMIA_API_KEY", "")
     CORS_ORIGINS: list[str] = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]

@@ -41,3 +41,62 @@ def test_permissions_catalog(client):
     login(client, "u-rodolfo")
     p = client.get("/api/permissions").json()
     assert "matrix" in p and p["matrix"]["account_manager"] and "tasks.view" in p["matrix"]["developer"] and set(p["roles"]) == {"account_manager", "pm", "tech_lead", "developer"}
+
+
+def test_firebase_not_configured(client):
+    r = client.post("/api/auth/firebase", json={"idToken": "x"})
+    assert r.status_code == 400
+    assert client.get("/api/auth/config").json()["firebase"] is None
+
+
+def test_firebase_configured_disables_demo_and_rejects_bad_token(monkeypatch):
+    import importlib, app.config as cfg
+    monkeypatch.setenv("FIREBASE_PROJECT_ID", "timia-hub"); monkeypatch.setenv("FIREBASE_API_KEY", "AIza-x"); monkeypatch.setenv("FIREBASE_APP_ID", "1:1:web:x")
+    importlib.reload(cfg)
+    assert cfg.settings.ALLOW_DEMO_LOGIN is False
+    import app.routers.auth as auth_mod
+    monkeypatch.setattr(auth_mod, "settings", cfg.settings)
+    import app.db as dbmod, app.main as m, app.security as sec
+    from mongomock_motor import AsyncMongoMockClient
+    from fastapi.testclient import TestClient
+    monkeypatch.setattr(dbmod, "AsyncIOMotorClient", lambda *a, **k: AsyncMongoMockClient()); sec._hits.clear()
+    with TestClient(m.app) as c:
+        conf = c.get("/api/auth/config").json()
+        assert conf["firebase"]["projectId"] == "timia-hub" and conf["firebase"]["authDomain"] == "timia-hub.firebaseapp.com"
+        assert c.post("/api/auth/firebase", json={"idToken": "invalido"}).status_code == 401
+    monkeypatch.delenv("FIREBASE_PROJECT_ID"); monkeypatch.delenv("FIREBASE_API_KEY"); monkeypatch.delenv("FIREBASE_APP_ID"); importlib.reload(cfg); monkeypatch.setattr(auth_mod, "settings", cfg.settings)
+
+
+def test_unregistered_domain_email_becomes_pending_request(client, monkeypatch):
+    import asyncio, app.db as dbmod, app.routers.auth as auth_mod
+    from fastapi import Response, HTTPException
+    async def run():
+        try:
+            await auth_mod._login_with_email("nuevo@timia.ai", "firebase", Response(), name="Nuevo Dev")
+        except HTTPException as e:
+            assert e.status_code == 403 and e.detail["code"] == "pending_approval"
+        reqs = await dbmod.read_key("timia_access_requests")
+        assert reqs and reqs[0]["email"] == "nuevo@timia.ai" and reqs[0]["status"] == "pending" and reqs[0]["name"] == "Nuevo Dev"
+        # segundo intento no duplica
+        try:
+            await auth_mod._login_with_email("nuevo@timia.ai", "firebase", Response())
+        except HTTPException:
+            pass
+        reqs = await dbmod.read_key("timia_access_requests")
+        assert len(reqs) == 1 and reqs[0]["attempts"] == 2
+        # correo fuera del dominio: rechazado sin registrar
+        auth_mod.settings.ALLOWED_EMAIL_DOMAINS = ["timia.ai"]
+        try:
+            await auth_mod._login_with_email("x@gmail.com", "firebase", Response())
+        except HTTPException as e:
+            assert e.status_code == 403 and "timia.ai" in str(e.detail)
+        assert len(await dbmod.read_key("timia_access_requests")) == 1
+    client.portal.call(run) if hasattr(client, "portal") else asyncio.get_event_loop().run_until_complete(run())
+
+
+def test_only_team_manage_can_touch_requests(client):
+    from conftest import login
+    login(client, "u-santiago")
+    assert client.put("/api/state/timia_access_requests", json={"value": [{"id": "ar-x", "email": "x@timia.ai", "status": "approved"}]}).status_code == 403
+    client.post("/api/auth/logout"); login(client, "u-juan")
+    assert client.put("/api/state/timia_access_requests", json={"value": [{"id": "ar-x", "email": "x@timia.ai", "status": "approved"}]}).status_code == 200
