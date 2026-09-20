@@ -1,0 +1,1077 @@
+{
+ "_version": "1.0.0",
+ "_note": "Seed del piloto: solo el proyecto MIGBD (SDATOOL-54364). Dataset completo en seed/db.full.json.",
+ "timia_admin_projects": [
+  {
+   "id": "MIGBD",
+   "name": "Migración BD a ADA",
+   "area": "Juan Pablo Arévalo",
+   "color": "#0e7490",
+   "priority": "Alta",
+   "client": "BBVA Colombia",
+   "startDate": "2026-02-18",
+   "active": true,
+   "sda": "SDATOOL-54364"
+  }
+ ],
+ "timia_admin_users": [
+  {
+   "id": "u-rodolfo",
+   "name": "Rodolfo Pereda",
+   "email": "rodolfo.pereda@timia.ai",
+   "role": "account_manager",
+   "projectIds": [
+    "MIGBD"
+   ],
+   "initials": "RP",
+   "avatarColor": "#dc2626",
+   "active": true,
+   "demo": true,
+   "areaLabel": "Gerente de cuenta · BBVA Colombia"
+  },
+  {
+   "id": "u-juan",
+   "name": "Juan Pablo Arévalo",
+   "email": "juanpablo.arevalo@timia.ai",
+   "role": "pm",
+   "projectIds": [
+    "MIGBD"
+   ],
+   "initials": "JA",
+   "avatarColor": "#7c3aed",
+   "active": true,
+   "demo": true,
+   "areaLabel": "Project Manager · Migración BD a ADA"
+  },
+  {
+   "id": "u-juliana",
+   "name": "Juliana Garzón",
+   "email": "juliana.garzon@timia.ai",
+   "role": "tech_lead",
+   "projectIds": [
+    "MIGBD"
+   ],
+   "initials": "JG",
+   "avatarColor": "#0f766e",
+   "active": true,
+   "areaLabel": "Líder técnico · Migración BD a ADA"
+  },
+  {
+   "id": "u-amilkar",
+   "name": "Amilkar José Bolaño",
+   "email": "amilkar.bolano@timia.ai",
+   "role": "tech_lead",
+   "projectIds": [
+    "MIGBD"
+   ],
+   "initials": "AB",
+   "avatarColor": "#7c3aed",
+   "active": true,
+   "demo": true,
+   "areaLabel": "Líder técnico · Migración BD a ADA"
+  },
+  {
+   "id": "u-santiago",
+   "name": "Santiago Coronado",
+   "email": "santiago.coronado@timia.ai",
+   "role": "developer",
+   "projectIds": [
+    "MIGBD"
+   ],
+   "initials": "SC",
+   "avatarColor": "#0e7490",
+   "active": true,
+   "areaLabel": "Desarrollador · Migración BD a ADA"
+  }
+ ],
+ "timia_project_roles": {},
+ "timia_ans_config": {
+  "Baja": 2,
+  "Media": 5,
+  "Alta": 10,
+  "Crítica": 15
+ },
+ "timia_bbva_ans_config": {
+  "Pendiente": 3,
+  "Enviado": 5,
+  "En revisión": 10,
+  "Observaciones": 5
+ },
+ "timia_holidays": [
+  {
+   "date": "2026-01-01",
+   "name": "Año Nuevo",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-01-12",
+   "name": "Reyes Magos",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-03-23",
+   "name": "San José",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-04-02",
+   "name": "Jueves Santo",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-04-03",
+   "name": "Viernes Santo",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-05-01",
+   "name": "Día del Trabajo",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-05-18",
+   "name": "Ascensión del Señor",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-06-08",
+   "name": "Corpus Christi",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-06-15",
+   "name": "Sagrado Corazón",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-06-29",
+   "name": "San Pedro y San Pablo",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-07-20",
+   "name": "Independencia",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-08-07",
+   "name": "Batalla de Boyacá",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-08-17",
+   "name": "Asunción de la Virgen",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-10-12",
+   "name": "Día de la Raza",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-11-02",
+   "name": "Todos los Santos",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-11-16",
+   "name": "Independencia de Cartagena",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-12-08",
+   "name": "Inmaculada Concepción",
+   "type": "nacional"
+  },
+  {
+   "date": "2026-12-25",
+   "name": "Navidad",
+   "type": "nacional"
+  }
+ ],
+ "timia_inv_stages": [
+  {
+   "id": "env-msd",
+   "label": "Env. MSD",
+   "group": "Inicio"
+  },
+  {
+   "id": "apr-msd",
+   "label": "Apr. MSD",
+   "group": "Inicio"
+  },
+  {
+   "id": "env-gob",
+   "label": "Env. Gob",
+   "group": "Inicio"
+  },
+  {
+   "id": "sch-work",
+   "label": "Sch. Work",
+   "group": "Inicio"
+  },
+  {
+   "id": "sol-live",
+   "label": "Sol. Live",
+   "group": "Inicio"
+  },
+  {
+   "id": "sch-live",
+   "label": "Sch. Live",
+   "group": "Inicio"
+  },
+  {
+   "id": "constr",
+   "label": "Construcción",
+   "group": "Construcción"
+  },
+  {
+   "id": "test-unit",
+   "label": "T. Unitarios",
+   "group": "Construcción"
+  },
+  {
+   "id": "test-acept",
+   "label": "T. Aceptación",
+   "group": "Construcción"
+  },
+  {
+   "id": "muestras",
+   "label": "Muestras",
+   "group": "QA"
+  },
+  {
+   "id": "prueb-work",
+   "label": "Prueb. Work",
+   "group": "QA"
+  },
+  {
+   "id": "dat-sandbox",
+   "label": "Dat. Sandbox",
+   "group": "QA"
+  },
+  {
+   "id": "dat-test",
+   "label": "Dat. Test",
+   "group": "QA"
+  },
+  {
+   "id": "valid",
+   "label": "Validación",
+   "group": "QA"
+  },
+  {
+   "id": "qlt",
+   "label": "Calidad",
+   "group": "QA"
+  },
+  {
+   "id": "prueb-qlt",
+   "label": "Prueb. QA",
+   "group": "QA"
+  },
+  {
+   "id": "sc",
+   "label": "Self-Cert.",
+   "group": "Certificación"
+  },
+  {
+   "id": "prueb-sc",
+   "label": "Prueb. SC",
+   "group": "Certificación"
+  },
+  {
+   "id": "cert-proc",
+   "label": "Cert. Proc.",
+   "group": "Certificación"
+  },
+  {
+   "id": "cert-qlt",
+   "label": "Cert. QA",
+   "group": "Certificación"
+  },
+  {
+   "id": "cert-sc",
+   "label": "Cert. SC",
+   "group": "Certificación"
+  },
+  {
+   "id": "jobs-proc",
+   "label": "Jobs Proc.",
+   "group": "Producción"
+  },
+  {
+   "id": "jobs-qlt",
+   "label": "Jobs QA",
+   "group": "Producción"
+  },
+  {
+   "id": "jobs-sc",
+   "label": "Jobs SC",
+   "group": "Producción"
+  },
+  {
+   "id": "gob-func",
+   "label": "Gob. Func.",
+   "group": "Inicio"
+  },
+  {
+   "id": "datax-constr",
+   "label": "DataX Constr.",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "datax-transfer",
+   "label": "Transfer",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "datax-do",
+   "label": "Data Object",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "datax-work",
+   "label": "DataX Work",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "datax-apr",
+   "label": "Apr. DataX",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "datax-prod",
+   "label": "Prom. Prod.",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "kirby-upd",
+   "label": "Kirby Upd.",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "kirby-work",
+   "label": "Kirby Work",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "qlt-upd",
+   "label": "QLT Upd.",
+   "group": "Ingesta DataX"
+  },
+  {
+   "id": "qlt-work",
+   "label": "QLT Work",
+   "group": "Ingesta DataX"
+  }
+ ],
+ "timia_plan_configs": {
+  "MIGBD": {
+   "projectId": "MIGBD",
+   "startDate": "2026-02-18",
+   "totalWeeks": 24,
+   "generatedAt": "2026-02-17T12:00:00.000Z",
+   "entregables": [
+    {
+     "id": "documentaci-n-",
+     "label": "I. Documentación y Gobierno",
+     "activities": [
+      {
+       "label": "Diagnóstico experto y resolución de preguntas técnicas",
+       "startWeek": 7,
+       "endWeek": 7
+      },
+      {
+       "label": "Elaboración de diccionarios técnicos",
+       "startWeek": 8,
+       "endWeek": 8
+      },
+      {
+       "label": "Inicialización en Nebula",
+       "startWeek": 8,
+       "endWeek": 8
+      },
+      {
+       "label": "Aprobación de la inicialización en nebula por parte de Gobierno técnico",
+       "startWeek": 9,
+       "endWeek": 9,
+       "bbva": true
+      },
+      {
+       "label": "Subida de diccionarios, revisión y validación por parte del equipo de Gobierno Técnico.",
+       "startWeek": 9,
+       "endWeek": 10
+      },
+      {
+       "label": "Creación de los Modelos de Solución del Dato (MSD)",
+       "startWeek": 9,
+       "endWeek": 9
+      },
+      {
+       "label": "Circuito de validación de los Modelos de Solución del Dato (MSD)",
+       "startWeek": 10,
+       "endWeek": 11,
+       "bbva": true
+      },
+      {
+       "label": "Solicitud y circuito de ACLs",
+       "startWeek": 11,
+       "endWeek": 11,
+       "bbva": true
+      },
+      {
+       "label": "Despliegue de esquemas en entorno previo (Work)",
+       "startWeek": 11,
+       "endWeek": 11
+      },
+      {
+       "label": "Solicitud y despliegue de esquemas en entornos Productivo (Live)",
+       "startWeek": 12,
+       "endWeek": 12,
+       "bbva": true
+      },
+      {
+       "label": "Creación de documentación técnica para el procesamiento (ETL + DT)",
+       "startWeek": 8,
+       "endWeek": 9
+      },
+      {
+       "label": "Validación y análisis definición funcional entregada",
+       "startWeek": 6,
+       "endWeek": 6
+      }
+     ]
+    },
+    {
+     "id": "transmisi-n-de-1",
+     "label": "II. Transmisión de Datos",
+     "activities": [
+      {
+       "label": "Gestión de acceso a los namespaces de DataX.",
+       "startWeek": 9,
+       "endWeek": 10,
+       "bbva": true
+      },
+      {
+       "label": "Creación de los adaptadores en ambiente Work y Live",
+       "startWeek": 10,
+       "endWeek": 10
+      },
+      {
+       "label": "Creación de Schemas de los Data Objects para la transferencia",
+       "startWeek": 10,
+       "endWeek": 11
+      },
+      {
+       "label": "Creación de los Data Objects para la transferencia",
+       "startWeek": 12,
+       "endWeek": 12
+      },
+      {
+       "label": "Creación de la transferencias",
+       "startWeek": 12,
+       "endWeek": 13
+      },
+      {
+       "label": "Pruebas en entornos previos (Work) de la transmisión de datos",
+       "startWeek": 14,
+       "endWeek": 14
+      },
+      {
+       "label": "Solicitud de credenciales para el adaptador de Tantia en producción",
+       "startWeek": 14,
+       "endWeek": 15,
+       "bbva": true
+      },
+      {
+       "label": "Publicación de componentes (DataX) y aprobación en entornos previos Work",
+       "startWeek": 15,
+       "endWeek": 16
+      },
+      {
+       "label": "Promoción de componentes (Live).",
+       "startWeek": 17,
+       "endWeek": 17
+      }
+     ]
+    },
+    {
+     "id": "desarrollo-de--2",
+     "label": "III. Desarrollo de Procesamientos",
+     "activities": [
+      {
+       "label": "Gestión de repositorios Bitbucket - Procesamiento",
+       "startWeek": 10,
+       "endWeek": 11
+      },
+      {
+       "label": "Construcción de procesamiento oper_tesoreria",
+       "startWeek": 12,
+       "endWeek": 15
+      },
+      {
+       "label": "Construcción de procesamiento histórico",
+       "startWeek": 15,
+       "endWeek": 16
+      },
+      {
+       "label": "Pruebas en entorno local - Procesamientos",
+       "startWeek": 16,
+       "endWeek": 16
+      },
+      {
+       "label": "Generación de datos, acompañamiento y VoBo de información generada",
+       "startWeek": 16,
+       "endWeek": 17,
+       "bbva": true
+      },
+      {
+       "label": "Construcción de Test unitarios y Test de Aceptación - Procesamientos",
+       "startWeek": 16,
+       "endWeek": 17
+      },
+      {
+       "label": "Despliegue y pruebas en entornos previos y creación de Jobs Dataproc (work)",
+       "startWeek": 17,
+       "endWeek": 18
+      },
+      {
+       "label": "Construcción reglas de calidad MVP",
+       "startWeek": 18,
+       "endWeek": 18
+      },
+      {
+       "label": "Construcción borrado Smart Cleaner",
+       "startWeek": 18,
+       "endWeek": 18
+      },
+      {
+       "label": "Certificación de calidad por el equipo de QA",
+       "startWeek": 19,
+       "endWeek": 20,
+       "bbva": true
+      },
+      {
+       "label": "Creación de Jobs Dataproc (live)",
+       "startWeek": 21,
+       "endWeek": 21
+      },
+      {
+       "label": "Validación y puesta en producción de componentes ADA",
+       "startWeek": 21,
+       "endWeek": 21
+      }
+     ]
+    },
+    {
+     "id": "ajuste-de-proc-3",
+     "label": "IV. Ajuste de Procesamientos Dynamic",
+     "activities": [
+      {
+       "label": "Análisis casuísticas presentadas",
+       "startWeek": 1,
+       "endWeek": 19
+      },
+      {
+       "label": "Ajuste documentación técnica para el procesamiento",
+       "startWeek": 5,
+       "endWeek": 19
+      },
+      {
+       "label": "Ajuste MSD del procesamiento",
+       "startWeek": 9,
+       "endWeek": 10
+      },
+      {
+       "label": "Gestión de repositorios Bitbucket - Procesamiento",
+       "startWeek": 1,
+       "endWeek": 1
+      },
+      {
+       "label": "Estandarización Dynamic Pricing (de Path a Table)",
+       "startWeek": 2,
+       "endWeek": 3
+      },
+      {
+       "label": "Ajuste de procesamiento Dynamic pricing - Duplicados",
+       "startWeek": 4,
+       "endWeek": 4
+      },
+      {
+       "label": "Ajuste de procesamiento Dynamic pricing - t_crdc_hdagpclpre_cli_prec_pref",
+       "startWeek": 5,
+       "endWeek": 5
+      },
+      {
+       "label": "Ajuste de procesamiento Dynamic pricing - t_crdc_udamkcamp_camp_prec_pref",
+       "startWeek": 5,
+       "endWeek": 5
+      },
+      {
+       "label": "Ajuste de procesamiento Dynamic pricing - t_crdc_udaxcopt_oper_tesoreria",
+       "startWeek": 19,
+       "endWeek": 19
+      },
+      {
+       "label": "Pruebas en entorno local - Procesamientos",
+       "startWeek": 6,
+       "endWeek": 20
+      }
+     ]
+    },
+    {
+     "id": "validaci-n-de--4",
+     "label": "V. Validación de Datos Dynamic",
+     "activities": [
+      {
+       "label": "Validación de datos generados",
+       "startWeek": 7,
+       "endWeek": 20
+      },
+      {
+       "label": "Acompañamiento VoBo de información generada",
+       "startWeek": 7,
+       "endWeek": 21,
+       "bbva": true
+      }
+     ]
+    },
+    {
+     "id": "pruebas-y-desp-5",
+     "label": "VI. Pruebas y Despliegues Procesamientos Dynamic",
+     "activities": [
+      {
+       "label": "Ajuste de Test unitarios y Test de Aceptación - Procesamientos",
+       "startWeek": 7,
+       "endWeek": 21
+      },
+      {
+       "label": "Despliegue y pruebas en entornos previos (Work)",
+       "startWeek": 8,
+       "endWeek": 21
+      },
+      {
+       "label": "Modificación de Jobs Dataproc (work)",
+       "startWeek": 8,
+       "endWeek": 21
+      },
+      {
+       "label": "Certificación de calidad por el equipo de QA",
+       "startWeek": 8,
+       "endWeek": 22,
+       "bbva": true
+      },
+      {
+       "label": "Modificación de Jobs Dataproc (live)",
+       "startWeek": 9,
+       "endWeek": 22
+      },
+      {
+       "label": "Puesta en producción de componentes ADA",
+       "startWeek": 9,
+       "endWeek": 22
+      }
+     ]
+    },
+    {
+     "id": "generaci-n-de--6",
+     "label": "VII. Generación de Historia",
+     "activities": [
+      {
+       "label": "Creación de mallas temporales",
+       "startWeek": 18,
+       "endWeek": 19
+      },
+      {
+       "label": "Gestión de mallas temporales",
+       "startWeek": 20,
+       "endWeek": 20
+      },
+      {
+       "label": "Validación de datos generados",
+       "startWeek": 20,
+       "endWeek": 21
+      }
+     ]
+    },
+    {
+     "id": "automatizaci-n-7",
+     "label": "VIII. Automatización y Orquestación",
+     "activities": [
+      {
+       "label": "Gestión de accesos a Control-M distribuido",
+       "startWeek": 16,
+       "endWeek": 16,
+       "bbva": true
+      },
+      {
+       "label": "Definición de automatización",
+       "startWeek": 17,
+       "endWeek": 17
+      },
+      {
+       "label": "Construcción de Mallas en Control-M distribuido.",
+       "startWeek": 18,
+       "endWeek": 19
+      },
+      {
+       "label": "Pruebas en entornos previos (Work) - Mallas Control-M distribuido",
+       "startWeek": 19,
+       "endWeek": 19
+      },
+      {
+       "label": "Elaboración de documentación - Mallas Control-M distribuido (ADA)",
+       "startWeek": 19,
+       "endWeek": 19
+      }
+     ]
+    },
+    {
+     "id": "certificaci-n--8",
+     "label": "IX. Certificación, Productivización y Estabilización",
+     "activities": [
+      {
+       "label": "Certificación de mallas Control-M Distribuido",
+       "startWeek": 20,
+       "endWeek": 22,
+       "bbva": true
+      },
+      {
+       "label": "Instalación de mallas Control-M en ambiente de producción",
+       "startWeek": 22,
+       "endWeek": 22
+      },
+      {
+       "label": "Estabilización de procesos en producción",
+       "startWeek": 22,
+       "endWeek": 22
+      },
+      {
+       "label": "ACTIVIDAD",
+       "startWeek": 1,
+       "endWeek": 24
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "timia_plan_startdates": {},
+ "timia_links": [
+  {
+   "id": "lk-migbd-1",
+   "projectId": "MIGBD",
+   "title": "Definición Alcance",
+   "url": "https://docs.google.com/document/d/1Vv9-tq-4bQjZFflXd2ma_NjzugkUWpoKm6hfCUV08bo/edit?tab=t.0",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-2",
+   "projectId": "MIGBD",
+   "title": "Diccionarios",
+   "url": "https://docs.google.com/spreadsheets/d/13YIGLakwsj6dMqd0g00jg352ZC2Wlpme4p9yz9eNkig/edit?usp=sharing",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-3",
+   "projectId": "MIGBD",
+   "title": "MSD · SRMSD-00232",
+   "url": "https://jira.bbvacol.com/browse/SRMSD-00232",
+   "category": "Ticket",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-4",
+   "projectId": "MIGBD",
+   "title": "MSD Ingestas",
+   "url": "https://docs.google.com/document/d/1ZwQ9SO_rLwM1Hhfb5g52ZCsJGvzD2hqLLOvVS0G9Iys/edit?tab=t.0",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-5",
+   "projectId": "MIGBD",
+   "title": "SFI",
+   "url": "https://docs.google.com/spreadsheets/d/1tp8V4vT631tfMzaEsjtKJf1Sdo5eFY1lb-EfHrxEIJQ/edit?gid=0#gid=0",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-6",
+   "projectId": "MIGBD",
+   "title": "Prediccionario spot_interbancario",
+   "url": "https://docs.google.com/spreadsheets/d/1OWaGEhXyj7vVTBV2rVJuRQIAN8dwuWDGtA8Ttqu-B2Q/edit?gid=0#gid=0",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-7",
+   "projectId": "MIGBD",
+   "title": "Prediccionario spot_retail",
+   "url": "https://docs.google.com/spreadsheets/d/1DjXImXMeqCRgcvaOO1-7lFxizgrRidP_K_ZurwY0KV0/edit?gid=0#gid=0",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-8",
+   "projectId": "MIGBD",
+   "title": "Ticket Procesamiento - Dynamic I · WO0000102474731",
+   "url": "https://remedy.bbva.com/WO0000102474731",
+   "category": "Ticket",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  },
+  {
+   "id": "lk-migbd-9",
+   "projectId": "MIGBD",
+   "title": "CARPETA PROYECTO 01/09/2026 - BBVA",
+   "url": "https://drive.google.com/drive/u/1/folders/1WMVfiRX-bzR3-PWQmlI6Rr4Phrw89yYl",
+   "category": "Documentación",
+   "descripcion": "Del Excel de seguimiento SDATOOL-54364",
+   "fecha": "2026-02-18",
+   "quien": "Amilkar José Bolaño"
+  }
+ ],
+ "timia_inv_v2": [
+  {
+   "id": "inv-migbd-1",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_ddastpodiv_ope_divis_star",
+   "descripcion": "POSICION_DIVISAS_AAAA-MM-DD_15_XX_XX · alias ddastpodiv · Distribuido (Tantia) · 20 campos · Diario · UUAA raw CSTD / master CRDC",
+   "documentacion": "",
+   "versionModelo": "",
+   "versionObjeto": "",
+   "diccionario": "Fábrica",
+   "stages": {
+    "gob-func": "Fábrica",
+    "env-gob": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   }
+  },
+  {
+   "id": "inv-migbd-2",
+   "projectId": "MIGBD",
+   "objeto": "t_cmol_udaxtopb_ope_dia_banktrad",
+   "descripcion": "POSICION_GLOBAL_BankTrad · alias udaxtopb · Tantia (Usuario) · 19 campos · Diario · UUAA raw CXTU / master CMOL",
+   "documentacion": "",
+   "versionModelo": "",
+   "versionObjeto": "",
+   "diccionario": "Fábrica",
+   "stages": {
+    "gob-func": "Fábrica",
+    "env-gob": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   }
+  },
+  {
+   "id": "inv-migbd-3",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_udaslgmd_gestor_mesa_dine",
+   "descripcion": "ASIGNACION_SALES_DD_MM_YYYY · alias udaslgmd · Tantia (Usuario) · 8 campos · Diario · UUAA raw CSLU / master CRDC",
+   "documentacion": "",
+   "versionModelo": "",
+   "versionObjeto": "",
+   "diccionario": "Fábrica",
+   "stages": {
+    "gob-func": "Fábrica",
+    "env-gob": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   }
+  },
+  {
+   "id": "inv-migbd-4",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_hdagpncab_rep_notac_abono",
+   "descripcion": "GOF.S0105.PGPD0094.D%%ODATE.GP010.INFONOCR · alias hdagpncab · Host · 22 campos · Diario · UUAA raw CGPH / master CRDC",
+   "documentacion": "",
+   "versionModelo": "",
+   "versionObjeto": "",
+   "diccionario": "Fábrica",
+   "stages": {
+    "gob-func": "Fábrica",
+    "env-gob": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   }
+  },
+  {
+   "id": "inv-migbd-5",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_hdaxtncvd_negocia_divisas",
+   "descripcion": "COBP.XT.FIX.REPORTE.F%%ODATE.COMEXNET · alias hdaxtncvd · Host · 35 campos · Diario · UUAA raw CXTH / master CRDC",
+   "documentacion": "",
+   "versionModelo": "",
+   "versionObjeto": "",
+   "diccionario": "Fábrica",
+   "stages": {
+    "gob-func": "Fábrica",
+    "env-gob": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   }
+  }
+ ],
+ "timia_imputaciones": [
+  {
+   "id": "imp-migbd-1",
+   "projectId": "MIGBD",
+   "jiraId": "DECIBCUMPL-727",
+   "summary": "Análisis y Diseño · ADA",
+   "type": "Enabler Delivery",
+   "status": "Analysing",
+   "assigneeIds": [
+    "u-amilkar",
+    "u-santiago"
+   ],
+   "month": "Febrero",
+   "weeks": "18 - 25",
+   "q": "Q1-2026",
+   "phase": "Análisis y Diseño",
+   "hoursEst": 48,
+   "hoursImputed": 0,
+   "context": "Feature DECIBCUMPL-727 · 8 por día",
+   "createdBy": "Juan Pablo Arévalo",
+   "createdAt": "2026-02-18"
+  },
+  {
+   "id": "imp-migbd-2",
+   "projectId": "MIGBD",
+   "jiraId": "DECIBCUMPL-832",
+   "summary": "Construcción · ADA",
+   "type": "Enabler Delivery",
+   "status": "In Progress",
+   "assigneeIds": [
+    "u-amilkar",
+    "u-santiago"
+   ],
+   "month": "Marzo",
+   "weeks": "10.0",
+   "q": "Q2-2026",
+   "phase": "Construcción",
+   "hoursEst": 16,
+   "hoursImputed": 0,
+   "context": "Feature DECIBCUMPL-727 · 16 por día",
+   "createdBy": "Juan Pablo Arévalo",
+   "createdAt": "2026-02-18"
+  },
+  {
+   "id": "imp-migbd-3",
+   "projectId": "MIGBD",
+   "jiraId": "DECIBCUMPL-1191",
+   "summary": "Despliegue · ADA",
+   "type": "Enabler Delivery",
+   "status": "Analysing",
+   "assigneeIds": [
+    "u-amilkar",
+    "u-santiago"
+   ],
+   "month": "Marzo",
+   "weeks": "20 - 31",
+   "q": "https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1191",
+   "phase": "Despliegue",
+   "hoursEst": 0,
+   "hoursImputed": 0,
+   "context": "Feature DECIBCUMPL-727 · 8 por día",
+   "createdBy": "Juan Pablo Arévalo",
+   "createdAt": "2026-02-18"
+  }
+ ],
+ "timia_kanban_tasks": [],
+ "timia_circuitos": [],
+ "timia_bitacora": [],
+ "timia_plan_issues": [
+  {
+   "id": "is-mig-1",
+   "planKey": "MIGBD",
+   "type": "alerta",
+   "title": "Credenciales DataX pendientes",
+   "startDate": "2026-09-15",
+   "impacts": [
+    {
+     "planKey": "MIGBD",
+     "entregableId": "transmision-de-1",
+     "actIdx": 6
+    }
+   ],
+   "createdBy": "Amilkar José Bolaño",
+   "createdAt": "2026-09-15T09:00:00Z"
+  }
+ ],
+ "timia_tr_features": [],
+ "timia_tr_entries": [],
+ "timia_plan_pcts": {
+  "MIGBD-documentaci-n--0": 100,
+  "MIGBD-documentaci-n--1": 100,
+  "MIGBD-documentaci-n--2": 100,
+  "MIGBD-documentaci-n--3": 100,
+  "MIGBD-documentaci-n--4": 100,
+  "MIGBD-documentaci-n--5": 100,
+  "MIGBD-documentaci-n--6": 100,
+  "MIGBD-documentaci-n--7": 100,
+  "MIGBD-documentaci-n--8": 100,
+  "MIGBD-documentaci-n--9": 100,
+  "MIGBD-documentaci-n--10": 100,
+  "MIGBD-documentaci-n--11": 100,
+  "MIGBD-transmisi-n-de-1-0": 100,
+  "MIGBD-transmisi-n-de-1-1": 100,
+  "MIGBD-transmisi-n-de-1-2": 100,
+  "MIGBD-transmisi-n-de-1-3": 100,
+  "MIGBD-transmisi-n-de-1-4": 100,
+  "MIGBD-transmisi-n-de-1-5": 100,
+  "MIGBD-transmisi-n-de-1-6": 60,
+  "MIGBD-transmisi-n-de-1-7": 60,
+  "MIGBD-desarrollo-de--2-0": 100,
+  "MIGBD-desarrollo-de--2-1": 60,
+  "MIGBD-desarrollo-de--2-2": 60,
+  "MIGBD-desarrollo-de--2-3": 60,
+  "MIGBD-desarrollo-de--2-4": 60,
+  "MIGBD-desarrollo-de--2-5": 60,
+  "MIGBD-ajuste-de-proc-3-0": 60,
+  "MIGBD-ajuste-de-proc-3-1": 60,
+  "MIGBD-ajuste-de-proc-3-2": 100,
+  "MIGBD-ajuste-de-proc-3-3": 100,
+  "MIGBD-ajuste-de-proc-3-4": 100,
+  "MIGBD-ajuste-de-proc-3-5": 100,
+  "MIGBD-ajuste-de-proc-3-6": 100,
+  "MIGBD-ajuste-de-proc-3-7": 100,
+  "MIGBD-ajuste-de-proc-3-9": 60,
+  "MIGBD-validaci-n-de--4-0": 60,
+  "MIGBD-validaci-n-de--4-1": 60,
+  "MIGBD-pruebas-y-desp-5-0": 60,
+  "MIGBD-pruebas-y-desp-5-1": 60,
+  "MIGBD-pruebas-y-desp-5-2": 60,
+  "MIGBD-pruebas-y-desp-5-3": 60,
+  "MIGBD-pruebas-y-desp-5-4": 60,
+  "MIGBD-pruebas-y-desp-5-5": 60,
+  "MIGBD-automatizaci-n-7-0": 60,
+  "MIGBD-certificaci-n--8-3": 60
+ },
+ "timia_etapa_states": {},
+ "timia_activity_done_dates": {}
+}
