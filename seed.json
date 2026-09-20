@@ -1,6 +1,6 @@
 {
  "_version": "1.0.0",
- "_note": "Seed del piloto: solo el proyecto MIGBD (SDATOOL-54364). El dataset completo (FICO, CRONOS, …) está en seed/db.full.json.",
+ "_note": "Seed del piloto: solo el proyecto MIGBD (SDATOOL-54364). Dataset completo en seed/db.full.json.",
  "timia_admin_projects": [
   {
    "id": "MIGBD",
@@ -1005,10 +1005,73 @@
  "timia_kanban_tasks": [],
  "timia_circuitos": [],
  "timia_bitacora": [],
- "timia_plan_issues": [],
+ "timia_plan_issues": [
+  {
+   "id": "is-mig-1",
+   "planKey": "MIGBD",
+   "type": "alerta",
+   "title": "Credenciales DataX pendientes",
+   "startDate": "2026-09-15",
+   "impacts": [
+    {
+     "planKey": "MIGBD",
+     "entregableId": "transmision-de-1",
+     "actIdx": 6
+    }
+   ],
+   "createdBy": "Amilkar José Bolaño",
+   "createdAt": "2026-09-15T09:00:00Z"
+  }
+ ],
  "timia_tr_features": [],
  "timia_tr_entries": [],
- "timia_plan_pcts": {},
+ "timia_plan_pcts": {
+  "MIGBD-documentaci-n--0": 100,
+  "MIGBD-documentaci-n--1": 100,
+  "MIGBD-documentaci-n--2": 100,
+  "MIGBD-documentaci-n--3": 100,
+  "MIGBD-documentaci-n--4": 100,
+  "MIGBD-documentaci-n--5": 100,
+  "MIGBD-documentaci-n--6": 100,
+  "MIGBD-documentaci-n--7": 100,
+  "MIGBD-documentaci-n--8": 100,
+  "MIGBD-documentaci-n--9": 100,
+  "MIGBD-documentaci-n--10": 100,
+  "MIGBD-documentaci-n--11": 100,
+  "MIGBD-transmisi-n-de-1-0": 100,
+  "MIGBD-transmisi-n-de-1-1": 100,
+  "MIGBD-transmisi-n-de-1-2": 100,
+  "MIGBD-transmisi-n-de-1-3": 100,
+  "MIGBD-transmisi-n-de-1-4": 100,
+  "MIGBD-transmisi-n-de-1-5": 100,
+  "MIGBD-transmisi-n-de-1-6": 60,
+  "MIGBD-transmisi-n-de-1-7": 60,
+  "MIGBD-desarrollo-de--2-0": 100,
+  "MIGBD-desarrollo-de--2-1": 60,
+  "MIGBD-desarrollo-de--2-2": 60,
+  "MIGBD-desarrollo-de--2-3": 60,
+  "MIGBD-desarrollo-de--2-4": 60,
+  "MIGBD-desarrollo-de--2-5": 60,
+  "MIGBD-ajuste-de-proc-3-0": 60,
+  "MIGBD-ajuste-de-proc-3-1": 60,
+  "MIGBD-ajuste-de-proc-3-2": 100,
+  "MIGBD-ajuste-de-proc-3-3": 100,
+  "MIGBD-ajuste-de-proc-3-4": 100,
+  "MIGBD-ajuste-de-proc-3-5": 100,
+  "MIGBD-ajuste-de-proc-3-6": 100,
+  "MIGBD-ajuste-de-proc-3-7": 100,
+  "MIGBD-ajuste-de-proc-3-9": 60,
+  "MIGBD-validaci-n-de--4-0": 60,
+  "MIGBD-validaci-n-de--4-1": 60,
+  "MIGBD-pruebas-y-desp-5-0": 60,
+  "MIGBD-pruebas-y-desp-5-1": 60,
+  "MIGBD-pruebas-y-desp-5-2": 60,
+  "MIGBD-pruebas-y-desp-5-3": 60,
+  "MIGBD-pruebas-y-desp-5-4": 60,
+  "MIGBD-pruebas-y-desp-5-5": 60,
+  "MIGBD-automatizaci-n-7-0": 60,
+  "MIGBD-certificaci-n--8-3": 60
+ },
  "timia_etapa_states": {},
  "timia_activity_done_dates": {}
 }
