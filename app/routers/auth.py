@@ -43,6 +43,10 @@ async def _login_with_email(email: str, provider: str, response: Response, name:
     if settings.ALLOWED_EMAIL_DOMAINS and email.split("@")[-1] not in settings.ALLOWED_EMAIL_DOMAINS:
         raise HTTPException(status_code=403, detail=f"Solo se permiten cuentas de {', '.join(settings.ALLOWED_EMAIL_DOMAINS)}")
     user = await db.find_user_by_email(email)
+    if not user and settings.BOOTSTRAP_ADMIN_EMAIL == email and await db.count_users() == 0:
+        # Arranque en limpio: el primer administrador se crea a sí mismo al entrar
+        user = await db.create_bootstrap_admin(email, name or settings.BOOTSTRAP_ADMIN_NAME)
+        print(f"[bootstrap] usuario inicial creado: {email} (gerente de cuenta)")
     if not user:
         req = await db.upsert_access_request(email, name, provider)
         raise HTTPException(status_code=403, detail={"code": "pending_approval", "email": email, "requestedAt": req.get("requestedAt"),

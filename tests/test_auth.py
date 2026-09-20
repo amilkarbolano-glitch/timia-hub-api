@@ -100,3 +100,35 @@ def test_only_team_manage_can_touch_requests(client):
     assert client.put("/api/state/timia_access_requests", json={"value": [{"id": "ar-x", "email": "x@timia.ai", "status": "approved"}]}).status_code == 403
     client.post("/api/auth/logout"); login(client, "u-juan")
     assert client.put("/api/state/timia_access_requests", json={"value": [{"id": "ar-x", "email": "x@timia.ai", "status": "approved"}]}).status_code == 200
+
+
+def test_bootstrap_admin_creates_first_user_only_once(client, monkeypatch):
+    """Con la base vacía, el correo de BOOTSTRAP_ADMIN_EMAIL entra y queda como gerente de cuenta."""
+    import asyncio, app.db as dbmod, app.routers.auth as auth_mod
+    from fastapi import Response, HTTPException
+    auth_mod.settings.BOOTSTRAP_ADMIN_EMAIL = "amilkar.bolano@timia.ai"
+    auth_mod.settings.ALLOWED_EMAIL_DOMAINS = ["timia.ai"]
+
+    async def run():
+        await dbmod.write_key(dbmod.USERS_KEY, [])                      # base sin usuarios
+        r = await auth_mod._login_with_email("amilkar.bolano@timia.ai", "firebase", Response(), name="Amilkar Bolaño")
+        assert r["user"]["role"] == "account_manager" and r["user"]["email"] == "amilkar.bolano@timia.ai"
+        assert await dbmod.count_users() == 1
+        # otro correo del dominio ya NO se autocrea: queda pendiente de aprobación
+        try:
+            await auth_mod._login_with_email("otro@timia.ai", "firebase", Response())
+            assert False, "debería requerir aprobación"
+        except HTTPException as e:
+            assert e.status_code == 403 and e.detail["code"] == "pending_approval"
+        # y si el admin se desactiva, el bootstrap no lo revive (ya hay usuarios)
+        users = await dbmod.read_key(dbmod.USERS_KEY)
+        users[0]["active"] = False
+        await dbmod.write_key(dbmod.USERS_KEY, users)
+        try:
+            await auth_mod._login_with_email("amilkar.bolano@timia.ai", "firebase", Response())
+            assert False, "usuario inactivo no debe entrar"
+        except HTTPException as e:
+            assert e.status_code == 403
+
+    asyncio.get_event_loop().run_until_complete(run())
+    auth_mod.settings.BOOTSTRAP_ADMIN_EMAIL = ""

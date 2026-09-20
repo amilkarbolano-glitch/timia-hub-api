@@ -120,6 +120,22 @@ async def upsert_access_request(email: str, name: str, provider: str) -> dict:
     return existing
 
 
+async def count_users() -> int:
+    return await db()[USERS_KEY].count_documents({})
+
+
+async def create_bootstrap_admin(email: str, name: str) -> dict:
+    """Crea el primer usuario (gerente de cuenta) cuando la base no tiene ninguno."""
+    email = email.strip().lower()
+    nice = name or email.split("@")[0].replace(".", " ").replace("_", " ").title()
+    initials = "".join(p[0] for p in nice.split()[:2]).upper() or "AD"
+    user = {"id": "u-" + "".join(c for c in email.split("@")[0] if c.isalnum()).lower(), "name": nice, "email": email,
+            "role": "account_manager", "projectIds": [], "initials": initials, "avatarColor": "#dc2626",
+            "active": True, "areaLabel": "Gerente de cuenta", "createdAt": now_iso(), "bootstrap": True}
+    await write_key(USERS_KEY, [user], by="bootstrap")
+    return user
+
+
 async def find_user_by_id(user_id: str) -> dict | None:
     doc = await db()[USERS_KEY].find_one({"_id": user_id}, {"item": 1})
     return doc["item"] if doc and doc["item"].get("active", True) else None
