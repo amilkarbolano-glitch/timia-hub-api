@@ -9,7 +9,7 @@ Metadata:
       - Label: { default: "Imagen y capacidad" }
         Parameters: [ImageTag, DesiredCount]
       - Label: { default: "Autenticacion (ver .env.example del repo)" }
-        Parameters: [SessionSecret, FirebaseProjectId, FirebaseApiKey, FirebaseAppId, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
+        Parameters: [SessionSecret, BootstrapAdminEmail, FirebaseProjectId, FirebaseApiKey, FirebaseAppId, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
     ParameterLabels:
       ProjectName: { default: "Nombre del Proyecto" }
       AppName: { default: "Nombre de la Aplicacion" }
@@ -20,6 +20,7 @@ Metadata:
       ImageTag: { default: "Tag de la imagen en ECR" }
       DesiredCount: { default: "Numero de tareas" }
       SessionSecret: { default: "SESSION_SECRET" }
+      BootstrapAdminEmail: { default: "Correo del primer administrador" }
       FirebaseProjectId: { default: "FIREBASE_PROJECT_ID [GOOGLE]" }
       FirebaseApiKey: { default: "FIREBASE_API_KEY [GOOGLE]" }
       FirebaseAppId: { default: "FIREBASE_APP_ID [GOOGLE]" }
@@ -46,6 +47,10 @@ Parameters:
     Description: 'Secreto para firmar sesiones (openssl rand -base64 48)'
     NoEcho: true
     MinLength: 32
+  BootstrapAdminEmail:
+    Type: String
+    Description: 'Con la base vacia, este correo se crea como gerente de cuenta al entrar por Google'
+    Default: ''
   FirebaseProjectId: { Type: String, Default: '', Description: 'Firebase → Configuracion del proyecto → ID del proyecto' }
   FirebaseApiKey: { Type: String, Default: '', Description: 'Firebase → SDK config → apiKey (publica)' }
   FirebaseAppId: { Type: String, Default: '', Description: 'Firebase → SDK config → appId' }
@@ -251,6 +256,7 @@ Resources:
             - { Name: COOKIE_SECURE, Value: 'true' }
             - { Name: COOKIE_SAMESITE, Value: 'none' }          # front y API en dominios distintos
             - { Name: CORS_ORIGINS, Value: !Ref FrontendOrigin }
+            - { Name: BOOTSTRAP_ADMIN_EMAIL, Value: !Ref BootstrapAdminEmail }
             - { Name: FIREBASE_PROJECT_ID, Value: !Ref FirebaseProjectId }
             - { Name: FIREBASE_API_KEY, Value: !Ref FirebaseApiKey }
             - { Name: FIREBASE_APP_ID, Value: !Ref FirebaseAppId }
