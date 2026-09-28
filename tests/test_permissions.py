@@ -216,3 +216,59 @@ def test_account_manager_ignora_los_overrides():
         matrix=_matrix(), project_roles={"u-rodolfo:MIGBD": "developer"},
     )
     assert motivo is None
+
+
+# ─── Roles personalizados ────────────────────────────────────────────────────
+# Se crean desde la app combinando permisos que ya existen. Nunca inventan
+# permisos, así que no pueden habilitar nada que el código no controle.
+
+CUSTOM = [
+    {"id": "auditor", "name": "Auditor", "permissions": ["plan.view", "audit.view", "analytics.view"]},
+    {"id": "pm", "name": "Intento de pisar un rol de fábrica", "permissions": []},
+    {"id": "roto", "name": "Permisos inventados", "permissions": ["no.existe", "plan.view"]},
+    {"id": "nombre con espacios", "name": "Id inválido", "permissions": ["plan.view"]},
+    "basura",
+]
+
+
+def test_rol_personalizado_entra_en_la_matriz():
+    from app.permissions import effective_matrix
+    m = effective_matrix(None, CUSTOM)
+    assert m["auditor"] == ["plan.view", "audit.view", "analytics.view"]
+
+
+def test_rol_personalizado_no_puede_pisar_uno_de_fabrica():
+    from app.permissions import effective_matrix, DEFAULT_ROLE_PERMISSIONS
+    m = effective_matrix(None, CUSTOM)
+    assert m["pm"] == DEFAULT_ROLE_PERMISSIONS["pm"]
+
+
+def test_rol_personalizado_descarta_permisos_inventados():
+    from app.permissions import effective_matrix
+    m = effective_matrix(None, CUSTOM)
+    assert m["roto"] == ["plan.view"]
+
+
+def test_ids_invalidos_y_basura_se_ignoran():
+    from app.permissions import custom_roles
+    ids = set(custom_roles(CUSTOM))
+    assert "nombre con espacios" not in ids and ids == {"auditor", "roto"}
+
+
+def test_rol_desconocido_cae_a_developer():
+    """Si se borra un rol, sus usuarios quedan con el de menos permisos, no sueltos."""
+    from app.permissions import normalize_role
+    assert normalize_role("auditor") == "developer"                    # sin catálogo
+    assert normalize_role("auditor", {"auditor"}) == "auditor"          # con catálogo
+    assert normalize_role("inventado", {"auditor"}) == "developer"
+
+
+def test_rol_personalizado_se_respeta_al_escribir():
+    from app.permissions import check_write, effective_matrix
+    m = effective_matrix(None, CUSTOM)
+    # 'auditor' tiene plan.view pero no plan.edit_progress
+    motivo = check_write(
+        "timia_plan_pcts", {"MIGBD__gob__0": 0}, {"MIGBD__gob__0": 50},
+        role="auditor", user_id="u-x", project_ids=["MIGBD"], matrix=m, project_roles={},
+    )
+    assert motivo is not None
