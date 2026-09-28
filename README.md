@@ -74,3 +74,5 @@ db.timia_tr_entries.find({ "item.userId": "u-sergio" })
 db.kv.find({}, { kind:1, count:1, updatedAt:1, updatedBy:1 })   // metadatos por colección
 ```
 Arrays → un documento por ítem (`_id` = `id`, `_ord`, `item`). Objetos → documento en `kv` con `value`.
+
+<!-- Prueba de CI/CD: feature → develop → main. Esta línea se puede borrar. -->
