@@ -16,9 +16,10 @@ from __future__ import annotations
 
 from typing import Any
 
-ROLES = ("account_manager", "pm", "tech_lead", "developer")
+ROLES = ("platform_admin", "account_manager", "pm", "tech_lead", "developer")
 
 ROLE_LABELS = {
+    "platform_admin": "Administrador de la plataforma",
     "account_manager": "Gerente de cuenta",
     "pm": "Project Manager",
     "tech_lead": "Líder / Referente técnico",
@@ -82,8 +83,15 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
 
 ALL = list(PERMISSIONS.keys())
 
+# Permisos de administración de la herramienta. No otorgan rango dentro de un proyecto.
+ADMIN_PERMISSIONS = [
+    "projects.view_all", "projects.create", "projects.manage",
+    "team.manage", "roles.manage", "config.manage", "audit.view",
+]
 DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
     # Gerente de cuenta: todo, sobre todos los proyectos del cliente (números globales, dirección)
+    # Administra la herramienta; dentro de un proyecto vale su rol de project_roles.
+    "platform_admin": ADMIN_PERMISSIONS,
     "account_manager": ALL,
     # PM: todo sobre sus proyectos (no ve los de otros PM salvo projects.view_all)
     "pm": [p for p in ALL if p not in ("projects.view_all",)],
@@ -227,10 +235,17 @@ def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, projec
     all_projects = has(matrix, role, "projects.view_all")
 
     def role_in(project: str | None) -> str:
-        if role == "account_manager" or not project or not project_roles:
+        # El gerente de cuenta manda en todos los proyectos: no se le aplican overrides.
+        if role == "account_manager":
             return role
-        r = project_roles.get(f"{user_id}:{project}")
-        return normalize_role(r) if r else role
+        if not project:
+            return role
+        r = project_roles.get(f"{user_id}:{project}") if project_roles else None
+        if r:
+            return normalize_role(r)
+        # El administrador de la plataforma no tiene rango operativo: sin override
+        # explícito entra al proyecto como developer.
+        return "developer" if role == "platform_admin" else role
 
     # Alcance por proyecto: evaluar cada ítem con el rol efectivo en su proyecto
     if scope == "project":

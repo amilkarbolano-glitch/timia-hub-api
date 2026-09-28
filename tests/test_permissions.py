@@ -159,3 +159,60 @@ def test_developer_has_no_plan_view(client):
     login(client, "u-santiago")
     me = client.get("/api/auth/me").json()
     assert "plan.view" not in me["permissions"] and "plan.manage_issues" in me["permissions"]
+
+
+# ─── platform_admin: administra la herramienta, sin rango operativo ──────────
+# Administra usuarios, accesos, permisos y configuración de cualquier proyecto,
+# pero DENTRO de un proyecto vale el rol que tenga asignado allí. Sin override,
+# opera como developer. Es lo que lo distingue de account_manager.
+
+def _matrix():
+    from app.permissions import DEFAULT_ROLE_PERMISSIONS
+    return dict(DEFAULT_ROLE_PERMISSIONS)
+
+
+def test_platform_admin_administra_la_herramienta():
+    from app.permissions import has
+    m = _matrix()
+    for perm in ("team.manage", "roles.manage", "config.manage", "projects.manage", "audit.view"):
+        assert has(m, "platform_admin", perm), perm
+
+
+def test_platform_admin_no_tiene_permisos_operativos():
+    from app.permissions import has
+    m = _matrix()
+    for perm in ("plan.edit_progress", "estimaciones.edit", "tasks.manage", "tr.load_any"):
+        assert not has(m, "platform_admin", perm), perm
+
+
+def test_platform_admin_sin_override_opera_como_developer():
+    """Sin rol asignado en el proyecto no puede tocar el avance del plan."""
+    from app.permissions import check_write
+    motivo = check_write(
+        "timia_plan_pcts", {"MIGBD__gob__0": 0}, {"MIGBD__gob__0": 50},
+        role="platform_admin", user_id="u-amilkar", project_ids=["MIGBD"],
+        matrix=_matrix(), project_roles={},
+    )
+    assert motivo is not None
+
+
+def test_platform_admin_con_override_usa_ese_rol():
+    """Con tech_lead asignado en MIGBD sí puede marcar avance allí."""
+    from app.permissions import check_write
+    motivo = check_write(
+        "timia_plan_pcts", {"MIGBD__gob__0": 0}, {"MIGBD__gob__0": 50},
+        role="platform_admin", user_id="u-amilkar", project_ids=["MIGBD"],
+        matrix=_matrix(), project_roles={"u-amilkar:MIGBD": "tech_lead"},
+    )
+    assert motivo is None
+
+
+def test_account_manager_ignora_los_overrides():
+    """El gerente de cuenta manda igual aunque se le baje el rol en un proyecto."""
+    from app.permissions import check_write
+    motivo = check_write(
+        "timia_plan_pcts", {"MIGBD__gob__0": 0}, {"MIGBD__gob__0": 50},
+        role="account_manager", user_id="u-rodolfo", project_ids=["MIGBD"],
+        matrix=_matrix(), project_roles={"u-rodolfo:MIGBD": "developer"},
+    )
+    assert motivo is None
