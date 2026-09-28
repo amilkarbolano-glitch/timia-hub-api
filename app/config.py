@@ -25,6 +25,9 @@ def _int(name: str, default: int) -> int:
 class Settings:
     MONGO_URL: str = _env("MONGO_URL") or "mongodb://mongo:27017"
     MONGO_DB: str = _env("MONGO_DB") or "timia"
+    # Credenciales aparte de la URL (no hace falta codificar caracteres especiales de la clave). Vacías ⇒ las de la URL
+    MONGO_USER: str = _env("MONGO_USER") or ""
+    MONGO_PASSWORD: str = os.getenv("MONGO_PASSWORD", "")
     # Sesión
     SESSION_SECRET: str = os.getenv("SESSION_SECRET", "")
     SESSION_HOURS: int = _int("SESSION_HOURS", 8)

@@ -19,7 +19,8 @@ _client: AsyncIOMotorClient | None = None
 
 def connect() -> None:
     global _client
-    _client = AsyncIOMotorClient(settings.MONGO_URL, serverSelectionTimeoutMS=5000)
+    creds = {"username": settings.MONGO_USER, "password": settings.MONGO_PASSWORD} if settings.MONGO_USER and settings.MONGO_PASSWORD else {}
+    _client = AsyncIOMotorClient(settings.MONGO_URL, serverSelectionTimeoutMS=5000, **creds)
 
 
 def close() -> None:
