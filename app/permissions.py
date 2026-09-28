@@ -16,9 +16,10 @@ from __future__ import annotations
 
 from typing import Any
 
-ROLES = ("account_manager", "pm", "tech_lead", "developer")
+ROLES = ("platform_admin", "account_manager", "pm", "tech_lead", "developer")
 
 ROLE_LABELS = {
+    "platform_admin": "Administrador de la plataforma",
     "account_manager": "Gerente de cuenta",
     "pm": "Project Manager",
     "tech_lead": "Líder / Referente técnico",
@@ -28,9 +29,38 @@ ROLE_LABELS = {
 LEGACY_ROLES = {"project_lead": "tech_lead", "tech_ref": "tech_lead"}
 
 
-def normalize_role(role: str | None) -> str:
+def normalize_role(role: str | None, known: set[str] | None = None) -> str:
+    """Rol válido. `known` agrega los roles personalizados que existan en la base;
+    sin él solo se aceptan los de fábrica. Un rol desconocido cae a developer, que
+    es el de menos permisos: si alguien borra un rol, sus usuarios no quedan sueltos."""
     r = LEGACY_ROLES.get(role or "", role or "developer")
-    return r if r in ROLES else "developer"
+    if r in ROLES:
+        return r
+    return r if known and r in known else "developer"
+
+
+# Roles creados desde la app (Herramientas › Roles y permisos). Se guardan en
+# `timia_custom_roles` como {id, name, description, color, permissions[]} y solo
+# pueden usar permisos del catálogo: no se inventan permisos nuevos, únicamente se
+# combinan los existentes. Por eso agregar un rol no puede romper nada.
+CUSTOM_ROLES_KEY = "timia_custom_roles"
+
+
+def custom_roles(stored: Any) -> dict[str, list[str]]:
+    """{id: permisos} de los roles personalizados válidos, ignorando basura."""
+    out: dict[str, list[str]] = {}
+    if not isinstance(stored, list):
+        return out
+    for r in stored:
+        if not isinstance(r, dict):
+            continue
+        rid = str(r.get("id", "")).strip()
+        # no puede pisar un rol de fábrica ni llamarse raro
+        if not rid or rid in ROLES or not rid.replace("_", "").replace("-", "").isalnum():
+            continue
+        perms = r.get("permissions")
+        out[rid] = [p for p in perms if p in PERMISSIONS] if isinstance(perms, list) else []
+    return out
 
 # id → (módulo, etiqueta)
 PERMISSIONS: dict[str, tuple[str, str]] = {
@@ -82,8 +112,15 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
 
 ALL = list(PERMISSIONS.keys())
 
+# Permisos de administración de la herramienta. No otorgan rango dentro de un proyecto.
+ADMIN_PERMISSIONS = [
+    "projects.view_all", "projects.create", "projects.manage",
+    "team.manage", "roles.manage", "config.manage", "audit.view",
+]
 DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
     # Gerente de cuenta: todo, sobre todos los proyectos del cliente (números globales, dirección)
+    # Administra la herramienta; dentro de un proyecto vale su rol de project_roles.
+    "platform_admin": ADMIN_PERMISSIONS,
     "account_manager": ALL,
     # PM: todo sobre sus proyectos (no ve los de otros PM salvo projects.view_all)
     "pm": [p for p in ALL if p not in ("projects.view_all",)],
@@ -114,6 +151,7 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_project_roles":    {"perm": "team.manage",       "scope": "global"},
     "timia_admin_projects":   {"perm": "projects.manage",   "scope": "global"},
     "timia_role_permissions": {"perm": "roles.manage",      "scope": "global"},
+    "timia_custom_roles":     {"perm": "roles.manage",      "scope": "global"},
     "timia_ans_config":       {"perm": "config.manage",     "scope": "global"},
     "timia_bbva_ans_config":  {"perm": "config.manage",     "scope": "global"},
     "timia_holidays":         {"perm": "config.manage",     "scope": "global"},
@@ -153,12 +191,14 @@ def rule_for(key: str) -> dict[str, Any] | None:
     return None
 
 
-def effective_matrix(stored: dict | None) -> dict[str, list[str]]:
-    """Matriz vigente: defaults + ajustes guardados (solo permisos conocidos y roles conocidos)."""
+def effective_matrix(stored: dict | None, custom: Any = None) -> dict[str, list[str]]:
+    """Matriz vigente: defaults + roles personalizados + ajustes guardados.
+    Solo entran permisos del catálogo; los roles desconocidos se descartan."""
     out = {r: list(p) for r, p in DEFAULT_ROLE_PERMISSIONS.items()}
+    out.update(custom_roles(custom))
     if isinstance(stored, dict):
         for role, perms in stored.items():
-            if role in ROLES and isinstance(perms, list):
+            if (role in ROLES or role in out) and isinstance(perms, list):
                 out[role] = [p for p in perms if p in PERMISSIONS]
     out["account_manager"] = ALL   # el gerente de cuenta siempre tiene todo (evita bloquearse a sí mismo)
     return out
@@ -227,10 +267,17 @@ def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, projec
     all_projects = has(matrix, role, "projects.view_all")
 
     def role_in(project: str | None) -> str:
-        if role == "account_manager" or not project or not project_roles:
+        # El gerente de cuenta manda en todos los proyectos: no se le aplican overrides.
+        if role == "account_manager":
             return role
-        r = project_roles.get(f"{user_id}:{project}")
-        return normalize_role(r) if r else role
+        if not project:
+            return role
+        r = project_roles.get(f"{user_id}:{project}") if project_roles else None
+        if r:
+            return normalize_role(r)
+        # El administrador de la plataforma no tiene rango operativo: sin override
+        # explícito entra al proyecto como developer.
+        return "developer" if role == "platform_admin" else role
 
     # Alcance por proyecto: evaluar cada ítem con el rol efectivo en su proyecto
     if scope == "project":

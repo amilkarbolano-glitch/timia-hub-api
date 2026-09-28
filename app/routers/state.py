@@ -7,7 +7,8 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
 from .. import db
-from ..permissions import DEFAULT_ROLE_PERMISSIONS, PERMISSIONS, ROLE_LABELS, check_write, effective_matrix, normalize_role
+from ..permissions import (CUSTOM_ROLES_KEY, DEFAULT_ROLE_PERMISSIONS, PERMISSIONS, ROLE_LABELS,
+                           check_write, custom_roles, effective_matrix, normalize_role)
 from ..security import Principal, current_principal, require_role
 
 router = APIRouter(prefix="/api", tags=["state"])
@@ -37,14 +38,21 @@ async def get_key(key: str, p: Principal = Depends(current_principal)):
 
 
 async def current_matrix() -> dict[str, list[str]]:
-    return effective_matrix(await db.read_key("timia_role_permissions"))
+    return effective_matrix(await db.read_key("timia_role_permissions"),
+                            await db.read_key(CUSTOM_ROLES_KEY))
 
 
 @router.get("/permissions")
 async def permissions(p: Principal = Depends(current_principal)):
     """Catálogo de permisos + matriz vigente por rol (para el front)."""
+    stored_custom = await db.read_key(CUSTOM_ROLES_KEY)
+    labels = dict(ROLE_LABELS)
+    for r in (stored_custom if isinstance(stored_custom, list) else []):
+        if isinstance(r, dict) and r.get("id") in custom_roles(stored_custom):
+            labels[r["id"]] = str(r.get("name") or r["id"])
     return {"permissions": [{"id": k, "module": m, "label": l} for k, (m, l) in PERMISSIONS.items()],
-            "roles": ROLE_LABELS, "defaults": DEFAULT_ROLE_PERMISSIONS, "matrix": await current_matrix()}
+            "roles": labels, "defaults": DEFAULT_ROLE_PERMISSIONS, "matrix": await current_matrix(),
+            "custom": stored_custom if isinstance(stored_custom, list) else []}
 
 
 @router.put("/state/{key}")
@@ -57,8 +65,9 @@ async def put_key(key: str, body: PutBody, p: Principal = Depends(current_princi
             raise HTTPException(status_code=401, detail="Sesión inválida")
         old = await db.read_key(key)
         project_roles = await db.read_key("timia_project_roles") or {}
-        reason = check_write(key, old, body.value, role=normalize_role(user.get("role")), user_id=p.id,
-                             project_ids=list(user.get("projectIds", [])), matrix=await current_matrix(),
+        matrix = await current_matrix()
+        reason = check_write(key, old, body.value, role=normalize_role(user.get("role"), set(matrix)), user_id=p.id,
+                             project_ids=list(user.get("projectIds", [])), matrix=matrix,
                              project_roles=project_roles if isinstance(project_roles, dict) else None)
         if reason:
             raise HTTPException(status_code=403, detail=reason)
