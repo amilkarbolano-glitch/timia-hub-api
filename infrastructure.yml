@@ -1,179 +1,217 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Timia Hub API - ECS Fargate + ALB (imagen en ECR). Requiere el stack base (infrastructure_dev_base.yml)'
+Description: 'Timia Hub API - ECS Fargate + ALB + CloudFront (HTTPS). Reusa la VPC de la infraestructura base existente'
+
+# Orden de despliegue (ver INFRA-AWS.md):
+#   1. Este stack con ImageExists=false  → crea ECR, cluster, ALB, CloudFront, secretos (sin servicio)
+#   2. pipeline.yml                      → primera ejecucion publica la imagen en ECR
+#   3. Este stack con ImageExists=true   → crea el servicio ECS
 
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label: { default: "Configuracion General" }
-        Parameters: [ProjectName, AppName, EnvironmentName, CostCenter, Owner, Region]
-      - Label: { default: "Imagen y capacidad" }
-        Parameters: [ImageTag, DesiredCount]
-      - Label: { default: "Autenticacion (ver .env.example del repo)" }
-        Parameters: [SessionSecret, FirebaseProjectId, FirebaseApiKey, FirebaseAppId, GoogleClientId, AllowedEmailDomains, AllowDemoLogin, FrontendOrigin, ApiKey]
-    ParameterLabels:
-      ProjectName: { default: "Nombre del Proyecto" }
-      AppName: { default: "Nombre de la Aplicacion" }
-      EnvironmentName: { default: "Ambiente" }
-      CostCenter: { default: "Centro de Costos" }
-      Owner: { default: "Propietario" }
-      Region: { default: "Region AWS" }
-      ImageTag: { default: "Tag de la imagen en ECR" }
-      DesiredCount: { default: "Numero de tareas" }
-      SessionSecret: { default: "SESSION_SECRET" }
-      FirebaseProjectId: { default: "FIREBASE_PROJECT_ID [GOOGLE]" }
-      FirebaseApiKey: { default: "FIREBASE_API_KEY [GOOGLE]" }
-      FirebaseAppId: { default: "FIREBASE_APP_ID [GOOGLE]" }
-      GoogleClientId: { default: "GOOGLE_CLIENT_ID (alternativa sin Firebase)" }
-      AllowedEmailDomains: { default: "ALLOWED_EMAIL_DOMAINS" }
-      AllowDemoLogin: { default: "ALLOW_DEMO_LOGIN" }
-      FrontendOrigin: { default: "Origen del front (CORS)" }
-      ApiKey: { default: "TIMIA_API_KEY (opcional)" }
+        Parameters: [ProjectName, AppName, EnvironmentName, CostCenter, Owner, ImageExists]
+      - Label: { default: "Red (VPC de la infraestructura base)" }
+        Parameters: [VpcId, PublicSubnets, PrivateSubnets, CloudFrontPrefixListId]
+      - Label: { default: "Base de datos (MongoDB Atlas)" }
+        Parameters: [MongoUrl, MongoUser, MongoPassword]
+      - Label: { default: "Aplicacion" }
+        Parameters: [FrontendOrigins, CookieSameSite, AllowedEmailDomains, AllowDemoLogin, SeedOnStart, FirebaseProjectId, FirebaseApiKey, FirebaseAuthDomain, FirebaseAppId, GoogleClientId]
 
 Parameters:
   ProjectName: { Type: String, Default: 'timia', MinLength: 1, MaxLength: 20, AllowedPattern: '[a-zA-Z0-9\-]+' }
   AppName: { Type: String, Default: 'hub-api', MinLength: 1, MaxLength: 20, AllowedPattern: '[a-zA-Z0-9\-]+' }
   EnvironmentName: { Type: String, Default: 'dev', AllowedValues: [dev, stg, prd] }
   CostCenter: { Type: String, Default: 'operations', MinLength: 1, MaxLength: 50 }
-  Owner: { Type: String, Default: 'timia-hub', MinLength: 1, MaxLength: 50 }
-  Region: { Type: String, Default: 'us-east-1', AllowedValues: [us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-central-1, sa-east-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2] }
-  ImageTag:
+  Owner: { Type: String, Default: 'innovation', MinLength: 1, MaxLength: 50 }
+  ImageExists:
     Type: String
-    Description: 'Tag publicado en el repositorio ECR (el pipeline usa el SHA del commit o "latest")'
-    Default: 'latest'
-  DesiredCount: { Type: Number, Default: 1, MinValue: 0, MaxValue: 4 }
-  SessionSecret:
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+    Description: 'false en el primer despliegue (ECR vacio). Pasar a true cuando el pipeline haya publicado la imagen'
+
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: 'VPC de la infraestructura base'
+  PublicSubnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: 'Subnets publicas (ALB): PublicSubnet1, PublicSubnet2 de la base'
+  PrivateSubnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: 'Subnets privadas con salida por NAT (tareas ECS): PrivateSubnet1..3 de la base'
+  CloudFrontPrefixListId:
     Type: String
-    Description: 'Secreto para firmar sesiones (openssl rand -base64 48)'
-    NoEcho: true
-    MinLength: 32
-  FirebaseProjectId: { Type: String, Default: '', Description: 'Firebase → Configuracion del proyecto → ID del proyecto' }
-  FirebaseApiKey: { Type: String, Default: '', Description: 'Firebase → SDK config → apiKey (publica)' }
-  FirebaseAppId: { Type: String, Default: '', Description: 'Firebase → SDK config → appId' }
-  GoogleClientId:
+    Description: 'Prefix list de CloudFront (com.amazonaws.global.cloudfront.origin-facing) para que el ALB solo acepte trafico de CloudFront'
+    AllowedPattern: 'pl-[a-z0-9]+'
+
+  MongoUrl:
     Type: String
-    Description: 'Client ID OAuth "Aplicacion web" (solo si no se usa Firebase)'
+    NoEcho: true                       # puede traer usuario:clave@
+    Description: 'Cadena de Atlas, con o sin usuario:clave@ (ej: mongodb+srv://usuario:clave@cluster0.xxxx.mongodb.net)'
+    AllowedPattern: 'mongodb(\+srv)?://.+'
+    ConstraintDescription: 'Debe empezar por mongodb:// o mongodb+srv://'
+  MongoUser:
+    Type: String
     Default: ''
+    Description: 'Opcional: usuario de Atlas si NO va dentro de MongoUrl'
+  MongoPassword:
+    Type: String
     NoEcho: true
+    Default: ''
+    Description: 'Opcional: clave de Atlas si NO va dentro de MongoUrl. Se guarda en Secrets Manager'
+    AllowedPattern: '[^"\\]*'
+    ConstraintDescription: 'Sin comillas dobles ni barras invertidas'
+  FrontendOrigins:
+    Type: String
+    Default: 'https://main.da7vpns3df0uy.amplifyapp.com'
+    Description: 'Origenes del front separados por coma (CORS). Con el proxy de Amplify no se usa, pero deja listo el plan B'
+  CookieSameSite:
+    Type: String
+    Default: 'lax'
+    AllowedValues: [lax, none, strict]
+    Description: 'lax con proxy de Amplify o dominio propio compartido; none si front y API estan en dominios distintos'
   AllowedEmailDomains: { Type: String, Default: 'timia.ai' }
   AllowDemoLogin:
     Type: String
-    Description: 'Vacio = demo activo solo sin Google · true/false para forzar'
-    Default: ''
-    AllowedValues: ['', 'true', 'false']
-  FrontendOrigin:
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+    Description: 'Login sin contrasena con las cuentas del panel. Solo true en entornos de demo'
+  SeedOnStart:
     Type: String
-    Description: 'URL del front (Amplify o dominio) para CORS y cookies. Ej: https://main.d123.amplifyapp.com'
-    AllowedPattern: '^https?:\/\/.*'
-  ApiKey: { Type: String, Default: '', NoEcho: true }
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: 'Carga seed.json en colecciones vacias al arrancar. Pasar a false tras el primer despliegue'
+  FirebaseProjectId: { Type: String, Default: '' }
+  FirebaseApiKey: { Type: String, Default: '', Description: 'apiKey del SDK web (publica)' }
+  FirebaseAuthDomain: { Type: String, Default: '' }
+  FirebaseAppId: { Type: String, Default: '' }
+  GoogleClientId: { Type: String, Default: '', Description: 'Alternativa a Firebase (Google Identity Services)' }
 
 Mappings:
   EnvironmentMap:
-    dev: { Cpu: '256', Memory: '512', LogRetention: '30' }
-    stg: { Cpu: '512', Memory: '1024', LogRetention: '30' }
-    prd: { Cpu: '1024', Memory: '2048', LogRetention: '90' }
+    dev: { Cpu: '256', Memory: '512', DesiredCount: 1, LogRetention: 30 }
+    stg: { Cpu: '256', Memory: '512', DesiredCount: 1, LogRetention: 30 }
+    prd: { Cpu: '512', Memory: '1024', DesiredCount: 2, LogRetention: 90 }
 
 Conditions:
-  IsPrd: !Equals [!Ref EnvironmentName, 'prd']
+  ShouldCreateService: !Equals [!Ref ImageExists, 'true']
 
 Resources:
-  # ─── Registro de imagenes ───────────────────────────────────────────────────
+  # ─── Imagen ─────────────────────────────────────────────────────────────────
   EcrRepository:
     Type: AWS::ECR::Repository
-    DeletionPolicy: Retain
-    UpdateReplacePolicy: Retain
     Properties:
       RepositoryName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
       ImageScanningConfiguration: { ScanOnPush: true }
+      ImageTagMutability: MUTABLE          # el pipeline publica <sha> y latest
+      EncryptionConfiguration: { EncryptionType: AES256 }
       LifecyclePolicy:
-        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"Conservar 20 imagenes","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":20},"action":{"type":"expire"}}]}'
+        LifecyclePolicyText: '{"rules":[{"rulePriority":1,"description":"Conservar las ultimas 20 imagenes","selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":20},"action":{"type":"expire"}}]}'
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: CostCenter, Value: !Ref CostCenter }
         - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
         - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
 
-  # ─── Secretos de la aplicacion ──────────────────────────────────────────────
+  # ─── Secretos de la aplicacion (SESSION_SECRET generado por AWS) ────────────
   AppSecrets:
     Type: AWS::SecretsManager::Secret
     Properties:
       Name: !Sub '${ProjectName}/${EnvironmentName}/${AppName}'
-      SecretString: !Sub '{"SESSION_SECRET":"${SessionSecret}","GOOGLE_CLIENT_ID":"${GoogleClientId}","TIMIA_API_KEY":"${ApiKey}"}'
+      Description: 'Secretos de Timia Hub API'
+      GenerateSecretString:
+        SecretStringTemplate: '{}'
+        GenerateStringKey: SESSION_SECRET
+        PasswordLength: 64
+        ExcludePunctuation: true
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
 
-  # ─── Red / balanceador ──────────────────────────────────────────────────────
+  # Clave de Mongo: entra como parametro NoEcho y se entrega al contenedor desde Secrets Manager,
+  # asi no queda en texto plano en la task definition (DescribeTaskDefinition / consola de ECS)
+  DbSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub '${ProjectName}/${EnvironmentName}/${AppName}/mongo'
+      Description: 'Clave de MongoDB Atlas de Timia Hub API'
+      SecretString: !Sub '{"MONGO_PASSWORD":"${MongoPassword}"}'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  # ─── Red ────────────────────────────────────────────────────────────────────
   AlbSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-alb-sg'
-      GroupDescription: 'ALB publico (80/443)'
-      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-alb'
+      GroupDescription: 'ALB: solo HTTP desde CloudFront'
+      VpcId: !Ref VpcId
       SecurityGroupIngress:
-        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, CidrIp: 0.0.0.0/0 }
-        - { IpProtocol: tcp, FromPort: 443, ToPort: 443, CidrIp: 0.0.0.0/0 }
+        - { IpProtocol: tcp, FromPort: 80, ToPort: 80, SourcePrefixListId: !Ref CloudFrontPrefixListId }
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   ServiceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-svc-sg'
-      GroupDescription: 'Tareas Fargate: solo desde el ALB'
-      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      GroupName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-ecs'
+      GroupDescription: 'Tareas ECS: solo desde el ALB'
+      VpcId: !Ref VpcId
       SecurityGroupIngress:
         - { IpProtocol: tcp, FromPort: 8000, ToPort: 8000, SourceSecurityGroupId: !Ref AlbSecurityGroup }
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
       Scheme: internet-facing
-      Type: application
+      Subnets: !Ref PublicSubnets
       SecurityGroups: [!Ref AlbSecurityGroup]
-      Subnets: !Split [',', { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-PublicSubnets' }]
+      LoadBalancerAttributes:
+        - { Key: idle_timeout.timeout_seconds, Value: '60' }
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
       Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
-      VpcId: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-VpcId' }
+      VpcId: !Ref VpcId
       Port: 8000
       Protocol: HTTP
       TargetType: ip
       HealthCheckPath: /api/health
       HealthCheckIntervalSeconds: 30
+      HealthCheckTimeoutSeconds: 5
       HealthyThresholdCount: 2
       UnhealthyThresholdCount: 3
+      TargetGroupAttributes:
+        - { Key: deregistration_delay.timeout_seconds, Value: '30' }
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   HttpListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
@@ -181,58 +219,81 @@ Resources:
       Port: 80
       Protocol: HTTP
       DefaultActions: [{ Type: forward, TargetGroupArn: !Ref TargetGroup }]
-  # HTTPS: agregar un Listener 443 con certificado ACM cuando exista el dominio (api.<dominio>).
 
-  # ─── ECS Fargate ────────────────────────────────────────────────────────────
+  # ─── HTTPS publico (dominio *.cloudfront.net, sin cache) ────────────────────
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+        HttpVersion: http2and3
+        PriceClass: PriceClass_100
+        Origins:
+          - Id: ALBOrigin
+            DomainName: !GetAtt LoadBalancer.DNSName
+            CustomOriginConfig:
+              HTTPPort: 80
+              OriginProtocolPolicy: http-only
+              OriginReadTimeout: 60
+              OriginKeepaliveTimeout: 60
+        DefaultCacheBehavior:
+          TargetOriginId: ALBOrigin
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]
+          CachedMethods: [GET, HEAD]
+          Compress: true
+          CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad'          # Managed-CachingDisabled
+          OriginRequestPolicyId: '33f36d7e-f396-46d9-90e0-52428a34d9dc'  # Managed-AllViewerAndCloudFrontHeaders-2022-06 (cookies + CloudFront-Viewer-Address)
+          ResponseHeadersPolicyId: '67f7725c-6f97-4210-82d7-5512b31e9d03' # Managed-SecurityHeadersPolicy
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  # ─── ECS ────────────────────────────────────────────────────────────────────
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: !Sub '${ProjectName}-${EnvironmentName}'
-      ClusterSettings: [{ Name: containerInsights, Value: !If [IsPrd, enabled, disabled] }]
+      ClusterName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   LogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub '/ecs/${ProjectName}-${AppName}-${EnvironmentName}'
+      LogGroupName: !Sub '/aws/ecs/${ProjectName}-${AppName}-${EnvironmentName}'
       RetentionInDays: !FindInMap [EnvironmentMap, !Ref EnvironmentName, LogRetention]
-      Tags:
-        - { Key: Environment, Value: !Ref EnvironmentName }
-        - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
-        - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
+  # Nombre fijo: pipeline.yml le hace iam:PassRole por nombre
   ExecutionRole:
     Type: AWS::IAM::Role
     Properties:
       RoleName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-exec'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
-        Statement: [{ Effect: Allow, Principal: { Service: ecs-tasks.amazonaws.com }, Action: sts:AssumeRole }]
-      ManagedPolicyArns: ['arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy']
+        Statement:
+          - { Effect: Allow, Principal: { Service: ecs-tasks.amazonaws.com }, Action: sts:AssumeRole }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
       Policies:
-        - PolicyName: secrets
+        - PolicyName: read-app-secrets
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
                 Action: [secretsmanager:GetSecretValue]
-                Resource:
-                  - !Ref AppSecrets
-                  - { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-MongoUrlSecretArn' }
+                Resource: [!Ref AppSecrets, !Ref DbSecret]
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
@@ -241,76 +302,83 @@ Resources:
       Memory: !FindInMap [EnvironmentMap, !Ref EnvironmentName, Memory]
       NetworkMode: awsvpc
       RequiresCompatibilities: [FARGATE]
+      RuntimePlatform: { CpuArchitecture: X86_64, OperatingSystemFamily: LINUX }
       ExecutionRoleArn: !GetAtt ExecutionRole.Arn
       ContainerDefinitions:
-        - Name: api
-          Image: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}-${AppName}-${EnvironmentName}:${ImageTag}'
+        - Name: api                         # debe coincidir con CONTAINER_NAME del buildspec
+          Image: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrRepository}:latest'
+          Essential: true
           PortMappings: [{ ContainerPort: 8000, Protocol: tcp }]
           Environment:
-            - { Name: MONGO_DB, Value: !Sub '${ProjectName}${EnvironmentName}' }
+            - { Name: MONGO_URL, Value: !Ref MongoUrl }
+            - { Name: MONGO_USER, Value: !Ref MongoUser }
+            - { Name: MONGO_DB, Value: !Sub '${ProjectName}_${EnvironmentName}' }
             - { Name: COOKIE_SECURE, Value: 'true' }
-            - { Name: COOKIE_SAMESITE, Value: 'none' }          # front y API en dominios distintos
-            - { Name: CORS_ORIGINS, Value: !Ref FrontendOrigin }
-            - { Name: FIREBASE_PROJECT_ID, Value: !Ref FirebaseProjectId }
-            - { Name: FIREBASE_API_KEY, Value: !Ref FirebaseApiKey }
-            - { Name: FIREBASE_APP_ID, Value: !Ref FirebaseAppId }
+            - { Name: COOKIE_SAMESITE, Value: !Ref CookieSameSite }
+            - { Name: CORS_ORIGINS, Value: !Ref FrontendOrigins }
             - { Name: ALLOWED_EMAIL_DOMAINS, Value: !Ref AllowedEmailDomains }
             - { Name: ALLOW_DEMO_LOGIN, Value: !Ref AllowDemoLogin }
-            - { Name: SEED_ON_START, Value: 'true' }
+            - { Name: SEED_ON_START, Value: !Ref SeedOnStart }
+            - { Name: FIREBASE_PROJECT_ID, Value: !Ref FirebaseProjectId }
+            - { Name: FIREBASE_API_KEY, Value: !Ref FirebaseApiKey }
+            - { Name: FIREBASE_AUTH_DOMAIN, Value: !Ref FirebaseAuthDomain }
+            - { Name: FIREBASE_APP_ID, Value: !Ref FirebaseAppId }
+            - { Name: GOOGLE_CLIENT_ID, Value: !Ref GoogleClientId }
           Secrets:
-            - { Name: MONGO_URL, ValueFrom: { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-MongoUrlSecretArn' } }
+            - { Name: MONGO_PASSWORD, ValueFrom: !Sub '${DbSecret}:MONGO_PASSWORD::' }
             - { Name: SESSION_SECRET, ValueFrom: !Sub '${AppSecrets}:SESSION_SECRET::' }
-            - { Name: GOOGLE_CLIENT_ID, ValueFrom: !Sub '${AppSecrets}:GOOGLE_CLIENT_ID::' }
-            - { Name: TIMIA_API_KEY, ValueFrom: !Sub '${AppSecrets}:TIMIA_API_KEY::' }
-          HealthCheck:
-            Command: ['CMD-SHELL', 'python -c "import urllib.request;urllib.request.urlopen(\"http://localhost:8000/api/health\")" || exit 1']
-            Interval: 30
-            Timeout: 5
-            Retries: 3
-            StartPeriod: 30
           LogConfiguration:
             LogDriver: awslogs
             Options: { awslogs-group: !Ref LogGroup, awslogs-region: !Ref 'AWS::Region', awslogs-stream-prefix: api }
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
+
   Service:
     Type: AWS::ECS::Service
+    Condition: ShouldCreateService
     DependsOn: HttpListener
     Properties:
       ServiceName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
       Cluster: !Ref Cluster
       LaunchType: FARGATE
-      DesiredCount: !Ref DesiredCount
+      DesiredCount: !FindInMap [EnvironmentMap, !Ref EnvironmentName, DesiredCount]
       TaskDefinition: !Ref TaskDefinition
       HealthCheckGracePeriodSeconds: 60
-      DeploymentConfiguration: { MinimumHealthyPercent: 100, MaximumPercent: 200 }
+      DeploymentConfiguration:
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+        DeploymentCircuitBreaker: { Enable: true, Rollback: true }
       NetworkConfiguration:
         AwsvpcConfiguration:
-          AssignPublicIp: DISABLED
+          AssignPublicIp: DISABLED          # sale a internet (ECR, Mongo, Google) por el NAT de la base
           SecurityGroups: [!Ref ServiceSecurityGroup]
-          Subnets: !Split [',', { 'Fn::ImportValue': !Sub '${ProjectName}-${EnvironmentName}-PrivateSubnets' }]
+          Subnets: !Ref PrivateSubnets
       LoadBalancers: [{ ContainerName: api, ContainerPort: 8000, TargetGroupArn: !Ref TargetGroup }]
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
-        - { Key: CostCenter, Value: !Ref CostCenter }
-        - { Key: Owner, Value: !Ref Owner }
+        - { Key: Application, Value: !Ref AppName }
         - { Key: ManagedBy, Value: CloudFormation }
-        - { Key: CreatedBy, Value: !Ref 'AWS::StackName' }
 
 Outputs:
   ApiUrl:
-    Description: 'URL de la API (usar como VITE_API_URL / window.TIMIA_API_URL en el front)'
-    Value: !Sub 'http://${LoadBalancer.DNSName}'
+    Description: 'URL HTTPS de la API (CloudFront). Usarla en el proxy de Amplify o como API_URL del front'
+    Value: !Sub 'https://${CloudFrontDistribution.DomainName}'
     Export: { Name: !Sub '${AWS::StackName}-ApiUrl' }
+  LoadBalancerDNS:
+    Value: !GetAtt LoadBalancer.DNSName
   EcrRepositoryUri:
-    Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ProjectName}-${AppName}-${EnvironmentName}'
+    Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrRepository}'
     Export: { Name: !Sub '${AWS::StackName}-EcrRepositoryUri' }
-  ClusterName: { Value: !Ref Cluster }
-  ServiceName: { Value: !GetAtt Service.Name }
-  LogGroupName: { Value: !Ref LogGroup }
+  ClusterName:
+    Value: !Ref Cluster
+  ServiceName:
+    Condition: ShouldCreateService
+    Value: !GetAtt Service.Name
+  AppSecretsArn:
+    Value: !Ref AppSecrets
+  CloudFrontDistributionId:
+    Value: !Ref CloudFrontDistribution

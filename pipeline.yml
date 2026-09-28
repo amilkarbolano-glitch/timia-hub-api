@@ -1,0 +1,217 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Timia Hub API - CI/CD: GitHub → CodeBuild (pruebas + imagen en ECR) → ECS. Requiere el stack de infrastructure.yml'
+
+Parameters:
+  ProjectName: { Type: String, Default: 'timia' }
+  AppName: { Type: String, Default: 'hub-api' }
+  EnvironmentName: { Type: String, Default: 'dev', AllowedValues: [dev, stg, prd] }
+  CostCenter: { Type: String, Default: 'operations', MinLength: 1, MaxLength: 50 }
+  Owner: { Type: String, Default: 'innovation', MinLength: 1, MaxLength: 50 }
+  Repository:
+    Type: String
+    Default: 'amilkarbolano-glitch/timia-hub-api'
+    Description: 'Repositorio GitHub en formato owner/repository'
+    AllowedPattern: '^[a-zA-Z0-9\-_.]+\/[a-zA-Z0-9\-_.]+$'
+  GitHubBranch:
+    Type: String
+    Default: 'main'
+    Description: 'Rama que despliega: cada merge (push) a esta rama dispara el pipeline'
+  ExistingConnectionArn:
+    Type: String
+    Default: ''
+    Description: 'ARN de una conexion GitHub ya autorizada (la del otro proyecto). Vacio = crear una nueva (requiere aprobarla en consola)'
+
+Conditions:
+  CreateConnection: !Equals [!Ref ExistingConnectionArn, '']
+
+Resources:
+  GitHubConnection:
+    Type: AWS::CodeStarConnections::Connection
+    Condition: CreateConnection
+    Properties:
+      ConnectionName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      ProviderType: GitHub
+
+  ArtifactBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-artifact-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - { Id: DeleteOldArtifacts, Status: Enabled, ExpirationInDays: 30 }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-build'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - { Effect: Allow, Principal: { Service: codebuild.amazonaws.com }, Action: sts:AssumeRole }
+      Policies:
+        - PolicyName: build
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [ecr:GetAuthorizationToken]
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - ecr:InitiateLayerUpload
+                  - ecr:UploadLayerPart
+                  - ecr:CompleteLayerUpload
+                  - ecr:PutImage
+                Resource: !Sub 'arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ProjectName}-${AppName}-${EnvironmentName}'
+              - Effect: Allow
+                Action: [s3:GetObject, s3:GetObjectVersion, s3:PutObject]
+                Resource: !Sub '${ArtifactBucket.Arn}/*'
+              - Effect: Allow
+                Action: [logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents]
+                Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/${ProjectName}-${AppName}-${EnvironmentName}*'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      ServiceRole: !GetAtt CodeBuildRole.Arn
+      Artifacts: { Type: CODEPIPELINE }
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux-x86_64-standard:5.0
+        PrivilegedMode: true                 # docker build
+        EnvironmentVariables:
+          - { Name: AWS_ACCOUNT_ID, Value: !Ref 'AWS::AccountId' }
+          - { Name: ECR_REPOSITORY_NAME, Value: !Sub '${ProjectName}-${AppName}-${EnvironmentName}' }
+          - { Name: CONTAINER_NAME, Value: api }
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: .aws/configs/buildspec.yml
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub '/aws/codebuild/${ProjectName}-${AppName}-${EnvironmentName}'
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  CodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}-pipe'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - { Effect: Allow, Principal: { Service: codepipeline.amazonaws.com }, Action: sts:AssumeRole }
+      Policies:
+        - PolicyName: pipeline
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:GetObjectVersion, s3:PutObject, s3:GetBucketVersioning]
+                Resource: [!GetAtt ArtifactBucket.Arn, !Sub '${ArtifactBucket.Arn}/*']
+              - Effect: Allow
+                Action: [codestar-connections:UseConnection, codeconnections:UseConnection]
+                Resource: !If [CreateConnection, !Ref GitHubConnection, !Ref ExistingConnectionArn]
+              - Effect: Allow
+                Action: [codebuild:StartBuild, codebuild:BatchGetBuilds]
+                Resource: !GetAtt CodeBuildProject.Arn
+              # Accion Deploy de ECS: registra una revision de la task definition con la nueva imagen y actualiza el servicio
+              - Effect: Allow
+                Action:
+                  - ecs:DescribeServices
+                  - ecs:DescribeTaskDefinition
+                  - ecs:DescribeTasks
+                  - ecs:ListTasks
+                  - ecs:RegisterTaskDefinition
+                  - ecs:TagResource
+                  - ecs:UpdateService
+                Resource: '*'
+              - Effect: Allow
+                Action: [iam:PassRole]
+                Resource: !Sub 'arn:aws:iam::${AWS::AccountId}:role/${ProjectName}-${AppName}-${EnvironmentName}-exec'
+                Condition:
+                  StringEquals: { 'iam:PassedToService': ecs-tasks.amazonaws.com }
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+      PipelineType: V2
+      RoleArn: !GetAtt CodePipelineRole.Arn
+      ArtifactStore: { Type: S3, Location: !Ref ArtifactBucket }
+      # Solo pushes a la rama configurada (merge de un PR a main); ramas de feature no despliegan
+      Triggers:
+        - ProviderType: CodeStarSourceConnection
+          GitConfiguration:
+            SourceActionName: Source
+            Push:
+              - Branches: { Includes: [!Ref GitHubBranch] }
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: Source
+              ActionTypeId: { Category: Source, Owner: AWS, Provider: CodeStarSourceConnection, Version: '1' }
+              Configuration:
+                ConnectionArn: !If [CreateConnection, !Ref GitHubConnection, !Ref ExistingConnectionArn]
+                FullRepositoryId: !Ref Repository
+                BranchName: !Ref GitHubBranch
+              OutputArtifacts: [{ Name: SourceCode }]
+        - Name: Build
+          Actions:
+            - Name: TestBuildAndPush
+              ActionTypeId: { Category: Build, Owner: AWS, Provider: CodeBuild, Version: '1' }
+              Configuration: { ProjectName: !Ref CodeBuildProject }
+              InputArtifacts: [{ Name: SourceCode }]
+              OutputArtifacts: [{ Name: BuildOutput }]
+        - Name: Deploy
+          Actions:
+            - Name: UpdateService
+              ActionTypeId: { Category: Deploy, Owner: AWS, Provider: ECS, Version: '1' }
+              Configuration:
+                ClusterName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+                ServiceName: !Sub '${ProjectName}-${AppName}-${EnvironmentName}'
+                FileName: imagedefinitions.json
+                DeploymentTimeout: '15'
+              InputArtifacts: [{ Name: BuildOutput }]
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: ManagedBy, Value: CloudFormation }
+
+Outputs:
+  PipelineUrl:
+    Value: !Sub 'https://${AWS::Region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${Pipeline}/view'
+  GitHubConnectionArn:
+    Description: 'Si se creo nueva: queda PENDING hasta autorizarla en Developer Tools → Settings → Connections'
+    Value: !If [CreateConnection, !Ref GitHubConnection, !Ref ExistingConnectionArn]

@@ -1,15 +1,15 @@
-# Flujo de trabajo (git flow simplificado)
+# Flujo de trabajo
 
 ```
-main     ← estable: lo que está desplegado. Solo recibe merges desde develop (PR).
-develop  ← integración: se prueba desplegado (Docker) antes de pasar a main.
-feature/<tema>   ← nuevas funcionalidades, salen de develop y vuelven a develop por PR
-fix/<tema>       ← correcciones, salen de develop (o de main si es hotfix) y vuelven por PR
+main             ← desplegada en AWS: cada merge a main dispara CodePipeline (pruebas → imagen → ECS)
+feature/<tema>   ← nuevas funcionalidades, salen de main y vuelven por PR
+fix/<tema>       ← correcciones, salen de main y vuelven por PR
 ```
 
-1. `git checkout develop && git pull`
+1. `git checkout main && git pull`
 2. `git checkout -b feature/roles-cliente`
-3. commits → `git push -u origin feature/roles-cliente` → PR hacia **develop**
-4. Probar develop desplegado (`docker compose up -d --build` en la rama) → PR develop → **main**
+3. commits → `git push -u origin feature/roles-cliente` → PR hacia **main** (GitHub Actions corre las pruebas)
+4. Probar en local (`docker compose up -d --build`) antes de pedir revisión
+5. Merge del PR → despliegue automático (ver `INFRA-AWS.md`)
 
 Convención de commits: `feat: …`, `fix: …`, `chore: …`, `docs: …`.

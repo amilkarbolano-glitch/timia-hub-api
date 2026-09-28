@@ -94,10 +94,21 @@ def require_role(*roles: str):
 _hits: dict[str, deque] = defaultdict(deque)
 
 
+def client_ip(request: Request) -> str:
+    """IP real del cliente. Detrás de CloudFront viene en CloudFront-Viewer-Address ("ip:puerto").
+    Sin CloudFront, la última de X-Forwarded-For (la agrega el ALB); la primera la controla el cliente."""
+    viewer = request.headers.get("cloudfront-viewer-address")
+    if viewer:
+        return viewer.rsplit(":", 1)[0]
+    xff = request.headers.get("x-forwarded-for")
+    if xff:
+        return xff.split(",")[-1].strip()
+    return request.client.host if request.client else "?"
+
+
 def rate_limit(request: Request, limit: int | None = None, window: int = 60) -> None:
     limit = limit or settings.AUTH_RATE_LIMIT
-    ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "?").split(",")[0].strip()
-    q = _hits[ip]
+    q = _hits[client_ip(request)]
     now = time.time()
     while q and q[0] < now - window:
         q.popleft()
