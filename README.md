@@ -75,4 +75,4 @@ db.kv.find({}, { kind:1, count:1, updatedAt:1, updatedBy:1 })   // metadatos por
 ```
 Arrays → un documento por ítem (`_id` = `id`, `_ord`, `item`). Objetos → documento en `kv` con `value`.
 
-<!-- Prueba de CI/CD: feature → develop → main. Esta línea se puede borrar. -->
+<!-- Prueba de despliegue · 2026-09-29 · verifica que el push a main dispare CodePipeline. -->
