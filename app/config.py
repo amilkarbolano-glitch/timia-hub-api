@@ -53,6 +53,10 @@ class Settings:
     CORS_ORIGINS: list[str] = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
     SEED_ON_START: bool = _bool("SEED_ON_START", True)
     SEED_FILE: str = os.getenv("SEED_FILE", "")
+    # Carpeta con datos de arranque que se fusionan sin pisar lo existente.
+    # BOOTSTRAP_ON_START=0 lo desactiva.
+    BOOTSTRAP_DIR: str = os.getenv("BOOTSTRAP_DIR", "")
+    BOOTSTRAP_ON_START: bool = os.getenv("BOOTSTRAP_ON_START", "1") not in ("0", "false", "False")
     # Rate limit de /api/auth/* (peticiones por minuto por IP)
     AUTH_RATE_LIMIT: int = _int("AUTH_RATE_LIMIT", 30)
 

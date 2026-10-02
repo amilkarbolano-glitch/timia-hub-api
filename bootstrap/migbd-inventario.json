@@ -1,0 +1,321 @@
+{
+ "_descripcion": "Inventarios de SDATOOL-54364 (MIGBD) extraidos del Excel de seguimiento. Se fusionan por id: lo que ya este en la base no se toca, solo se agrega lo que falta.",
+ "_origen": "SDATOOL-54364 ... Seguimiento (3).xlsx — hojas Inventario, Inventario DataX, Tranmision- Automatizacion",
+ "timia_inv_stages": [
+  {
+   "id": "dicc",
+   "label": "Diccionario"
+  },
+  {
+   "id": "env-gob-tec",
+   "label": "Envía a gob. técnico"
+  }
+ ],
+ "timia_inv_v2": [
+  {
+   "id": "inv-t-crdc-ddastpodiv-ope-divis-star",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_ddastpodiv_ope_divis_star",
+   "alias": "ddastpodiv",
+   "nombreLegacy": "POSICION_DIVISAS_AAAA-MM-DD_15_XX_XX",
+   "origen": "Distribuido (Tantia)",
+   "descripcion": "",
+   "nivelSeguridad": "L2",
+   "haceDataX": "Sí",
+   "uuaaRaw": "CSTD",
+   "uuaaMaster": "CRDC",
+   "cantidadCampos": "",
+   "separador": ";",
+   "encabezado": "Sí",
+   "periodicidad": "Diario",
+   "nombreArchivoTantia": "",
+   "nombreArchivoAda": "CCRDC_D02_aaaammdd_ddastpodiv_ope_divis_star.csv",
+   "enlaces": {
+    "muestra": "https://docs.google.com/spreadsheets/d/147uiZa1Sf3ljCrdP7fxboJRwjsnHU4xYHI6j2reMxS4/edit?usp=sharing",
+    "transfer": "https://datax.central.nextgen.igrupobbva/"
+   },
+   "stages": {},
+   "responsables": {
+    "dicc": "Fábrica",
+    "env-gob": "Fábrica",
+    "env-gob-tec": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   },
+   "versionModelo": "",
+   "versionObjeto": ""
+  },
+  {
+   "id": "inv-t-cmol-udaxtopb-ope-dia-banktrad",
+   "projectId": "MIGBD",
+   "objeto": "t_cmol_udaxtopb_ope_dia_banktrad",
+   "alias": "udaxtopb",
+   "nombreLegacy": "POSICION_GLOBAL_BankTrad",
+   "origen": "Tantia (Usuario)",
+   "descripcion": "Este objeto corresponde al archivo diario de estados de operaciones provisto por BankTrade, una plataforma usada para la gestión y control operativo de transacciones en back-office. Este archivo se consume para consultar y actualizar el estado en que quedan las operaciones del día (revisión, liberada, ANULADA/RECHAZADA), tomando como llaves de referencia los identificadores del cliente y/o de la operación, registrando además atributos informativos asociados (datos del cliente, canal, moneda, monto y marcas de fecha/hora).",
+   "nivelSeguridad": "",
+   "haceDataX": "Sí",
+   "uuaaRaw": "CXTU",
+   "uuaaMaster": "CMOL",
+   "cantidadCampos": "",
+   "separador": ",",
+   "encabezado": "Sí",
+   "periodicidad": "Diario",
+   "nombreArchivoTantia": "",
+   "nombreArchivoAda": "",
+   "enlaces": {
+    "muestra": "https://docs.google.com/spreadsheets/d/10rf_6nWe6KVZuc6Fo1WNzniEkZCfdnRFale4F_sRlWI/edit?usp=sharing",
+    "transfer": "https://datax.central.nextgen.igrupobbva/"
+   },
+   "stages": {},
+   "responsables": {
+    "dicc": "Fábrica",
+    "env-gob": "Fábrica",
+    "env-gob-tec": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   },
+   "versionModelo": "",
+   "versionObjeto": ""
+  },
+  {
+   "id": "inv-t-crdc-udaslgmd-gestor-mesa-dine",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_udaslgmd_gestor_mesa_dine",
+   "alias": "udaslgmd",
+   "nombreLegacy": "ASIGNACION_SALES_DD_MM_YYYY",
+   "origen": "Tantia (Usuario)",
+   "descripcion": "Es un archivo que relaciona el gestor asignado desde la mesa de dinero a un cliente. Aquellos registros que no contienen el identificador del cliente directamente, son útiles para asignar al gestor a través de los otros campos de la tabla. Será empleada en la asignación de operaciones en los informes de gestión.",
+   "nivelSeguridad": "",
+   "haceDataX": "Sí",
+   "uuaaRaw": "CSLU",
+   "uuaaMaster": "CRDC",
+   "cantidadCampos": "",
+   "separador": ";",
+   "encabezado": "Sí",
+   "periodicidad": "Diario",
+   "nombreArchivoTantia": "",
+   "nombreArchivoAda": "",
+   "enlaces": {
+    "muestra": "https://docs.google.com/spreadsheets/d/1NBpY44i4PfXtZxV2othBCx14V62uonCLSkGGbpDAHRA/edit?usp=sharing",
+    "transfer": "https://datax.central.nextgen.igrupobbva/"
+   },
+   "stages": {},
+   "responsables": {
+    "dicc": "Fábrica",
+    "env-gob": "Fábrica",
+    "env-gob-tec": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   },
+   "versionModelo": "",
+   "versionObjeto": ""
+  },
+  {
+   "id": "inv-t-crdc-hdagpncab-rep-notac-abono",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_hdagpncab_rep_notac_abono",
+   "alias": "hdagpncab",
+   "nombreLegacy": "GOF.S0105.PGPD0094.D%%ODATE.GP010.INFONOCR",
+   "origen": "Host",
+   "descripcion": "Archivo que contiene los reintegros automáticos realizados por día, el nombre corresponde a reporte nota de crédito abono. Contiene el detalle de transacciones swift recibidas desde el exterior a cuentas de BBVA Colombia. Los reintegros automáticos corresponden únicamente a operaciones que se giran desde el exterior hacía cuentas del titular en Colombia.",
+   "nivelSeguridad": "L2",
+   "haceDataX": "No",
+   "uuaaRaw": "CGPH",
+   "uuaaMaster": "CRDC",
+   "cantidadCampos": "",
+   "separador": "-",
+   "encabezado": "-",
+   "periodicidad": "Diario",
+   "nombreArchivoTantia": "",
+   "nombreArchivoAda": "",
+   "enlaces": {
+    "muestra": "https://docs.google.com/spreadsheets/d/1n4TSIUHW65AYY55oEagU13s7u1Qwawt9XGVuTq_brdw/edit?gid=0"
+   },
+   "stages": {},
+   "responsables": {
+    "dicc": "Fábrica",
+    "env-gob": "Fábrica",
+    "env-gob-tec": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   },
+   "versionModelo": "",
+   "versionObjeto": ""
+  },
+  {
+   "id": "inv-t-crdc-hdaxtncvd-negocia-divisas",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_hdaxtncvd_negocia_divisas",
+   "alias": "hdaxtncvd",
+   "nombreLegacy": "COBP.XT.FIX.REPORTE.F%%ODATE.COMEXNET",
+   "origen": "Host",
+   "descripcion": "Es un archivo transaccional operativo de front o middle/back usado para cargar y validar, de compra/venta de divisas realizados por canales/negociaciones en línea y sirve para saber qué operación se hizo, por quién, en qué moneda, por qué monto, con qué tasa y en qué estado quedó. Del archivo buscamos sustraer las operaciones que correspondan a Negociación Estandár, es decir, operaciones realizadas por una sucursal física.",
+   "nivelSeguridad": "",
+   "haceDataX": "No",
+   "uuaaRaw": "CXTH",
+   "uuaaMaster": "CRDC",
+   "cantidadCampos": "",
+   "separador": "-",
+   "encabezado": "-",
+   "periodicidad": "Diario",
+   "nombreArchivoTantia": "",
+   "nombreArchivoAda": "",
+   "enlaces": {
+    "muestra": "https://docs.google.com/spreadsheets/d/1s2389Wp81-6WCQLxUUmyqN33ohvadhWLR2wIIB6SRSo/edit?gid=0"
+   },
+   "stages": {},
+   "responsables": {
+    "dicc": "Fábrica",
+    "env-gob": "Fábrica",
+    "env-gob-tec": "Fábrica",
+    "sch-work": "Fábrica",
+    "sol-live": "Fábrica",
+    "sch-live": "Fábrica"
+   },
+   "versionModelo": "",
+   "versionObjeto": ""
+  }
+ ],
+ "timia_inv_datax": [
+  {
+   "id": "dx-t-crdc-ddastpodiv-ope-divis-star",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_ddastpodiv_ope_divis_star",
+   "doReadWork": "x_crdc_ddastpodiv_read_0",
+   "doReadLive": "",
+   "transferWork": "https://datax.central.nextgen.igrupobbva/",
+   "transferLive": "",
+   "rutaArchivoWork": "\\\\82.250.88.90\\TX\\RECEPCION_HOST\\REPORTES_POSICION\\posicion_divisas_{ODATE}_15_*.csv",
+   "rutaArchivoLive": "\\\\SVRDESCODIRECT01.dg.co.igrupobbva\\svrfilesystem\\TX\\RECEPCION_HOST\\REPORTES_POSICION\\posicion_divisas_{ODATE}_15_*.csv",
+   "doWriteWork": "x_crdc_ddastpodiv_write_0",
+   "doWriteLive": "",
+   "rutaArchivoAda": "/in/staging/crdc/C_CRDC_D_D02_{ODATE}_POSICION_DIVISAS_{HOUR}.csv"
+  },
+  {
+   "id": "dx-t-cmol-udaxtopb-ope-dia-banktrad",
+   "projectId": "MIGBD",
+   "objeto": "t_cmol_udaxtopb_ope_dia_banktrad",
+   "doReadWork": "x_cmol_udaxtopb_read_0",
+   "doReadLive": "",
+   "transferWork": "https://datax.central.nextgen.igrupobbva/",
+   "transferLive": "",
+   "rutaArchivoWork": "\\\\82.250.88.90\\informesbt\\TRADESTATS\\POSICION_GLOBAL_BankTrade_{ODATE}_2300.csv",
+   "rutaArchivoLive": "\\\\co.igrupobbva\\svrfilesystem\\Bantrade_InformesBT\\TradeStats\\POSICION_GLOBAL_BankTrade_{ODATE}_2300.csv",
+   "doWriteWork": "x_cmol_udaxtopb_write_0",
+   "doWriteLive": "",
+   "rutaArchivoAda": "/in/staging/cmol/C_CMOL_D_D02_{ODATE}_POSICION_GLOBAL_BankTrade_{HOUR}.csv"
+  },
+  {
+   "id": "dx-t-crdc-udaslgmd-gestor-mesa-dine",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_udaslgmd_gestor_mesa_dine",
+   "doReadWork": "x_crdc_udaslgmd_read_0",
+   "doReadLive": "",
+   "transferWork": "https://datax.central.nextgen.igrupobbva/",
+   "transferLive": "",
+   "rutaArchivoWork": "\\\\82.250.88.90\\TX\\ENVIO_HOST\\CIB\\DATIO\\Asignacion_sales_{ODATE}.csv",
+   "rutaArchivoLive": "\\\\co.igrupobbva\\svrfilesystem\\TX\\ENVIO_HOST\\CIB\\DATIO\\Asignacion_sales_{ODATE}.csv",
+   "doWriteWork": "x_crdc_udaslgmd_write_0",
+   "doWriteLive": "",
+   "rutaArchivoAda": ""
+  }
+ ],
+ "timia_inv_transmision": [
+  {
+   "id": "tx-t-crdc-ddastpodiv-ope-divis-star",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_ddastpodiv_ope_divis_star",
+   "nombreLegacy": "POSICION_DIVISAS_AAAA-MM-DD_15_XX_XX",
+   "origen": "Tantia (Distribuido)",
+   "rutaTantiaWork": "\\\\SVRDESCODIRECT01.dg.co.igrupobbva\\TX\\RECEPCION_HOST\\REPORTES_POSICION",
+   "rutaTantiaLive": "\\\\co.igrupobbva\\svrfilesystem\\TX\\RECEPCION_HOST\\REPORTES_POSICION",
+   "archivoTantia": "posicion_divisas_{FECHA_CON_GUIONES}_15_*.csv",
+   "encabezadoOrigen": "Si",
+   "separadorOrigen": ",",
+   "formatoTantia": "CSV",
+   "encabezadoDestino": "Sí",
+   "rutaAda": "/in/staging/crdc/",
+   "archivoAda": "CCRDC_D02_aaaammdd_ddastpodiv_ope_divis_star.csv",
+   "separadorDestino": ",",
+   "periodicidad": "Diario",
+   "diasEjecucion": "Diario hábil",
+   "horaEjecucion": "3:00 pm",
+   "frecuencia": "1 hora",
+   "corteLectura": "D-1. Si ejecutamos hoy 15/09, buscará en tantia con fecha del 20260914",
+   "corteEscritura": "D-1. Si ejecutamos hoy 15/09, buscará en tantia con fecha del 20260914"
+  },
+  {
+   "id": "tx-t-cmol-udaxtopb-ope-dia-banktrad",
+   "projectId": "MIGBD",
+   "objeto": "t_cmol_udaxtopb_ope_dia_banktrad",
+   "nombreLegacy": "POSICION_GLOBAL_BankTrad",
+   "origen": "Tantia (Usuario)",
+   "rutaTantiaWork": "\\\\SVRDESCODIRECT01.dg.co.igrupobbva\\informesbt\\TradeStats",
+   "rutaTantiaLive": "\\\\co.igrupobbva\\svrfilesystem\\Bantrade_InformesBT\\TradeStats",
+   "archivoTantia": "POSICION_GLOBAL_BankTrade_{FECHA_SIN_GUIONES}_2300.csv",
+   "encabezadoOrigen": "Sí",
+   "separadorOrigen": ";",
+   "formatoTantia": "CSV",
+   "encabezadoDestino": "Sí",
+   "rutaAda": "in/staging/cmol",
+   "archivoAda": "Lo define Gobierno",
+   "separadorDestino": ",",
+   "periodicidad": "Diario",
+   "diasEjecucion": "Diario hábil",
+   "horaEjecucion": "Pdte Confirmar",
+   "frecuencia": "Pdte Confirmar",
+   "corteLectura": "D-1. Si ejecutamos hoy 15/09, buscará en tantia con fecha del 20260914",
+   "corteEscritura": "D-1. Si ejecutamos hoy 15/09, escribirá en ADA con fecha del 20260914"
+  },
+  {
+   "id": "tx-t-crdc-udaslgmd-gestor-mesa-dine",
+   "projectId": "MIGBD",
+   "objeto": "t_crdc_udaslgmd_gestor_mesa_dine",
+   "nombreLegacy": "ASIGNACION_SALES_DD_MM_YYYY",
+   "origen": "Tantia (Usuario)",
+   "rutaTantiaWork": "\\\\SVRDESCODIRECT01.dg.co.igrupobbva\\TX\\ENVIO_HOST\\CIB\\DATIO",
+   "rutaTantiaLive": "\\\\co.igrupobbva\\svrfilesystem\\TX\\ENVIO_HOST\\CIB\\DATIO",
+   "archivoTantia": "Asignacion_sales_{FECHA_CON_GUIONES_BAJO}.csv",
+   "encabezadoOrigen": "Sí",
+   "separadorOrigen": ";",
+   "formatoTantia": "CSV",
+   "encabezadoDestino": "Sí",
+   "rutaAda": "in/staging/crdc",
+   "archivoAda": "Lo define Gobierno",
+   "separadorDestino": ",",
+   "periodicidad": "Diario",
+   "diasEjecucion": "Diario hábil",
+   "horaEjecucion": "11:00 pm",
+   "frecuencia": "Se ejecuta una única vez por día",
+   "corteLectura": "D-1. Si ejecutamos hoy 15/09, buscará en tantia con fecha del 20260914",
+   "corteEscritura": "D-1. Si ejecutamos hoy 15/09, buscará en tantia con fecha del 20260914"
+  }
+ ],
+ "timia_datax_config": [
+  {
+   "projectId": "MIGBD",
+   "tantia": {
+    "namespaceWork": "co.cmol.app-id-20538.dev / co.crdc.app-id-591253.dev",
+    "namespaceLive": "",
+    "adapterWork": "adapter_tantia_crdc_read_wk / adapter_tantia_cmol_01_wk",
+    "adapterLive": "adapter_tantia_crdc_read_lv / adapter_tantia_cmol_01_lv",
+    "rutaWork": "//datax.work-02/ns/co.cmol.app-id-20538.dev/adapters/adapter_tantia_cmol_01 / //datax.work-02/ns/co.crdc.app-id-591253.dev/adapters/adapter_tantia_crdc_read",
+    "rutaLive": ""
+   },
+   "ada": {
+    "namespaceWork": "co.cmol.app-id-20538.dev / co.crdc.app-id-591253.dev",
+    "namespaceLive": "",
+    "adapterWork": "adapter_ada_crdc_write_4 / co_adapter_write_ada",
+    "adapterLive": "",
+    "rutaWork": "//datax.work-02/ns/co.crdc.app-id-591253.dev/adapters/adapter_ada_crdc_write_4 / //datax.work-02/ns/co.cmol.app-id-20538.dev/adapters/co_adapter_write_ada",
+    "rutaLive": ""
+   },
+   "id": "cfg-MIGBD"
+  }
+ ]
+}
