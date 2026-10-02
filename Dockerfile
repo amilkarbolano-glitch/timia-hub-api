@@ -6,6 +6,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY seed.json ./seed.json
+# Datos de arranque que se fusionan sin pisar lo que ya esté en la base
+COPY bootstrap ./bootstrap
 # CA de Amazon DocumentDB (necesaria con tls=true); no molesta en local
 ADD https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem /app/global-bundle.pem
 # ADD de una URL deja el archivo con permisos 600; lo hacemos legible para el usuario sin privilegios

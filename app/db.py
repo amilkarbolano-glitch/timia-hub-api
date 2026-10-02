@@ -170,3 +170,79 @@ async def seed_from_file(force: bool) -> dict:
         await write_key(k, v, by="seed")
         seeded.append(k)
     return {"seeded": seeded, "skipped": skipped}
+
+
+# ─── Datos de arranque (merge, no reemplazo) ──────────────────────────────────
+# A diferencia del seed, esto corre aunque la key ya exista: agrega los ítems que
+# faltan y deja intacto lo que ya está. Sirve para cargar datos que vienen de un
+# Excel sin pisar lo que el equipo editó a mano en la herramienta.
+#
+# Reglas:
+#   · listas  → se agregan solo los ítems cuyo "id" no esté ya presente
+#   · objetos → se agregan solo las claves que no existan
+# Nunca se modifica ni se borra un ítem existente, y solo se tocan las keys que
+# el archivo nombra.
+
+def bootstrap_dir() -> Path:
+    if settings.BOOTSTRAP_DIR:
+        return Path(settings.BOOTSTRAP_DIR)
+    return Path(__file__).resolve().parent.parent / "bootstrap"
+
+
+async def merge_bootstrap() -> dict:
+    """Aplica todos los .json de bootstrap/. Idempotente: correrlo dos veces no cambia nada."""
+    carpeta = bootstrap_dir()
+    if not carpeta.is_dir():
+        return {"files": [], "added": {}, "note": f"sin carpeta {carpeta}"}
+    files, added = [], {}
+    for path in sorted(carpeta.glob("*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as e:
+            added[path.name] = f"error: {e}"
+            continue
+        files.append(path.name)
+        for key, value in data.items():
+            if not key.startswith(KEY_PREFIX) or key.startswith("_"):
+                continue
+            n = await merge_key(key, value, by=f"bootstrap:{path.name}")
+            if n:
+                added[key] = added.get(key, 0) + n
+    return {"files": files, "added": added}
+
+
+async def merge_key(key: str, value: Any, by: str = "") -> int:
+    """Agrega lo que falte en `key`. Devuelve cuántos ítems/claves se agregaron."""
+    actual = await read_key(key)
+
+    if isinstance(value, list):
+        if actual is None:
+            await write_key(key, value, by=by)
+            return len(value)
+        if not isinstance(actual, list):
+            return 0                                  # tipo distinto: no tocar
+        presentes = {it.get("id") for it in actual if isinstance(it, dict)}
+        nuevos = [it for it in value
+                  if isinstance(it, dict) and it.get("id") not in presentes]
+        if not nuevos:
+            return 0
+        await write_key(key, actual + nuevos, by=by)
+        return len(nuevos)
+
+    if isinstance(value, dict):
+        if actual is None:
+            await write_key(key, value, by=by)
+            return len(value)
+        if not isinstance(actual, dict):
+            return 0
+        faltan = {k: v for k, v in value.items() if k not in actual}
+        if not faltan:
+            return 0
+        await write_key(key, {**actual, **faltan}, by=by)
+        return len(faltan)
+
+    # escalares: solo si la key no existe
+    if actual is None:
+        await write_key(key, value, by=by)
+        return 1
+    return 0

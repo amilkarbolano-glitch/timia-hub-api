@@ -40,6 +40,14 @@ async def startup():
         res = await db.seed_from_file(force=False)
         if res["seeded"]:
             print(f"[seed] keys cargadas: {', '.join(res['seeded'])}")
+    if settings.BOOTSTRAP_ON_START:
+        # Fusiona los datos de bootstrap/: agrega lo que falte, nunca pisa lo editado.
+        try:
+            res = await db.merge_bootstrap()
+            if res["added"]:
+                print(f"[bootstrap] agregado: {res['added']}")
+        except Exception as e:
+            print(f"[bootstrap] error (se ignora): {e}")
 
 
 @app.on_event("shutdown")
