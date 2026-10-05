@@ -196,15 +196,58 @@ def rule_for(key: str) -> dict[str, Any] | None:
     return None
 
 
+# Catálogo anterior a que la matriz empezara a anotar el suyo en "_catalog".
+# Las matrices guardadas antes de eso no dicen qué permisos existían al guardarse;
+# esta lista lo zanja sin adivinar. Es una foto fija: no se le añade nada nuevo.
+CATALOGO_HEREDADO: frozenset[str] = frozenset({
+    "projects.view_all", "projects.create", "projects.manage", "team.manage",
+    "roles.manage", "config.manage", "plan.view", "plan.edit_progress",
+    "plan.manage_issues", "plan.export", "estimaciones.view", "estimaciones.edit",
+    "estimaciones.generate", "tasks.view", "tasks.manage", "tasks.update_status",
+    "tasks.assign", "tasks.comment", "bitacora.view", "bitacora.write", "circuitos.view",
+    "circuitos.edit", "inventario.view", "inventario.edit", "inventario.configure",
+    "links.edit", "imputaciones.edit", "tr.view", "tr.load_own", "tr.load_any",
+    "tr.manage_features", "analytics.view", "bank_status.view", "standup.generate",
+    "audit.view"
+})
+
+
+def catalogo_guardado(stored: dict) -> set[str]:
+    """Qué permisos existían cuando se guardó la matriz.
+
+    Se anota en "_catalog" al guardar. Las matrices guardadas antes de que eso
+    existiera se resuelven con CATALOGO_HEREDADO: deducirlo de la unión de los
+    roles no sirve, porque un permiso que el administrador quitó de todos los
+    roles se vería igual que uno que todavía no existía.
+    """
+    guardado = stored.get("_catalog")
+    if isinstance(guardado, list) and guardado:
+        return {p for p in guardado if isinstance(p, str)}
+    return set(CATALOGO_HEREDADO)
+
+
 def effective_matrix(stored: dict | None, custom: Any = None) -> dict[str, list[str]]:
     """Matriz vigente: defaults + roles personalizados + ajustes guardados.
-    Solo entran permisos del catálogo; los roles desconocidos se descartan."""
+    Solo entran permisos del catálogo; los roles desconocidos se descartan.
+
+    Lo guardado manda, pero solo sobre los permisos que existían cuando se
+    guardó. Antes mandaba sobre todo, así que un permiso nuevo nacía apagado
+    para todo el mundo en cuanto alguien hubiera pulsado Guardar alguna vez en
+    Roles y permisos — y sin ninguna señal de por qué. Pasó con tasks.link.
+    """
     out = {r: list(p) for r, p in DEFAULT_ROLE_PERMISSIONS.items()}
     out.update(custom_roles(custom))
     if isinstance(stored, dict):
+        conocidos = catalogo_guardado(stored)
+        nuevos = {p for p in PERMISSIONS if p not in conocidos}
         for role, perms in stored.items():
+            if role.startswith("_"):
+                continue
             if (role in ROLES or role in out) and isinstance(perms, list):
-                out[role] = [p for p in perms if p in PERMISSIONS]
+                elegidos = [p for p in perms if p in PERMISSIONS]
+                # los que aún no existían se resuelven con el default del rol
+                heredados = [p for p in out.get(role, []) if p in nuevos and p not in elegidos]
+                out[role] = elegidos + heredados
     out["account_manager"] = ALL   # el gerente de cuenta siempre tiene todo (evita bloquearse a sí mismo)
     return out
 

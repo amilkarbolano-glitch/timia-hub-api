@@ -288,3 +288,57 @@ def test_rol_personalizado_se_respeta_al_escribir():
         role="auditor", user_id="u-x", project_ids=["MIGBD"], matrix=m, project_roles={},
     )
     assert motivo is not None
+
+
+# ─── Matriz guardada vs permisos nuevos ──────────────────────────────────────
+# Un permiso añadido al catálogo después de que alguien guardara la matriz desde
+# Roles y permisos nacía apagado para todos, sin ninguna señal. Así se perdió
+# tasks.link: la matriz de producción tenía los 5 roles con listas explícitas.
+
+from app.permissions import effective_matrix, catalogo_guardado, DEFAULT_ROLE_PERMISSIONS, PERMISSIONS
+
+
+def _guardada_sin(perm: str) -> dict:
+    """Una matriz como la de producción: listas explícitas, sin el permiso nuevo."""
+    return {rol: [p for p in perms if p != perm]
+            for rol, perms in DEFAULT_ROLE_PERMISSIONS.items()}
+
+
+def test_un_permiso_nuevo_llega_a_los_roles_que_lo_tienen_por_defecto():
+    m = effective_matrix(_guardada_sin("tasks.link"))
+    assert "tasks.link" in m["developer"]
+    assert "tasks.link" in m["tech_lead"]
+
+
+def test_lo_que_el_admin_quito_sigue_quitado():
+    guardada = _guardada_sin("tasks.link")
+    guardada["_catalog"] = list(PERMISSIONS)            # el catálogo ya incluía tasks.link
+    m = effective_matrix(guardada)
+    assert "tasks.link" not in m["developer"], "si existía al guardar, se respeta que lo quitaran"
+    assert "tasks.link" not in m["tech_lead"]
+
+
+def test_el_catalog_no_se_cuela_como_rol():
+    m = effective_matrix({"_catalog": list(PERMISSIONS), "developer": ["tasks.view"]})
+    assert "_catalog" not in m
+    assert m["developer"] == ["tasks.view"]
+
+
+def test_matriz_vieja_usa_el_catalogo_heredado():
+    """Sin "_catalog" no se adivina: se usa la foto del catálogo anterior."""
+    from app.permissions import CATALOGO_HEREDADO
+    assert catalogo_guardado({"developer": ["tasks.view"]}) == set(CATALOGO_HEREDADO)
+    assert "tasks.link" not in CATALOGO_HEREDADO, "tasks.link es el permiso nuevo"
+    assert "tasks.comment" in CATALOGO_HEREDADO, "los viejos sí están"
+
+
+def test_sin_matriz_guardada_mandan_los_defaults():
+    m = effective_matrix(None)
+    assert m["developer"] == DEFAULT_ROLE_PERMISSIONS["developer"]
+
+
+def test_quitar_un_permiso_viejo_se_respeta():
+    """Lo que ya existía y el admin quitó no vuelve."""
+    guardada = _guardada_sin("tasks.comment")          # tasks.comment es viejo: está en otros roles
+    m = effective_matrix(guardada)
+    assert "tasks.comment" not in m["developer"]
