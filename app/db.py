@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import ReplaceOne
 
 from .config import settings
 
@@ -58,20 +59,37 @@ async def read_key(key: str) -> Any | None:
     return meta.get("value")
 
 
+def docs_for(value: list) -> list[dict]:
+    docs, seen = [], set()
+    for i, item in enumerate(value):
+        _id = item.get("id") if isinstance(item, dict) and isinstance(item.get("id"), (str, int)) else i
+        _id = str(_id)
+        if _id in seen:
+            _id = f"{_id}#{i}"
+        seen.add(_id)
+        docs.append({"_id": _id, "_ord": i, "item": item})
+    return docs
+
+
 async def write_key(key: str, value: Any, by: str = "") -> None:
     d = db()
     if isinstance(value, list):
-        await d[key].delete_many({})
-        if value:
-            docs, seen = [], set()
-            for i, item in enumerate(value):
-                _id = item.get("id") if isinstance(item, dict) and isinstance(item.get("id"), (str, int)) else i
-                _id = str(_id)
-                if _id in seen:
-                    _id = f"{_id}#{i}"
-                seen.add(_id)
-                docs.append({"_id": _id, "_ord": i, "item": item})
-            await d[key].insert_many(docs)
+        # Se escribe por diferencia (upsert de lo que viene, luego borrar lo que sobra)
+        # y NO borrando todo primero.
+        #
+        # Con delete_many + insert_many la colección quedaba vacía entre las dos
+        # operaciones. En timia_admin_users eso era grave: find_user_by_id lee esa
+        # misma colección en cada petición autenticada, así que cualquier petición
+        # que cayera en esa ventana no encontraba al usuario y respondía 401
+        # "Sesión inválida" — el front lo tomaba como sesión caducada y deslogueaba.
+        # Pasaba al aprobar un acceso, porque eso escribe timia_admin_users y
+        # timia_access_requests casi al mismo tiempo.
+        docs = docs_for(value)
+        if docs:
+            await d[key].bulk_write([ReplaceOne({"_id": doc["_id"]}, doc, upsert=True) for doc in docs], ordered=False)
+            await d[key].delete_many({"_id": {"$nin": [doc["_id"] for doc in docs]}})
+        else:
+            await d[key].delete_many({})
         await d[KV].replace_one({"_id": key}, {"_id": key, "kind": "array", "count": len(value), "updatedAt": now_iso(), "updatedBy": by}, upsert=True)
     else:
         await d[key].drop()
