@@ -86,6 +86,7 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
     "tasks.update_status": ("Tablero", "Mover tareas de estado"),
     "tasks.assign":        ("Tablero", "Asignar tareas"),
     "tasks.comment":       ("Tablero", "Comentar tareas"),
+    "tasks.link":          ("Tablero", "Adjuntar enlaces a una tarea"),
     # Tareas (cambios funcionales)
     "bitacora.view":       ("Tareas · cambios funcionales", "Ver cambios funcionales"),
     "bitacora.write":      ("Tareas · cambios funcionales", "Registrar cambios funcionales"),
@@ -128,7 +129,7 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
     "tech_lead": [
         "plan.view", "plan.edit_progress", "plan.manage_issues", "plan.export",
         "estimaciones.view", "estimaciones.edit",
-        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment",
+        "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment", "tasks.link",
         "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
         "inventario.view", "inventario.edit", "inventario.configure", "links.edit", "imputaciones.edit",
         "tr.view", "tr.load_own", "tr.load_any", "tr.manage_features",
@@ -137,7 +138,7 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
     # Desarrollador: ve lo suyo, mueve sus tareas, reporta bloqueantes, carga su TR
     "developer": [
         "plan.manage_issues",                        # reporta bloqueantes; no ve el plan de trabajo
-        "tasks.view", "tasks.update_status", "tasks.comment",
+        "tasks.view", "tasks.update_status", "tasks.comment", "tasks.link",
         "bitacora.view", "bitacora.write", "circuitos.view",
         "inventario.view", "inventario.edit",
         "tr.view", "tr.load_own",
@@ -166,7 +167,8 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_plan_issues":      {"perm": "plan.manage_issues","scope": "project"},
     "timia_kanban_tasks":     {"perm": "tasks.manage",      "scope": "project",
                                # sin tasks.manage, se permite cambiar solo estos campos de tareas existentes
-                               "partial": {"tasks.update_status": ["status"], "tasks.comment": ["comments"], "tasks.assign": ["assigneeIds"]}},
+                               "partial": {"tasks.update_status": ["status"], "tasks.comment": ["comments"],
+                                           "tasks.assign": ["assigneeIds"], "tasks.link": ["links"]}},
     "timia_bitacora":         {"perm": "bitacora.write",    "scope": "project"},
     "timia_circuitos":        {"perm": "circuitos.edit",    "scope": "project"},
     "timia_inv_v2":           {"perm": "inventario.edit",   "scope": "project"},
