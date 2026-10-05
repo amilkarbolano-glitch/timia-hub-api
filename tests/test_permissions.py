@@ -77,6 +77,22 @@ def test_developer_can_move_task_but_not_create_or_edit(client):
     assert put(client, "timia_kanban_tasks", [{**TASK, "status": "in-progress"}, {**TASK, "id": "kt-2"}]).status_code == 403
 
 
+def test_developer_can_attach_links(client):
+    """Un developer documenta su trabajo (PR, evidencia) sin poder editar la tarea."""
+    login(client, "u-juan"); put(client, "timia_kanban_tasks", [TASK])
+    client.post("/api/auth/logout"); login(client, "u-santiago")
+
+    con_link = {**TASK, "links": [{"id": "l1", "title": "PR", "url": "https://github.com/x/y/pull/1"}]}
+    assert put(client, "timia_kanban_tasks", [con_link]).status_code == 200
+    # y quitarlo
+    assert put(client, "timia_kanban_tasks", [{**con_link, "links": []}]).status_code == 200
+    # pero el enlace no es una puerta trasera para editar lo demás
+    r = put(client, "timia_kanban_tasks", [{**con_link, "endDate": "2027-01-01"}])
+    assert r.status_code == 403
+    # ni para crear tareas
+    assert put(client, "timia_kanban_tasks", [con_link, {**TASK, "id": "kt-9"}]).status_code == 403
+
+
 def test_tech_lead_can_create_task(client):
     login(client, "u-amilkar")
     assert put(client, "timia_kanban_tasks", [TASK]).status_code == 200
