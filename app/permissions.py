@@ -87,6 +87,8 @@ PERMISSIONS: dict[str, tuple[str, str]] = {
     "tasks.assign":        ("Tablero", "Asignar tareas"),
     "tasks.comment":       ("Tablero", "Comentar tareas"),
     "tasks.link":          ("Tablero", "Adjuntar enlaces a una tarea"),
+    "fabrica.view":        ("Recursos", "Ver el estatus de la f\u00e1brica"),
+    "fabrica.edit":        ("Recursos", "Actualizar el estatus de la f\u00e1brica"),
     # Tareas (cambios funcionales)
     "bitacora.view":       ("Tareas · cambios funcionales", "Ver cambios funcionales"),
     "bitacora.write":      ("Tareas · cambios funcionales", "Registrar cambios funcionales"),
@@ -132,6 +134,7 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
         "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment", "tasks.link",
         "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
         "inventario.view", "inventario.edit", "inventario.configure", "links.edit", "imputaciones.edit",
+        "fabrica.view", "fabrica.edit",
         "tr.view", "tr.load_own", "tr.load_any", "tr.manage_features",
         "bank_status.view", "standup.generate",
     ],
@@ -140,7 +143,7 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
         "plan.manage_issues",                        # reporta bloqueantes; no ve el plan de trabajo
         "tasks.view", "tasks.update_status", "tasks.comment", "tasks.link",
         "bitacora.view", "bitacora.write", "circuitos.view",
-        "inventario.view", "inventario.edit",
+        "inventario.view", "inventario.edit", "fabrica.view",
         "tr.view", "tr.load_own",
     ],
 }
@@ -172,6 +175,7 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_bitacora":         {"perm": "bitacora.write",    "scope": "project"},
     "timia_circuitos":        {"perm": "circuitos.edit",    "scope": "project"},
     "timia_inv_v2":           {"perm": "inventario.edit",   "scope": "project"},
+    "timia_fabrica_objetos":  {"perm": "fabrica.edit",     "scope": "global"},
     "timia_inv_transmision":  {"perm": "inventario.edit",   "scope": "project"},
     "timia_inv_datax":        {"perm": "inventario.edit",   "scope": "project"},
     "timia_datax_config":     {"perm": "inventario.edit",   "scope": "project"},

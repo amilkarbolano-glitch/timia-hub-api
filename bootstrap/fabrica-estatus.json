@@ -1,0 +1,4863 @@
+{
+ "_descripcion": "Estatus interno de la fabrica (David Huaman). Hoja \"Estatus Global\" de Status Fabrica - Interno.xlsx. Se fusiona por id, nunca pisa lo editado.",
+ "timia_fabrica_objetos": [
+  {
+   "id": "fab-2",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_prof_auth_attributes_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-3",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_cust_usr_prof_channel_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-4",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_cust_user_prof_device_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-5",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_user_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-6",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_cust_user_profile_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-7",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_coexistence_user_err",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-8",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "t_kusu_coexistence_user",
+   "responsable": "David Huaman",
+   "contactoBanco": "Carlos Carrascal",
+   "objeto": "",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-9",
+   "proyecto": "MURIC",
+   "objetoInsumo": "Muric3_MRCO_local",
+   "responsable": "David Huaman",
+   "contactoBanco": "Leonardo Ballesteros",
+   "objeto": "NA",
+   "periodicidad": "Mensual",
+   "estado": "Desestimado",
+   "comentarios": "Desestimado",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "na"
+    },
+    "feature-hu": {
+     "estado": "na"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "na"
+    },
+    "componentes-hammurabi": {
+     "estado": "na"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "na"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "na"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-10",
+   "proyecto": "MURIC",
+   "objetoInsumo": "Créditos Verdes",
+   "responsable": "Felipe Corredor",
+   "contactoBanco": "Leonardo Ballesteros",
+   "objeto": "t_cugu_udaugcver_creditos_verdes t_csan_udaugcver_creditos_verdes",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "Se entregó a Leonardo Ballesteros \"[MURIC] Entrega componentes Créditos Verdes\", no había MSD.",
+   "fechaRecepcion": "",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok"
+    },
+    "schemas-work": {
+     "estado": "ok"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "na"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSAN_APP-ID-20585_DSG/repos/co-rf-sm2-dhc-krb-csancosm2ingestion/pull-requests/5/overview WO0000102306889 OK"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSAN_APP-ID-20585_DSG/repos/co-rf-sm2-dhc-qlt-csansm2qltmuric/pull-requests/4/overview WO0000102307080 OK"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSAN_APP-ID-20585_DSG/repos/co-dh-sm2-dhc-smc-csansmartcleaner/pull-requests/3/overview WO0000102306990 OK"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-11",
+   "proyecto": "SDATOOL-53686 Ajustes reportes regulatorios - Controller View 2026",
+   "objetoInsumo": "Controller View",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "t_crvu_udarvenvig_ent_vigiladas t_cstr_udarvenvig_ent_vigiladas",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/12iSj6fXe6isWtrFXA7xrHx_2Bear0rTKT2od5vP4t0M/edit?usp=sharing Gestión de malla eventual [SDA-53686 Ajustes reportes regulatorios - Controller View 2026] - Estatus Fábrica 2026-04-10",
+   "fechaRecepcion": "17/03/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "nota": "https://itsmhelixbbva-smartit.onbmc.com/smartit/app/#/search/WO0000102397525"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSTR_APP-ID-2183515_DSG/repos/co-dh-nga-dhc-krb-cstrctrllrview/pull-requests/3/overview WO0000102367455 OK"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSTR_APP-ID-2183515_DSG/repos/co-dh-nga-dhc-qlt-cstrctrllrview/pull-requests/3/overview WO0000102370136 OK 23/09/2026 WO0000102729654"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "link": "https://bitbucket.globaldevtools.bbva.com/bitbucket/projects/CO_CSTR_APP-ID-2183515_DSG/repos/co-dh-nga-dhc-smc-cstrctrllrview/pull-requests/3/overview WO0000102372913 OK"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "ENTREGADO CORREO"
+    }
+   }
+  },
+  {
+   "id": "fab-12",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "Clientes Sostenibles Manuales",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Magnolia Forero",
+   "objeto": "t_cpeu_udapeclsom_clien_sost_man t_cbtq_udapeclsom_clien_sost_man",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "https://docs.google.com/spreadsheets/d/1Luvi9w85bm1pFJ6urENg_1OC7NVa34_kDIklUYhov-o/edit?gid=0#gid=0 Alias: udapeclsom Vendrá con partición: cutoff_date, es mensual Re: Ingesta Sostenibilidad SDM1 Kirby y Hammurabi REPO SMC REPO 27/05/2026 Se solicita cambio de delimitador a ,",
+   "fechaRecepcion": "2026-08-04",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/04/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok"
+    },
+    "schemas-work": {
+     "estado": "ok"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "17/06/2026",
+     "nota": "Atendido 26/05/26 Ok 27/05/2026 02/06/2026 17/06/2026 Cambio Delimitador"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "01/06/2026",
+     "nota": "Cambio Delimitador"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "12/05/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "12/05/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "12/05/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "20/05/2026",
+     "nota": "Live 2121 WO0000102470970"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "17/06/2026",
+     "nota": "Atendido 26/05/2026 WO0000102441790 Ok 02/06/2026 17/06/2026 Cambio Delimitador WO00001024"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "01/06/2026",
+     "nota": "WO0000102488462"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "19/05/2026",
+     "nota": "WO0000102441867 (Teminada) 19/05/2026 WO0000102458206 (Formato de Partición) https://bitbu"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "18/06/2026",
+     "nota": "se crea PR Dummy 26/05/2026 18/06/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "02/06/2026",
+     "nota": "Atendido 26/05/2026 Ok 02/06/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "19/05/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "24/06/2026",
+     "nota": "Feautre Mallas https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-3284 Feature Deploym"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-13",
+   "proyecto": "SDATOOL-51117 SDM1",
+   "objetoInsumo": "Delta Operaciones Sostenibles",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Magnolia Forero",
+   "objeto": "t_cspu_udadeltops_delta_ope_sost t_cwhz_udadeltops_delta_ope_sost",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "https://docs.google.com/spreadsheets/d/1-5QNtMpbbeaHkhs5chQSpPwKmbgJP7-OXtKXsuSvC_M/edit?gid=0#gid=0 Alias: udapeclsom Vendrá con partición: cutoff_date, es mensual Re: Ingestas Sostenibilidad - Principalidad KIRBY y QLT REPO SMC REPO 27/05/2026 Se solicita cambio de delimitador a ,",
+   "fechaRecepcion": "2026-08-04",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/04/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok"
+    },
+    "schemas-work": {
+     "estado": "ok"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "02/06/2026",
+     "nota": "Atendido 20/05/26 Ok 27/05/2026 02/06/2026 Cambio Delimitador"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "27/05/2026",
+     "nota": "Atendido 25/05/26 Ok 27/05/2026 Cambio Delimitador"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "20/05/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "14/05/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "14/05/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "14/05/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "20/05/2026",
+     "nota": "Live 2122 WO0000102470976"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "02/06/2026",
+     "nota": "Atendido 20/05/2026 WO0000102450517 Ok 27/05/2026 02/06/2026 WO0000102488092"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "11/06/2026",
+     "nota": "Atendido 25/05/2026 WO0000102471970 Ok 03/06/2026 11/06/2026 Cambio Delimitador WO00001025"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "20/05/2026",
+     "nota": "WO0000102442231 (Terminada) 20/05/2026 WO0000102460824 (Formato de Partición) https://bitb"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "03/06/2026",
+     "nota": "Atendido 20/05/2026 Ok 03/06/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "11/06/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "20/05/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "24/06/2026",
+     "nota": "Vo.Bo. RA REQ000102987837 19/06/2026 Nueva radicación REQ000103002585 WO0000102542202 24/0"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-14",
+   "proyecto": "SDATOOL-54370 CORE Regulatorio",
+   "objetoInsumo": "t_cdar_udarvclsin_cli_singulares",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juan David Benavides",
+   "objeto": "t_cdar_udarvclsin_cli_singulares",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "SDA [SDATOOL-54370] https://docs.google.com/spreadsheets/d/1hyi7VVgNznvj3dViyzDzlAtFVGG4z_MorCOYIbTS-VM/edit?gid=0#gid=0 Repo https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr",
+   "fechaRecepcion": "20/05/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "22/05/2026"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/05/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "25/05/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "29/05/2026",
+     "nota": "Bloqueo de PR Commit inicial creación del repositorio 29/05/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/06/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "25/05/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "01/06/2026",
+     "nota": "Live-33 WO0000102480610"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "29/05/2026",
+     "nota": "WO0000102490838"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/06/2026",
+     "nota": "WO0000102491878"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "29/05/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "04/06/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-15",
+   "proyecto": "SDATOOL-54370 CORE Regulatorio",
+   "objetoInsumo": "t_cdar_udarvicpre_contratos_ipre",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juan David Benavides",
+   "objeto": "t_cdar_udarvicpre_contratos_ipre",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "SDA [SDATOOL-54370] https://docs.google.com/spreadsheets/d/1owwISyq3l0t1m2c5HAb0lC8ty1DJ-UOFBpNSEDpTeG8/edit?gid=0#gid=0 Repo https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr",
+   "fechaRecepcion": "20/05/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "20/05/2026"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/05/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "25/05/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "29/05/2026",
+     "nota": "Bloqueo de PR Commit inicial creación del repositorio 29/05/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/06/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "26/05/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "01/06/2026",
+     "nota": "Live-32 WO0000102480096"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "29/05/2026",
+     "nota": "WO0000102490838"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/06/2026",
+     "nota": "WO0000102491878"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "29/05/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "04/06/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-16",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "t_ccrt_ddasfoli_oppy_line_item",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "t_csfd_ddasfoli_oppy_line_item t_ccrt_ddasfoli_oppy_line_item",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Adición de 9 campos 01/06 Cambio de proyecto para Vo.Vo. PO - MT: https://bbva.ghe.com/ada/co-dh-pep-dhc-mit-ccrtdwpcontact - MT HU DECLIENTS4-4241 - MSD https://docs.google.com/document/d/17_vLISv_6r-32_gSri-Uv3CxAkrLqS2fLw8EvxYe_KI/edit?tab=t.0#heading=h.576gf9ppazqt",
+   "fechaRecepcion": "25/05/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "02/06/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "12/06/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "17/06/2026",
+     "nota": "Iniciado 12/06/2026 17/06/2026 WO0000102526097 Error de longitud WO0000102541971 Error cam"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "05/06/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "10/06/2026"
+    },
+    "migration-tool": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "22/06/2026",
+     "nota": "Con incidencias de origen 19/06/2026 OK 22/06/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "22/06/2026",
+     "nota": "Live-113"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "24/06/2026",
+     "nota": "WO0000102546065"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "25/06/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-17",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "t_ccrt_fdamkbeg_com_ban_emp_gob",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "t_csfd_fdamkbeg_com_ban_emp_gob (Spark) t_ccrt_fdamkbeg_com_ban_emp_gob t_ccrt_fdamkbeg_com_ban_emp_gob_l1t",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Adición de 3 campos 01/06 Cambio de proyecto para Vo.Vo. PO - Tiene L1T - Es procesamiento Spark (HU DECLIENTS4-4236) - MT HU DECLIENTS4-4241 - MSD: https://docs.google.com/document/d/166ci4-fWcmmgRsfThXonF882K4WNBtxek_MZRNEFFSs/edit?tab=t.0 - CRQ000101770844 https://itsmhelixbbva-smartit.onbmc.com/smartit/app/#/changePV/AGGAPPFSHYMSJAT7GXQOT7GXQOUZL5 - WO0000102544956 Despliegue de Esquemas Live",
+   "fechaRecepcion": "25/05/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "29/05/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "09/06/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "10/06/2026",
+     "nota": "WO0000102515905"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "05/06/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "10/06/2026"
+    },
+    "migration-tool": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "18/06/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "na"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "18/06/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "19/06/2026",
+     "nota": "Live-108"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "ok",
+     "fecha": "19/06/2026",
+     "nota": "WO0000102542265"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "ok",
+     "fecha": "2/7/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-18",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "t_ccrt_ddasfopp_opportunity",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "t_csfd_ddasfopp_opportunity t_ccrt_ddasfopp_opportunity t_ccrt_ddasfopp_opportunity_l1t",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Adición de 17 campos 01/06 Cambio de proyecto para Vo.Vo. PO - Tiene L1T - MT HU DECLIENTS4-4241",
+   "fechaRecepcion": "25/05/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "03/06/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "12/06/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "17/06/2026",
+     "nota": "WO0000102526630"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "05/06/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "10/06/2026"
+    },
+    "migration-tool": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "22/06/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "23/06/2026",
+     "nota": "Live-129"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "24/06/2026",
+     "nota": "WO0000102546065"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "01/07/2026",
+     "nota": "WO0000102551907"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "25/06/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "02/07/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-19",
+   "proyecto": "SDATOOL-54011 Participantes Indirecto",
+   "objetoInsumo": "t_cpic_client_movimiento",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra PO: BETZY PAOLA JARAMILLO LASTRA",
+   "objeto": "t_cmol_client_movimiento t_cpic_client_movimiento",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Alias: mocpiccliemov Diccionario: https://docs.google.com/spreadsheets/d/1LgRVo-bPv4pxxaP59VoppZgQXyoZ5Op-iV66EMCqLNk/edit?gid=0#gid=0 MSD: https://docs.google.com/document/d/15o8P_PdqdXxi40sENmE_wM1gTX1gXUCRL0ZoDBlD47s/edit?tab=t.0 Repos: https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-krb-cmolkrbpartindbreb https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-qlt-cmolqltpartindbreb https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-smc-cmolsmcpartindbreb 22/07: Se solicita suspender temporalmente los desarrollos 25/08: Reactivación de desarrollos",
+   "fechaRecepcion": "2026-12-06",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/07/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "17/07/2026",
+     "nota": "WO0000102594083"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "24/07/2026",
+     "nota": "SRMSD-00518"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "21/07/2026",
+     "nota": "Kirby WO0000102585450 Hammurabi WO0000102585454 SMC WO0000102585364"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "15/07/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "03/09/2026",
+     "nota": "SLIVE-0133 WO0000102686845"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102686276"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102686282"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "17/09/2026",
+     "nota": "WO0000102686447"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "FW Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5631 CBLCMOL_REQ_108 (unif"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-20",
+   "proyecto": "SDATOOL-54011 Participantes Indirecto",
+   "objetoInsumo": "t_cpic_operacion_p2m",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "t_cmol_operacion_p2m t_cpic_operacion_p2m",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Alias: mocpicoperp2m Diccionario: https://docs.google.com/spreadsheets/d/1q7xk9GxybO-IL179K4t_hsvVMX7lJ1mVnQfTMsAtGLc/edit?gid=0#gid=0 MSD: https://docs.google.com/document/d/15o8P_PdqdXxi40sENmE_wM1gTX1gXUCRL0ZoDBlD47s/edit?tab=t.0 22/07: Se solicita suspender temporalmente los desarrollos 25/08: Reactivación de desarrollos",
+   "fechaRecepcion": "2026-12-06",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/06/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/07/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "17/07/2026",
+     "nota": "WO0000102594352"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "24/07/2026",
+     "nota": "SRMSD-00518"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "21/07/2026",
+     "nota": "Kirby WO0000102585450 Hammurabi WO0000102585454 SMC WO0000102585364"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "15/07/2026",
+     "nota": "Ok 15/07/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "03/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "03/09/2026",
+     "nota": "SLIVE-0134 WO0000102686757"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102686276"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102686282"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "17/09/2026",
+     "nota": "WO0000102686447"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "FW Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5631 CBLCMOL_REQ_108 (unif"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-21",
+   "proyecto": "SDATOOL-48750 Gold Local",
+   "objetoInsumo": "t_cpan_udamktub_red_radica_anula",
+   "responsable": "David Huaman",
+   "contactoBanco": "Gina Gabriella Quintero Figueroa",
+   "objeto": "t_cpan_udamktub_red_radica_anula t_cmku_udamktub_red_radica_anula",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "TUBO RADICACIONES Y ANULACIONES UUAA Raw: CMKU UUAA Master: CPAN Diccionario: https://docs.google.com/spreadsheets/d/1wVJLWMFLurQtW3s95SfO6YfQouhTjonHUcgQCgBKpoc/edit?usp=sharing https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5004 Repositorios: krb: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-krb-udamktub qlt: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-qlt-cpanudamktub smc: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-smc-udamktub",
+   "fechaRecepcion": "2026-09-07",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "09/07/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "09/07/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "10/07/2026",
+     "nota": "WO0000102583609"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "15/07/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "15/07/2026",
+     "nota": "ADA - DECLIENTS4-5004 CTM - DECLIENTS4-5020"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "17/07/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "17/07/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "21/07/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "21/07/2026",
+     "nota": "Live-178 21/07/2026 WO0000102600001"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "22/07/2026",
+     "nota": "WO0000102597514"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "22/07/2026",
+     "nota": "WO0000102597615"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "22/07/2026",
+     "nota": "WO0000102597516"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "22/07/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "link": "https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5020 OK 22/07/2026 -> 28/07/2026 CHGL-1566 23/07/2026 Vo.Bo. locales y RA CR-COPANDIA-T02 - REQ000103060186 CR-COPANDIA-T04 - REQ000103060407 Vo.Bo. Catalogador - Jira 24/07/2026 Despliegue a pn - Jul 28 27/07/2026 CRQ000101804590 https://itsmhelixbbva-smartit.onbmc.com/smartit/app/#/changePV/AGGEAA6DAMAUIAT8U14FT8U14F5I5M"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-22",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "dwp_cvad__Action_Audit__c",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "Master: t_ccrt_ddasfaccop_aud_acc_oport Raw: t_csfd_ddasfaccop_aud_acc_oport",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Alias: ddasfaccop Diccionario: https://docs.google.com/spreadsheets/d/19opA7-8kkknk690eJtMk4dqZB5IRhPLqolkKPuHnCtU/edit?gid=273340727#gid=273340727 MSD: https://docs.google.com/document/d/1pAoYEMdpU7fpBb7HFEs6jI7L2BKzBlhLSezQd3EJYFE/edit?tab=t.0 Repos https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-krb-ingestion/ https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-qlt-ccrtqltingestion https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-smc-depuration",
+   "fechaRecepcion": "16/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "30/07/2026",
+     "nota": "WO0000102619772"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "04/08/2026",
+     "nota": "SRMSD-00533"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "05/08/2026",
+     "nota": "Kirby WO0000102620322 Hammurabi WO0000102619884 SMC WO0000102619891"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "16/07/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "05/08/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "12/08/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "12/08/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "31/08/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "06/08/2026",
+     "nota": "Live-233"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "11/08/2026",
+     "nota": "WO0000102633519"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "13/08/2026",
+     "nota": "WO0000102633194"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "06/08/2026",
+     "nota": "WO0000102633524"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "11/08/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "14/08/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "06/08/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "Action Audit: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5322 Deployment: http"
+    },
+    "post-prod": {
+     "estado": "otro",
+     "nota": "AJUSTAR DATAX DOFORCE"
+    }
+   }
+  },
+  {
+   "id": "fab-23",
+   "proyecto": "SDATOOL-54364 Migración lógica base IC - ADA",
+   "objetoInsumo": "COBP.XT.FIX.REPORTE.F%%ODATE.COMEXNET (ex TRADELOAD.F%%ODATE.H%%TIME)",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "José David Sanchez",
+   "objeto": "Raw: t_cxth_hdaxtncvd_negocia_divisas Máster: t_crdc_hdaxtncvd_negocia_divisas",
+   "periodicidad": "Diario",
+   "estado": "Certificación",
+   "comentarios": "Kirby / Hammurabi https://bbva.ghe.com/ada/co-dh-gmc-dhc-inq-cmolglobalmarketscib https://bbva.ghe.com/ada/gynvh_skynet_skynet_fx_pricing Smc https://bbva.ghe.com/ada/co-so-dyp-cdh-smc-crdcdynamicpricing https://bbva.ghe.com/ada/cmol-co-dh-gmc-dhc-sms-smcleanglmarketscib - HU Kirby Work: DECIBCUMPL-1032 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1032 - HU Kirby Live: DECIBCUMPL-1034 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1034 - HU Hammurabi Work/Live: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1262 - HU Borrado: DECIBCUMPL-1193 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1193 MSD: https://docs.google.com/document/d/1ZwQ9SO_rLwM1Hhfb5g52ZCsJGvzD2hqLLOvVS0G9Iys/edit?usp=drive_web&ouid=104035028949866825746 HOST -> FW",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "SGBT-0073"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "28/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "30/09/2026",
+     "nota": "WO0000102741762"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0263 WO0000102776945"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102762536"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102762536"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102781725"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "EN CURSO Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - "
+    }
+   }
+  },
+  {
+   "id": "fab-24",
+   "proyecto": "SDATOOL-54364 Migración lógica base IC - ADA",
+   "objetoInsumo": "GOF.S0105.PGPD0094.D%%ODATE.GP010.INFONOCR (ex REPORTE_NOTAC_ABONO.F%%ODATE.%%TIME)",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "José David Sanchez",
+   "objeto": "Raw: t_cgph_hdagpncab_rep_notac_abono Máster: t_crdc_hdagpncab_rep_notac_abono",
+   "periodicidad": "Diario",
+   "estado": "Certificación",
+   "comentarios": "[External] Re: [SDATOOL-54364 - Migración Base de datos a ADA] - Entrega y Cierre 26 de Mayo 2026 HOST -> FW",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0069"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "nota": "SGBT-0104"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "18/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "23/09/2026",
+     "nota": "WO0000102725545"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0264 WO0000102776945"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102734491"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102734491"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102741708"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    }
+   }
+  },
+  {
+   "id": "fab-25",
+   "proyecto": "SDATOOL-54364 Migración lógica base IC - ADA",
+   "objetoInsumo": "POSICION_GLOBAL_BANKTRADE_AAAAMMDD_HHMM",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "José David Sanchez",
+   "objeto": "Raw: t_cxtu_udaxtopb_ope_dia_banktrad Máster: t_cmol_udaxtopb_ope_dia_banktrad",
+   "periodicidad": "Diario",
+   "estado": "Certificación",
+   "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.cmol.app-id-20538.dev%2Ftransfers%2Fcmol_t_udaxtopb_01",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "SGBT-0070"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "30/09/2026",
+     "nota": "WO0000102742037"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0265 WO0000102776764"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "16/10/2026",
+     "nota": "WO0000102756505"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "16/10/2026",
+     "nota": "WO0000102756505"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "09/10/2026",
+     "nota": "WO0000102756315"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    }
+   }
+  },
+  {
+   "id": "fab-26",
+   "proyecto": "SDATOOL-54364 Migración lógica base IC - ADA",
+   "objetoInsumo": "POSICION_DIVISAS_AAAA-MM-DD_15_XX_XX",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "José David Sanchez",
+   "objeto": "Raw: t_cstd_ddastpodiv_ope_divis_star Master: t_crdc_ddastpodiv_ope_divis_star",
+   "periodicidad": "Diario",
+   "estado": "Certificación",
+   "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.crdc.app-id-591253.dev%2Ftransfers%2Fcrdc_t_ddastpodiv_01",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0072"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "nota": "SGBT-0072"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "30/07/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/09/2026",
+     "nota": "SGBT-0150"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "21/09/2026",
+     "nota": "WO0000102714105"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0266 WO0000102776945"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102734491"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102734491"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102741708"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    }
+   }
+  },
+  {
+   "id": "fab-27",
+   "proyecto": "SDATOOL-54364 Migración lógica base IC - ADA",
+   "objetoInsumo": "ASIGNACION_SALES_DD_MM_YYYY",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "José David Sanchez",
+   "objeto": "Raw: t_cslu_udaslgmd_gestor_mesa_dine Máster: t_crdc_udaslgmd_gestor_mesa_dine",
+   "periodicidad": "Quincenal",
+   "estado": "Certificación",
+   "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.crdc.app-id-591253.dev%2Ftransfers%2Fcrdc_t_udaslgmd_01",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "SGBT-0074"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "23/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "30/09/2026",
+     "nota": "WO0000102741827"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "01/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0267 WO0000102776945"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102762536"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102762536"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102781725"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    }
+   }
+  },
+  {
+   "id": "fab-28",
+   "proyecto": "SDATOOL-54370 CORE Regulatorio",
+   "objetoInsumo": "EKIFD_D02_99991231_CREGCOEPPUROLLOUT.txt",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juan David Benavides",
+   "objeto": "Master: t_cdar_utarvmetca_par_metod_calc Raw: t_crvu_utarvmetca_par_metod_calc",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "UUAA Master: CDAR UUAA Raw: CRVU https://jira.globaldevtools.bbva.com/browse/DERIESGOSD-2172 Diccionario: https://docs.google.com/spreadsheets/d/1kSB9njf4iufFI-wZ7aCAZ4ZA2NOFQrdA9feWVYUwzR0/edit?usp=sharing Repositorio inq: https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr.git MSD: https://docs.google.com/document/d/1WrRhAHDkkTu0HH6VCeNVDQyoncxLiEng4jG3PAl-nJw/edit?tab=t.0 02/09: Esquemas work desplegados (con observación)",
+   "fechaRecepcion": "28/07/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0018"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "20/08/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "20/08/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "02/09/2026",
+     "nota": "WO0000102674444"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "28/07/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "28/07/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "02/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "02/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "02/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na"
+    },
+    "pruebas-control-m": {
+     "estado": "na"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026",
+     "nota": "SLIVE-0142 WO0000102691859"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "02/09/2026",
+     "nota": "WO0000102683593"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "WO0000102683984"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-29",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "kndtapr",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra PO: KATHERINE ORJUELA ZABALETA",
+   "objeto": "Master: t_cctd_hdaknapr_pro_refe_netcash Raw: t_cknh_hdaknapr_pro_refe_netcash",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Alias: hdaknapr Diccionario: https://docs.google.com/spreadsheets/d/1n7m0KlBVElNvbMXWqpzUeZdjDE7zv_VwL9-W07BOWkE/edit?gid=273340727#gid=273340727 MSD: https://docs.google.com/document/d/14Zg53PJhdTQob3eSJcVinBB1PmCHVUVqDyEgOCN42og/edit?usp=sharing Repositorios: krb https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-krb-ingestion qlt https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-qlt-dataquality smc https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-smc-depuration Calendario - todos los días Proceso termina a la 1:00 am Se puede generar a las 3:00 am La información es del día anterior",
+   "fechaRecepcion": "2026-05-08",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0029"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "14/08/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "18/08/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "24/08/2026",
+     "nota": "SGBT-0039"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "25/08/2026",
+     "nota": "WO0000102663975 WO0000102669639"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "18/09/2026",
+     "nota": "SRMSD-00606"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "25/08/2026",
+     "nota": "Kirby WO0000102645379 Hammurabi WO0000102645287 SMC WO0000102645289"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "05/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "21/09/2026",
+     "nota": "SLIVE-0211 21/09/2026 WO0000102722145"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "07/09/2026",
+     "nota": "WO0000102671748"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "WO0000102671842"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "04/09/2026",
+     "nota": "WO0000102671674"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "FW Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5613 Dimensions CBLCCTD_RE"
+    }
+   }
+  },
+  {
+   "id": "fab-30",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "Actas_Sancion_YYYYMMDD.csv.",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "Master: t_cmor_udarvacs_actas_sancion Raw: t _crvu_udarvacs_actas_sancion",
+   "periodicidad": "Mensual",
+   "estado": "Finalizado",
+   "comentarios": "118 CAMPOS Diccionario: https://docs.google.com/spreadsheets/d/1bbJkd8gN2jfTWTRnsi_xrVUh7Il3iMi0/edit?usp=sharing&ouid=111688868515679456928&rtpof=true&sd=true MSD: https://docs.google.com/document/d/14Zg53PJhdTQob3eSJcVinBB1PmCHVUVqDyEgOCN42og/edit?usp=sharing Repositorios: krb https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-krb-ingestion qlt https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-qlt-dataquality smc https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-smc-depuration DataX: https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.cmor.app-id-20546.dev%2Ftransfers%2Fccmor_t_cmor_udarvacs_actas_sancion_0 Horario * Mes vencido * Ejecutar la malla los primeros 10 días del mes calendario * La carga del archivo debe ser el último día calendario del mes anterior Muestras: 20260731, 20260631, 20260531 21/09: Adicicón de llaves WO0000102722947",
+   "fechaRecepcion": "2026-05-08",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0028"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "nota": "SGBT-0057"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "04/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "10/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "21/09/2026",
+     "nota": "WO0000102701096 21/09/2026 SGBT-0295 WO0000102722947"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "18/09/2026",
+     "nota": "SRMSD-00606"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "21/08/2026",
+     "nota": "Kirby WO0000102646999 Hammurabi WO0000102647408 SMC WO0000102647605"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "05/08/2026"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "14/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "14/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "14/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "16/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "16/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "16/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "21/09/2026",
+     "nota": "SLIVE-0212 WO0000102722147"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "18/09/2026",
+     "nota": "WO0000102718585"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "18/09/2026",
+     "nota": "WO0000102718670"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "09/10/2026",
+     "nota": "WO0000102718672"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "Feature: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5619 17/09: Inicio certifi"
+    },
+    "post-prod": {
+     "estado": "otro",
+     "nota": "Falla PROD datax no desplegado"
+    }
+   }
+  },
+  {
+   "id": "fab-31",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "sb_dato_instancia_yyyymmdd.txt",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra",
+   "objeto": "Master: t_bbtq_cdabrvin_relacion_entes Raw: t_cbrc_cdabrvin_relacion_entes",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Diccionario https://docs.google.com/spreadsheets/d/100zuGx5lYnOp9Mx1Xu0c23ikNT3zmqhlcsW-lpAs9QI/edit?usp=sharing krb-qlt: https://bbva.ghe.com/ada/co-dh-brk-dhc-inq-bbtqingbrickell smc: https://bbva.ghe.com/platform/co-dh-brk-dhc-smc-bbtqsmcbrickell 28/08 Pendiente configuracion DATAX",
+   "fechaRecepcion": "2026-05-08",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "nota": "SGBT-0049"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "14/08/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "18/08/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "21/08/2026",
+     "nota": "SGBT-0049"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "25/08/2026",
+     "nota": "WO0000102661921 WO0000102684041"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "03/09/2026",
+     "nota": "SRMSD-00575"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "18/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "26/08/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "10/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "09/09/2026",
+     "nota": "SLIVE-0161 WO0000102698504"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "08/09/2026",
+     "nota": "WO0000102673770"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "14/09/2026",
+     "nota": "WO0000102695170"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102695471"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "14/09/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "Jira Mallas https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5316 11/09: Inicio cert"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-32",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "sb_dato_at_instancia_yyyymmdd.txt",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Adriana Esperanza Morales Sierra PO: KATHERINE SANTANA REYES",
+   "objeto": "Master: t_bbtq_cdabratr_atribut_relacion Raw: t_cbrc_cdabratr_atribut_relacion",
+   "periodicidad": "Diario",
+   "estado": "Finalizado",
+   "comentarios": "Diccionario https://docs.google.com/spreadsheets/d/100zuGx5lYnOp9Mx1Xu0c23ikNT3zmqhlcsW-lpAs9QI/edit?usp=sharing Repositorios krb-qlt: https://bbva.ghe.com/ada/co-dh-brk-dhc-inq-bbtqingbrickell smc: https://bbva.ghe.com/ada/co-dh-brk-dhc-smc-bbtqsmcbrickell MSD https://docs.google.com/document/d/102cfq4HOrwFlxrw5TsNjJyudst6TR_W3C3cPty60YEc/edit?usp=sharing 28/08 Pendiente configuracion DATAX",
+   "fechaRecepcion": "2026-05-08",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok",
+     "fecha": "14/08/2026",
+     "nota": "SGBT-0048"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "18/08/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "21/08/2026",
+     "nota": "SGBT-0048"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "25/08/2026",
+     "nota": "WO0000102661914 WO0000102683874"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "03/09/2026",
+     "nota": "SRMSD-00575"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "18/08/2026"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "migration-tool": {
+     "estado": "na"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "25/08/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok",
+     "fecha": "10/09/2026"
+    },
+    "pruebas-control-m": {
+     "estado": "ok"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "09/09/2026",
+     "nota": "SLIVE-0163 WO0000102698088"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "08/09/2026",
+     "nota": "WO0000102673770"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "14/09/2026",
+     "nota": "WO0000102695170"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "11/09/2026",
+     "nota": "WO0000102695471"
+    },
+    "certificaci-n-spark": {
+     "estado": "na"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "08/09/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "14/09/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "ok",
+     "nota": "Jira Mallas https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5316 11/09: Inicio cert"
+    },
+    "post-prod": {
+     "estado": "ok"
+    }
+   }
+  },
+  {
+   "id": "fab-33",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "COBP.SP.FWSD1.BAT1SBAS.SPDBP01.VB1BPC.EDIT",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_csph_hdaspvisb_inv_vist_ahorro Máster: t_bsan_hdaspvisb_inv_vist_ahorro",
+   "periodicidad": "Diario",
+   "estado": "Bloqueado",
+   "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - DIARIO - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 23/09 Bloqueo: [Brickell - MIS] Inconsistencia hdaspvisb - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
+   "fechaRecepcion": "2026-07-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026",
+     "nota": "WO0000102773616"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "SRMSD-00628"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 23/09/2026 16/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 23/09/2026 16/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-34",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "COBP.SP.FWSD1.SPAM168.VB1BPC.INVOK.EDIT",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_csph_hdaspvisb_inv_vist_ahorro Máster: t_bsan_hdaspvisb_inv_vist_ahorro",
+   "periodicidad": "Mensual",
+   "estado": "Bloqueado",
+   "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 23/09 Bloqueo: [Brickell - MIS] Inconsistencia hdaspvisb - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
+   "fechaRecepcion": "2026-07-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "SRMSD-00628"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 23/09/2026 16/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 23/09/2026 16/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-35",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "COBP.SP.FWSD1.BAT1SBAS.SPDBP02.VB1BPD.EDIT",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_csph_hdaspcdtb_inv_cdt Máster: t_bsan_hdaspcdtb_inv_cdt",
+   "periodicidad": "Diario",
+   "estado": "Bloqueado",
+   "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - DIARIO - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing",
+   "fechaRecepcion": "2026-07-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "SRMSD-00628"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-36",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "COBP.SP.FWSD1.SPAM168.VB1BPD.INVOK.EDIT",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_csph_hdaspcdtb_inv_cdt Máster: t_bsan_hdaspcdtb_inv_cdt",
+   "periodicidad": "Mensual",
+   "estado": "Bloqueado",
+   "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing",
+   "fechaRecepcion": "2026-07-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "SRMSD-00628"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-37",
+   "proyecto": "SDATOOL-53719 Optimizaciones y Normativos - Sucursal Panamá",
+   "objetoInsumo": "COBP.SP.FMSM1.SPMBP02.VC1BPD.PCUOK",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_csph_hdasp140b_plan_cuotas_cdt Máster: t_bsan_hdasp140b_plan_cuotas_cdt",
+   "periodicidad": "Mensual",
+   "estado": "Bloqueado",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1Xm0lsIS5dr5gtxg2fQoXY8MvdtLf2YQjVLGKkDdfNy0/edit?usp=sharing - Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 30/09 Bloqueo [Brickell - MIS] Inconsistencia hdasp140b - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
+   "fechaRecepcion": "2026-07-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "29/09/2026",
+     "nota": "WO0000102734787 WO0000102773524"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "SRMSD-00628"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok"
+    },
+    "pruebas-en-work": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 30/09/2026 16/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "Bloqueado 30/09/2026 16/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-38",
+   "proyecto": "SDATOOL-XXXXX Rentabiliza\" por \"SDATOOL-50520 Rentabiliza",
+   "objetoInsumo": "Curvas ALM",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Edwin Vargas",
+   "objeto": "Raw: t_chau_udahacur_tasas_int_final Máster: t_cfan_udahacur_tasas_int_final",
+   "periodicidad": "Diario",
+   "estado": "Certificación",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1F5Sq-2Syt4gUFnmiZd_rMCOwq35WiiVKwdC4a8np3WU/edit?usp=sharing Repositorios (Kirby/Hammurabi/Smartcleaner): https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-krb-fndcurvastasasfin https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-qlt-fndcurvastasasfin https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-smc-fndCurvasTasasFin HUs: COLONEDWP1-448 https://jira.globaldevtools.bbva.com/browse/COLONEDWP1-448 MSD ( modelo de solución del dato): https://docs.google.com/document/d/1fiRCKl3Phk-kyhG-ibG4sfQr06q-mxA7836dhxqe1-Y/edit?tab=t.0 Nombre de DataX y su configuración horaria: https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=//datax.work-02/ns/co.cfan.app-id-20506.dev/transfers/ccfan_simuladorfondeos_0 Feature de mallas: https://jira.globaldevtools.bbva.com/browse/COLONEDWPB-759 Nombre de Tester y QC: adrianyesid.hernandez.contractor@bbva.com Tester jonathanstevens.betancourt.contractor@bbva.com Correo seguimiento: Rentabiliza - Curvas ALM 20/10: No permite la creación del CRQ para instalar Oct. 28",
+   "fechaRecepcion": "2026-04-09",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "04/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "07/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "10/09/2026",
+     "nota": "WO0000102693233"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "30/09/2029"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "30/09/2026"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "21/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "01/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "pruebas-control-m": {
+     "estado": "ok",
+     "fecha": "02/10/2026"
+    },
+    "documentaci-n-control-m": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "Iniciado 02/10/2026 Bloqueo 05/10/2026 OK 06/10/2026"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "02/10/2026",
+     "nota": "SLIVE-0249 WO0000102749325"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "13/10/2026",
+     "nota": "WO0000102751483"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "WO0000102751386"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102751728"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "En curso 07/10: Revision Changelog CHGL-1652 15/10: Vo.Bo. RA Malla CR-COFANDIA-T02 - REQ0"
+    }
+   }
+  },
+  {
+   "id": "fab-39",
+   "proyecto": "SDATOOL-53177 DWP",
+   "objetoInsumo": "FORMATO_INFORMA_CLIENTES_YYYYMMDD.csv",
+   "responsable": "Leidy Parrado",
+   "contactoBanco": "Adriana Morales",
+   "objeto": "Raw: t_cpeu_udapevinem_vinculac_empre Máster: t_cbtq_udapevinem_vinculac_empre",
+   "periodicidad": "Mensual",
+   "estado": "Bloqueado",
+   "comentarios": "Raw: CPEU Master: CBTQ Alias: udapevinem Diccionario: https://docs.google.com/spreadsheets/d/1i5rRg6sbdS6zdnzSLI5NucqTqeutcXlK1HjswcPZ7VI/edit?usp=sharing MSD: https://docs.google.com/document/d/1cA0FL4KUa0BLHuF48M0YpaZKetNKpilwCRHBleNgBlQ/edit?tab=t.0 Repositorios: krb: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-krb-ingestion qlt: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-qlt-dataquality smc: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-smc-depuration Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5768 08/10: Bloqueo llave datos duplicados - Reproceso generación de esquemas",
+   "fechaRecepcion": "18/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "ok"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "ok",
+     "fecha": "16/09/2026",
+     "nota": "SGBT-0241"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "ok"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "22/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "29/09/2026",
+     "nota": "WO0000102734834 WO0000102774775 WO0000102783671"
+    },
+    "msd": {
+     "estado": "ok",
+     "fecha": "28/09/2026",
+     "nota": "SRMSD-00626"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "KRB WO0000102713774 QLT WO0000102713654 SMC WO0000102714100"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "08/10/2026"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "29/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "29/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "29/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "16/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "PDTE"
+    },
+    "schemas-live": {
+     "estado": "otro",
+     "fecha": "20/10/2026",
+     "nota": "En Curso 05/10/2026 06/10/2026 SLIVE-0251 WO0000102755681 20/10/2026 SLIVE-0285"
+    },
+    "certificaci-n-kirby": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102787404"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "20/10/2026",
+     "nota": "WO0000102787128"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102787211"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "pte"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "pte"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "DataX"
+    }
+   }
+  },
+  {
+   "id": "fab-40",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "CTA 16 Y 13 Fiduciaria - Valores",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_cmol_udafictas_ctas_13_16_19 Raw: t_cfiu_udafictas_ctas_13_16_19",
+   "periodicidad": "Trimestral",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1vL2SaebMj8vwT7tjX94lCJZDZnOWwaqnshDpAFKJyVo/edit?gid=1441700115#gid=1441700115 CMOL Kirby: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-krb-sdm2krb Hammu: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-qlt-cmolsdm2qlt Smc: https://bbva.ghe.com/ada/cmol-co-cd-sm2-dhc-smc-smartcleaner MSD : https://docs.google.com/document/d/1wtiMhkhEj47xSGPOkOo9o_xO89awFhvVr3nd4TMrgVQ/edit?tab=t.0 Jira: https://jira.globaldevtools.bbva.com/browse/DEFINANZAS-1412 PO: ginagabriella.quintero@bbva.com",
+   "fechaRecepcion": "16/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "17/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "24/09/2026",
+     "nota": "WO0000102729158"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "25/09/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "02/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "En curso 21/10"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "SLIVE-0253 WO0000102758688"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "13/10/2026",
+     "nota": "WO0000102758438"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "WO0000102758638"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "07/10/2026",
+     "nota": "WO0000102758805"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "13/10/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "DATAX CTA 16 Y 13 BBVA Valores datax-agent --transferId ccmol_udafictas_ctas_13_16_19_0 --"
+    }
+   }
+  },
+  {
+   "id": "fab-41",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "Parrilla Contable",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_crei_udafipacon_parrilla_conta Raw: t_cfiu_udafipacon_parrilla_conta",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1_CSUQKu0ruYDjXI7Mg5OEYB62WApjdGp9_Y-giXq4lY/edit?usp=sharing Kirby: https://bbva.ghe.com/ada/crei-co-dh-sm2-dhc-krb-crei QLT: https://bbva.ghe.com/ada/crei-co-dh-sm2-dhc-qlt-creisdm2qlt SMC: https://bbva.ghe.com/ada/crei-co-cd-sm2-dhc-smc-smartcleaner Jira: DEFINANZAS-1412 MSD : https://docs.google.com/document/d/1wtiMhkhEj47xSGPOkOo9o_xO89awFhvVr3nd4TMrgVQ/edit?tab=t.0 06/10/2026 duplicados por llave",
+   "fechaRecepcion": "22/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "24/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "24/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "WO0000102734961"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "13/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "ok"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0259 WO0000102774360"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "WO0000102774315"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "WO0000102763457"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "WO0000102763387"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Transfer: datax-agent --transferId ccrei_udafipacon_parrilla_conta_0 --namespace co.crei.a"
+    }
+   }
+  },
+  {
+   "id": "fab-42",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "NEOCON_MMAA",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_crei_udafineoc_ries_tip_cambio Raw: t_cfiu_udafineoc_ries_tip_cambio",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1co28ZztRrI-Ajs38yXbbXHkqQ5RT8b6NcEhAihiTjsk/edit?usp=sharing",
+   "fechaRecepcion": "22/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "24/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "24/09/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "WO0000102734386"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "En curso 21/10"
+    },
+    "schemas-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "SLIVE-0260 WO0000102774360"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "14/10/2026",
+     "nota": "WO0000102774315"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "WO0000102763457"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "08/10/2026",
+     "nota": "WO0000102763387"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "14/10/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "DataX datax-agent --transferId ccrei_udafineoc_ries_tip_cambio_0 --namespace co.crei.app-i"
+    }
+   }
+  },
+  {
+   "id": "fab-43",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "SABANA CONSOLIDADO_MESDD_.xlsx",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_cmfi_udafisabco_cons_sald_cont Raw:",
+   "periodicidad": "Trimestral",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1ZVO0W5QflTTlHriIw5AMVtYvkrPta87SqLc4EsN7FD8/edit?gid=1487636284&urp=gmail_link#gid=1487636284",
+   "fechaRecepcion": "28/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "29/09/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "otro",
+     "fecha": "29/09/2026",
+     "nota": "En Curso 29/09/2026"
+    },
+    "msd": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-44",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "reporte_frp_DDMesAAAA",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_cctk_ddadgrefrp_reporte_frp Raw: t_cdgd_ddadgrefrp_reporte_frp",
+   "periodicidad": "Diario",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1IJFKdcCLALQKPkSMTLzxCGBKBug5iFM2xFaGxCCfhbM/edit?usp=sharing MSD: https://docs.google.com/document/d/1vyfgP_4TjUWPVa2Dr-iQydR9wCiFiph5q2bCmMKYsTs/edit?pli=1&tab=t.0 Repositorios: Kirby: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-krb-sdm2krb Hammurabi: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-qlt-sdm2qlt Smart Cleanar: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-smc-cctksmartclean Jira: DEFINANZAS-1412",
+   "fechaRecepcion": "30/09/2026",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "02/10/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "WO0000102759756"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "feature-hu": {
+     "estado": "ok",
+     "fecha": "06/10/2026",
+     "nota": "Hora: 17:56"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "06/10/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "07/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "En curso 21/10"
+    },
+    "schemas-live": {
+     "estado": "otro",
+     "fecha": "07/10/2026",
+     "nota": "En Curso 07/10/2026 SLIVE-0256"
+    },
+    "certificaci-n-kirby": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102763308"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102768476"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "ok",
+     "fecha": "16/10/2026",
+     "nota": "WO0000102762769"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "ok",
+     "fecha": "16/10/2026"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Nombre de DataX y su configuración horaria: Transfer: datax-agent --transferId cctk_ddadgr"
+    }
+   }
+  },
+  {
+   "id": "fab-45",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "INTERGRUPO_&mes.&anyo_c..xlsx",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "UUAA (Master): CMOL Alias: udafiopint Raw: t_cfiu_udafiopint_ope_intergrupo Master: t_cmol_udafiopint_ope_intergrupo",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/16MD8f7GG1YUdk-qP_tfIrEgfDagSpSFDtLoqEJeEmfU/edit?usp=sharing Muestra: https://drive.google.com/file/d/1tzvCPfkczVgRF9FZSLFCCA_ghu51RcqU/view?usp=drive_link Repositorios (Kirby/Hammurabi/Smartcleaner): Kirby: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-krb-sdm2krb QLT: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-qlt-cmolsdm2qlt SmartCleaner: https://bbva.ghe.com/ada/cmol-co-cd-sm2-dhc-smc-smartcleaner Jira: DEFINANZAS-1412 MSD: https://docs.google.com/document/d/1vyfgP_4TjUWPVa2Dr-iQydR9wCiFiph5q2bCmMKYsTs/edit?pli=1&tab=t.0 Pruebas: Variable DATA_SOURCE_TYPE: O 14/10: Datos duplicados 20/10: Se realiza reproceso con Gobierno para definir nuevos campos llave SGBT-0431",
+   "fechaRecepcion": "2026-09-10",
+   "pasos": {
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "nota": "WO0000102746439"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "13/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "13/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "ok",
+     "fecha": "13/10/2026"
+    },
+    "pruebas-en-work": {
+     "estado": "otro",
+     "fecha": "14/10/2026",
+     "nota": "Bloqueado 14/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "En curso 21/10"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "otro",
+     "nota": "Nombre de DataX y su configuración horaria: Transfer: datax-agent --transferId cmol_udafio"
+    }
+   }
+  },
+  {
+   "id": "fab-46",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "mmaa Formato RP 33 mes.xlsx",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Edinson Caicedo",
+   "objeto": "Máster: t_cplm_udafifrp33_formato_rp33",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1_70r0ynK8U01gs83XP_0lDTl3dslG-klZ6OVaYYXMNU/edit?usp=sharing",
+   "fechaRecepcion": "14/10/2026",
+   "pasos": {
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "16/10/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "otro",
+     "fecha": "16/10/2026",
+     "nota": "En Curso 16/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-47",
+   "proyecto": "SDATOOL-56298 Migración de Capital SDM2",
+   "objetoInsumo": "RentaFija_",
+   "responsable": "",
+   "contactoBanco": "",
+   "objeto": "Máster: t_crdc_ddastrefij_ope_renta_fija",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1669RxpAj5BmEuJPO6YqK2bq8BpA5lPzrcs7EfWX-HXQ/edit?usp=sharing Muestra: https://drive.google.com/file/d/1YPb2PD3ScCjgGLTJohZ-T2fsPavhJITa/view?usp=sharing",
+   "fechaRecepcion": "19/10/2026",
+   "pasos": {
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "20/10/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "otro",
+     "fecha": "20/10/2026",
+     "nota": "En Curso 20/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-48",
+   "proyecto": "SDATOOL-54360 ALM",
+   "objetoInsumo": "Contrato-Segmento NMDs",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juan David Benavides",
+   "objeto": "Máster: t_cfan_udarvnmds_contr_segm_nmds Raw: t_crvu_udarvnmds_contr_segm_nmds",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1vQECWtfU9sbH-AzBrY0M_odmwu8zU9ljG28nS0HV3HA/edit?usp=sharing HU Kirby: DERIESGOSD-2252 HU Hammurabi: DERIESGOSD-2253 Repo: https://bbva.ghe.com/ada/tnclz_skynet_alm_ingestion 13/10: Reproceso esquemas fase Raw - Metadata",
+   "fechaRecepcion": "2026-02-10",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102776397"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "19/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "PDTE"
+    },
+    "certificaci-n-kirby": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102788229"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102788229"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-49",
+   "proyecto": "SDATOOL-54360 ALM",
+   "objetoInsumo": "Contrato-Segmento Prepagos",
+   "responsable": "Carolina Ayala",
+   "contactoBanco": "Juan David Benavides",
+   "objeto": "Máster: t_cfan_udarvprepa_co_se_prepagos Raw: t_crvu_udarvprepa_co_se_prepagos",
+   "periodicidad": "Mensual",
+   "estado": "En curso",
+   "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1iTSav-EXKXSY9GLFaR9fknm1pSopilQ-bqDRgrbh9Qk/edit?usp=sharing",
+   "fechaRecepcion": "2026-02-10",
+   "pasos": {
+    "vobo-gob-funcional": {
+     "estado": "na"
+    },
+    "inicializaci-n-n-bula": {
+     "estado": "na"
+    },
+    "gt-revisi-n-prediccionario": {
+     "estado": "na"
+    },
+    "generaci-n-diccionario": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "ok",
+     "fecha": "05/10/2026"
+    },
+    "schemas-work": {
+     "estado": "ok",
+     "fecha": "15/10/2026",
+     "nota": "WO0000102776397"
+    },
+    "msd": {
+     "estado": "na"
+    },
+    "acceso-rw-repo": {
+     "estado": "ok"
+    },
+    "feature-hu": {
+     "estado": "ok"
+    },
+    "componentes-kirby": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "componentes-hammurabi": {
+     "estado": "ok",
+     "fecha": "15/10/2026"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na"
+    },
+    "pruebas-en-work": {
+     "estado": "ok",
+     "fecha": "19/10/2026"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "otro",
+     "nota": "PDTE"
+    },
+    "certificaci-n-kirby": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102788229"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "otro",
+     "fecha": "19/10/2026",
+     "nota": "En Curso 19/10/2026 WO0000102788229"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na"
+    }
+   }
+  },
+  {
+   "id": "fab-50",
+   "proyecto": "SDATOOL-54789 Colombia. Risk Analytics Data",
+   "objetoInsumo": "LOLOC00",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "Máster: t_csan_hdaxtl00_mae_emisi_im_exp",
+   "periodicidad": "",
+   "estado": "Por iniciar",
+   "comentarios": "DENGAEWS-2188 - NGA-4Q26-ING13-PAQ05- Ingestas Banktrade modulo Importaciones y exportaciones https://jira.globaldevtools.bbva.com/browse/DENGAEWS-2188 Solicitud de Fuentes de Información: https://docs.google.com/spreadsheets/d/1vf5KJCVT1gMI0wbAF4nXL3CHn0JV-RZ7y0Y1PDLotcg/edit?usp=sharing Repositorios: krb - qlt: https://bbva.ghe.com/ada/csan-co-dh-nga-dhc-inq-banktradeimpexp smc: https://bbva.ghe.com/ada/csan-co-dh-nga-dhc-smc-banktradeimpexp",
+   "fechaRecepcion": "29/09/2026",
+   "pasos": {
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-51",
+   "proyecto": "SDATOOL-54789 Colombia. Risk Analytics Data",
+   "objetoInsumo": "LOLOC01",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "Máster: t_csan_hdaxtlc01_modifi_cc_im_ex",
+   "periodicidad": "",
+   "estado": "Por iniciar",
+   "comentarios": "",
+   "fechaRecepcion": "29/09/2026",
+   "pasos": {
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-52",
+   "proyecto": "SDATOOL-54789 Colombia. Risk Analytics Data",
+   "objetoInsumo": "LOLOC05",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "Máster: t_cmol_hdaxtl05_hist_fin_car_cre",
+   "periodicidad": "",
+   "estado": "Por iniciar",
+   "comentarios": "",
+   "fechaRecepcion": "29/09/2026",
+   "pasos": {
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-53",
+   "proyecto": "SDATOOL-54789 Colombia. Risk Analytics Data",
+   "objetoInsumo": "LOLOC07",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "Máster: t_csan_hdaxtl07_drawdowns_im_exp",
+   "periodicidad": "",
+   "estado": "Por iniciar",
+   "comentarios": "",
+   "fechaRecepcion": "29/09/2026",
+   "pasos": {
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-54",
+   "proyecto": "SDATOOL-54789 Colombia. Risk Analytics Data",
+   "objetoInsumo": "LSWIN",
+   "responsable": "Carolina Ayala / Leidy Parrado",
+   "contactoBanco": "Juliana Viviescaz",
+   "objeto": "Máster: t_cmol_hdaxtlsw_swift_700_a_759",
+   "periodicidad": "",
+   "estado": "Por iniciar",
+   "comentarios": "\"DENGAEWS-2188 - NGA-4Q26-ING13-PAQ05- Ingestas Banktrade modulo Importaciones y exportaciones https://jira.globaldevtools.bbva.com/browse/DENGAEWS-2188 Solicitud de Fuentes de Información: https://docs.google.com/spreadsheets/d/1vf5KJCVT1gMI0wbAF4nXL3CHn0JV-RZ7y0Y1PDLotcg/edit?usp=sharing Repositorios: krb - qlt: https://bbva.ghe.com/ada/csan-co-dh-nga-dhc-inq-banktradeimpexp smc: https://bbva.ghe.com/ada/csan-co-dh-nga-dhc-smc-banktradeimpexp",
+   "fechaRecepcion": "29/09/2026",
+   "pasos": {
+    "acceso-rw-repo": {
+     "estado": "ok",
+     "fecha": "09/10/2026"
+    }
+   }
+  },
+  {
+   "id": "fab-55",
+   "proyecto": "SDATOOL-48750 - Gold Local",
+   "objetoInsumo": "t_cctd_udafialadq_altas_adquiren",
+   "responsable": "",
+   "contactoBanco": "YHEYMY LIZETH MORA FIERRO",
+   "objeto": "Máster: t_cctd_udafialadq_altas_adquiren Raw: t_cfiu_udafialadq_altas_adquiren",
+   "periodicidad": "Diario",
+   "estado": "Por iniciar",
+   "comentarios": "",
+   "fechaRecepcion": "14/10/2026",
+   "pasos": {
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok"
+    },
+    "acceso-rw-repo": {
+     "estado": "pte"
+    },
+    "feature-hu": {
+     "estado": "pte"
+    }
+   }
+  },
+  {
+   "id": "fab-56",
+   "proyecto": "SDATOOL-48750 - Gold Local",
+   "objetoInsumo": "t_cctd_udafifacop_fact_open_pay",
+   "responsable": "",
+   "contactoBanco": "YHEYMY LIZETH MORA FIERRO",
+   "objeto": "Máster: t_cctd_udafifacop_fact_open_pay Raw: t_cfiu_udafifacop_fact_open_pay",
+   "periodicidad": "Diario",
+   "estado": "Por iniciar",
+   "comentarios": "",
+   "fechaRecepcion": "14/10/2026",
+   "pasos": {
+    "generaci-n-diccionario": {
+     "estado": "na"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "ok"
+    },
+    "acceso-rw-repo": {
+     "estado": "pte"
+    },
+    "feature-hu": {
+     "estado": "pte"
+    }
+   }
+  }
+ ]
+}
