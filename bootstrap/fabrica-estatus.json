@@ -84,6 +84,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -170,6 +178,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -256,6 +272,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -342,6 +366,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -428,6 +460,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -514,6 +554,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -600,6 +648,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -686,6 +742,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -775,6 +839,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -866,6 +938,14 @@
     "certificaci-n-mallas-control-m": {
      "estado": "ok",
      "nota": "ENTREGADO CORREO"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -978,6 +1058,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1090,6 +1174,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1191,6 +1279,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1292,6 +1388,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1396,6 +1500,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1498,6 +1606,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1604,6 +1716,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1718,6 +1834,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1833,6 +1953,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -1948,6 +2072,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2066,6 +2194,10 @@
     "post-prod": {
      "estado": "otro",
      "nota": "AJUSTAR DATAX DOFORCE"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2168,6 +2300,22 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "EN CURSO Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - "
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2270,6 +2418,22 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2372,6 +2536,22 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2475,6 +2655,22 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2577,6 +2773,22 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Feature de mallas: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1218 - Tester: A"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2680,6 +2892,14 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2795,6 +3015,14 @@
     "certificaci-n-mallas-control-m": {
      "estado": "ok",
      "nota": "FW Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5613 Dimensions CBLCCTD_RE"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -2910,6 +3138,10 @@
     "post-prod": {
      "estado": "otro",
      "nota": "Falla PROD datax no desplegado"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3023,6 +3255,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3136,6 +3372,10 @@
     },
     "post-prod": {
      "estado": "ok"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3197,6 +3437,58 @@
     },
     "documentaci-n-control-m": {
      "estado": "pte"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3257,6 +3549,58 @@
     },
     "documentaci-n-control-m": {
      "estado": "pte"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3315,6 +3659,58 @@
     },
     "documentaci-n-control-m": {
      "estado": "pte"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3373,6 +3769,58 @@
     },
     "documentaci-n-control-m": {
      "estado": "pte"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3434,6 +3882,58 @@
     },
     "documentaci-n-control-m": {
      "estado": "pte"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3536,6 +4036,26 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "En curso 07/10: Revision Changelog CHGL-1652 15/10: Vo.Bo. RA Malla CR-COFANDIA-T02 - REQ0"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3630,6 +4150,34 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "DataX"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3723,6 +4271,34 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "DATAX CTA 16 Y 13 BBVA Valores datax-agent --transferId ccmol_udafictas_ctas_13_16_19_0 --"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3814,6 +4390,34 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Transfer: datax-agent --transferId ccrei_udafipacon_parrilla_conta_0 --namespace co.crei.a"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3906,6 +4510,34 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "DataX datax-agent --transferId ccrei_udafineoc_ries_tip_cambio_0 --namespace co.crei.app-i"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -3932,6 +4564,98 @@
     },
     "msd": {
      "estado": "na"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "acceso-rw-repo": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4026,6 +4750,34 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Nombre de DataX y su configuración horaria: Transfer: datax-agent --transferId cctk_ddadgr"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4084,6 +4836,62 @@
     "certificaci-n-mallas-control-m": {
      "estado": "otro",
      "nota": "Nombre de DataX y su configuración horaria: Transfer: datax-agent --transferId cmol_udafio"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4107,6 +4915,102 @@
      "estado": "otro",
      "fecha": "16/10/2026",
      "nota": "En Curso 16/10/2026"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "acceso-rw-repo": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4130,6 +5034,102 @@
      "estado": "otro",
      "fecha": "20/10/2026",
      "nota": "En Curso 20/10/2026"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "acceso-rw-repo": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4204,6 +5204,46 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4278,6 +5318,46 @@
     },
     "certificaci-n-mallas-control-m": {
      "estado": "na"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4296,6 +5376,106 @@
     "acceso-rw-repo": {
      "estado": "ok",
      "fecha": "09/10/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4314,6 +5494,106 @@
     "acceso-rw-repo": {
      "estado": "ok",
      "fecha": "09/10/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4332,6 +5612,106 @@
     "acceso-rw-repo": {
      "estado": "ok",
      "fecha": "09/10/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4350,6 +5730,106 @@
     "acceso-rw-repo": {
      "estado": "ok",
      "fecha": "09/10/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4368,6 +5848,106 @@
     "acceso-rw-repo": {
      "estado": "ok",
      "fecha": "09/10/2026"
+    },
+    "generaci-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "gt-revisi-n-diccionario": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "feature-hu": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4397,6 +5977,90 @@
     },
     "feature-hu": {
      "estado": "pte"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   },
@@ -4426,6 +6090,90 @@
     },
     "feature-hu": {
      "estado": "pte"
+    },
+    "msd": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "migration-tool": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "componentes-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "despliegue-a-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-en-work": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-de-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "pruebas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "documentaci-n-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "schemas-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-kirby": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-hammurabi": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-smartcleaner": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-spark": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-kirby-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-hammurabi-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-smartcleaner-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "creaci-n-job-spark-live": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "certificaci-n-mallas-control-m": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
+    },
+    "post-prod": {
+     "estado": "na",
+     "nota": "sin registro en el Excel"
     }
    }
   }
