@@ -13,15 +13,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -108,15 +99,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -203,15 +185,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -298,15 +271,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -393,15 +357,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -488,15 +443,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -583,15 +529,6 @@
    "comentarios": "",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -678,15 +615,6 @@
    "comentarios": "Desestimado",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -773,15 +701,6 @@
    "comentarios": "Se entregó a Leonardo Ballesteros \"[MURIC] Entrega componentes Créditos Verdes\", no había MSD.",
    "fechaRecepcion": "",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok"
     },
@@ -871,15 +790,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/12iSj6fXe6isWtrFXA7xrHx_2Bear0rTKT2od5vP4t0M/edit?usp=sharing Gestión de malla eventual [SDA-53686 Ajustes reportes regulatorios - Controller View 2026] - Estatus Fábrica 2026-04-10",
    "fechaRecepcion": "17/03/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -971,15 +881,6 @@
    "comentarios": "https://docs.google.com/spreadsheets/d/1Luvi9w85bm1pFJ6urENg_1OC7NVa34_kDIklUYhov-o/edit?gid=0#gid=0 Alias: udapeclsom Vendrá con partición: cutoff_date, es mensual Re: Ingesta Sostenibilidad SDM1 Kirby y Hammurabi REPO SMC REPO 27/05/2026 Se solicita cambio de delimitador a ,",
    "fechaRecepcion": "2026-08-04",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "17/04/2026"
@@ -1092,15 +993,6 @@
    "comentarios": "https://docs.google.com/spreadsheets/d/1-5QNtMpbbeaHkhs5chQSpPwKmbgJP7-OXtKXsuSvC_M/edit?gid=0#gid=0 Alias: udapeclsom Vendrá con partición: cutoff_date, es mensual Re: Ingestas Sostenibilidad - Principalidad KIRBY y QLT REPO SMC REPO 27/05/2026 Se solicita cambio de delimitador a ,",
    "fechaRecepcion": "2026-08-04",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "17/04/2026"
@@ -1213,15 +1105,6 @@
    "comentarios": "SDA [SDATOOL-54370] https://docs.google.com/spreadsheets/d/1hyi7VVgNznvj3dViyzDzlAtFVGG4z_MorCOYIbTS-VM/edit?gid=0#gid=0 Repo https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr",
    "fechaRecepcion": "20/05/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -1323,15 +1206,6 @@
    "comentarios": "SDA [SDATOOL-54370] https://docs.google.com/spreadsheets/d/1owwISyq3l0t1m2c5HAb0lC8ty1DJ-UOFBpNSEDpTeG8/edit?gid=0#gid=0 Repo https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr",
    "fechaRecepcion": "20/05/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -1433,15 +1307,6 @@
    "comentarios": "Adición de 9 campos 01/06 Cambio de proyecto para Vo.Vo. PO - MT: https://bbva.ghe.com/ada/co-dh-pep-dhc-mit-ccrtdwpcontact - MT HU DECLIENTS4-4241 - MSD https://docs.google.com/document/d/17_vLISv_6r-32_gSri-Uv3CxAkrLqS2fLw8EvxYe_KI/edit?tab=t.0#heading=h.576gf9ppazqt",
    "fechaRecepcion": "25/05/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "02/06/2026"
@@ -1546,15 +1411,6 @@
    "comentarios": "Adición de 3 campos 01/06 Cambio de proyecto para Vo.Vo. PO - Tiene L1T - Es procesamiento Spark (HU DECLIENTS4-4236) - MT HU DECLIENTS4-4241 - MSD: https://docs.google.com/document/d/166ci4-fWcmmgRsfThXonF882K4WNBtxek_MZRNEFFSs/edit?tab=t.0 - CRQ000101770844 https://itsmhelixbbva-smartit.onbmc.com/smartit/app/#/changePV/AGGAPPFSHYMSJAT7GXQOT7GXQOUZL5 - WO0000102544956 Despliegue de Esquemas Live",
    "fechaRecepcion": "25/05/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "29/05/2026"
@@ -1657,15 +1513,6 @@
    "comentarios": "Adición de 17 campos 01/06 Cambio de proyecto para Vo.Vo. PO - Tiene L1T - MT HU DECLIENTS4-4241",
    "fechaRecepcion": "25/05/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "03/06/2026"
@@ -1772,15 +1619,6 @@
    "comentarios": "Alias: mocpiccliemov Diccionario: https://docs.google.com/spreadsheets/d/1LgRVo-bPv4pxxaP59VoppZgQXyoZ5Op-iV66EMCqLNk/edit?gid=0#gid=0 MSD: https://docs.google.com/document/d/15o8P_PdqdXxi40sENmE_wM1gTX1gXUCRL0ZoDBlD47s/edit?tab=t.0 Repos: https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-krb-cmolkrbpartindbreb https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-qlt-cmolqltpartindbreb https://bbva.ghe.com/ada/cmol-co-cs-pib-dhc-smc-cmolsmcpartindbreb 22/07: Se solicita suspender temporalmente los desarrollos 25/08: Reactivación de desarrollos",
    "fechaRecepcion": "2026-12-06",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "17/06/2026"
@@ -1895,15 +1733,6 @@
    "comentarios": "Alias: mocpicoperp2m Diccionario: https://docs.google.com/spreadsheets/d/1q7xk9GxybO-IL179K4t_hsvVMX7lJ1mVnQfTMsAtGLc/edit?gid=0#gid=0 MSD: https://docs.google.com/document/d/15o8P_PdqdXxi40sENmE_wM1gTX1gXUCRL0ZoDBlD47s/edit?tab=t.0 22/07: Se solicita suspender temporalmente los desarrollos 25/08: Reactivación de desarrollos",
    "fechaRecepcion": "2026-12-06",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "17/06/2026"
@@ -2019,15 +1848,6 @@
    "comentarios": "TUBO RADICACIONES Y ANULACIONES UUAA Raw: CMKU UUAA Master: CPAN Diccionario: https://docs.google.com/spreadsheets/d/1wVJLWMFLurQtW3s95SfO6YfQouhTjonHUcgQCgBKpoc/edit?usp=sharing https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5004 Repositorios: krb: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-krb-udamktub qlt: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-qlt-cpanudamktub smc: https://bbva.ghe.com/ada/cpan-co-dh-gdl-dhc-smc-udamktub",
    "fechaRecepcion": "2026-09-07",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "09/07/2026"
@@ -2143,15 +1963,6 @@
    "comentarios": "Alias: ddasfaccop Diccionario: https://docs.google.com/spreadsheets/d/19opA7-8kkknk690eJtMk4dqZB5IRhPLqolkKPuHnCtU/edit?gid=273340727#gid=273340727 MSD: https://docs.google.com/document/d/1pAoYEMdpU7fpBb7HFEs6jI7L2BKzBlhLSezQd3EJYFE/edit?tab=t.0 Repos https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-krb-ingestion/ https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-qlt-ccrtqltingestion https://bbva.ghe.com/ada/ccrt-co-cs-pep-dhc-smc-depuration",
    "fechaRecepcion": "16/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "16/07/2026"
@@ -2270,18 +2081,6 @@
    "comentarios": "Kirby / Hammurabi https://bbva.ghe.com/ada/co-dh-gmc-dhc-inq-cmolglobalmarketscib https://bbva.ghe.com/ada/gynvh_skynet_skynet_fx_pricing Smc https://bbva.ghe.com/ada/co-so-dyp-cdh-smc-crdcdynamicpricing https://bbva.ghe.com/ada/cmol-co-dh-gmc-dhc-sms-smcleanglmarketscib - HU Kirby Work: DECIBCUMPL-1032 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1032 - HU Kirby Live: DECIBCUMPL-1034 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1034 - HU Hammurabi Work/Live: https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1262 - HU Borrado: DECIBCUMPL-1193 https://jira.globaldevtools.bbva.com/browse/DECIBCUMPL-1193 MSD: https://docs.google.com/document/d/1ZwQ9SO_rLwM1Hhfb5g52ZCsJGvzD2hqLLOvVS0G9Iys/edit?usp=drive_web&ouid=104035028949866825746 HOST -> FW",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "fecha": "04/09/2026",
-     "nota": "SGBT-0073"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "22/09/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "23/09/2026"
@@ -2384,17 +2183,6 @@
    "comentarios": "[External] Re: [SDATOOL-54364 - Migración Base de datos a ADA] - Entrega y Cierre 26 de Mayo 2026 HOST -> FW",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0069"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "nota": "SGBT-0104"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "30/07/2026"
@@ -2497,18 +2285,6 @@
    "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.cmol.app-id-20538.dev%2Ftransfers%2Fcmol_t_udaxtopb_01",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "fecha": "04/09/2026",
-     "nota": "SGBT-0070"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "22/09/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "23/09/2026"
@@ -2611,17 +2387,6 @@
    "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.crdc.app-id-591253.dev%2Ftransfers%2Fcrdc_t_ddastpodiv_01",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0072"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "nota": "SGBT-0072"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "30/07/2026"
@@ -2725,18 +2490,6 @@
    "comentarios": "https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.crdc.app-id-591253.dev%2Ftransfers%2Fcrdc_t_udaslgmd_01",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "fecha": "04/09/2026",
-     "nota": "SGBT-0074"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "22/09/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "23/09/2026"
@@ -2839,17 +2592,6 @@
    "comentarios": "UUAA Master: CDAR UUAA Raw: CRVU https://jira.globaldevtools.bbva.com/browse/DERIESGOSD-2172 Diccionario: https://docs.google.com/spreadsheets/d/1kSB9njf4iufFI-wZ7aCAZ4ZA2NOFQrdA9feWVYUwzR0/edit?usp=sharing Repositorio inq: https://bbva.ghe.com/ada/cdar-co-rf-cor-dhc-inq-corergltr.git MSD: https://docs.google.com/document/d/1WrRhAHDkkTu0HH6VCeNVDQyoncxLiEng4jG3PAl-nJw/edit?tab=t.0 02/09: Esquemas work desplegados (con observación)",
    "fechaRecepcion": "28/07/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0018"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "20/08/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "20/08/2026"
@@ -2953,17 +2695,6 @@
    "comentarios": "Alias: hdaknapr Diccionario: https://docs.google.com/spreadsheets/d/1n7m0KlBVElNvbMXWqpzUeZdjDE7zv_VwL9-W07BOWkE/edit?gid=273340727#gid=273340727 MSD: https://docs.google.com/document/d/14Zg53PJhdTQob3eSJcVinBB1PmCHVUVqDyEgOCN42og/edit?usp=sharing Repositorios: krb https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-krb-ingestion qlt https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-qlt-dataquality smc https://bbva.ghe.com/ada/cctd-co-cs-pep-dhc-smc-depuration Calendario - todos los días Proceso termina a la 1:00 am Se puede generar a las 3:00 am La información es del día anterior",
    "fechaRecepcion": "2026-05-08",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0029"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "14/08/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "18/08/2026"
@@ -3079,17 +2810,6 @@
    "comentarios": "118 CAMPOS Diccionario: https://docs.google.com/spreadsheets/d/1bbJkd8gN2jfTWTRnsi_xrVUh7Il3iMi0/edit?usp=sharing&ouid=111688868515679456928&rtpof=true&sd=true MSD: https://docs.google.com/document/d/14Zg53PJhdTQob3eSJcVinBB1PmCHVUVqDyEgOCN42og/edit?usp=sharing Repositorios: krb https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-krb-ingestion qlt https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-qlt-dataquality smc https://bbva.ghe.com/ada/cmor-co-cs-pep-dhc-smc-depuration DataX: https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=%2F%2Fdatax.work-02%2Fns%2Fco.cmor.app-id-20546.dev%2Ftransfers%2Fccmor_t_cmor_udarvacs_actas_sancion_0 Horario * Mes vencido * Ejecutar la malla los primeros 10 días del mes calendario * La carga del archivo debe ser el último día calendario del mes anterior Muestras: 20260731, 20260631, 20260531 21/09: Adicicón de llaves WO0000102722947",
    "fechaRecepcion": "2026-05-08",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0028"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "nota": "SGBT-0057"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "04/09/2026"
@@ -3205,17 +2925,6 @@
    "comentarios": "Diccionario https://docs.google.com/spreadsheets/d/100zuGx5lYnOp9Mx1Xu0c23ikNT3zmqhlcsW-lpAs9QI/edit?usp=sharing krb-qlt: https://bbva.ghe.com/ada/co-dh-brk-dhc-inq-bbtqingbrickell smc: https://bbva.ghe.com/platform/co-dh-brk-dhc-smc-bbtqsmcbrickell 28/08 Pendiente configuracion DATAX",
    "fechaRecepcion": "2026-05-08",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "nota": "SGBT-0049"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "14/08/2026"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "18/08/2026"
@@ -3329,17 +3038,6 @@
    "comentarios": "Diccionario https://docs.google.com/spreadsheets/d/100zuGx5lYnOp9Mx1Xu0c23ikNT3zmqhlcsW-lpAs9QI/edit?usp=sharing Repositorios krb-qlt: https://bbva.ghe.com/ada/co-dh-brk-dhc-inq-bbtqingbrickell smc: https://bbva.ghe.com/ada/co-dh-brk-dhc-smc-bbtqsmcbrickell MSD https://docs.google.com/document/d/102cfq4HOrwFlxrw5TsNjJyudst6TR_W3C3cPty60YEc/edit?usp=sharing 28/08 Pendiente configuracion DATAX",
    "fechaRecepcion": "2026-05-08",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok",
-     "fecha": "14/08/2026",
-     "nota": "SGBT-0048"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "18/08/2026"
@@ -3453,15 +3151,6 @@
    "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - DIARIO - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 23/09 Bloqueo: [Brickell - MIS] Inconsistencia hdaspvisb - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
    "fechaRecepcion": "2026-07-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -3523,15 +3212,6 @@
    "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 23/09 Bloqueo: [Brickell - MIS] Inconsistencia hdaspvisb - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
    "fechaRecepcion": "2026-07-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -3592,15 +3272,6 @@
    "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - DIARIO - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing",
    "fechaRecepcion": "2026-07-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -3659,15 +3330,6 @@
    "comentarios": "- Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing",
    "fechaRecepcion": "2026-07-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -3726,15 +3388,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1Xm0lsIS5dr5gtxg2fQoXY8MvdtLf2YQjVLGKkDdfNy0/edit?usp=sharing - Homólogo Colombia, despliegue + pruebas + automatización - MENSUAL - 09/09 no se puede probar por falta de despliegue de esquemas Work - MSD https://docs.google.com/document/d/1yojl_CLNafXzYJemWapeTagBx30Os4KA6Z26Er_FURM/edit?usp=sharing - 30/09 Bloqueo [Brickell - MIS] Inconsistencia hdasp140b - Muestra vs Schema - 16/10 Bloqueo: Duplicados - 20/10: Se reprocesarán esquemas",
    "fechaRecepcion": "2026-07-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "na"
     },
@@ -3796,15 +3449,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1F5Sq-2Syt4gUFnmiZd_rMCOwq35WiiVKwdC4a8np3WU/edit?usp=sharing Repositorios (Kirby/Hammurabi/Smartcleaner): https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-krb-fndcurvastasasfin https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-qlt-fndcurvastasasfin https://bbva.ghe.com/ada/cfan-co-dh-dwp-dhc-smc-fndCurvasTasasFin HUs: COLONEDWP1-448 https://jira.globaldevtools.bbva.com/browse/COLONEDWP1-448 MSD ( modelo de solución del dato): https://docs.google.com/document/d/1fiRCKl3Phk-kyhG-ibG4sfQr06q-mxA7836dhxqe1-Y/edit?tab=t.0 Nombre de DataX y su configuración horaria: https://datax.central.nextgen.igrupobbva/#!/transfers/detail?locator=//datax.work-02/ns/co.cfan.app-id-20506.dev/transfers/ccfan_simuladorfondeos_0 Feature de mallas: https://jira.globaldevtools.bbva.com/browse/COLONEDWPB-759 Nombre de Tester y QC: adrianyesid.hernandez.contractor@bbva.com Tester jonathanstevens.betancourt.contractor@bbva.com Correo seguimiento: Rentabiliza - Curvas ALM 20/10: No permite la creación del CRQ para instalar Oct. 28",
    "fechaRecepcion": "2026-04-09",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "04/09/2026"
@@ -3907,17 +3551,6 @@
    "comentarios": "Raw: CPEU Master: CBTQ Alias: udapevinem Diccionario: https://docs.google.com/spreadsheets/d/1i5rRg6sbdS6zdnzSLI5NucqTqeutcXlK1HjswcPZ7VI/edit?usp=sharing MSD: https://docs.google.com/document/d/1cA0FL4KUa0BLHuF48M0YpaZKetNKpilwCRHBleNgBlQ/edit?tab=t.0 Repositorios: krb: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-krb-ingestion qlt: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-qlt-dataquality smc: https://bbva.ghe.com/ada/cbtq-co-cs-pep-dhc-smc-depuration Jira: https://jira.globaldevtools.bbva.com/browse/DECLIENTS4-5768 08/10: Bloqueo llave datos duplicados - Reproceso generación de esquemas",
    "fechaRecepcion": "18/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "ok"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "ok",
-     "fecha": "16/09/2026",
-     "nota": "SGBT-0241"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "ok"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "22/09/2026"
@@ -4012,15 +3645,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1vL2SaebMj8vwT7tjX94lCJZDZnOWwaqnshDpAFKJyVo/edit?gid=1441700115#gid=1441700115 CMOL Kirby: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-krb-sdm2krb Hammu: https://bbva.ghe.com/ada/cmol-co-dh-sm2-dhc-qlt-cmolsdm2qlt Smc: https://bbva.ghe.com/ada/cmol-co-cd-sm2-dhc-smc-smartcleaner MSD : https://docs.google.com/document/d/1wtiMhkhEj47xSGPOkOo9o_xO89awFhvVr3nd4TMrgVQ/edit?tab=t.0 Jira: https://jira.globaldevtools.bbva.com/browse/DEFINANZAS-1412 PO: ginagabriella.quintero@bbva.com",
    "fechaRecepcion": "16/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "17/09/2026"
@@ -4114,15 +3738,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1_CSUQKu0ruYDjXI7Mg5OEYB62WApjdGp9_Y-giXq4lY/edit?usp=sharing Kirby: https://bbva.ghe.com/ada/crei-co-dh-sm2-dhc-krb-crei QLT: https://bbva.ghe.com/ada/crei-co-dh-sm2-dhc-qlt-creisdm2qlt SMC: https://bbva.ghe.com/ada/crei-co-cd-sm2-dhc-smc-smartcleaner Jira: DEFINANZAS-1412 MSD : https://docs.google.com/document/d/1wtiMhkhEj47xSGPOkOo9o_xO89awFhvVr3nd4TMrgVQ/edit?tab=t.0 06/10/2026 duplicados por llave",
    "fechaRecepcion": "22/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "24/09/2026"
@@ -4214,15 +3829,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1co28ZztRrI-Ajs38yXbbXHkqQ5RT8b6NcEhAihiTjsk/edit?usp=sharing",
    "fechaRecepcion": "22/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "24/09/2026"
@@ -4315,15 +3921,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1ZVO0W5QflTTlHriIw5AMVtYvkrPta87SqLc4EsN7FD8/edit?gid=1487636284&urp=gmail_link#gid=1487636284",
    "fechaRecepcion": "28/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "29/09/2026"
@@ -4350,15 +3947,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1IJFKdcCLALQKPkSMTLzxCGBKBug5iFM2xFaGxCCfhbM/edit?usp=sharing MSD: https://docs.google.com/document/d/1vyfgP_4TjUWPVa2Dr-iQydR9wCiFiph5q2bCmMKYsTs/edit?pli=1&tab=t.0 Repositorios: Kirby: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-krb-sdm2krb Hammurabi: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-qlt-sdm2qlt Smart Cleanar: https://bbva.ghe.com/ada/cctk-co-dh-sm2-dhc-smc-cctksmartclean Jira: DEFINANZAS-1412",
    "fechaRecepcion": "30/09/2026",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "02/10/2026"
@@ -4557,15 +4145,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1vQECWtfU9sbH-AzBrY0M_odmwu8zU9ljG28nS0HV3HA/edit?usp=sharing HU Kirby: DERIESGOSD-2252 HU Hammurabi: DERIESGOSD-2253 Repo: https://bbva.ghe.com/ada/tnclz_skynet_alm_ingestion 13/10: Reproceso esquemas fase Raw - Metadata",
    "fechaRecepcion": "2026-02-10",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "05/10/2026"
@@ -4640,15 +4219,6 @@
    "comentarios": "Diccionario: https://docs.google.com/spreadsheets/d/1iTSav-EXKXSY9GLFaR9fknm1pSopilQ-bqDRgrbh9Qk/edit?usp=sharing",
    "fechaRecepcion": "2026-02-10",
    "pasos": {
-    "vobo-gob-funcional": {
-     "estado": "na"
-    },
-    "inicializaci-n-n-bula": {
-     "estado": "na"
-    },
-    "gt-revisi-n-prediccionario": {
-     "estado": "na"
-    },
     "generaci-n-diccionario": {
      "estado": "ok",
      "fecha": "05/10/2026"
