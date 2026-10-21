@@ -342,3 +342,32 @@ def test_quitar_un_permiso_viejo_se_respeta():
     guardada = _guardada_sin("tasks.comment")          # tasks.comment es viejo: está en otros roles
     m = effective_matrix(guardada)
     assert "tasks.comment" not in m["developer"]
+
+
+# ─── fábrica ─────────────────────────────────────────────────────────────────
+# El estatus de la fábrica lo lleva su dueño. Ni el líder técnico ni el dev lo
+# tocan por su rol: hay que concedérselo a mano desde Admin → Permisos.
+
+OBJETO = {"id": "fab-x", "proyecto": "SDATOOL-99999 PRUEBA", "objetoInsumo": "t_prueba",
+          "objeto": "", "responsable": "David Huaman", "contactoBanco": "", "periodicidad": "",
+          "estado": "Por iniciar", "comentarios": "", "fechaRecepcion": "2026-10-21", "pasos": {}}
+
+
+def test_lider_y_dev_no_editan_la_fabrica(client):
+    for uid in ("u-amilkar", "u-santiago"):
+        client.post("/api/auth/logout"); login(client, uid)
+        r = put(client, "timia_fabrica_objetos", [OBJETO])
+        assert r.status_code == 403 and "fabrica.edit" in r.json()["detail"]
+
+
+def test_el_catalogo_de_pasos_pide_el_mismo_permiso(client):
+    login(client, "u-santiago")
+    r = put(client, "timia_fabrica_pasos", [{"id": "x", "label": "X", "fase": "Gobierno"}])
+    assert r.status_code == 403 and "fabrica.edit" in r.json()["detail"]
+
+
+def test_el_gerente_si_edita_la_fabrica(client):
+    login(client, "u-rodolfo")
+    assert put(client, "timia_fabrica_objetos", [OBJETO]).status_code == 200
+    assert put(client, "timia_fabrica_pasos",
+               [{"id": "x", "label": "X", "fase": "Gobierno"}]).status_code == 200

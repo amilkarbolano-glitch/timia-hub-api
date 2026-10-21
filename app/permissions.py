@@ -134,7 +134,9 @@ DEFAULT_ROLE_PERMISSIONS: dict[str, list[str]] = {
         "tasks.view", "tasks.manage", "tasks.update_status", "tasks.assign", "tasks.comment", "tasks.link",
         "bitacora.view", "bitacora.write", "circuitos.view", "circuitos.edit",
         "inventario.view", "inventario.edit", "inventario.configure", "links.edit", "imputaciones.edit",
-        "fabrica.view", "fabrica.edit",
+        # fabrica.view s\u00ed; fabrica.edit NO: el estatus de la f\u00e1brica lo lleva su
+        # due\u00f1o (hoy David) y se concede a mano desde Admin \u2192 Permisos.
+        "fabrica.view",
         "tr.view", "tr.load_own", "tr.load_any", "tr.manage_features",
         "bank_status.view", "standup.generate",
     ],
@@ -176,6 +178,9 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_circuitos":        {"perm": "circuitos.edit",    "scope": "project"},
     "timia_inv_v2":           {"perm": "inventario.edit",   "scope": "project"},
     "timia_fabrica_objetos":  {"perm": "fabrica.edit",     "scope": "global"},
+    # El catálogo de pasos es uno solo para toda la fábrica: cambiarlo afecta
+    # el avance de los 55 objetos, así que pide el mismo permiso.
+    "timia_fabrica_pasos":    {"perm": "fabrica.edit",     "scope": "global"},
     "timia_inv_transmision":  {"perm": "inventario.edit",   "scope": "project"},
     "timia_inv_datax":        {"perm": "inventario.edit",   "scope": "project"},
     "timia_datax_config":     {"perm": "inventario.edit",   "scope": "project"},
