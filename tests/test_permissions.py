@@ -371,3 +371,18 @@ def test_el_gerente_si_edita_la_fabrica(client):
     assert put(client, "timia_fabrica_objetos", [OBJETO]).status_code == 200
     assert put(client, "timia_fabrica_pasos",
                [{"id": "x", "label": "X", "fase": "Gobierno"}]).status_code == 200
+
+
+def test_los_proyectos_de_fabrica_no_son_los_de_la_plataforma(client):
+    """Dar de alta un proyecto en la fábrica no toca timia_projects."""
+    login(client, "u-rodolfo")
+    antes = get(client, "timia_projects")
+    assert put(client, "timia_fabrica_proyectos",
+               [{"id": "SDATOOL-60001 SDM3", "nombre": "Prueba"}]).status_code == 200
+    assert get(client, "timia_projects") == antes
+
+
+def test_el_dev_no_registra_proyectos_de_fabrica(client):
+    login(client, "u-santiago")
+    r = put(client, "timia_fabrica_proyectos", [{"id": "X", "nombre": "X"}])
+    assert r.status_code == 403 and "fabrica.edit" in r.json()["detail"]

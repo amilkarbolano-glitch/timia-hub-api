@@ -181,6 +181,10 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     # El catálogo de pasos es uno solo para toda la fábrica: cambiarlo afecta
     # el avance de los 55 objetos, así que pide el mismo permiso.
     "timia_fabrica_pasos":    {"perm": "fabrica.edit",     "scope": "global"},
+    # Los proyectos de la f\u00e1brica son suyos, no los de la plataforma: dar de alta
+    # uno aqu\u00ed no le crea nada al resto del equipo, as\u00ed que pide fabrica.edit y
+    # no projects.create.
+    "timia_fabrica_proyectos":{"perm": "fabrica.edit",     "scope": "global"},
     "timia_inv_transmision":  {"perm": "inventario.edit",   "scope": "project"},
     "timia_inv_datax":        {"perm": "inventario.edit",   "scope": "project"},
     "timia_datax_config":     {"perm": "inventario.edit",   "scope": "project"},
