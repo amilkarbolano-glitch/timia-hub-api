@@ -132,3 +132,23 @@ def test_el_endpoint_publico_no_deja_escribir_otras_claves(client):
     """Sin sesión solo se puede registrar TR; el resto del estado sigue cerrado."""
     assert client.put("/api/state/timia_admin_users", json={"value": []}).status_code in (401, 403)
     assert client.get("/api/state/timia_plan_configs").status_code == 401
+
+
+# ─── El día sale de la captura ───────────────────────────────────────────────
+
+def test_sin_fecha_tambien_entra(client):
+    """Lo normal: la persona sube la captura y el lector saca el día de ahí."""
+    r = client.post("/api/tr/registro", json={
+        "correo": "santiago.coronado@timia.ai",
+        "capturas": [{"nombre": "tr.png", "contenido": PNG}],
+    })
+    assert r.status_code == 200
+    login(client, "u-rodolfo")
+    assert client.get("/api/state/timia_tr_registros").json()[0]["fecha"] is None
+
+
+def test_la_fecha_sigue_aceptandose_si_la_mandan(client):
+    """Cuando el lector no detecta el día, la persona lo escribe a mano."""
+    assert registro(client, fecha="2026-11-04").status_code == 200
+    login(client, "u-rodolfo")
+    assert client.get("/api/state/timia_tr_registros").json()[0]["fecha"] == "2026-11-04"

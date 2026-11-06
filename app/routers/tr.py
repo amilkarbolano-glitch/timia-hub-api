@@ -43,8 +43,11 @@ class Captura(BaseModel):
 
 class RegistroBody(BaseModel):
     correo: str = Field(max_length=160)
-    fecha: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
     capturas: list[Captura]
+    # El día sale de la propia captura: el lector lo detecta. Solo se manda
+    # cuando el lector no pudo leerlo y la persona lo escribe a mano, o cuando
+    # sube varias capturas de un día que ya sabe cuál es.
+    fecha: str | None = Field(default=None, pattern=r"^\d{4}-\d{2}-\d{2}$")
 
 
 def _bytes_de(data_url: str) -> bytes:
@@ -60,7 +63,7 @@ def _bytes_de(data_url: str) -> bytes:
         raise HTTPException(status_code=400, detail="captura ilegible")
 
 
-async def _llamar_apps_script(correo: str, fecha: str, captura: Captura) -> dict[str, Any]:
+async def _llamar_apps_script(correo: str, fecha: str | None, captura: Captura) -> dict[str, Any]:
     """
     Manda una captura al Apps Script y devuelve lo que responda.
 
@@ -73,10 +76,15 @@ async def _llamar_apps_script(correo: str, fecha: str, captura: Captura) -> dict
                 "detalle": "Falta TR_SCRIPT_URL: la captura se guardó pero no se ha leído todavía."}
     try:
         async with httpx.AsyncClient(timeout=settings.TR_SCRIPT_TIMEOUT) as cli:
-            r = await cli.post(settings.TR_SCRIPT_URL, json={
-                "correo": correo, "fecha": fecha,
-                "nombre": captura.nombre, "imagen": captura.contenido,
-            })
+            cuerpo: dict[str, Any] = {
+                "correo": correo, "nombre": captura.nombre, "imagen": captura.contenido,
+            }
+            # Solo se manda la fecha si la persona la puso: si va vacía, el
+            # lector la saca de la imagen en vez de cruzarla contra un dato
+            # que nadie le dio.
+            if fecha:
+                cuerpo["fecha"] = fecha
+            r = await cli.post(settings.TR_SCRIPT_URL, json=cuerpo)
         if r.status_code >= 400:
             return {"estado": "ERROR_SCRIPT", "detalle": f"HTTP {r.status_code}", "cuerpo": r.text[:500]}
         try:
@@ -139,7 +147,7 @@ async def registrar(body: RegistroBody, request: Request):
         "correo": correo,
         "persona": usuario.get("name") or correo,
         "userId": usuario.get("id"),
-        "fecha": body.fecha,
+        "fecha": body.fecha,          # puede ir vacía: la del lector manda
         "enviadoEn": ahora,
         "capturas": [c.nombre for c in body.capturas],
         "resultados": resultados,
