@@ -7,6 +7,7 @@ Estructura:
   security.py   sesión JWT en cookie httpOnly, API key de servicio, roles, rate limit
   routers/auth  Google Sign-In (OIDC) · /me · logout · demo
   routers/state /api/state (GET/PUT/DELETE por key), /api/keys, /api/seed
+  routers/tr    /api/tr registro público de capturas de TR (sin sesión)
 
 Docs interactivas: /docs
 """
@@ -17,7 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from . import db
 from .config import settings
-from .routers import auth, state
+from .routers import auth, state, tr
 
 app = FastAPI(title="Timia Hub API", version="2.0.0", docs_url="/docs", redoc_url=None)
 
@@ -27,6 +28,8 @@ if settings.CORS_ORIGINS:
 
 app.include_router(auth.router)
 app.include_router(state.router)
+# Registro público de TR: el único sin sesión (valida el correo contra el equipo).
+app.include_router(tr.router)
 
 
 @app.on_event("startup")
