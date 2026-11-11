@@ -13,11 +13,15 @@ import app.security as sec
 def client(monkeypatch):
     # Las pruebas corren sobre el respaldo del piloto (el seed de producción va vacío de datos)
     monkeypatch.setenv("SEED_FILE", str(pathlib.Path(__file__).resolve().parent.parent / "seed.piloto-migbd.json"))
+    # El corte diario es un hilo que duerme hasta las 18:00: en pruebas no aporta
+    # y deja una tarea viva entre tests. Se prueba llamando a tomar_corte().
+    monkeypatch.setenv("CORTE_DIARIO", "false")
     import importlib, app.config as cfg
     importlib.reload(cfg)
     monkeypatch.setattr(dbmod, "settings", cfg.settings)
     import app.routers.auth as auth_mod, app.routers.state as state_mod
     monkeypatch.setattr(auth_mod, "settings", cfg.settings)
+    monkeypatch.setattr(m, "settings", cfg.settings)
     monkeypatch.setattr(dbmod, "AsyncIOMotorClient", lambda *a, **k: AsyncMongoMockClient())
     sec._hits.clear()                      # rate limit en memoria: reiniciar por prueba
     with TestClient(m.app) as c:

@@ -8,17 +8,22 @@ Estructura:
   routers/auth  Google Sign-In (OIDC) · /me · logout · demo
   routers/state /api/state (GET/PUT/DELETE por key), /api/keys, /api/seed
   routers/tr    /api/tr registro público de capturas de TR (sin sesión)
+  routers/cortes /api/cortes foto diaria del plan de trabajo
+  cortes.py     el hilo que la toma a las 18:00 (ver su docstring)
 
 Docs interactivas: /docs
 """
 from __future__ import annotations
 
+import asyncio
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from . import cortes as svc_cortes
 from . import db
 from .config import settings
-from .routers import auth, state, tr
+from .routers import auth, cortes, state, tr
 
 app = FastAPI(title="Timia Hub API", version="2.0.0", docs_url="/docs", redoc_url=None)
 
@@ -30,6 +35,8 @@ app.include_router(auth.router)
 app.include_router(state.router)
 # Registro público de TR: el único sin sesión (valida el correo contra el equipo).
 app.include_router(tr.router)
+# Corte diario del plan: la foto de cada día para la línea de tiempo.
+app.include_router(cortes.router)
 
 
 @app.on_event("startup")
@@ -51,10 +58,21 @@ async def startup():
                 print(f"[bootstrap] agregado: {res['added']}")
         except Exception as e:
             print(f"[bootstrap] error (se ignora): {e}")
+    if settings.CORTE_DIARIO:
+        global _tarea_cortes
+        _tarea_cortes = asyncio.create_task(svc_cortes.bucle_diario(_parar_cortes))
+        print(f"[cortes] corte diario activo a las {svc_cortes.HORA_CORTE}:00 (Bogotá)")
+
+
+_parar_cortes = asyncio.Event()
+_tarea_cortes: asyncio.Task | None = None
 
 
 @app.on_event("shutdown")
 async def shutdown():
+    _parar_cortes.set()
+    if _tarea_cortes:
+        _tarea_cortes.cancel()
     db.close()
 
 
