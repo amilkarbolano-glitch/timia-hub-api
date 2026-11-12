@@ -46,6 +46,14 @@ class Settings:
     ALLOW_DEMO_LOGIN: bool = _bool("ALLOW_DEMO_LOGIN", _env("GOOGLE_CLIENT_ID") is None and _env("FIREBASE_PROJECT_ID") is None)
     # Primer administrador: si la base no tiene usuarios y entra este correo por Google,
     # se crea como gerente de cuenta. Después no vuelve a hacer nada (no reactiva ni cambia roles).
+    # Lector de capturas de TR: Apps Script publicado como web app. Vacío ⇒ la
+    # vista pública guarda la captura pero avisa de que nadie la ha leído.
+    # Foto diaria del plan a las 18:00 (Bogotá). Apagarlo en pruebas y en
+    # cualquier entorno que comparta base con producción: dos APIs tomando el
+    # corte del mismo día no se estorban (es idempotente), pero ensucian el log.
+    CORTE_DIARIO: bool = _bool("CORTE_DIARIO", True)
+    TR_SCRIPT_URL: str = _env("TR_SCRIPT_URL") or ""
+    TR_SCRIPT_TIMEOUT: int = _int("TR_SCRIPT_TIMEOUT", 45)
     BOOTSTRAP_ADMIN_EMAIL: str = (_env("BOOTSTRAP_ADMIN_EMAIL") or "").lower()
     BOOTSTRAP_ADMIN_NAME: str = _env("BOOTSTRAP_ADMIN_NAME") or ""
     # Acceso servicio-a-servicio (scripts, integraciones)
