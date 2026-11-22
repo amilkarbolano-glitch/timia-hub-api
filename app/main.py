@@ -23,7 +23,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import cortes as svc_cortes
 from . import db
 from .config import settings
-from .routers import auth, cortes, state, tr
+from .routers import auth, cortes, state, tr, notas_img
 
 app = FastAPI(title="Timia Hub API", version="2.0.0", docs_url="/docs", redoc_url=None)
 
@@ -37,6 +37,9 @@ app.include_router(state.router)
 app.include_router(tr.router)
 # Corte diario del plan: la foto de cada día para la línea de tiempo.
 app.include_router(cortes.router)
+# Imágenes de las notas: fuera del estado, porque el front descarga el estado
+# completo al entrar y lo copia a localStorage.
+app.include_router(notas_img.router)
 
 
 @app.on_event("startup")
