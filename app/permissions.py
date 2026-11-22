@@ -193,6 +193,12 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_imputaciones":     {"perm": "imputaciones.edit", "scope": "project"},
     "timia_tr_features":      {"perm": "tr.manage_features","scope": "project"},
     "timia_tr_entries":       {"perm": "tr.load_any",       "scope": "own", "own_perm": "tr.load_own"},
+    # Hilos de correo con el banco. Mismo permiso que las alertas y los
+    # bloqueantes: es la misma clase de objeto —algo que frena tareas y hay
+    # que reportar— y asi quien reporta un bloqueante puede registrar el hilo.
+    # Sin esta regla, rule_for devuelve None y cualquier usuario con sesion
+    # podria borrar los hilos de todo el equipo.
+    "timia_mail_hilos":       {"perm": "plan.manage_issues", "scope": "project"},
 }
 # Keys con prefijo (notas del plan por cronograma)
 PREFIX_RULES: list[tuple[str, dict[str, Any]]] = [

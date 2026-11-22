@@ -53,6 +53,27 @@ def test_developer_issue_in_other_project_denied(client):
     assert r.status_code == 403 and "OTRO" in r.json()["detail"]
 
 
+def test_developer_hilo_correo_in_own_project(client):
+    login(client, "u-santiago")
+    hilos = get(client, "timia_mail_hilos") or []
+    hilos.append({"id": "h-t1", "planKey": "MIGBD", "projectId": "MIGBD", "asunto": "VoBo del mapeo",
+                  "estado": "abierto", "responsable": {"lado": "BBVA", "nombre": "Juan Pablo"},
+                  "desde": "2026-11-06", "abiertoEl": "2026-11-06", "seguimiento": [],
+                  "creadoPor": "x", "creadoEn": "x"})
+    assert put(client, "timia_mail_hilos", hilos).status_code == 200
+
+
+def test_developer_hilo_correo_in_other_project_denied(client):
+    login(client, "u-santiago")
+    hilos = get(client, "timia_mail_hilos") or []
+    hilos.append({"id": "h-t2", "planKey": "OTRO", "projectId": "OTRO", "asunto": "x",
+                  "estado": "abierto", "responsable": {"lado": "TIMIA", "nombre": "y"},
+                  "desde": "2026-11-06", "abiertoEl": "2026-11-06", "seguimiento": [],
+                  "creadoPor": "x", "creadoEn": "x"})
+    r = put(client, "timia_mail_hilos", hilos)
+    assert r.status_code == 403 and "OTRO" in r.json()["detail"]
+
+
 def test_progress_scoped(client):
     pcts = {}
     login(client, "u-santiago")
