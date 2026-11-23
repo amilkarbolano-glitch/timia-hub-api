@@ -66,9 +66,17 @@ async def put_key(key: str, body: PutBody, p: Principal = Depends(current_princi
         old = await db.read_key(key)
         project_roles = await db.read_key("timia_project_roles") or {}
         matrix = await current_matrix()
+        # Los ids de proyecto que existen: hacen falta para leer bien las keys de
+        # un proyecto cuyo id lleva un guion (REPORTE-RE). Se suman los del
+        # usuario porque un plan puede existir antes de que su proyecto esté en
+        # el catálogo.
+        proyectos = await db.read_key("timia_admin_projects") or []
+        known = {x["id"] for x in proyectos if isinstance(x, dict) and isinstance(x.get("id"), str)} if isinstance(proyectos, list) else set()
+        known |= {x for x in user.get("projectIds", []) if isinstance(x, str)}
         reason = check_write(key, old, body.value, role=normalize_role(user.get("role"), set(matrix)), user_id=p.id,
                              project_ids=list(user.get("projectIds", [])), matrix=matrix,
-                             project_roles=project_roles if isinstance(project_roles, dict) else None)
+                             project_roles=project_roles if isinstance(project_roles, dict) else None,
+                             known_projects=known)
         if reason:
             raise HTTPException(status_code=403, detail=reason)
     await db.write_key(key, body.value, by=p.id)

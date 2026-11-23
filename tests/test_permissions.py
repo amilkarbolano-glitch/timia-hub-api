@@ -407,3 +407,60 @@ def test_el_dev_no_registra_proyectos_de_fabrica(client):
     login(client, "u-santiago")
     r = put(client, "timia_fabrica_proyectos", [{"id": "X", "nombre": "X"}])
     assert r.status_code == 403 and "fabrica.edit" in r.json()["detail"]
+
+
+# ─── Proyectos con guion en el id (REPORTE-RE) ────────────────────────────────
+#
+# Partir la key por el separador daba 'REPORTE' y la escritura se rechazaba a
+# quien no tuviera projects.view_all: el gerente de cuenta movía los % y un
+# líder técnico del proyecto, no.
+
+def test_resuelve_proyecto_con_guion_en_el_id():
+    from app.permissions import project_of_object_key as pok
+    conocidos = ["MIGBD", "FICO", "REPORTE", "REPORTE-RE"]
+    assert pok("REPORTE-RE-documentacion-3", conocidos) == "REPORTE-RE"
+    assert pok("REPORTE-doc-1", conocidos) == "REPORTE"          # el corto sigue resolviendo
+    assert pok("REPORTE-RE::v2-doc-1", conocidos) == "REPORTE-RE"
+    assert pok("REPORTE-RE__doc__1__et", conocidos) == "REPORTE-RE"
+    assert pok("MIGBD-documentaci-n--3", conocidos) == "MIGBD"
+    assert pok("FICO::input-ent-2", conocidos) == "FICO"
+    # Sin la lista, el comportamiento de antes: se parte por el separador.
+    assert pok("REPORTE-RE-doc-3") == "REPORTE"
+    assert pok("MIGBD-doc-3") == "MIGBD"
+
+
+def test_tech_lead_mueve_pct_de_proyecto_con_guion(client):
+    # El gerente de cuenta crea el proyecto y se lo asigna a la líder técnica.
+    login(client, "u-rodolfo")
+    proyectos = get(client, "timia_admin_projects") or []
+    proyectos.append({"id": "REPORTE-RE", "name": "Reporte RE", "active": True})
+    assert put(client, "timia_admin_projects", proyectos).status_code == 200
+    usuarios = get(client, "timia_admin_users") or []
+    for u in usuarios:
+        if u["id"] == "u-juliana":
+            u["projectIds"] = list(u.get("projectIds", [])) + ["REPORTE-RE"]
+    assert put(client, "timia_admin_users", usuarios).status_code == 200
+
+    # Ella mueve el % a mano y marca una etapa: las dos escrituras pasan.
+    login(client, "u-juliana")
+    pcts = get(client, "timia_plan_pcts") or {}
+    pcts["REPORTE-RE-entregable-1"] = 40
+    assert put(client, "timia_plan_pcts", pcts).status_code == 200
+
+    etapas = get(client, "timia_etapa_states") or {}
+    etapas["REPORTE-RE__entregable__1__spark-1"] = True
+    assert put(client, "timia_etapa_states", etapas).status_code == 200
+
+
+def test_sin_el_proyecto_sigue_rechazando(client):
+    """La corrección no abre la mano: quien no tiene el proyecto sigue fuera."""
+    login(client, "u-rodolfo")
+    proyectos = get(client, "timia_admin_projects") or []
+    proyectos.append({"id": "REPORTE-RE", "name": "Reporte RE", "active": True})
+    assert put(client, "timia_admin_projects", proyectos).status_code == 200
+
+    login(client, "u-amilkar")                      # tech_lead, pero sin REPORTE-RE
+    pcts = get(client, "timia_plan_pcts") or {}
+    pcts["REPORTE-RE-entregable-1"] = 40
+    r = put(client, "timia_plan_pcts", pcts)
+    assert r.status_code == 403 and "REPORTE-RE" in r.json()["detail"]

@@ -14,7 +14,7 @@ Roles y permisos de Timia Hub — fuente de verdad del servidor.
 """
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Iterable
 
 ROLES = ("platform_admin", "account_manager", "pm", "tech_lead", "developer")
 
@@ -287,8 +287,24 @@ def project_of_item(item: Any) -> str | None:
     return None
 
 
-def project_of_object_key(k: str) -> str | None:
-    """Keys de objetos: 'FICO::input' · 'FICO-doc-2' · 'FICO__doc__2__et' · 'FICO' → 'FICO'."""
+def project_of_object_key(k: str, known: Iterable[str] | None = None) -> str | None:
+    """Keys de objetos: 'FICO::input' · 'FICO-doc-2' · 'FICO__doc__2__et' · 'FICO' → 'FICO'.
+
+    Partir por el separador se equivoca en cuanto el id del proyecto lleva un
+    guion, que es un id perfectamente válido: la key 'REPORTE-RE-doc-3' daba
+    'REPORTE', un proyecto que no existe, y entonces la escritura se rechazaba
+    con «No tienes acceso al proyecto REPORTE» a todo el que no tuviera
+    'projects.view_all' —que se salta esa comprobación—. Resultado: el gerente
+    de cuenta podía mover los % y un líder técnico del proyecto no.
+
+    Con `known` (los ids de proyecto que existen) se resuelve por el prefijo
+    más largo que coincida, así que 'REPORTE-RE' gana sobre 'REPORTE'.
+    """
+    if known:
+        cands = [p for p in known
+                 if isinstance(p, str) and p and (k == p or any(k.startswith(p + sep) for sep in ("::", "__", "-")))]
+        if cands:
+            return max(cands, key=len)
     for sep in ("::", "__", "-"):
         if sep in k:
             return k.split(sep)[0]
@@ -321,9 +337,11 @@ def changed_items(old: Any, new: Any) -> list[tuple[str, Any, Any]]:
 
 
 def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, project_ids: list[str], matrix: dict[str, list[str]],
-                project_roles: dict[str, str] | None = None) -> str | None:
+                project_roles: dict[str, str] | None = None, known_projects: Iterable[str] | None = None) -> str | None:
     """Devuelve None si la escritura está permitida; si no, el motivo.
-    `role` es el rol base; `project_roles` ("userId:projectId" → rol) da el rol efectivo por proyecto."""
+    `role` es el rol base; `project_roles` ("userId:projectId" → rol) da el rol efectivo por proyecto.
+    `known_projects` son los ids de proyecto que existen, para leer bien las keys
+    de los proyectos cuyo id lleva un guion (ver project_of_object_key)."""
     rule = rule_for(key)
     if rule is None:
         return None                                   # colecciones sin regla: cualquier usuario autenticado
@@ -351,7 +369,7 @@ def check_write(key: str, old: Any, new: Any, *, role: str, user_id: str, projec
         for _id, before, after in diffs:
             projs = {p for it in (before, after) if (p := project_of_item(it))}
             if not projs and isinstance(new, dict):
-                p = project_of_object_key(_id)
+                p = project_of_object_key(_id, known_projects)
                 if p:
                     projs.add(p)
             for proj in (projs or {None}):
