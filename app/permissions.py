@@ -170,6 +170,11 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_activity_jiras":   {"perm": "plan.edit_progress","scope": "project"},
     "timia_plan_historial":   {"perm": "plan.edit_progress","scope": "project"},
     "timia_plan_issues":      {"perm": "plan.manage_issues","scope": "project"},
+    # Ajustes del correo de status (código SDA, asunto del alcance, responsables).
+    # Con plan.export: quien puede sacar el reporte puede escribir su cabecera.
+    # Antes esto vivía en timia_admin_projects y exigía projects.manage, así que
+    # a un líder técnico le rechazaba el cambio por teclear un nombre.
+    "timia_correo_config":   {"perm": "plan.export",       "scope": "project"},
     "timia_kanban_tasks":     {"perm": "tasks.manage",      "scope": "project",
                                # sin tasks.manage, se permite cambiar solo estos campos de tareas existentes
                                "partial": {"tasks.update_status": ["status"], "tasks.comment": ["comments"],
