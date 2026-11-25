@@ -175,6 +175,12 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     # Antes esto vivía en timia_admin_projects y exigía projects.manage, así que
     # a un líder técnico le rechazaba el cambio por teclear un nombre.
     "timia_correo_config":   {"perm": "plan.export",       "scope": "project"},
+    # Proyectos abiertos (T&M): un plan por proyecto, con sus tareas y su avance.
+    # No se parte en estructura y progreso como el plan de un proyecto cerrado,
+    # porque en un T&M el propio equipo crea sus tareas: pedir estimaciones.edit
+    # para añadir una dejaría fuera a quien hace el trabajo. Con
+    # plan.edit_progress, quien mueve un porcentaje puede también crear la tarea.
+    "timia_tym_planes":       {"perm": "plan.edit_progress","scope": "project"},
     "timia_kanban_tasks":     {"perm": "tasks.manage",      "scope": "project",
                                # sin tasks.manage, se permite cambiar solo estos campos de tareas existentes
                                "partial": {"tasks.update_status": ["status"], "tasks.comment": ["comments"],
