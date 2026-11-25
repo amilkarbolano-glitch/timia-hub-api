@@ -35,10 +35,10 @@ Parameters:
     Description: 'VPC de la infraestructura base'
   PublicSubnets:
     Type: List<AWS::EC2::Subnet::Id>
-    Description: 'Subnets publicas (ALB): PublicSubnet1, PublicSubnet2 de la base'
+    Description: 'Subnets publicas (ALB y tareas ECS): PublicSubnet1, PublicSubnet2 de la base'
   PrivateSubnets:
     Type: List<AWS::EC2::Subnet::Id>
-    Description: 'Subnets privadas con salida por NAT (tareas ECS): PrivateSubnet1..3 de la base'
+    Description: 'SIN USO desde que las tareas salen por el IGW. Se mantiene para no romper los despliegues que lo pasan'
   CloudFrontPrefixListId:
     Type: String
     Description: 'Prefix list de CloudFront (com.amazonaws.global.cloudfront.origin-facing) para que el ALB solo acepte trafico de CloudFront'
@@ -131,6 +131,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   # Clave de Mongo: entra como parametro NoEcho y se entrega al contenedor desde Secrets Manager,
@@ -145,6 +147,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   # ─── Red ────────────────────────────────────────────────────────────────────
@@ -160,6 +164,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   ServiceSecurityGroup:
@@ -174,6 +180,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   LoadBalancer:
@@ -189,6 +197,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   TargetGroup:
@@ -210,6 +220,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   HttpListener:
@@ -250,6 +262,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   # ─── ECS ────────────────────────────────────────────────────────────────────
@@ -261,6 +275,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   LogGroup:
@@ -270,6 +286,13 @@ Resources:
       RetentionInDays: !FindInMap [EnvironmentMap, !Ref EnvironmentName, LogRetention]
 
   # Nombre fijo: pipeline.yml le hace iam:PassRole por nombre
+      Tags:
+        - { Key: Environment, Value: !Ref EnvironmentName }
+        - { Key: Project, Value: !Ref ProjectName }
+        - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
+        - { Key: ManagedBy, Value: CloudFormation }
   ExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -292,6 +315,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   TaskDefinition:
@@ -334,6 +359,8 @@ Resources:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
   Service:
@@ -346,6 +373,9 @@ Resources:
       LaunchType: FARGATE
       DesiredCount: !FindInMap [EnvironmentMap, !Ref EnvironmentName, DesiredCount]
       TaskDefinition: !Ref TaskDefinition
+      # Copia los tags del servicio a cada tarea: el costo de Fargate se registra por tarea
+      PropagateTags: SERVICE
+      EnableECSManagedTags: true
       HealthCheckGracePeriodSeconds: 60
       DeploymentConfiguration:
         MinimumHealthyPercent: 100
@@ -353,14 +383,19 @@ Resources:
         DeploymentCircuitBreaker: { Enable: true, Rollback: true }
       NetworkConfiguration:
         AwsvpcConfiguration:
-          AssignPublicIp: DISABLED          # sale a internet (ECR, Mongo, Google) por el NAT de la base
+          # IP publica propia: sale a internet (ECR, Mongo, Google) por el Internet
+          # Gateway, sin NAT. La entrada sigue cerrada: ServiceSecurityGroup solo
+          # acepta el 8000 desde el ALB.
+          AssignPublicIp: ENABLED
           SecurityGroups: [!Ref ServiceSecurityGroup]
-          Subnets: !Ref PrivateSubnets
+          Subnets: !Ref PublicSubnets
       LoadBalancers: [{ ContainerName: api, ContainerPort: 8000, TargetGroupArn: !Ref TargetGroup }]
       Tags:
         - { Key: Environment, Value: !Ref EnvironmentName }
         - { Key: Project, Value: !Ref ProjectName }
         - { Key: Application, Value: !Ref AppName }
+        - { Key: CostCenter, Value: !Ref CostCenter }
+        - { Key: Owner, Value: !Ref Owner }
         - { Key: ManagedBy, Value: CloudFormation }
 
 Outputs:
