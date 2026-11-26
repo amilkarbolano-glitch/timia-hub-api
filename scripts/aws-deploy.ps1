@@ -39,11 +39,17 @@ $CfPrefixList   = aws ec2 describe-managed-prefix-lists `
 "VPC: $VpcId`nPublicas: $PublicSubnets`nPrivadas: $PrivateSubnets`nNAT IP: $NatIp  (esta va en Atlas)`nPrefix list: $CfPrefixList"
 
 # ─── FASE 3: MongoDB Atlas ───────────────────────────────────────────────────
-# En Atlas: cluster en AWS us-east-1, usuario readWrite, Network Access = <NAT IP>/32.
-# Cadena de Atlas entre comillas simples (PowerShell no interpreta & ni ?).
-# Si trae usuario:clave@, $MongoUser y la clave de Read-Host se pueden omitir.
-$MongoUrl  = 'mongodb+srv://amilkarbolano_db_user:Y2b9hnlsiYJIxHU5@clustertimhub.fp1rsuc.mongodb.net'
-$MongoUser = 'amilkarbolano_db_user'
+# En Atlas: cluster en AWS us-east-1, usuario con readWrite solo sobre su base.
+#
+# La cadena y el usuario NO van escritos aqui: este repositorio es publico y una
+# credencial commiteada se queda en el historial aunque se borre despues. Desde
+# que las tareas salen sin NAT no hay IP fija que meter en Network Access, asi
+# que la contrasena es el unico control que queda: va rotada y a mano.
+#
+# Cadena sin usuario ni clave (PowerShell no interpreta & ni ? entre comillas simples):
+#   mongodb+srv://<cluster>.mongodb.net
+$MongoUrl  = Read-Host "Cadena de Atlas (sin usuario ni clave)"
+$MongoUser = Read-Host "Usuario de Atlas"
 $sec = Read-Host "Clave de Atlas" -AsSecureString
 $MongoPassword = [Runtime.InteropServices.Marshal]::PtrToStringBSTR([Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec))
 

@@ -70,15 +70,24 @@ export VPC_ID=vpc-...
 export PUBLIC_SUBNETS=subnet-...,subnet-...                 # PublicSubnet1, PublicSubnet2
 export PRIVATE_SUBNETS=subnet-...,subnet-...,subnet-...     # PrivateSubnet1, 2, 3
 export CF_PREFIX_LIST=pl-...
-export NAT_IP=x.x.x.x                                       # PhysicalResourceId de NatGatewayEIP
 ```
 
 ## Fase 3 — MongoDB Atlas
 
 1. Cluster sobre **AWS / us-east-1** (M0 gratis o Flex).
 2. *Database Access* → usuario con rol `readWrite` sobre la base `timia_dev` (o *Read and write to any database*).
-3. *Network Access* → **solo `NAT_IP/32`**. Las tareas salen por el NAT de la base; nada más debe poder conectarse.
-   (Para pruebas desde tu equipo, agrega tu IP temporalmente y quítala al terminar).
+3. *Network Access* → **`0.0.0.0/0`**, y no por descuido: desde que las tareas salen por el Internet
+   Gateway no hay IP fija que meter en la lista. Cada tarea arranca con una IP pública distinta y
+   cambia en cada despliegue, así que una lista de IPs no se puede mantener.
+
+   Con M0 y Flex, Atlas no ofrece PrivateLink ni peering: la lista de IPs es el único filtro de red
+   que hay, y lo acabamos de dejar sin usar. **El control pasa a ser la credencial**, así que:
+   usuario con `readWrite` solo sobre su base (nunca *any database*), contraseña larga y rotada, y
+   nunca escrita en el repositorio —es público, y lo que se commitea se queda en el historial—.
+
+   Si algún día hace falta un perímetro de red de verdad, hay que recuperar una IP de salida fija:
+   un NAT Gateway (~36 USD/mes), una instancia NAT con una Elastic IP (~4 USD/mes, pero hay que
+   mantenerla) o subir el cluster a M10 y usar PrivateLink.
 4. *Connect → Drivers* → copia la cadena. Puede ir **con** `usuario:clave@` (así la usa el driver) o sin ellos,
    pasando usuario y clave aparte en `MongoUser` / `MongoPassword`:
 
