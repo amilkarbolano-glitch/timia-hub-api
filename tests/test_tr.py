@@ -264,3 +264,25 @@ def test_un_id_inventado_no_registra_nada(client):
 def test_sin_correo_ni_id_no_registra_nada(client):
     r = client.post("/api/tr/registro", json={"capturas": [{"nombre": "tr.png", "contenido": PNG}]})
     assert r.status_code == 403
+
+
+# ─── Las claves del TR no quedan al alcance de cualquier sesión ──────────────
+
+def test_el_anexo_no_lo_reescribe_cualquiera(client):
+    """Es contra el anexo que se valida todo: quien lo cambie, cuadra lo que quiera."""
+    login(client, "u-santiago")   # desarrollador: tiene tr.view, no tr.load_any
+    for clave in ("timia_tr_puestos", "timia_tr_trimestres", "timia_tr_alias_personas"):
+        r = client.put(f"/api/state/{clave}", json={"value": [{"id": "x", "sda": "SDATOOL-1"}]})
+        assert r.status_code == 403, clave
+
+
+def test_los_registros_del_lector_tampoco(client):
+    login(client, "u-santiago")
+    cuerpo = {"value": [{"id": "tr-1", "correo": "santiago.coronado@timia.ai"}]}
+    assert client.put("/api/state/timia_tr_registros", json=cuerpo).status_code == 403
+
+
+def test_quien_carga_el_tr_si_puede(client):
+    login(client, "u-amilkar")
+    cuerpo = {"value": [{"id": "x", "sda": "SDATOOL-1"}]}
+    assert client.put("/api/state/timia_tr_puestos", json=cuerpo).status_code == 200

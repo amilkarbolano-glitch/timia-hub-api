@@ -204,6 +204,17 @@ KEY_RULES: dict[str, dict[str, Any]] = {
     "timia_imputaciones":     {"perm": "imputaciones.edit", "scope": "project"},
     "timia_tr_features":      {"perm": "tr.manage_features","scope": "project"},
     "timia_tr_entries":       {"perm": "tr.load_any",       "scope": "own", "own_perm": "tr.load_own"},
+    # El anexo: qué puestos se contrataron, en qué SDA y con cuántas horas por
+    # día. Es contra esto que se valida lo que la gente carga, así que quien lo
+    # pueda cambiar puede hacer cuadrar cualquier desvío. Sin regla, rule_for
+    # devuelve None y bastaba una sesión cualquiera para reescribirlo.
+    "timia_tr_trimestres":    {"perm": "tr.load_any",       "scope": "global"},
+    "timia_tr_puestos":       {"perm": "tr.load_any",       "scope": "global"},
+    "timia_tr_alias_personas":{"perm": "tr.load_any",       "scope": "global"},
+    # Lo que el lector sacó de las capturas. Lo escribe el endpoint público
+    # desde el servidor, que no pasa por aquí; esta regla es para el navegador,
+    # para que nadie borre desde una sesión el TR de todo el equipo.
+    "timia_tr_registros":     {"perm": "tr.load_any",       "scope": "global"},
     # Hilos de correo con el banco. Mismo permiso que las alertas y los
     # bloqueantes: es la misma clase de objeto —algo que frena tareas y hay
     # que reportar— y asi quien reporta un bloqueante puede registrar el hilo.
