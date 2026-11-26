@@ -218,3 +218,49 @@ def test_el_envio_agrupa_las_capturas(client):
     login(client, "u-rodolfo")
     filas = client.get("/api/state/timia_tr_registros").json()
     assert [f["envio"] for f in filas] == ["e-123", "e-123"]
+
+
+# ─── Buscador de personas ────────────────────────────────────────────────────
+
+def test_el_buscador_encuentra_por_nombre(client):
+    r = client.get("/api/tr/buscar", params={"q": "santi"})
+    assert r.status_code == 200
+    personas = r.json()["personas"]
+    assert personas and personas[0]["id"]
+    assert "Santiago" in personas[0]["nombre"]
+
+
+def test_el_buscador_tapa_el_correo(client):
+    """Es un endpoint abierto: no publica la lista de correos del equipo."""
+    personas = client.get("/api/tr/buscar", params={"q": "santi"}).json()["personas"]
+    assert personas[0]["correo"].endswith("@timia.ai")
+    assert "santiago.coronado@timia.ai" not in personas[0]["correo"]
+
+
+def test_el_buscador_no_busca_por_correo(client):
+    """Buscar por correo sería adivinarlo, que es justo lo que no queremos."""
+    assert client.get("/api/tr/buscar", params={"q": "santiago.coronado@"}).json()["personas"] == []
+
+
+def test_el_buscador_pide_dos_letras(client):
+    assert client.get("/api/tr/buscar", params={"q": "s"}).json()["personas"] == []
+
+
+def test_se_puede_registrar_con_el_id_de_la_persona(client):
+    persona = client.get("/api/tr/buscar", params={"q": "santi"}).json()["personas"][0]
+    r = client.post("/api/tr/registro", json={
+        "persona_id": persona["id"], "fecha": "2026-11-05",
+        "capturas": [{"nombre": "tr.png", "contenido": PNG}],
+    })
+    assert r.status_code == 200 and r.json()["persona"]
+
+
+def test_un_id_inventado_no_registra_nada(client):
+    r = client.post("/api/tr/registro", json={
+        "persona_id": "u-fantasma", "capturas": [{"nombre": "tr.png", "contenido": PNG}]})
+    assert r.status_code == 403
+
+
+def test_sin_correo_ni_id_no_registra_nada(client):
+    r = client.post("/api/tr/registro", json={"capturas": [{"nombre": "tr.png", "contenido": PNG}]})
+    assert r.status_code == 403

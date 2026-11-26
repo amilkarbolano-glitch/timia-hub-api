@@ -119,6 +119,11 @@ async def find_user_by_email(email: str) -> dict | None:
     return None
 
 
+async def list_users() -> list[dict]:
+    """Todos los usuarios del panel, activos o no. Quien llame decide."""
+    return [doc["item"] async for doc in db()[USERS_KEY].find({}, {"item": 1})]
+
+
 ACCESS_REQUESTS_KEY = "timia_access_requests"
 
 

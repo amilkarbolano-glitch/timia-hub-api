@@ -43,7 +43,12 @@ class Captura(BaseModel):
 
 
 class RegistroBody(BaseModel):
-    correo: str = Field(max_length=160)
+    # Uno de los dos. `correo` es el camino normal: la persona lo escribe o lo
+    # trae su cuenta de Google. `persona_id` es el del buscador: la vista
+    # nunca ve el correo completo de nadie, así que manda el identificador y
+    # el correo se resuelve aquí.
+    correo: str | None = Field(default=None, max_length=160)
+    persona_id: str | None = Field(default=None, max_length=80)
     capturas: list[Captura]
     # Agrupa las capturas que la persona mandó de una vez, aunque lleguen en
     # peticiones separadas: el navegador las parte para no chocar con el
@@ -123,15 +128,67 @@ async def persona(correo: str, request: Request):
     return {"nombre": u.get("name") or u.get("email")}
 
 
+def _correo_tapado(correo: str) -> str:
+    """`amilkar.bolano@timia.ai` → `am…@timia.ai`.
+
+    El buscador existe para que alguien que no recuerda su correo exacto se
+    encuentre por el nombre; no para que un endpoint abierto publique la
+    lista de correos del equipo. Se enseña lo justo para reconocerse.
+    """
+    usuario, _, dominio = correo.partition("@")
+    return f"{usuario[:2]}…@{dominio}" if dominio else "…"
+
+
+@router.get("/buscar")
+async def buscar(q: str, request: Request):
+    """
+    Personas del equipo cuyo nombre empieza por lo que se escribió.
+
+    Devuelve el identificador, el nombre y el correo tapado: con eso la vista
+    puede ofrecer «¿eres tú?» sin que la respuesta sirva de directorio. Pide
+    dos letras y devuelve pocas, por la misma razón.
+    """
+    rate_limit(request, limit=40, window=60)
+    texto = (q or "").strip().lower()
+    if len(texto) < 2:
+        return {"personas": []}
+
+    encontradas = []
+    for u in await db.list_users():
+        if not u.get("active", True):
+            continue
+        nombre = str(u.get("name") or "").strip()
+        correo = str(u.get("email") or "").strip().lower()
+        # Por nombre, no por correo: buscar por correo es adivinarlo, y eso es
+        # lo que no queremos que este endpoint permita.
+        partes = [nombre.lower(), *nombre.lower().split()]
+        if not any(p.startswith(texto) for p in partes if p):
+            continue
+        encontradas.append({"id": u.get("id"), "nombre": nombre or correo,
+                            "correo": _correo_tapado(correo)})
+        if len(encontradas) == 6:
+            break
+    return {"personas": encontradas}
+
+
 @router.post("/registro")
 async def registrar(body: RegistroBody, request: Request):
     """Recibe las capturas, las manda a leer y guarda el resultado."""
-    rate_limit(request, limit=12, window=300)
+    # Una captura por petición: el navegador parte la carga para que ninguna
+    # se acerque al minuto que aguanta CloudFront. El tope cuenta imágenes,
+    # no cargas, y vale para un equipo entero detrás de la misma salida.
+    rate_limit(request, limit=80, window=300)
 
-    correo = body.correo.strip().lower()
-    usuario = await db.find_user_by_email(correo)
-    if not usuario:
-        raise HTTPException(status_code=403, detail="Ese correo no está en el equipo.")
+    if body.persona_id:
+        usuario = await db.find_user_by_id(body.persona_id)
+        if not usuario or not usuario.get("active", True):
+            raise HTTPException(status_code=403, detail="Esa persona no está en el equipo.")
+        correo = str(usuario.get("email", "")).strip().lower()
+    else:
+        correo = (body.correo or "").strip().lower()
+        usuario = await db.find_user_by_email(correo) if correo else None
+        if not usuario:
+            raise HTTPException(status_code=403, detail="Ese correo no está en el equipo.")
 
     if not body.capturas:
         raise HTTPException(status_code=400, detail="No llegó ninguna captura.")
