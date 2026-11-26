@@ -152,3 +152,69 @@ def test_la_fecha_sigue_aceptandose_si_la_mandan(client):
     assert registro(client, fecha="2026-11-04").status_code == 200
     login(client, "u-rodolfo")
     assert client.get("/api/state/timia_tr_registros").json()[0]["fecha"] == "2026-11-04"
+
+
+# ─── Las capturas se leen a la vez, no una detrás de otra ────────────────────
+
+def test_las_capturas_se_leen_en_paralelo(client, monkeypatch):
+    """
+    El lector tarda medio minuto por captura. Encadenadas, tres ya pasan del
+    minuto que aguanta CloudFront y la persona recibe un 504 aunque sus
+    capturas se hayan leído bien.
+    """
+    import asyncio, time
+    from app.routers import tr as mod
+
+    async def lento(correo, fecha, captura):
+        await asyncio.sleep(0.2)
+        return {"estado": "OK", "respuesta": {"captura": captura.nombre}}
+
+    monkeypatch.setattr(mod, "_llamar_apps_script", lento)
+    seis = [{"nombre": f"tr{i}.png", "contenido": PNG} for i in range(6)]
+
+    t0 = time.monotonic()
+    r = client.post("/api/tr/registro", json={
+        "correo": "santiago.coronado@timia.ai", "capturas": seis,
+    })
+    tardo = time.monotonic() - t0
+
+    assert r.status_code == 200
+    assert len(r.json()["resultados"]) == 6
+    # Con un tope de 4 a la vez: dos tandas, no seis. En serie serían 1,2 s.
+    assert tardo < 0.8, f"tardó {tardo:.2f}s: se están leyendo en serie"
+
+
+def test_el_tope_de_paralelo_se_respeta(client, monkeypatch):
+    """Al otro lado hay un Apps Script escribiendo en una hoja: no se le abren
+    veinte peticiones a la vez."""
+    import asyncio
+    from app.routers import tr as mod
+
+    a_la_vez, pico = 0, 0
+
+    async def cuenta(correo, fecha, captura):
+        nonlocal a_la_vez, pico
+        a_la_vez += 1
+        pico = max(pico, a_la_vez)
+        await asyncio.sleep(0.05)
+        a_la_vez -= 1
+        return {"estado": "OK"}
+
+    monkeypatch.setattr(mod, "_llamar_apps_script", cuenta)
+    client.post("/api/tr/registro", json={
+        "correo": "santiago.coronado@timia.ai",
+        "capturas": [{"nombre": f"t{i}.png", "contenido": PNG} for i in range(10)],
+    })
+    assert pico <= 4, f"llegaron a {pico} a la vez"
+
+
+def test_el_envio_agrupa_las_capturas(client):
+    """El navegador parte el envío en varias peticiones; el id las junta."""
+    for i in range(2):
+        assert client.post("/api/tr/registro", json={
+            "correo": "santiago.coronado@timia.ai", "envio": "e-123",
+            "capturas": [{"nombre": f"tr{i}.png", "contenido": PNG}],
+        }).status_code == 200
+    login(client, "u-rodolfo")
+    filas = client.get("/api/state/timia_tr_registros").json()
+    assert [f["envio"] for f in filas] == ["e-123", "e-123"]

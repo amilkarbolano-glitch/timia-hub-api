@@ -54,6 +54,10 @@ class Settings:
     CORTE_DIARIO: bool = _bool("CORTE_DIARIO", True)
     TR_SCRIPT_URL: str = _env("TR_SCRIPT_URL") or ""
     TR_SCRIPT_TIMEOUT: int = _int("TR_SCRIPT_TIMEOUT", 45)
+    # Capturas que se mandan a leer a la vez. Al otro lado hay un Apps Script
+    # escribiendo en una hoja de calculo: mas paralelo no lo hace mas rapido y
+    # se arriesga a que dos escrituras se pisen.
+    TR_SCRIPT_PARALELO: int = _int("TR_SCRIPT_PARALELO", 4)
     BOOTSTRAP_ADMIN_EMAIL: str = (_env("BOOTSTRAP_ADMIN_EMAIL") or "").lower()
     BOOTSTRAP_ADMIN_NAME: str = _env("BOOTSTRAP_ADMIN_NAME") or ""
     # Acceso servicio-a-servicio (scripts, integraciones)

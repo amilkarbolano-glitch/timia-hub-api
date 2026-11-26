@@ -12,6 +12,7 @@ problema de CORS, y el día que cambie se toca un sitio solo.
 """
 from __future__ import annotations
 
+import asyncio
 import base64
 import binascii
 from datetime import datetime, timezone
@@ -44,6 +45,10 @@ class Captura(BaseModel):
 class RegistroBody(BaseModel):
     correo: str = Field(max_length=160)
     capturas: list[Captura]
+    # Agrupa las capturas que la persona mandó de una vez, aunque lleguen en
+    # peticiones separadas: el navegador las parte para no chocar con el
+    # minuto de CloudFront.
+    envio: str | None = Field(default=None, max_length=60)
     # El día sale de la propia captura: el lector lo detecta. Solo se manda
     # cuando el lector no pudo leerlo y la persona lo escribe a mano, o cuando
     # sube varias capturas de un día que ya sabe cuál es.
@@ -137,16 +142,26 @@ async def registrar(body: RegistroBody, request: Request):
             raise HTTPException(status_code=413, detail=f"«{c.nombre}» pesa más de 6 MB.")
 
     ahora = datetime.now(timezone.utc).isoformat()
-    resultados = []
-    for c in body.capturas:
-        lectura = await _llamar_apps_script(correo, body.fecha, c)
-        resultados.append({"captura": c.nombre, **lectura})
+
+    # En paralelo, no una detrás de otra. El lector tarda medio minuto por
+    # captura: encadenadas, tres ya pasan del minuto que aguanta CloudFront y
+    # la persona recibe un 504 aunque sus capturas se hayan leído bien.
+    # El tope existe porque al otro lado hay un Apps Script escribiendo en una
+    # hoja, y abrirle veinte peticiones a la vez no lo hace más rápido.
+    puerta = asyncio.Semaphore(settings.TR_SCRIPT_PARALELO)
+
+    async def leer(c: Captura) -> dict[str, Any]:
+        async with puerta:
+            return {"captura": c.nombre, **await _llamar_apps_script(correo, body.fecha, c)}
+
+    resultados = list(await asyncio.gather(*(leer(c) for c in body.capturas)))
 
     registro = {
         "id": f"tr-{int(datetime.now(timezone.utc).timestamp() * 1000)}-{len(resultados)}",
         "correo": correo,
         "persona": usuario.get("name") or correo,
         "userId": usuario.get("id"),
+        "envio": body.envio,
         "fecha": body.fecha,          # puede ir vacía: la del lector manda
         "enviadoEn": ahora,
         "capturas": [c.nombre for c in body.capturas],
